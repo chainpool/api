@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["base/Contract"](../modules/_base_contract_.md) › [ContractCall](_base_contract_.contractcall.md)
 
-# Interface: ContractCall <**ApiType, CallType**>
+# Interface: ContractCall ‹**ApiType, CallType**›
 
 ## Type parameters
 
@@ -24,7 +24,7 @@
 
 ▸ **send**(`account`: IKeyringPair | string | AccountId | Address): *ContractCallResultSubscription‹ApiType, CallType›*
 
-*Defined in [base/Contract.ts:25](https://github.com/polkadot-js/api/blob/11d162a10d/packages/api-contract/src/base/Contract.ts#L25)*
+*Defined in [base/Contract.ts:25](https://github.com/polkadot-js/api/blob/f501994df8/packages/api-contract/src/base/Contract.ts#L25)*
 
 **Parameters:**
 

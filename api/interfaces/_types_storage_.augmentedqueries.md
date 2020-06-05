@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["types/storage"](../modules/_types_storage_.md) › [AugmentedQueries](_types_storage_.augmentedqueries.md)
 
-# Interface: AugmentedQueries <**ApiType**>
+# Interface: AugmentedQueries ‹**ApiType**›
 
 ## Type parameters
 

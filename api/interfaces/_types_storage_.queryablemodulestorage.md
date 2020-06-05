@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["types/storage"](../modules/_types_storage_.md) › [QueryableModuleStorage](_types_storage_.queryablemodulestorage.md)
 
-# Interface: QueryableModuleStorage <**ApiType**>
+# Interface: QueryableModuleStorage ‹**ApiType**›
 
 ## Type parameters
 

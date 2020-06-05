@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["base/Blueprint"](../modules/_base_blueprint_.md) › [BlueprintCreate](_base_blueprint_.blueprintcreate.md)
 
-# Interface: BlueprintCreate <**ApiType**>
+# Interface: BlueprintCreate ‹**ApiType**›
 
 ## Type parameters
 
@@ -22,7 +22,7 @@
 
 ▸ **signAndSend**(`account`: IKeyringPair | string | AccountId | Address): *BlueprintCreateResultSubscription‹ApiType›*
 
-*Defined in [base/Blueprint.ts:23](https://github.com/polkadot-js/api/blob/11d162a10d/packages/api-contract/src/base/Blueprint.ts#L23)*
+*Defined in [base/Blueprint.ts:23](https://github.com/polkadot-js/api/blob/f501994df8/packages/api-contract/src/base/Blueprint.ts#L23)*
 
 **Parameters:**
 

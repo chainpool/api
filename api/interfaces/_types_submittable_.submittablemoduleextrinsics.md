@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["types/submittable"](../modules/_types_submittable_.md) › [SubmittableModuleExtrinsics](_types_submittable_.submittablemoduleextrinsics.md)
 
-# Interface: SubmittableModuleExtrinsics <**ApiType**>
+# Interface: SubmittableModuleExtrinsics ‹**ApiType**›
 
 ## Type parameters
 

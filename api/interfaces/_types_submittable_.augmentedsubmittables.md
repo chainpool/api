@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["types/submittable"](../modules/_types_submittable_.md) › [AugmentedSubmittables](_types_submittable_.augmentedsubmittables.md)
 
-# Interface: AugmentedSubmittables <**ApiType**>
+# Interface: AugmentedSubmittables ‹**ApiType**›
 
 ## Type parameters
 

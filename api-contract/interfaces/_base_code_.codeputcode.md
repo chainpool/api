@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["base/Code"](../modules/_base_code_.md) › [CodePutCode](_base_code_.codeputcode.md)
 
-# Interface: CodePutCode <**ApiType**>
+# Interface: CodePutCode ‹**ApiType**›
 
 ## Type parameters
 
@@ -22,7 +22,7 @@
 
 ▸ **signAndSend**(`account`: IKeyringPair | string | AccountId | Address): *CodePutCodeResultSubscription‹ApiType›*
 
-*Defined in [base/Code.ts:23](https://github.com/polkadot-js/api/blob/11d162a10d/packages/api-contract/src/base/Code.ts#L23)*
+*Defined in [base/Code.ts:23](https://github.com/polkadot-js/api/blob/f501994df8/packages/api-contract/src/base/Code.ts#L23)*
 
 **Parameters:**
 

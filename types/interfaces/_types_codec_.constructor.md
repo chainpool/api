@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["types/codec"](../modules/_types_codec_.md) › [Constructor](_types_codec_.constructor.md)
 
-# Interface: Constructor <**T**>
+# Interface: Constructor ‹**T**›
 
 ## Type parameters
 
@@ -22,7 +22,7 @@
 
 \+ **new Constructor**(`registry`: [Registry](_types_registry_.registry.md), ...`value`: any[]): *T*
 
-*Defined in [packages/types/src/types/codec.ts:21](https://github.com/polkadot-js/api/blob/11d162a10d/packages/types/src/types/codec.ts#L21)*
+*Defined in [packages/types/src/types/codec.ts:21](https://github.com/polkadot-js/api/blob/f501994df8/packages/types/src/types/codec.ts#L21)*
 
 **Parameters:**
 

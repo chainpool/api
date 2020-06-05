@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["codec/Enum"](../modules/_codec_enum_.md) › [EnumConstructor](_codec_enum_.enumconstructor.md)
 
-# Interface: EnumConstructor <**T**>
+# Interface: EnumConstructor ‹**T**›
 
 ## Type parameters
 
@@ -22,7 +22,7 @@
 
 \+ **new EnumConstructor**(`registry`: [Registry](_types_registry_.registry.md), `value?`: any, `index?`: undefined | number): *T*
 
-*Defined in [packages/types/src/codec/Enum.ts:15](https://github.com/polkadot-js/api/blob/11d162a10d/packages/types/src/codec/Enum.ts#L15)*
+*Defined in [packages/types/src/codec/Enum.ts:15](https://github.com/polkadot-js/api/blob/f501994df8/packages/types/src/codec/Enum.ts#L15)*
 
 **Parameters:**
 

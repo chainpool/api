@@ -1,6 +1,6 @@
 [Polkadot JS API](../README.md) › [Globals](../globals.md) › ["types/base"](../modules/_types_base_.md) › [RxResult](_types_base_.rxresult.md)
 
-# Interface: RxResult <**F**>
+# Interface: RxResult ‹**F**›
 
 ## Type parameters
 
@@ -16,7 +16,7 @@
 
 ▸ (...`args`: Parameters‹F›): *Observable‹[ObsInnerType](../modules/_types_base_.md#obsinnertype)‹ReturnType‹F›››*
 
-*Defined in [api/src/types/base.ts:48](https://github.com/polkadot-js/api/blob/11d162a10d/packages/api/src/types/base.ts#L48)*
+*Defined in [api/src/types/base.ts:48](https://github.com/polkadot-js/api/blob/f501994df8/packages/api/src/types/base.ts#L48)*
 
 **Parameters:**
 
@@ -26,9 +26,9 @@ Name | Type |
 
 **Returns:** *Observable‹[ObsInnerType](../modules/_types_base_.md#obsinnertype)‹ReturnType‹F›››*
 
-▸ <**T**>(...`args`: Parameters‹F›): *Observable‹T›*
+▸ ‹**T**›(...`args`: Parameters‹F›): *Observable‹T›*
 
-*Defined in [api/src/types/base.ts:49](https://github.com/polkadot-js/api/blob/11d162a10d/packages/api/src/types/base.ts#L49)*
+*Defined in [api/src/types/base.ts:49](https://github.com/polkadot-js/api/blob/f501994df8/packages/api/src/types/base.ts#L49)*
 
 **Type parameters:**
 
