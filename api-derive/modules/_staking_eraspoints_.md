@@ -15,7 +15,7 @@
 
 ▸ **_erasPoints**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/erasPoints.ts:34](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api-derive/src/staking/erasPoints.ts#L34)*
+*Defined in [packages/api-derive/src/staking/erasPoints.ts:34](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api-derive/src/staking/erasPoints.ts#L34)*
 
 **Parameters:**
 
@@ -40,7 +40,7 @@ ___
 
 ▸ **erasPoints**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/erasPoints.ts:64](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api-derive/src/staking/erasPoints.ts#L64)*
+*Defined in [packages/api-derive/src/staking/erasPoints.ts:64](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api-derive/src/staking/erasPoints.ts#L64)*
 
 **Parameters:**
 

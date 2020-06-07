@@ -27,7 +27,7 @@
 
 Ƭ **ApiTypes**: *"promise" | "rxjs"*
 
-*Defined in [api/src/types/base.ts:28](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L28)*
+*Defined in [api/src/types/base.ts:28](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L28)*
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 Ƭ **Cons**: *function extends function ? R : never*
 
-*Defined in [api/src/types/base.ts:10](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L10)*
+*Defined in [api/src/types/base.ts:10](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L10)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 Ƭ **DecorateMethod**: *function*
 
-*Defined in [api/src/types/base.ts:71](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L71)*
+*Defined in [api/src/types/base.ts:71](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L71)*
 
 #### Type declaration:
 
@@ -66,7 +66,7 @@ ___
 
 Ƭ **MethodResult**: *ApiType extends "rxjs" ? RxResult<F> : PromiseResult<F>*
 
-*Defined in [api/src/types/base.ts:61](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L61)*
+*Defined in [api/src/types/base.ts:61](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L61)*
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 Ƭ **ObsInnerType**: *O extends Observable<infer U> ? U : never*
 
-*Defined in [api/src/types/base.ts:31](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L31)*
+*Defined in [api/src/types/base.ts:31](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L31)*
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 Ƭ **PromiseOrObs**: *ApiType extends "rxjs" ? Observable<T> : Promise<T>*
 
-*Defined in [api/src/types/base.ts:36](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L36)*
+*Defined in [api/src/types/base.ts:36](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L36)*
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 Ƭ **Push**:
 
-*Defined in [api/src/types/base.ts:18](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L18)*
+*Defined in [api/src/types/base.ts:18](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L18)*
 
 ___
 
@@ -98,4 +98,4 @@ ___
 
 Ƭ **UnsubscribePromise**: *Promise‹function›*
 
-*Defined in [api/src/types/base.ts:33](https://github.com/polkadot-js/api/blob/622682b4ef/packages/api/src/types/base.ts#L33)*
+*Defined in [api/src/types/base.ts:33](https://github.com/polkadot-js/api/blob/7310ea825e/packages/api/src/types/base.ts#L33)*
