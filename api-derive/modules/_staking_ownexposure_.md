@@ -17,7 +17,7 @@
 
 ▸ **_ownExposure**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/ownExposure.ts:16](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/ownExposure.ts#L16)*
+*Defined in [packages/api-derive/src/staking/ownExposure.ts:16](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/ownExposure.ts#L16)*
 
 **Parameters:**
 
@@ -43,7 +43,7 @@ ___
 
 ▸ **_ownExposures**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/ownExposure.ts:46](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/ownExposure.ts#L46)*
+*Defined in [packages/api-derive/src/staking/ownExposure.ts:46](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/ownExposure.ts#L46)*
 
 **Parameters:**
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **ownExposure**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/ownExposure.ts:40](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/ownExposure.ts#L40)*
+*Defined in [packages/api-derive/src/staking/ownExposure.ts:40](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/ownExposure.ts#L40)*
 
 **Parameters:**
 
@@ -94,7 +94,7 @@ ___
 
 ▸ **ownExposures**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/ownExposure.ts:56](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/ownExposure.ts#L56)*
+*Defined in [packages/api-derive/src/staking/ownExposure.ts:56](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/ownExposure.ts#L56)*
 
 **Parameters:**
 

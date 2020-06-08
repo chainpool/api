@@ -17,7 +17,7 @@
 
 ▸ **_eraPrefs**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/erasPrefs.ts:27](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/erasPrefs.ts#L27)*
+*Defined in [packages/api-derive/src/staking/erasPrefs.ts:27](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/erasPrefs.ts#L27)*
 
 **Parameters:**
 
@@ -42,7 +42,7 @@ ___
 
 ▸ **_erasPrefs**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/erasPrefs.ts:54](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/erasPrefs.ts#L54)*
+*Defined in [packages/api-derive/src/staking/erasPrefs.ts:54](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/erasPrefs.ts#L54)*
 
 **Parameters:**
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **eraPrefs**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/erasPrefs.ts:48](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/erasPrefs.ts#L48)*
+*Defined in [packages/api-derive/src/staking/erasPrefs.ts:48](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/erasPrefs.ts#L48)*
 
 **Parameters:**
 
@@ -91,7 +91,7 @@ ___
 
 ▸ **erasPrefs**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/erasPrefs.ts:62](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/api-derive/src/staking/erasPrefs.ts#L62)*
+*Defined in [packages/api-derive/src/staking/erasPrefs.ts:62](https://github.com/polkadot-js/api/blob/0ad146c607/packages/api-derive/src/staking/erasPrefs.ts#L62)*
 
 **Parameters:**
 

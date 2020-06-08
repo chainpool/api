@@ -19,7 +19,7 @@
 
 • **signedExtensions**: *[RegistryMetadataText](_types_registry_.registrymetadatatext.md)[]*
 
-*Defined in [packages/types/src/types/registry.ts:71](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/types/src/types/registry.ts#L71)*
+*Defined in [packages/types/src/types/registry.ts:71](https://github.com/polkadot-js/api/blob/0ad146c607/packages/types/src/types/registry.ts#L71)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **version**: *BN*
 
-*Defined in [packages/types/src/types/registry.ts:70](https://github.com/polkadot-js/api/blob/6a9e3d80f1/packages/types/src/types/registry.ts#L70)*
+*Defined in [packages/types/src/types/registry.ts:70](https://github.com/polkadot-js/api/blob/0ad146c607/packages/types/src/types/registry.ts#L70)*
