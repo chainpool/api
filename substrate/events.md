@@ -22,7 +22,11 @@ Events are emitted for certain operations on the runtime. The following sections
 
 - **[indices](#indices)**
 
+- **[multisig](#multisig)**
+
 - **[offences](#offences)**
+
+- **[proxy](#proxy)**
 
 - **[recovery](#recovery)**
 
@@ -282,6 +286,29 @@ ___
  
 ### IndexFreed(`AccountIndex`)
 - **summary**:   A account index has been freed up (unassigned). 
+ 
+### IndexFrozen(`AccountIndex`, `AccountId`)
+- **summary**:   A account index has been frozen to its current account ID. 
+
+___
+
+
+## multisig
+ 
+### MultisigApproval(`AccountId`, `Timepoint`, `AccountId`, `CallHash`)
+- **summary**:   A multisig operation has been approved by someone. First param is the account that is approving, third is the multisig account, fourth is hash of the call. 
+ 
+### MultisigCancelled(`AccountId`, `Timepoint`, `AccountId`, `CallHash`)
+- **summary**:   A multisig operation has been cancelled. First param is the account that is cancelling, third is the multisig account, fourth is hash of the call. 
+ 
+### MultisigExecuted(`AccountId`, `Timepoint`, `AccountId`, `CallHash`, `DispatchResult`)
+- **summary**:   A multisig operation has been executed. First param is the account that is approving, third is the multisig account, fourth is hash of the call to be executed. 
+ 
+### NewMultisig(`AccountId`, `AccountId`, `CallHash`)
+- **summary**:   A new multisig operation has begun. First param is the account that is approving, second is the multisig account, third is hash of the call. 
+ 
+### Uncallable(`u32`)
+- **summary**:   A call with a `false` IsCallable filter was attempted. 
 
 ___
 
@@ -290,6 +317,17 @@ ___
  
 ### Offence(`Kind`, `OpaqueTimeSlot`, `bool`)
 - **summary**:   There is an offence reported of the given `kind` happened at the `session_index` and (kind-specific) time slot. This event is not deposited for duplicate slashes. last element indicates of the offence was applied (true) or queued (false). 
+
+___
+
+
+## proxy
+ 
+### AnonymousCreated(`AccountId`, `AccountId`, `ProxyType`, `u16`)
+- **summary**:   Anonymous account (first parameter) has been created by new proxy (second) with given disambiguation index and proxy type. 
+ 
+### ProxyExecuted(`DispatchResult`)
+- **summary**:   A proxy was executed correctly, with the given result. 
 
 ___
 
@@ -548,18 +586,6 @@ ___
  
 ### BatchInterrupted(`u32`, `DispatchError`)
 - **summary**:   Batch of dispatches did not complete fully. Index of first failing dispatch given, as well as the error. 
- 
-### MultisigApproval(`AccountId`, `Timepoint`, `AccountId`, `CallHash`)
-- **summary**:   A multisig operation has been approved by someone. First param is the account that is approving, third is the multisig account, fourth is hash of the call. 
- 
-### MultisigCancelled(`AccountId`, `Timepoint`, `AccountId`, `CallHash`)
-- **summary**:   A multisig operation has been cancelled. First param is the account that is cancelling, third is the multisig account, fourth is hash of the call. 
- 
-### MultisigExecuted(`AccountId`, `Timepoint`, `AccountId`, `CallHash`, `DispatchResult`)
-- **summary**:   A multisig operation has been executed. First param is the account that is approving, third is the multisig account, fourth is hash of the call to be executed. 
- 
-### NewMultisig(`AccountId`, `AccountId`, `CallHash`)
-- **summary**:   A new multisig operation has begun. First param is the account that is approving, second is the multisig account, third is hash of the call. 
  
 ### Uncallable(`u32`)
 - **summary**:   A call with a `false` IsCallable filter was attempted. 

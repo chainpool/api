@@ -24,6 +24,10 @@ This page lists the errors that can be encountered in the different modules.
 
 - **[imOnline](#imonline)**
 
+- **[multisig](#multisig)**
+
+- **[proxy](#proxy)**
+
 - **[recovery](#recovery)**
 
 - **[session](#session)**
@@ -169,9 +173,6 @@ ___
 ### AlreadyDelegating
 - **summary**:   The account is already delegating. 
  
-### AlreadyProxy
-- **summary**:   Already a proxy 
- 
 ### AlreadyVetoed
 - **summary**:   Identity may not veto a proposal twice 
  
@@ -211,9 +212,6 @@ ___
 ### NoProposal
 - **summary**:   No external proposal 
  
-### NotActive
-- **summary**:   A proxy-de-pairing was attempted to an account that was not active. 
- 
 ### NotDelegated
 - **summary**:   Not delegated 
  
@@ -228,12 +226,6 @@ ___
  
 ### NotLocked
 - **summary**:   The target account does not have a lock. 
- 
-### NotOpen
-- **summary**:   A proxy-pairing was attempted to an account that was not open. 
- 
-### NotProxy
-- **summary**:   Not a proxy 
  
 ### NotSimpleMajority
 - **summary**:   Next external proposal not simple majority 
@@ -270,12 +262,6 @@ ___
  
 ### VotesExist
 - **summary**:   The account currently has votes attached to it and the operation cannot succeed until these are removed, either through `unvote` or `reap_vote`. 
- 
-### WrongOpen
-- **summary**:   A proxy-pairing was attempted to an account that was open to another account. 
- 
-### WrongProxy
-- **summary**:   Wrong proxy 
  
 ### WrongUpperBound
 - **summary**:   Invalid upper bound. 
@@ -424,6 +410,76 @@ ___
  
 ### InvalidKey
 - **summary**:   Non existent public key. 
+
+___
+
+
+## multisig
+ 
+### AlreadyApproved
+- **summary**:   Call is already approved by this signatory. 
+ 
+### NoApprovalsNeeded
+- **summary**:   Call doesn't need any (more) approvals. 
+ 
+### NotFound
+- **summary**:   Multisig operation not found when attempting to cancel. 
+ 
+### NoTimepoint
+- **summary**:   No timepoint was given, yet the multisig operation is already underway. 
+ 
+### NotOwner
+- **summary**:   Only the account that originally created the multisig is able to cancel it. 
+ 
+### SenderInSignatories
+- **summary**:   The sender was contained in the other signatories; it shouldn't be. 
+ 
+### SignatoriesOutOfOrder
+- **summary**:   The signatories were provided out of order; they should be ordered. 
+ 
+### TooFewSignatories
+- **summary**:   There are too few signatories in the list. 
+ 
+### TooManySignatories
+- **summary**:   There are too many signatories in the list. 
+ 
+### Uncallable
+- **summary**:   A call with a `false` `IsCallable` filter was attempted. 
+ 
+### UnexpectedTimepoint
+- **summary**:   A timepoint was given, yet no multisig operation is underway. 
+ 
+### WrongTimepoint
+- **summary**:   A different timepoint was given to the multisig operation that is underway. 
+ 
+### ZeroThreshold
+- **summary**:   Threshold is too low (zero). 
+
+___
+
+
+## proxy
+ 
+### Duplicate
+- **summary**:   Account is already a proxy. 
+ 
+### NoPermission
+- **summary**:   Call may not be made by proxy because it may escalate its privileges. 
+ 
+### NotFound
+- **summary**:   Proxy registration not found. 
+ 
+### NotProxy
+- **summary**:   Sender is not a proxy of the account to be proxied. 
+ 
+### TooMany
+- **summary**:   There are too many proxies registered. 
+ 
+### Uncallable
+- **summary**:   A call with a `false` `IsCallable` filter was attempted. 
+ 
+### Unproxyable
+- **summary**:   A call which is incompatible with the proxy type's filter was attempted. 
 
 ___
 
@@ -751,44 +807,8 @@ ___
 
 ## utility
  
-### AlreadyApproved
-- **summary**:   Call is already approved by this signatory. 
- 
-### NoApprovalsNeeded
-- **summary**:   Call doesn't need any (more) approvals. 
- 
-### NotFound
-- **summary**:   Multisig operation not found when attempting to cancel. 
- 
-### NoTimepoint
-- **summary**:   No timepoint was given, yet the multisig operation is already underway. 
- 
-### NotOwner
-- **summary**:   Only the account that originally created the multisig is able to cancel it. 
- 
-### SenderInSignatories
-- **summary**:   The sender was contained in the other signatories; it shouldn't be. 
- 
-### SignatoriesOutOfOrder
-- **summary**:   The signatories were provided out of order; they should be ordered. 
- 
-### TooFewSignatories
-- **summary**:   There are too few signatories in the list. 
- 
-### TooManySignatories
-- **summary**:   There are too many signatories in the list. 
- 
 ### Uncallable
-- **summary**:   A call with a `false` IsCallable filter was attempted. 
- 
-### UnexpectedTimepoint
-- **summary**:   A timepoint was given, yet no multisig operation is underway. 
- 
-### WrongTimepoint
-- **summary**:   A different timepoint was given to the multisig operation that is underway. 
- 
-### ZeroThreshold
-- **summary**:   Threshold is too low (zero). 
+- **summary**:   A call with a `false` `IsCallable` filter was attempted. 
 
 ___
 

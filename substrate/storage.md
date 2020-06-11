@@ -26,7 +26,11 @@ The following sections contain Storage methods are part of the default Substrate
 
 - **[indices](#indices)**
 
+- **[multisig](#multisig)**
+
 - **[offences](#offences)**
+
+- **[proxy](#proxy)**
 
 - **[randomnessCollectiveFlip](#randomnesscollectiveflip)**
 
@@ -53,8 +57,6 @@ The following sections contain Storage methods are part of the default Substrate
 - **[transactionPayment](#transactionpayment)**
 
 - **[treasury](#treasury)**
-
-- **[utility](#utility)**
 
 - **[vesting](#vesting)**
 
@@ -145,8 +147,6 @@ ___
 ### account(`AccountId`): `AccountData`
 - **interface**: `api.query.balances.account`
 - **summary**:   The balance of an account. 
-
-  NOTE: THIS MAY NEVER BE IN EXISTENCE AND YET HAVE A `total().is_zero()`. If the total is ever zero, then the entry *MUST* be removed. 
 
   NOTE: This is only used in the case that this module is used to store balances. 
  
@@ -264,12 +264,6 @@ ___
 ### preimages(`Hash`): `Option<PreimageStatus>`
 - **interface**: `api.query.democracy.preimages`
 - **summary**:   Map of hashes to the proposal preimage, along with who registered it and their deposit. The block number is the block at which it was deposited. 
- 
-### proxy(`AccountId`): `Option<ProxyState>`
-- **interface**: `api.query.democracy.proxy`
-- **summary**:   Who is able to vote for whom. Value is the fund-holding account, key is the vote-transaction-sending account. 
-
-  TWOX-NOTE: OK ― `AccountId` is a secure hash. 
  
 ### publicPropCount(): `PropIndex`
 - **interface**: `api.query.democracy.publicPropCount`
@@ -416,9 +410,18 @@ ___
 
 ## indices
  
-### accounts(`AccountIndex`): `Option<(AccountId,BalanceOf)>`
+### accounts(`AccountIndex`): `Option<(AccountId,BalanceOf,bool)>`
 - **interface**: `api.query.indices.accounts`
 - **summary**:   The lookup from index to account. 
+
+___
+
+
+## multisig
+ 
+### multisigs(`AccountId, [u8;32]`): `Option<Multisig>`
+- **interface**: `api.query.multisig.multisigs`
+- **summary**:   The set of open multisig operations. 
 
 ___
 
@@ -444,6 +447,15 @@ ___
   All reports are sorted by the time of offence. 
 
   Note that the actual type of this mapping is `Vec<u8>`, this is because values of different types are not supported at the moment so we are doing the manual serialization. 
+
+___
+
+
+## proxy
+ 
+### proxies(`AccountId`): `(Vec<(AccountId,ProxyType)>,BalanceOf)`
+- **interface**: `api.query.proxy.proxies`
+- **summary**:   The set of account proxies. Maps the account which has delegated to the accounts which are being delegated to, together with the amount held on deposit. 
 
 ___
 
@@ -699,10 +711,6 @@ ___
 - **interface**: `api.query.staking.ledger`
 - **summary**:   Map from all (unlocked) "controller" accounts to the info regarding the staking. 
  
-### migrateEra(): `Option<EraIndex>`
-- **interface**: `api.query.staking.migrateEra`
-- **summary**:   The era where we migrated from Lazy Payouts to Simple Payouts 
- 
 ### minimumValidatorCount(): `u32`
 - **interface**: `api.query.staking.minimumValidatorCount`
 - **summary**:   Minimum number of staking participants before emergency conditions are imposed. 
@@ -723,7 +731,7 @@ ___
 - **interface**: `api.query.staking.queuedElected`
 - **summary**:   The next validator set. At the end of an era, if this is available (potentially from the result of an offchain worker), it is immediately used. Otherwise, the on-chain election is executed. 
  
-### queuedScore(): `Option<PhragmenScore>`
+### queuedScore(): `Option<ElectionScore>`
 - **interface**: `api.query.staking.queuedScore`
 - **summary**:   The score of the current [`QueuedElected`]. 
  
@@ -936,15 +944,6 @@ ___
 ### tips(`Hash`): `Option<OpenTip>`
 - **interface**: `api.query.treasury.tips`
 - **summary**:   Tips that are not yet completed. Keyed by the hash of `(reason, who)` from the value. This has the insecure enumerable hash function since the key itself is already guaranteed to be a secure hash. 
-
-___
-
-
-## utility
- 
-### multisigs(`AccountId, [u8;32]`): `Option<Multisig>`
-- **interface**: `api.query.utility.multisigs`
-- **summary**:   The set of open multisig operations. 
 
 ___
 
