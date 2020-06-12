@@ -39,7 +39,7 @@
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[at](_types_storage_.storageentrybase.md#at)*
 
-*Defined in [api/src/types/storage.ts:29](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L29)*
+*Defined in [api/src/types/storage.ts:29](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L29)*
 
 #### Type declaration:
 
@@ -64,7 +64,7 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[creator](_types_storage_.storageentrybase.md#creator)*
 
-*Defined in [api/src/types/storage.ts:30](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L30)*
+*Defined in [api/src/types/storage.ts:30](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L30)*
 
 ___
 
@@ -72,9 +72,9 @@ ___
 
 • **entries**: *function*
 
-*Overrides [StorageEntryBase](_types_storage_.storageentrybase.md).[entries](_types_storage_.storageentrybase.md#entries)*
+*Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[entries](_types_storage_.storageentrybase.md#entries)*
 
-*Defined in [api/src/types/storage.ts:44](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L44)*
+*Defined in [api/src/types/storage.ts:31](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L31)*
 
 #### Type declaration:
 
@@ -98,11 +98,11 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[entriesPaged](_types_storage_.storageentrybase.md#entriespaged)*
 
-*Defined in [api/src/types/storage.ts:32](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L32)*
+*Defined in [api/src/types/storage.ts:32](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L32)*
 
 #### Type declaration:
 
-▸ ‹**T**›(`opts`: [PaginationOptions](_types_base_.paginationoptions.md)): *[PromiseOrObs](../modules/_types_base_.md#promiseorobs)‹ApiType, [StorageKey, T][]›*
+▸ ‹**T**›(`opts`: [PaginationOptions](_types_base_.paginationoptions.md)‹Parameters<F>[0]›): *[PromiseOrObs](../modules/_types_base_.md#promiseorobs)‹ApiType, [StorageKey, T][]›*
 
 **Type parameters:**
 
@@ -112,7 +112,7 @@ ___
 
 Name | Type |
 ------ | ------ |
-`opts` | [PaginationOptions](_types_base_.paginationoptions.md) |
+`opts` | [PaginationOptions](_types_base_.paginationoptions.md)‹Parameters<F>[0]› |
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[hash](_types_storage_.storageentrybase.md#hash)*
 
-*Defined in [api/src/types/storage.ts:33](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L33)*
+*Defined in [api/src/types/storage.ts:33](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L33)*
 
 #### Type declaration:
 
@@ -142,7 +142,7 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[key](_types_storage_.storageentrybase.md#key)*
 
-*Defined in [api/src/types/storage.ts:34](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L34)*
+*Defined in [api/src/types/storage.ts:34](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L34)*
 
 #### Type declaration:
 
@@ -162,7 +162,7 @@ ___
 
 *Overrides [StorageEntryBase](_types_storage_.storageentrybase.md).[keyPrefix](_types_storage_.storageentrybase.md#keyprefix)*
 
-*Defined in [api/src/types/storage.ts:45](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L45)*
+*Defined in [api/src/types/storage.ts:44](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L44)*
 
 #### Type declaration:
 
@@ -182,7 +182,7 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[keys](_types_storage_.storageentrybase.md#keys)*
 
-*Defined in [api/src/types/storage.ts:36](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L36)*
+*Defined in [api/src/types/storage.ts:36](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L36)*
 
 #### Type declaration:
 
@@ -202,17 +202,17 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[keysPaged](_types_storage_.storageentrybase.md#keyspaged)*
 
-*Defined in [api/src/types/storage.ts:37](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L37)*
+*Defined in [api/src/types/storage.ts:37](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L37)*
 
 #### Type declaration:
 
-▸ (`opts`: [PaginationOptions](_types_base_.paginationoptions.md)): *[PromiseOrObs](../modules/_types_base_.md#promiseorobs)‹ApiType, StorageKey[]›*
+▸ (`opts`: [PaginationOptions](_types_base_.paginationoptions.md)‹Parameters<F>[0]›): *[PromiseOrObs](../modules/_types_base_.md#promiseorobs)‹ApiType, StorageKey[]›*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`opts` | [PaginationOptions](_types_base_.paginationoptions.md) |
+`opts` | [PaginationOptions](_types_base_.paginationoptions.md)‹Parameters<F>[0]› |
 
 ___
 
@@ -222,7 +222,7 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[multi](_types_storage_.storageentrybase.md#multi)*
 
-*Defined in [api/src/types/storage.ts:40](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L40)*
+*Defined in [api/src/types/storage.ts:40](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L40)*
 
 ___
 
@@ -232,7 +232,7 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[range](_types_storage_.storageentrybase.md#range)*
 
-*Defined in [api/src/types/storage.ts:38](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L38)*
+*Defined in [api/src/types/storage.ts:38](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L38)*
 
 #### Type declaration:
 
@@ -257,7 +257,7 @@ ___
 
 *Inherited from [StorageEntryBase](_types_storage_.storageentrybase.md).[size](_types_storage_.storageentrybase.md#size)*
 
-*Defined in [api/src/types/storage.ts:39](https://github.com/polkadot-js/api/blob/21802664b8/packages/api/src/types/storage.ts#L39)*
+*Defined in [api/src/types/storage.ts:39](https://github.com/polkadot-js/api/blob/e900d1d657/packages/api/src/types/storage.ts#L39)*
 
 #### Type declaration:
 
