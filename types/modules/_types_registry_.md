@@ -35,7 +35,7 @@
 
 Ƭ **OverrideModuleType**: *Record‹string, string›*
 
-*Defined in [packages/types/src/types/registry.ts:20](https://github.com/polkadot-js/api/blob/e900d1d657/packages/types/src/types/registry.ts#L20)*
+*Defined in [packages/types/src/types/registry.ts:20](https://github.com/polkadot-js/api/blob/6a281211b4/packages/types/src/types/registry.ts#L20)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 Ƭ **RegistryMetadataErrors**: *[RegistryMetadataError](../interfaces/_types_registry_.registrymetadataerror.md)[]*
 
-*Defined in [packages/types/src/types/registry.ts:57](https://github.com/polkadot-js/api/blob/e900d1d657/packages/types/src/types/registry.ts#L57)*
+*Defined in [packages/types/src/types/registry.ts:57](https://github.com/polkadot-js/api/blob/6a281211b4/packages/types/src/types/registry.ts#L57)*
 
 ___
 
@@ -51,4 +51,4 @@ ___
 
 Ƭ **RegistryTypes**: *Record‹string, [Constructor](../interfaces/_types_codec_.constructor.md) | string | Record‹string, string› | object | object›*
 
-*Defined in [packages/types/src/types/registry.ts:22](https://github.com/polkadot-js/api/blob/e900d1d657/packages/types/src/types/registry.ts#L22)*
+*Defined in [packages/types/src/types/registry.ts:22](https://github.com/polkadot-js/api/blob/6a281211b4/packages/types/src/types/registry.ts#L22)*

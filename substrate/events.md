@@ -70,8 +70,17 @@ ___
 ### Endowed(`AccountId`, `Balance`)
 - **summary**:   An account was created with some free balance. 
  
+### Reserved(`AccountId`, `Balance`)
+- **summary**:   Some balance was reserved (moved from free to reserved). 
+ 
+### ReserveRepatriated(`AccountId`, `AccountId`, `Balance`, `BalanceStatus`)
+- **summary**:   Some balance was moved from the reserve of the first account to the second account. Final argument indicates the destination balance type. 
+ 
 ### Transfer(`AccountId`, `AccountId`, `Balance`)
 - **summary**:   Transfer succeeded (from, to, value). 
+ 
+### Unreserved(`AccountId`, `Balance`)
+- **summary**:   Some balance was unreserved (moved from reserved to free). 
 
 ___
 
