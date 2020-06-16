@@ -44,8 +44,6 @@ This page lists the errors that can be encountered in the different modules.
 
 - **[treasury](#treasury)**
 
-- **[utility](#utility)**
-
 - **[vesting](#vesting)**
 
 
@@ -443,9 +441,6 @@ ___
 ### TooManySignatories
 - **summary**:   There are too many signatories in the list. 
  
-### Uncallable
-- **summary**:   A call with a `false` `IsCallable` filter was attempted. 
- 
 ### UnexpectedTimepoint
 - **summary**:   A timepoint was given, yet no multisig operation is underway. 
  
@@ -474,9 +469,6 @@ ___
  
 ### TooMany
 - **summary**:   There are too many proxies registered. 
- 
-### Uncallable
-- **summary**:   A call with a `false` `IsCallable` filter was attempted. 
  
 ### Unproxyable
 - **summary**:   A call which is incompatible with the proxy type's filter was attempted. 
@@ -801,14 +793,6 @@ ___
  
 ### UnknownTip
 - **summary**:   The tip hash is unknown. 
-
-___
-
-
-## utility
- 
-### Uncallable
-- **summary**:   A call with a `false` `IsCallable` filter was attempted. 
 
 ___
 

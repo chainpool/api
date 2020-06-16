@@ -315,9 +315,6 @@ ___
  
 ### NewMultisig(`AccountId`, `AccountId`, `CallHash`)
 - **summary**:   A new multisig operation has begun. First param is the account that is approving, second is the multisig account, third is hash of the call. 
- 
-### Uncallable(`u32`)
-- **summary**:   A call with a `false` IsCallable filter was attempted. 
 
 ___
 
@@ -595,9 +592,6 @@ ___
  
 ### BatchInterrupted(`u32`, `DispatchError`)
 - **summary**:   Batch of dispatches did not complete fully. Index of first failing dispatch given, as well as the error. 
- 
-### Uncallable(`u32`)
-- **summary**:   A call with a `false` IsCallable filter was attempted. 
 
 ___
 
