@@ -76,7 +76,6 @@
 * ["generic/ConsensusEngineId"](modules/_generic_consensusengineid_.md)
 * ["generic/Event"](modules/_generic_event_.md)
 * ["generic/Vote"](modules/_generic_vote_.md)
-* ["interfaces/account/definitions"](modules/_interfaces_account_definitions_.md)
 * ["interfaces/attestations/definitions"](modules/_interfaces_attestations_definitions_.md)
 * ["interfaces/aura/definitions"](modules/_interfaces_aura_definitions_.md)
 * ["interfaces/author/definitions"](modules/_interfaces_author_definitions_.md)

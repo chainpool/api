@@ -6,7 +6,6 @@
 
 ### References
 
-* [account](_interfaces_definitions_.md#account)
 * [attestations](_interfaces_definitions_.md#attestations)
 * [aura](_interfaces_definitions_.md#aura)
 * [author](_interfaces_definitions_.md#author)
@@ -49,12 +48,6 @@
 * [vesting](_interfaces_definitions_.md#vesting)
 
 ## References
-
-###  account
-
-• **account**:
-
-___
 
 ###  attestations
 

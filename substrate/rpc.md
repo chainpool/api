@@ -2,8 +2,6 @@
 
 The following sections contain RPC methods that are Remote Calls available by default and allow you to interact with the actual node, query, and submit.
 
-- **[account](#account)**
-
 - **[author](#author)**
 
 - **[babe](#babe)**
@@ -28,16 +26,6 @@ The following sections contain RPC methods that are Remote Calls available by de
 
 - **[system](#system)**
 
-
-___
-
-
-## account
- 
-### nextIndex(accountId: `AccountId`): `Index`
-- **interface**: `api.rpc.account.nextIndex`
-- **jsonrpc**: `account_nextIndex`
-- **summary**: Retrieves the next accountIndex as available on the node
 
 ___
 
@@ -339,6 +327,11 @@ ___
 
 ## system
  
+### accountNextIndex(accountId: `AccountId`): `Index`
+- **interface**: `api.rpc.system.accountNextIndex`
+- **jsonrpc**: `system_accountNextIndex`
+- **summary**: Retrieves the next accountIndex as available on the node
+ 
 ### addReservedPeer(peer: `Text`): `Text`
 - **interface**: `api.rpc.system.addReservedPeer`
 - **jsonrpc**: `system_addReservedPeer`
@@ -353,6 +346,11 @@ ___
 - **interface**: `api.rpc.system.chainType`
 - **jsonrpc**: `system_chainType`
 - **summary**: Retrieves the chain type
+ 
+### dryRun(extrinsic: `Bytes`, at?: `BlockHash`): `ApplyExtrinsicResult`
+- **interface**: `api.rpc.system.dryRun`
+- **jsonrpc**: `system_dryRun`
+- **summary**: Dry run an extrinsic at a given block
  
 ### health(): `Health`
 - **interface**: `api.rpc.system.health`
