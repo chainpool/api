@@ -22,7 +22,7 @@
 
 ▸ **signAndSend**(`account`: IKeyringPair | string | AccountId | Address): *BlueprintCreateResultSubscription‹ApiType›*
 
-*Defined in [base/Blueprint.ts:23](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/api-contract/src/base/Blueprint.ts#L23)*
+*Defined in [base/Blueprint.ts:23](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/api-contract/src/base/Blueprint.ts#L23)*
 
 **Parameters:**
 

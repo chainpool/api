@@ -67,7 +67,7 @@
 
 \+ **new CodecMap**(`registry`: [Registry](../interfaces/_types_registry_.registry.md), `type`: "BTreeMap" | "HashMap", `keyType`: [Constructor](../interfaces/_types_codec_.constructor.md)‹K› | keyof InterfaceTypes, `valType`: [Constructor](../interfaces/_types_codec_.constructor.md)‹V› | keyof InterfaceTypes, `rawValue?`: [Uint8Array](_codec_raw_.raw.md#static-uint8array) | string | [Map](_codec_struct_.struct.md#static-map)‹any, any›): *[CodecMap](_codec_map_.codecmap.md)*
 
-*Defined in [packages/types/src/codec/Map.ts:101](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L101)*
+*Defined in [packages/types/src/codec/Map.ts:101](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L101)*
 
 **Parameters:**
 
@@ -99,7 +99,7 @@ ___
 
 *Implementation of [Codec](../interfaces/_types_codec_.codec.md).[registry](../interfaces/_types_codec_.codec.md#readonly-registry)*
 
-*Defined in [packages/types/src/codec/Map.ts:95](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L95)*
+*Defined in [packages/types/src/codec/Map.ts:95](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L95)*
 
 ___
 
@@ -125,7 +125,7 @@ Defined in node_modules/typescript/lib/lib.es2015.collection.d.ts:36
 
 • **get encodedLength**(): *number*
 
-*Defined in [packages/types/src/codec/Map.ts:115](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L115)*
+*Defined in [packages/types/src/codec/Map.ts:115](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L115)*
 
 **`description`** The length of the value when encoded as a Uint8Array
 
@@ -137,7 +137,7 @@ ___
 
 • **get hash**(): *H256*
 
-*Defined in [packages/types/src/codec/Map.ts:128](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L128)*
+*Defined in [packages/types/src/codec/Map.ts:128](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L128)*
 
 **`description`** Returns a hash of the value
 
@@ -149,7 +149,7 @@ ___
 
 • **get isEmpty**(): *boolean*
 
-*Defined in [packages/types/src/codec/Map.ts:135](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L135)*
+*Defined in [packages/types/src/codec/Map.ts:135](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L135)*
 
 **`description`** Checks if the value is an empty value
 
@@ -221,7 +221,7 @@ ___
 
 *Implementation of [Codec](../interfaces/_types_codec_.codec.md)*
 
-*Defined in [packages/types/src/codec/Map.ts:142](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L142)*
+*Defined in [packages/types/src/codec/Map.ts:142](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L142)*
 
 **`description`** Compares the value of the input to see if there is a match
 
@@ -336,7 +336,7 @@ ___
 
 ▸ **toHex**(): *string*
 
-*Defined in [packages/types/src/codec/Map.ts:149](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L149)*
+*Defined in [packages/types/src/codec/Map.ts:149](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L149)*
 
 **`description`** Returns a hex string representation of the value. isLe returns a LE (number-only) representation
 
@@ -350,7 +350,7 @@ ___
 
 *Implementation of [Codec](../interfaces/_types_codec_.codec.md)*
 
-*Defined in [packages/types/src/codec/Map.ts:156](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L156)*
+*Defined in [packages/types/src/codec/Map.ts:156](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L156)*
 
 **`description`** Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
 
@@ -370,7 +370,7 @@ ___
 
 *Implementation of [Codec](../interfaces/_types_codec_.codec.md)*
 
-*Defined in [packages/types/src/codec/Map.ts:169](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L169)*
+*Defined in [packages/types/src/codec/Map.ts:169](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L169)*
 
 **`description`** Converts the Object to JSON, typically used for RPC transfers
 
@@ -384,7 +384,7 @@ ___
 
 *Implementation of [Codec](../interfaces/_types_codec_.codec.md)*
 
-*Defined in [packages/types/src/codec/Map.ts:182](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L182)*
+*Defined in [packages/types/src/codec/Map.ts:182](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L182)*
 
 **`description`** Returns the base runtime type name for this instance
 
@@ -398,7 +398,7 @@ ___
 
 *Implementation of [Codec](../interfaces/_types_codec_.codec.md)*
 
-*Defined in [packages/types/src/codec/Map.ts:189](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L189)*
+*Defined in [packages/types/src/codec/Map.ts:189](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L189)*
 
 **`description`** Returns the string representation of the value
 
@@ -410,7 +410,7 @@ ___
 
 ▸ **toU8a**(`isBare?`: undefined | false | true): *[Uint8Array](_codec_raw_.raw.md#static-uint8array)*
 
-*Defined in [packages/types/src/codec/Map.ts:197](https://github.com/polkadot-js/api/blob/5c5db2709b/packages/types/src/codec/Map.ts#L197)*
+*Defined in [packages/types/src/codec/Map.ts:197](https://github.com/polkadot-js/api/blob/503c2b3c63/packages/types/src/codec/Map.ts#L197)*
 
 **`description`** Encodes the value as a Uint8Array as per the SCALE specifications
 
