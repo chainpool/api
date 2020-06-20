@@ -72,6 +72,7 @@
 * ["staking/stakerSlashes"](modules/_staking_stakerslashes_.md)
 * ["staking/stashes"](modules/_staking_stashes_.md)
 * ["staking/validators"](modules/_staking_validators_.md)
+* ["staking/waitingInfo"](modules/_staking_waitinginfo_.md)
 * ["technicalCommittee/proposals"](modules/_technicalcommittee_proposals_.md)
 * ["treasury/proposals"](modules/_treasury_proposals_.md)
 * ["tx/constants"](modules/_tx_constants_.md)
