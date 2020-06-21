@@ -8,7 +8,6 @@
 
 * [query](_staking_query_.md#query)
 * [queryMulti](_staking_query_.md#querymulti)
-* [queryWithQueued](_staking_query_.md#querywithqueued)
 
 ## Functions
 
@@ -16,7 +15,7 @@
 
 ▸ **query**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/query.ts:105](https://github.com/polkadot-js/api/blob/34101ec12b/packages/api-derive/src/staking/query.ts#L105)*
+*Defined in [packages/api-derive/src/staking/query.ts:109](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/api-derive/src/staking/query.ts#L109)*
 
 **`description`** From a stash, retrieve the controllerId and all relevant details
 
@@ -42,7 +41,7 @@ ___
 
 ▸ **queryMulti**(`api`: ApiInterfaceRx): *function*
 
-*Defined in [packages/api-derive/src/staking/query.ts:113](https://github.com/polkadot-js/api/blob/34101ec12b/packages/api-derive/src/staking/query.ts#L113)*
+*Defined in [packages/api-derive/src/staking/query.ts:117](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/api-derive/src/staking/query.ts#L117)*
 
 **Parameters:**
 
@@ -59,28 +58,3 @@ Name | Type |
 Name | Type |
 ------ | ------ |
 `accountIds` | string &#124; Uint8Array‹›[] |
-
-___
-
-###  queryWithQueued
-
-▸ **queryWithQueued**(`api`: ApiInterfaceRx): *function*
-
-*Defined in [packages/api-derive/src/staking/query.ts:86](https://github.com/polkadot-js/api/blob/34101ec12b/packages/api-derive/src/staking/query.ts#L86)*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`api` | ApiInterfaceRx |
-
-**Returns:** *function*
-
-▸ (`accountId`: Uint8Array | string, `queuedKeys`: Vec‹ITuple‹[AccountId, Keys]››): *Observable‹DeriveStakingQuery›*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`accountId` | Uint8Array &#124; string |
-`queuedKeys` | Vec‹ITuple‹[AccountId, Keys]›› |

@@ -77,7 +77,7 @@ Defined in node_modules/@types/bn.js/index.d.ts:12
 
 *Overrides void*
 
-*Defined in [packages/types/src/codec/Int.ts:19](https://github.com/polkadot-js/api/blob/34101ec12b/packages/types/src/codec/Int.ts#L19)*
+*Defined in [packages/types/src/codec/Int.ts:19](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/types/src/codec/Int.ts#L19)*
 
 **Parameters:**
 
@@ -96,7 +96,7 @@ Name | Type | Default |
 
 ▸ **with**(`bitLength`: [UIntBitLength](../modules/_codec_abstractint_.md#uintbitlength), `typeName?`: undefined | string): *[Constructor](../interfaces/_types_codec_.constructor.md)‹[Int](_codec_int_.int.md)›*
 
-*Defined in [packages/types/src/codec/Int.ts:24](https://github.com/polkadot-js/api/blob/34101ec12b/packages/types/src/codec/Int.ts#L24)*
+*Defined in [packages/types/src/codec/Int.ts:24](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/types/src/codec/Int.ts#L24)*
 
 **Parameters:**
 
