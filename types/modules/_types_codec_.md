@@ -22,7 +22,7 @@
 
 Ƭ **ArgsDef**: *Record‹string, [Constructor](../interfaces/_types_codec_.constructor.md)›*
 
-*Defined in [packages/types/src/types/codec.ts:11](https://github.com/polkadot-js/api/blob/5b96d52fa6/packages/types/src/types/codec.ts#L11)*
+*Defined in [packages/types/src/types/codec.ts:11](https://github.com/polkadot-js/api/blob/34101ec12b/packages/types/src/types/codec.ts#L11)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 Ƭ **CodecArg**: *[Codec](../interfaces/_types_codec_.codec.md) | BN | boolean | string | [Uint8Array](../classes/_codec_raw_.raw.md#static-uint8array) | boolean | number | string | undefined | CodecArgArray | object*
 
-*Defined in [packages/types/src/types/codec.ts:17](https://github.com/polkadot-js/api/blob/5b96d52fa6/packages/types/src/types/codec.ts#L17)*
+*Defined in [packages/types/src/types/codec.ts:17](https://github.com/polkadot-js/api/blob/34101ec12b/packages/types/src/types/codec.ts#L17)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 Ƭ **CodecTo**: *"toHex" | "toJSON" | "toString" | "toU8a"*
 
-*Defined in [packages/types/src/types/codec.ts:19](https://github.com/polkadot-js/api/blob/5b96d52fa6/packages/types/src/types/codec.ts#L19)*
+*Defined in [packages/types/src/types/codec.ts:19](https://github.com/polkadot-js/api/blob/34101ec12b/packages/types/src/types/codec.ts#L19)*
 
 ___
 
@@ -46,4 +46,4 @@ ___
 
 Ƭ **ConstructorDef**: *Record‹string, [Constructor](../interfaces/_types_codec_.constructor.md)‹T››*
 
-*Defined in [packages/types/src/types/codec.ts:26](https://github.com/polkadot-js/api/blob/5b96d52fa6/packages/types/src/types/codec.ts#L26)*
+*Defined in [packages/types/src/types/codec.ts:26](https://github.com/polkadot-js/api/blob/34101ec12b/packages/types/src/types/codec.ts#L26)*
