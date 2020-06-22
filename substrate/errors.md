@@ -146,7 +146,7 @@ ___
 - **summary**:   Proposal must exist 
  
 ### TooEarly
-- **summary**:   The close call is made too early, before the end of the voting. 
+- **summary**:   The close call was made too early, before the end of the voting. 
  
 ### TooManyProposals
 - **summary**:   There can only be a maximum of `MaxProposals` active proposals. 
@@ -757,7 +757,7 @@ ___
 - **summary**:   Proposal must exist 
  
 ### TooEarly
-- **summary**:   The close call is made too early, before the end of the voting. 
+- **summary**:   The close call was made too early, before the end of the voting. 
  
 ### TooManyProposals
 - **summary**:   There can only be a maximum of `MaxProposals` active proposals. 

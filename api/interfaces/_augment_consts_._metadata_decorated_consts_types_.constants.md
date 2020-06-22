@@ -21,6 +21,8 @@
 * [elections](_augment_consts_._metadata_decorated_consts_types_.constants.md#elections)
 * [finalityTracker](_augment_consts_._metadata_decorated_consts_types_.constants.md#finalitytracker)
 * [identity](_augment_consts_._metadata_decorated_consts_types_.constants.md#identity)
+* [proxy](_augment_consts_._metadata_decorated_consts_types_.constants.md#proxy)
+* [recovery](_augment_consts_._metadata_decorated_consts_types_.constants.md#recovery)
 * [society](_augment_consts_._metadata_decorated_consts_types_.constants.md#society)
 * [staking](_augment_consts_._metadata_decorated_consts_types_.constants.md#staking)
 * [system](_augment_consts_._metadata_decorated_consts_types_.constants.md#system)
@@ -35,7 +37,7 @@
 
 • **babe**: *object*
 
-*Defined in [api/src/augment/consts.ts:15](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L15)*
+*Defined in [api/src/augment/consts.ts:15](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L15)*
 
 #### Type declaration:
 
@@ -51,7 +53,7 @@ ___
 
 • **balances**: *object*
 
-*Defined in [api/src/augment/consts.ts:31](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L31)*
+*Defined in [api/src/augment/consts.ts:31](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L31)*
 
 #### Type declaration:
 
@@ -65,7 +67,7 @@ ___
 
 • **contracts**: *object*
 
-*Defined in [api/src/augment/consts.ts:38](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L38)*
+*Defined in [api/src/augment/consts.ts:38](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L38)*
 
 #### Type declaration:
 
@@ -93,7 +95,7 @@ ___
 
 • **democracy**: *object*
 
-*Defined in [api/src/augment/consts.ts:89](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L89)*
+*Defined in [api/src/augment/consts.ts:89](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L89)*
 
 #### Type declaration:
 
@@ -121,7 +123,7 @@ ___
 
 • **elections**: *object*
 
-*Defined in [api/src/augment/consts.ts:128](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L128)*
+*Defined in [api/src/augment/consts.ts:128](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L128)*
 
 #### Type declaration:
 
@@ -145,7 +147,7 @@ ___
 
 • **finalityTracker**: *object*
 
-*Defined in [api/src/augment/consts.ts:137](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L137)*
+*Defined in [api/src/augment/consts.ts:137](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L137)*
 
 #### Type declaration:
 
@@ -161,7 +163,7 @@ ___
 
 • **identity**: *object*
 
-*Defined in [api/src/augment/consts.ts:148](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L148)*
+*Defined in [api/src/augment/consts.ts:148](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L148)*
 
 #### Type declaration:
 
@@ -181,11 +183,49 @@ ___
 
 ___
 
+###  proxy
+
+• **proxy**: *object*
+
+*Defined in [api/src/augment/consts.ts:179](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L179)*
+
+#### Type declaration:
+
+* \[ **index**: *string*\]: AugmentedConst‹object & Codec›
+
+* **maxProxies**: *AugmentedConst‹u16›*
+
+* **proxyDepositBase**: *AugmentedConst‹BalanceOf›*
+
+* **proxyDepositFactor**: *AugmentedConst‹BalanceOf›*
+
+___
+
+###  recovery
+
+• **recovery**: *object*
+
+*Defined in [api/src/augment/consts.ts:194](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L194)*
+
+#### Type declaration:
+
+* \[ **index**: *string*\]: AugmentedConst‹object & Codec›
+
+* **configDepositBase**: *AugmentedConst‹BalanceOf›*
+
+* **friendDepositFactor**: *AugmentedConst‹BalanceOf›*
+
+* **maxFriends**: *AugmentedConst‹u16›*
+
+* **recoveryDeposit**: *AugmentedConst‹BalanceOf›*
+
+___
+
 ###  society
 
 • **society**: *object*
 
-*Defined in [api/src/augment/consts.ts:179](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L179)*
+*Defined in [api/src/augment/consts.ts:213](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L213)*
 
 #### Type declaration:
 
@@ -211,7 +251,7 @@ ___
 
 • **staking**: *object*
 
-*Defined in [api/src/augment/consts.ts:212](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L212)*
+*Defined in [api/src/augment/consts.ts:246](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L246)*
 
 #### Type declaration:
 
@@ -227,7 +267,7 @@ ___
 
 • **system**: *object*
 
-*Defined in [api/src/augment/consts.ts:223](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L223)*
+*Defined in [api/src/augment/consts.ts:257](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L257)*
 
 #### Type declaration:
 
@@ -251,7 +291,7 @@ ___
 
 • **timestamp**: *object*
 
-*Defined in [api/src/augment/consts.ts:250](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L250)*
+*Defined in [api/src/augment/consts.ts:284](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L284)*
 
 #### Type declaration:
 
@@ -265,7 +305,7 @@ ___
 
 • **transactionPayment**: *object*
 
-*Defined in [api/src/augment/consts.ts:260](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L260)*
+*Defined in [api/src/augment/consts.ts:294](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L294)*
 
 #### Type declaration:
 
@@ -281,7 +321,7 @@ ___
 
 • **treasury**: *object*
 
-*Defined in [api/src/augment/consts.ts:271](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L271)*
+*Defined in [api/src/augment/consts.ts:305](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L305)*
 
 #### Type declaration:
 
@@ -311,7 +351,7 @@ ___
 
 • **vesting**: *object*
 
-*Defined in [api/src/augment/consts.ts:311](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/api/src/augment/consts.ts#L311)*
+*Defined in [api/src/augment/consts.ts:345](https://github.com/polkadot-js/api/blob/f1b6268784/packages/api/src/augment/consts.ts#L345)*
 
 #### Type declaration:
 

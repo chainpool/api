@@ -69,7 +69,7 @@ Defined in node_modules/@types/bn.js/index.d.ts:12
 
 *Overrides void*
 
-*Defined in [packages/types/src/codec/UInt.ts:19](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/types/src/codec/UInt.ts#L19)*
+*Defined in [packages/types/src/codec/UInt.ts:19](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/codec/UInt.ts#L19)*
 
 **Parameters:**
 
@@ -90,7 +90,7 @@ Name | Type | Default |
 
 *Inherited from [UInt](_codec_uint_.uint.md).[with](_codec_uint_.uint.md#static-with)*
 
-*Defined in [packages/types/src/codec/UInt.ts:24](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/types/src/codec/UInt.ts#L24)*
+*Defined in [packages/types/src/codec/UInt.ts:24](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/codec/UInt.ts#L24)*
 
 **Parameters:**
 

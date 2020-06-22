@@ -138,16 +138,16 @@ ___
 - **summary**:   A motion was approved by the required threshold. 
  
 ### Closed(`Hash`, `MemberCount`, `MemberCount`)
-- **summary**:   A proposal was closed after its duration was up. 
+- **summary**:   A proposal was closed because its threshold was reached or after its duration was up. 
  
 ### Disapproved(`Hash`)
 - **summary**:   A motion was not approved by the required threshold. 
  
 ### Executed(`Hash`, `DispatchResult`)
-- **summary**:   A motion was executed; `bool` is true if returned without error. 
+- **summary**:   A motion was executed; result will be `Ok` if it returned without error. 
  
 ### MemberExecuted(`Hash`, `DispatchResult`)
-- **summary**:   A single member did some action; `bool` is true if returned without error. 
+- **summary**:   A single member did some action; result will be `Ok` if it returned without error. 
  
 ### Proposed(`AccountId`, `ProposalIndex`, `Hash`, `MemberCount`)
 - **summary**:   A motion (given hash) has been proposed (by given account) with a threshold (given `MemberCount`). 
@@ -504,16 +504,16 @@ ___
 - **summary**:   A motion was approved by the required threshold. 
  
 ### Closed(`Hash`, `MemberCount`, `MemberCount`)
-- **summary**:   A proposal was closed after its duration was up. 
+- **summary**:   A proposal was closed because its threshold was reached or after its duration was up. 
  
 ### Disapproved(`Hash`)
 - **summary**:   A motion was not approved by the required threshold. 
  
 ### Executed(`Hash`, `DispatchResult`)
-- **summary**:   A motion was executed; `bool` is true if returned without error. 
+- **summary**:   A motion was executed; result will be `Ok` if it returned without error. 
  
 ### MemberExecuted(`Hash`, `DispatchResult`)
-- **summary**:   A single member did some action; `bool` is true if returned without error. 
+- **summary**:   A single member did some action; result will be `Ok` if it returned without error. 
  
 ### Proposed(`AccountId`, `ProposalIndex`, `Hash`, `MemberCount`)
 - **summary**:   A motion (given hash) has been proposed (by given account) with a threshold (given `MemberCount`). 
