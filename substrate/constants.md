@@ -18,6 +18,10 @@ The following sections contain the module constants, also known as parameter typ
 
 - **[identity](#identity)**
 
+- **[proxy](#proxy)**
+
+- **[recovery](#recovery)**
+
 - **[society](#society)**
 
 - **[staking](#staking)**
@@ -201,6 +205,44 @@ ___
 ### subAccountDeposit: `BalanceOf`
 - **interface**: `api.consts.identity.subAccountDeposit`
 - **summary**:   The amount held on deposit for a registered subaccount. This should account for the fact that one storage item's value will increase by the size of an account ID, and there will be another trie item whose value is the size of an account ID plus 32 bytes. 
+
+___
+
+
+## proxy
+ 
+### maxProxies: `u16`
+- **interface**: `api.consts.proxy.maxProxies`
+- **summary**:   The maximum amount of proxies allowed for a single account. 
+ 
+### proxyDepositBase: `BalanceOf`
+- **interface**: `api.consts.proxy.proxyDepositBase`
+- **summary**:   The base amount of currency needed to reserve for creating a proxy. 
+ 
+### proxyDepositFactor: `BalanceOf`
+- **interface**: `api.consts.proxy.proxyDepositFactor`
+- **summary**:   The amount of currency needed per proxy added. 
+
+___
+
+
+## recovery
+ 
+### configDepositBase: `BalanceOf`
+- **interface**: `api.consts.recovery.configDepositBase`
+- **summary**:   The base amount of currency needed to reserve for creating a recovery configuration. 
+ 
+### friendDepositFactor: `BalanceOf`
+- **interface**: `api.consts.recovery.friendDepositFactor`
+- **summary**:   The amount of currency needed per additional user when creating a recovery configuration. 
+ 
+### maxFriends: `u16`
+- **interface**: `api.consts.recovery.maxFriends`
+- **summary**:   The maximum amount of friends allowed in a recovery configuration. 
+ 
+### recoveryDeposit: `BalanceOf`
+- **interface**: `api.consts.recovery.recoveryDeposit`
+- **summary**:   The base amount of currency needed to reserve for starting a recovery. 
 
 ___
 

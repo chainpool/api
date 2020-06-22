@@ -417,6 +417,12 @@ ___
 ### AlreadyApproved
 - **summary**:   Call is already approved by this signatory. 
  
+### AlreadyStored
+- **summary**:   The data to be stored is already stored. 
+ 
+### MinimumThreshold
+- **summary**:   Threshold must be 2 or greater. 
+ 
 ### NoApprovalsNeeded
 - **summary**:   Call doesn't need any (more) approvals. 
  
@@ -444,11 +450,11 @@ ___
 ### UnexpectedTimepoint
 - **summary**:   A timepoint was given, yet no multisig operation is underway. 
  
+### WeightTooLow
+- **summary**:   The maximum weight information provided was too low. 
+ 
 ### WrongTimepoint
 - **summary**:   A different timepoint was given to the multisig operation that is underway. 
- 
-### ZeroThreshold
-- **summary**:   Threshold is too low (zero). 
 
 ___
 

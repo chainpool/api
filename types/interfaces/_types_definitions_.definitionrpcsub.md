@@ -26,7 +26,7 @@
 
 *Inherited from [DefinitionRpc](_types_definitions_.definitionrpc.md).[alias](_types_definitions_.definitionrpc.md#optional-alias)*
 
-*Defined in [packages/types/src/types/definitions.ts:22](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/types/src/types/definitions.ts#L22)*
+*Defined in [packages/types/src/types/definitions.ts:22](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/types/src/types/definitions.ts#L22)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 *Inherited from [DefinitionRpc](_types_definitions_.definitionrpc.md).[description](_types_definitions_.definitionrpc.md#description)*
 
-*Defined in [packages/types/src/types/definitions.ts:23](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/types/src/types/definitions.ts#L23)*
+*Defined in [packages/types/src/types/definitions.ts:23](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/types/src/types/definitions.ts#L23)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 *Inherited from [DefinitionRpc](_types_definitions_.definitionrpc.md).[params](_types_definitions_.definitionrpc.md#params)*
 
-*Defined in [packages/types/src/types/definitions.ts:24](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/types/src/types/definitions.ts#L24)*
+*Defined in [packages/types/src/types/definitions.ts:24](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/types/src/types/definitions.ts#L24)*
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **pubsub**: *[string, string, string]*
 
-*Defined in [packages/types/src/types/definitions.ts:37](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/types/src/types/definitions.ts#L37)*
+*Defined in [packages/types/src/types/definitions.ts:37](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/types/src/types/definitions.ts#L37)*
 
 ___
 
@@ -64,4 +64,4 @@ ___
 
 *Inherited from [DefinitionRpc](_types_definitions_.definitionrpc.md).[type](_types_definitions_.definitionrpc.md#type)*
 
-*Defined in [packages/types/src/types/definitions.ts:25](https://github.com/polkadot-js/api/blob/d46d32d9bc/packages/types/src/types/definitions.ts#L25)*
+*Defined in [packages/types/src/types/definitions.ts:25](https://github.com/polkadot-js/api/blob/b4306cb60a/packages/types/src/types/definitions.ts#L25)*

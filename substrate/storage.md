@@ -419,6 +419,9 @@ ___
 
 ## multisig
  
+### calls(`[u8;32]`): `Option<(Bytes,AccountId,BalanceOf)>`
+- **interface**: `api.query.multisig.calls`
+ 
 ### multisigs(`AccountId, [u8;32]`): `Option<Multisig>`
 - **interface**: `api.query.multisig.multisigs`
 - **summary**:   The set of open multisig operations. 
@@ -919,6 +922,9 @@ ___
  
 ### nextFeeMultiplier(): `Multiplier`
 - **interface**: `api.query.transactionPayment.nextFeeMultiplier`
+ 
+### storageVersion(): `PaymentReleases`
+- **interface**: `api.query.transactionPayment.storageVersion`
 
 ___
 

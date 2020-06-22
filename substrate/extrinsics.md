@@ -1623,7 +1623,7 @@ ___
 
 ## multisig
  
-### approveAsMulti(threshold: `u16`, other_signatories: `Vec<AccountId>`, maybe_timepoint: `Option<Timepoint>`, call_hash: `[u8;32]`)
+### approveAsMulti(threshold: `u16`, other_signatories: `Vec<AccountId>`, maybe_timepoint: `Option<Timepoint>`, call_hash: `[u8;32]`, max_weight: `Weight`)
 - **interface**: `api.tx.multisig.approveAsMulti`
 - **summary**:   Register approval for a dispatch to be made from a deterministic composite account if approved by a total of `threshold - 1` of `other_signatories`. 
 
@@ -1677,7 +1677,7 @@ ___
 
   \# \</weight> 
  
-### asMulti(threshold: `u16`, other_signatories: `Vec<AccountId>`, maybe_timepoint: `Option<Timepoint>`, call: `Call`)
+### asMulti(threshold: `u16`, other_signatories: `Vec<AccountId>`, maybe_timepoint: `Option<Timepoint>`, call: `Bytes`, store_call: `bool`, max_weight: `Weight`)
 - **interface**: `api.tx.multisig.asMulti`
 - **summary**:   Register approval for a dispatch to be made from a deterministic composite account if approved by a total of `threshold - 1` of `other_signatories`. 
 
@@ -1727,17 +1727,45 @@ ___
 
   - Base Weight:
 
-      - Create: 46.55 + 0.089 * S µs
+      - Create:          41.89 + 0.118 * S + .002 * Z µs
 
-      - Approve: 34.03 + .112 * S µs
+      - Create w/ Store: 53.57 + 0.119 * S + .003 * Z µs
 
-      - Complete: 40.36 + .225 * S µs
+      - Approve:         31.39 + 0.136 * S + .002 * Z µs
+
+      - Complete:        39.94 + 0.26  * S + .002 * Z µs
 
   - DB Weight:
 
-      - Reads: Multisig Storage, [Caller Account]
+      - Reads: Multisig Storage, [Caller Account], Calls (if `store_call`)
 
-      - Writes: Multisig Storage, [Caller Account]
+      - Writes: Multisig Storage, [Caller Account], Calls (if `store_call`)
+
+  - Plus Call Weight
+
+  \# \</weight> 
+ 
+### asMultiThreshold1(other_signatories: `Vec<AccountId>`, call: `Call`)
+- **interface**: `api.tx.multisig.asMultiThreshold1`
+- **summary**:   Immediately dispatch a multi-signature call using a single approval from the caller. 
+
+  The dispatch origin for this call must be _Signed_. 
+
+  - `other_signatories`: The accounts (other than the sender) who are part of the multi-signature, but do not participate in the approval process. 
+
+  - `call`: The call to be executed.
+
+  Result is equivalent to the dispatched result. 
+
+  \# \<weight>
+
+   O(Z + C) where Z is the length of the call and C its execution weight. 
+
+  -------------------------------
+
+  - Base Weight: 33.72 + 0.002 * Z µs
+
+  - DB Weight: None
 
   - Plus Call Weight
 
@@ -1777,13 +1805,13 @@ ___
 
   ----------------------------------
 
-  - Base Weight: 37.6 + 0.084 * S
+  - Base Weight: 36.07 + 0.124 * S
 
   - DB Weight:
 
-      - Read: Multisig Storage, [Caller Account]
+      - Read: Multisig Storage, [Caller Account], Refund Account, Calls
 
-      - Write: Multisig Storage, [Caller Account]
+      - Write: Multisig Storage, [Caller Account], Refund Account, Calls
 
   \# \</weight> 
 
@@ -2933,6 +2961,18 @@ ___
 
   \# \</weight> 
  
+### increaseValidatorCount(additional: `Compact<u32>`)
+- **interface**: `api.tx.staking.increaseValidatorCount`
+- **summary**:   Increments the ideal number of validators. 
+
+  The dispatch origin must be Root. 
+
+  \# \<weight>
+
+   Base Weight: 1.717 µs Read/Write: Validator Count 
+
+  \# \</weight> 
+ 
 ### nominate(targets: `Vec<LookupSource>`)
 - **interface**: `api.tx.staking.nominate`
 - **summary**:   Declare the desire to nominate `targets` for the origin controller. 
@@ -3032,6 +3072,18 @@ ___
       - Reads: EraElectionStatus, Ledger, Locks, [Origin Account]
 
       - Writes: [Origin Account], Locks, Ledger
+
+  \# \</weight> 
+ 
+### scaleValidatorCount(factor: `Percent`)
+- **interface**: `api.tx.staking.scaleValidatorCount`
+- **summary**:   Scale up the ideal number of validators by a factor. 
+
+  The dispatch origin must be Root. 
+
+  \# \<weight>
+
+   Base Weight: 1.717 µs Read/Write: Validator Count 
 
   \# \</weight> 
  
@@ -4066,6 +4118,40 @@ ___
 
 
 ## vesting
+ 
+### forceVestedTransfer(source: `LookupSource`, target: `LookupSource`, schedule: `VestingInfo`)
+- **interface**: `api.tx.vesting.forceVestedTransfer`
+- **summary**:   Force a vested transfer. 
+
+  The dispatch origin for this call must be _Root_. 
+
+  - `source`: The account whose funds should be transferred. 
+
+  - `target`: The account that should be transferred the vested funds.
+
+  - `amount`: The amount of funds to transfer and will be vested.
+
+  - `schedule`: The vesting schedule attached to the transfer.
+
+  Emits `VestingCreated`. 
+
+  \# \<weight>
+
+   
+
+  - `O(1)`.
+
+  - DbWeight: 4 Reads, 4 Writes
+
+      - Reads: Vesting Storage, Balances Locks, Target Account, Source Account
+
+      - Writes: Vesting Storage, Balances Locks, Target Account, Source Account
+
+  - Benchmark: 100.3 + .365 * l µs (min square analysis)
+
+  - Using 100 µs fixed. Assuming less than 50 locks on any user, else we may want factor in number of locks.
+
+  \# \</weight> 
  
 ### vest()
 - **interface**: `api.tx.vesting.vest`
