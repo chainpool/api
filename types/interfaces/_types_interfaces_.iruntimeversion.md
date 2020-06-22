@@ -24,7 +24,7 @@
 
 • **apis**: *any[]*
 
-*Defined in [packages/types/src/types/interfaces.ts:35](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/types/interfaces.ts#L35)*
+*Defined in [packages/types/src/types/interfaces.ts:35](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/types/interfaces.ts#L35)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **authoringVersion**: *BN*
 
-*Defined in [packages/types/src/types/interfaces.ts:36](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/types/interfaces.ts#L36)*
+*Defined in [packages/types/src/types/interfaces.ts:36](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/types/interfaces.ts#L36)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **implName**: *[String](../classes/_primitive_text_.text.md#static-string)*
 
-*Defined in [packages/types/src/types/interfaces.ts:38](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/types/interfaces.ts#L38)*
+*Defined in [packages/types/src/types/interfaces.ts:38](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/types/interfaces.ts#L38)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **implVersion**: *BN*
 
-*Defined in [packages/types/src/types/interfaces.ts:39](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/types/interfaces.ts#L39)*
+*Defined in [packages/types/src/types/interfaces.ts:39](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/types/interfaces.ts#L39)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **specName**: *[String](../classes/_primitive_text_.text.md#static-string)*
 
-*Defined in [packages/types/src/types/interfaces.ts:41](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/types/interfaces.ts#L41)*
+*Defined in [packages/types/src/types/interfaces.ts:41](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/types/interfaces.ts#L41)*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 • **specVersion**: *BN*
 
-*Defined in [packages/types/src/types/interfaces.ts:42](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/types/interfaces.ts#L42)*
+*Defined in [packages/types/src/types/interfaces.ts:42](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/types/interfaces.ts#L42)*
 
 ___
 
@@ -72,4 +72,4 @@ ___
 
 • **transactionVersion**: *BN*
 
-*Defined in [packages/types/src/types/interfaces.ts:43](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/types/interfaces.ts#L43)*
+*Defined in [packages/types/src/types/interfaces.ts:43](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/types/interfaces.ts#L43)*

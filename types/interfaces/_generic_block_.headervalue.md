@@ -22,7 +22,7 @@
 
 • **digest**? : *Digest | object*
 
-*Defined in [packages/types/src/generic/Block.ts:15](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/generic/Block.ts#L15)*
+*Defined in [packages/types/src/generic/Block.ts:15](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/generic/Block.ts#L15)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **extrinsicsRoot**? : *[AnyU8a](../modules/_types_helpers_.md#anyu8a)*
 
-*Defined in [packages/types/src/generic/Block.ts:16](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/generic/Block.ts#L16)*
+*Defined in [packages/types/src/generic/Block.ts:16](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/generic/Block.ts#L16)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **number**? : *[AnyNumber](../modules/_types_helpers_.md#anynumber)*
 
-*Defined in [packages/types/src/generic/Block.ts:17](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/generic/Block.ts#L17)*
+*Defined in [packages/types/src/generic/Block.ts:17](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/generic/Block.ts#L17)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **parentHash**? : *[AnyU8a](../modules/_types_helpers_.md#anyu8a)*
 
-*Defined in [packages/types/src/generic/Block.ts:18](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/generic/Block.ts#L18)*
+*Defined in [packages/types/src/generic/Block.ts:18](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/generic/Block.ts#L18)*
 
 ___
 
@@ -54,4 +54,4 @@ ___
 
 • **stateRoot**? : *[AnyU8a](../modules/_types_helpers_.md#anyu8a)*
 
-*Defined in [packages/types/src/generic/Block.ts:19](https://github.com/polkadot-js/api/blob/f1b6268784/packages/types/src/generic/Block.ts#L19)*
+*Defined in [packages/types/src/generic/Block.ts:19](https://github.com/polkadot-js/api/blob/2493442a2e/packages/types/src/generic/Block.ts#L19)*
