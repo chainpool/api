@@ -14,7 +14,7 @@
 
 ▸ **proposals**(`api`: ApiInterfaceRx, `section`: "council" | "technicalCommittee"): *function*
 
-*Defined in [packages/api-derive/src/collective/proposals.ts:32](https://github.com/polkadot-js/api/blob/6dfebbb9fe/packages/api-derive/src/collective/proposals.ts#L32)*
+*Defined in [packages/api-derive/src/collective/proposals.ts:32](https://github.com/polkadot-js/api/blob/76da2638c1/packages/api-derive/src/collective/proposals.ts#L32)*
 
 **Parameters:**
 
