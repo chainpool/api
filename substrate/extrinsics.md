@@ -1117,7 +1117,7 @@ ___
 
 ## grandpa
  
-### reportEquivocation(equivocation_proof: `EquivocationProof`, key_owner_proof: `KeyOwnerProof`)
+### reportEquivocation(equivocation_proof: `GrandpaEquivocationProof`, key_owner_proof: `KeyOwnerProof`)
 - **interface**: `api.tx.grandpa.reportEquivocation`
 - **summary**:   Report voter equivocation/misbehavior. This method will verify the equivocation proof and validate the given key ownership proof against the extracted offender. If both are valid, the offence will be reported. 
 

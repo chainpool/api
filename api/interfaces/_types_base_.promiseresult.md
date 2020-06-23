@@ -16,7 +16,7 @@
 
 ▸ (...`args`: Parameters‹F›): *Promise‹[ObsInnerType](../modules/_types_base_.md#obsinnertype)‹ReturnType‹F›››*
 
-*Defined in [api/src/types/base.ts:55](https://github.com/polkadot-js/api/blob/eea4c8775e/packages/api/src/types/base.ts#L55)*
+*Defined in [api/src/types/base.ts:55](https://github.com/polkadot-js/api/blob/fcce2ab340/packages/api/src/types/base.ts#L55)*
 
 **Parameters:**
 
@@ -28,7 +28,7 @@ Name | Type |
 
 ▸ (...`args`: [Push](../modules/_types_base_.md#push)‹Parameters‹F›, Callback‹[ObsInnerType](../modules/_types_base_.md#obsinnertype)‹ReturnType‹F››››): *[UnsubscribePromise](../modules/_types_base_.md#unsubscribepromise)*
 
-*Defined in [api/src/types/base.ts:56](https://github.com/polkadot-js/api/blob/eea4c8775e/packages/api/src/types/base.ts#L56)*
+*Defined in [api/src/types/base.ts:56](https://github.com/polkadot-js/api/blob/fcce2ab340/packages/api/src/types/base.ts#L56)*
 
 **Parameters:**
 
@@ -40,7 +40,7 @@ Name | Type |
 
 ▸ ‹**T**›(...`args`: Parameters‹F›): *Promise‹T›*
 
-*Defined in [api/src/types/base.ts:57](https://github.com/polkadot-js/api/blob/eea4c8775e/packages/api/src/types/base.ts#L57)*
+*Defined in [api/src/types/base.ts:57](https://github.com/polkadot-js/api/blob/fcce2ab340/packages/api/src/types/base.ts#L57)*
 
 **Type parameters:**
 
@@ -56,7 +56,7 @@ Name | Type |
 
 ▸ ‹**T**›(...`args`: [Push](../modules/_types_base_.md#push)‹Parameters‹F›, Callback‹T››): *[UnsubscribePromise](../modules/_types_base_.md#unsubscribepromise)*
 
-*Defined in [api/src/types/base.ts:58](https://github.com/polkadot-js/api/blob/eea4c8775e/packages/api/src/types/base.ts#L58)*
+*Defined in [api/src/types/base.ts:58](https://github.com/polkadot-js/api/blob/fcce2ab340/packages/api/src/types/base.ts#L58)*
 
 **Type parameters:**
 

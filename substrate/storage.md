@@ -154,7 +154,7 @@ ___
 - **interface**: `api.query.balances.locks`
 - **summary**:   Any liquidity locks on some account balances. NOTE: Should only be accessed when setting, changing and freeing a lock. 
  
-### storageVersion(): `ReleasesBalances`
+### storageVersion(): `Releases`
 - **interface**: `api.query.balances.storageVersion`
 - **summary**:   Storage version of the pallet. 
 
@@ -283,7 +283,7 @@ ___
 
   TWOX-NOTE: SAFE as indexes are not under an attacker’s control. 
  
-### storageVersion(): `Option<ReleasesDemocracy>`
+### storageVersion(): `Option<Releases>`
 - **interface**: `api.query.democracy.storageVersion`
 - **summary**:   Storage version of the pallet. 
 
@@ -760,7 +760,7 @@ ___
 - **interface**: `api.query.staking.spanSlash`
 - **summary**:   Records information about the maximum slash of a stash within a slashing span, as well as how much reward has been paid out. 
  
-### storageVersion(): `ReleasesStaking`
+### storageVersion(): `Releases`
 - **interface**: `api.query.staking.storageVersion`
 - **summary**:   True if network has been upgraded to this version. Storage version of the pallet. 
 
@@ -923,7 +923,7 @@ ___
 ### nextFeeMultiplier(): `Multiplier`
 - **interface**: `api.query.transactionPayment.nextFeeMultiplier`
  
-### storageVersion(): `PaymentReleases`
+### storageVersion(): `Releases`
 - **interface**: `api.query.transactionPayment.storageVersion`
 
 ___
