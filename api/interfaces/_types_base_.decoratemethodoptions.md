@@ -11,6 +11,7 @@
 ### Properties
 
 * [methodName](_types_base_.decoratemethodoptions.md#optional-methodname)
+* [overrideNoSub](_types_base_.decoratemethodoptions.md#optional-overridenosub)
 
 ## Properties
 
@@ -18,4 +19,12 @@
 
 • **methodName**? : *undefined | string*
 
-*Defined in [api/src/types/base.ts:70](https://github.com/polkadot-js/api/blob/c7315ffb74/packages/api/src/types/base.ts#L70)*
+*Defined in [api/src/types/base.ts:70](https://github.com/polkadot-js/api/blob/6dfebbb9fe/packages/api/src/types/base.ts#L70)*
+
+___
+
+### `Optional` overrideNoSub
+
+• **overrideNoSub**? : *undefined | function*
+
+*Defined in [api/src/types/base.ts:71](https://github.com/polkadot-js/api/blob/6dfebbb9fe/packages/api/src/types/base.ts#L71)*
