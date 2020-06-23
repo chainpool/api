@@ -53,6 +53,7 @@
 * ["extrinsic/ExtrinsicUnknown"](modules/_extrinsic_extrinsicunknown_.md)
 * ["extrinsic/SignerPayload"](modules/_extrinsic_signerpayload_.md)
 * ["extrinsic/constants"](modules/_extrinsic_constants_.md)
+* ["extrinsic/signedExtensions/emptyCheck"](modules/_extrinsic_signedextensions_emptycheck_.md)
 * ["extrinsic/signedExtensions/polkadot"](modules/_extrinsic_signedextensions_polkadot_.md)
 * ["extrinsic/signedExtensions/substrate"](modules/_extrinsic_signedextensions_substrate_.md)
 * ["extrinsic/util"](modules/_extrinsic_util_.md)

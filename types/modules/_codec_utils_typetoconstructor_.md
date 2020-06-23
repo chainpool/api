@@ -14,7 +14,7 @@
 
 ▸ **typeToConstructor**‹**T**›(`registry`: [Registry](../interfaces/_types_registry_.registry.md), `type`: keyof InterfaceTypes | [Constructor](../interfaces/_types_codec_.constructor.md)‹T›): *[Constructor](../interfaces/_types_codec_.constructor.md)‹T›*
 
-*Defined in [packages/types/src/codec/utils/typeToConstructor.ts:9](https://github.com/polkadot-js/api/blob/e5c2c6a228/packages/types/src/codec/utils/typeToConstructor.ts#L9)*
+*Defined in [packages/types/src/codec/utils/typeToConstructor.ts:9](https://github.com/polkadot-js/api/blob/e3d13107a9/packages/types/src/codec/utils/typeToConstructor.ts#L9)*
 
 **Type parameters:**
 
