@@ -9,9 +9,8 @@
     "clean": "rimraf node_modules",
     "start": "node index.js"
   },
-
   "dependencies": {
-    "@polkadot/api": "*"
+    "@polkadot/api": "/Users/qinghuan/Downloads/chainx.js-v2-develop/node_modules/@polkadot/api/build"
   },
   "devDependencies": {
     "rimraf": "^2.6.2"
