@@ -4,6 +4,7 @@
 import { Compact, Enum, Option, Raw, Struct, U8aFixed } from '@polkadot/types/codec';
 import { Bytes, Null, bool, u32, u64, u8 } from '@polkadot/types/primitive';
 import { AccountId, Balance, BlockNumber, Hash } from '@polkadot/types/interfaces/runtime';
+import { Token, XRC20Selector } from '@polkadot/types/chainx';
 
 /** @name AliveContractInfo */
 export interface AliveContractInfo extends Struct {
@@ -16,7 +17,7 @@ export interface AliveContractInfo extends Struct {
 }
 
 /** @name CodeHash */
-export interface CodeHash extends Hash {}
+export interface CodeHash extends Hash { }
 
 /** @name ContractCallRequest */
 export interface ContractCallRequest extends Struct {
@@ -25,6 +26,13 @@ export interface ContractCallRequest extends Struct {
   readonly value: Balance;
   readonly gasLimit: u64;
   readonly inputData: Bytes;
+}
+
+/** @name ContractXRC20CallRequest **/
+export interface ContractXRC20CallRequest extends Struct {
+  readonly token: Token,
+  readonly selector: XRC20Selector,
+  readonly inputData: Bytes,
 }
 
 /** @name ContractExecResult */
@@ -49,10 +57,10 @@ export interface ContractInfo extends Enum {
 }
 
 /** @name ContractStorageKey */
-export interface ContractStorageKey extends U8aFixed {}
+export interface ContractStorageKey extends U8aFixed { }
 
 /** @name Gas */
-export interface Gas extends u64 {}
+export interface Gas extends u64 { }
 
 /** @name PrefabWasmModule */
 export interface PrefabWasmModule extends Struct {
@@ -64,7 +72,7 @@ export interface PrefabWasmModule extends Struct {
 }
 
 /** @name PrefabWasmModuleReserved */
-export interface PrefabWasmModuleReserved extends Option<Null> {}
+export interface PrefabWasmModuleReserved extends Option<Null> { }
 
 /** @name Schedule */
 export interface Schedule extends Struct {
@@ -106,12 +114,12 @@ export interface ScheduleTo212 extends Struct {
 }
 
 /** @name SeedOf */
-export interface SeedOf extends Hash {}
+export interface SeedOf extends Hash { }
 
 /** @name TombstoneContractInfo */
-export interface TombstoneContractInfo extends Hash {}
+export interface TombstoneContractInfo extends Hash { }
 
 /** @name TrieId */
-export interface TrieId extends Bytes {}
+export interface TrieId extends Bytes { }
 
 export type PHANTOM_CONTRACTS = 'contracts';

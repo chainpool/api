@@ -11,7 +11,7 @@ import { AccountData, BalanceLock, BalanceLockTo212, Reasons, VestingSchedule, W
 import { EthereumAddress } from '@polkadot/types/interfaces/claims';
 import { MemberCount, ProposalIndex, Votes } from '@polkadot/types/interfaces/collective';
 import { AuthorityId } from '@polkadot/types/interfaces/consensus';
-import { AliveContractInfo, CodeHash, ContractCallRequest, ContractExecResult, ContractExecResultSuccess, ContractInfo, ContractStorageKey, Gas, PrefabWasmModule, PrefabWasmModuleReserved, Schedule, ScheduleTo212, SeedOf, TombstoneContractInfo, TrieId } from '@polkadot/types/interfaces/contracts';
+import { AliveContractInfo, CodeHash, ContractCallRequest, ContractXRC20CallRequest, ContractExecResult, ContractExecResultSuccess, ContractInfo, ContractStorageKey, Gas, PrefabWasmModule, PrefabWasmModuleReserved, Schedule, ScheduleTo212, SeedOf, TombstoneContractInfo, TrieId } from '@polkadot/types/interfaces/contracts';
 import { Conviction, PropIndex, Proposal, ProxyState, ReferendumIndex, ReferendumInfo } from '@polkadot/types/interfaces/democracy';
 import { ApprovalFlag, SetIndex, Vote, VoteIndex, VoteThreshold, VoterInfo } from '@polkadot/types/interfaces/elections';
 import { CreatedBlock, ImportedAux } from '@polkadot/types/interfaces/engine';

@@ -1,5 +1,5 @@
 export { default as Chain } from './Chain';
-export { default as Token } from './token';
+export { default as Token } from './Token';
 export { default as XRC20Selector } from './XRC20Selector';
 export { default as AssetType } from './AssetType';
 export { default as AssetLimit } from './AssetLimit';

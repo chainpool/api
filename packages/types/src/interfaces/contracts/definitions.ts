@@ -76,6 +76,11 @@ export default {
       gasLimit: 'u64',
       inputData: 'Bytes'
     },
+    ContractXRC20CallRequest: {
+      token: 'Token',
+      selector: 'XRC20Selector',
+      inputData: 'Bytes',
+    },
     ContractExecResultSuccess: {
       status: 'u8',
       data: 'Raw'
