@@ -13,6 +13,8 @@ import { getMetadataTypes, getSpecTypes } from '@polkadot/types-known';
 import { logger } from '@polkadot/util';
 import { cryptoWaitReady } from '@polkadot/util-crypto';
 
+import chainxTypes from './chainx/chainx-types'
+
 import Decorate from './Decorate';
 
 const KEEPALIVE_INTERVAL = 15000;
@@ -26,6 +28,10 @@ export default abstract class Init<ApiType extends ApiTypes> extends Decorate<Ap
 
   constructor (options: ApiOptions, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
     super(options, type, decorateMethod);
+    options.types = {
+      ...chainxTypes,
+      ...options.types
+    };
 
     if (!this.hasSubscriptions) {
       l.warn('Api will be available in a limited mode since the provider does not support subscriptions');

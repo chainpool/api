@@ -29,6 +29,8 @@ import { decorateSections, DeriveAllSections } from '../util/decorate';
 import { extractStorageArgs } from '../util/validate';
 import Events from './Events';
 
+import chainxRpc from './chainx/chainx-rpc'
+
 interface MetaDecoration {
   callIndex?: Uint8Array;
   meta: Record<string, unknown>;
@@ -126,6 +128,10 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
    */
   constructor (options: ApiOptions, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
     super();
+    options.rpc = {
+      ...chainxRpc,
+      ...options.rpc
+    };
 
     this.registry = options.registry || new TypeRegistry();
 
