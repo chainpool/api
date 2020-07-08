@@ -20,7 +20,7 @@ try {
           '^@polkadot/metadata(.*)': './packages/metadata/src\\1',
           '^@polkadot/rpc-core(.*)': './packages/rpc-core/src\\1',
           '^@polkadot/rpc-provider(.*)': './packages/rpc-provider/src\\1',
-          '^@polkadot/types-known(.*)': './packages/types-known/src\\1',
+          '^@chainx-v2/types-known(.*)': './packages/types-known/src\\1',
           // eslint-disable-next-line sort-keys
           '^@polkadot/types(.*)': './packages/types/src\\1'
         }

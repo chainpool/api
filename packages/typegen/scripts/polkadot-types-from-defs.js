@@ -16,7 +16,7 @@ try {
         alias: {
           '^@polkadot/metadata(.*)': './packages/metadata/src\\1',
           '^@polkadot/typegen(.*)': './packages/typegen/src\\1',
-          '^@polkadot/types-known(.*)': './packages/types-known/src\\1',
+          '^@chainx-v2/types-known(.*)': './packages/types-known/src\\1',
           // eslint-disable-next-line sort-keys
           '^@polkadot/types(.*)': './packages/types/src\\1'
         }

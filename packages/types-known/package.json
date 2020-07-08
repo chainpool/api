@@ -1,5 +1,5 @@
 {
-  "name": "@polkadot/types-known",
+  "name": "@chainx-v2/types-known",
   "version": "1.22.0-beta.3",
   "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
   "main": "index.js",

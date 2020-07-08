@@ -12,7 +12,7 @@ module.exports = Object.assign({}, config, {
     '@polkadot/api(.*)$': '<rootDir>/packages/api/src/$1',
     '@polkadot/metadata(.*)$': '<rootDir>/packages/metadata/src/$1',
     '@polkadot/rpc-(core|provider)(.*)$': '<rootDir>/packages/rpc-$1/src/$2',
-    '@polkadot/types-known(.*)$': '<rootDir>/packages/types-known/src/$1',
+    '@chainx-v2/types-known(.*)$': '<rootDir>/packages/types-known/src/$1',
     // eslint-disable-next-line sort-keys
     '@polkadot/types(.*)$': '<rootDir>/packages/types/src/$1'
   },

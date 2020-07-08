@@ -5,7 +5,7 @@
 import { EventMetadataV11, EventMetadataLatest, FunctionMetadataV11, FunctionMetadataLatest, MetadataV11, MetadataLatest, ModuleMetadataLatest, StorageMetadataV11, StorageMetadataLatest, StorageEntryMetadataLatest } from '@polkadot/types/interfaces/metadata';
 import { Registry, OverrideModuleType } from '@polkadot/types/types';
 
-import { getModuleTypes } from '@polkadot/types-known';
+import { getModuleTypes } from '@chainx-v2/types-known';
 import { Type } from '@polkadot/types/primitive';
 import { stringCamelCase } from '@polkadot/util';
 
