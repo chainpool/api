@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/typegen",
-  "version": "1.22.0-beta.3",
+  "version": "0.0.1-beta.3",
   "description": "Type generation scripts",
   "main": "index.js",
   "bin": {
@@ -36,10 +36,10 @@
     "@babel/core": "^7.10.3",
     "@babel/register": "^7.10.3",
     "@babel/runtime": "^7.10.3",
-    "@chainx-v2/api": "1.22.0-beta.3",
-    "@chainx-v2/metadata": "1.22.0-beta.3",
-    "@chainx-v2/rpc-provider": "1.22.0-beta.3",
-    "@chainx-v2/types": "1.22.0-beta.3",
+    "@chainx-v2/api": "0.0.1-beta.3",
+    "@chainx-v2/metadata": "0.0.1-beta.3",
+    "@chainx-v2/rpc-provider": "0.0.1-beta.3",
+    "@chainx-v2/types": "0.0.1-beta.3",
     "@polkadot/util": "^2.15.1",
     "handlebars": "^4.7.6",
     "websocket": "^1.0.31",
