@@ -2,11 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { EventMetadataV11, EventMetadataLatest, FunctionMetadataV11, FunctionMetadataLatest, MetadataV11, MetadataLatest, ModuleMetadataLatest, StorageMetadataV11, StorageMetadataLatest, StorageEntryMetadataLatest } from '@polkadot/types/interfaces/metadata';
-import { Registry, OverrideModuleType } from '@polkadot/types/types';
+import { EventMetadataV11, EventMetadataLatest, FunctionMetadataV11, FunctionMetadataLatest, MetadataV11, MetadataLatest, ModuleMetadataLatest, StorageMetadataV11, StorageMetadataLatest, StorageEntryMetadataLatest } from '@chainx-v2/types/interfaces/metadata';
+import { Registry, OverrideModuleType } from '@chainx-v2/types/types';
 
 import { getModuleTypes } from '@chainx-v2/types-known';
-import { Type } from '@polkadot/types/primitive';
+import { Type } from '@chainx-v2/types/primitive';
 import { stringCamelCase } from '@polkadot/util';
 
 // TODO Handle consts as well

@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Codec, Registry } from '@polkadot/types/types';
+import { Codec, Registry } from '@chainx-v2/types/types';
 import { MetadataInterface } from '../types';
 
-import { unwrapStorageType } from '@polkadot/types/primitive/StorageKey';
+import { unwrapStorageType } from '@chainx-v2/types/primitive/StorageKey';
 
 import getUniqTypes from './getUniqTypes';
 import Metadata from '../Metadata';

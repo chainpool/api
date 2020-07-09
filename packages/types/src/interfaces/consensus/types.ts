@@ -1,8 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { U8aFixed } from '@polkadot/types/codec';
-import { AccountId } from '@polkadot/types/interfaces/runtime';
+import { U8aFixed } from '@chainx-v2/types/codec';
+import { AccountId } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name AuthorityId */
 export interface AuthorityId extends AccountId {}

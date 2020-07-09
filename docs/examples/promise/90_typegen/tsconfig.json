@@ -11,7 +11,7 @@
         "src/interfaces/augment-api.ts"
       ],
       // replace the augmented types with our own, as generated from definitions
-      "@polkadot/types/augment": [
+      "@chainx-v2/types/augment": [
         "src/interfaces/augment-types.ts"
       ]
     },

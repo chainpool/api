@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AccountId, AccountData, AccountIndex, AccountInfo, Address, Balance, Index } from '@polkadot/types/interfaces';
-import { ITuple } from '@polkadot/types/types';
+import { AccountId, AccountData, AccountIndex, AccountInfo, Address, Balance, Index } from '@chainx-v2/types/interfaces';
+import { ITuple } from '@chainx-v2/types/types';
 import { DeriveBalancesAccount } from '../types';
 
 import { Observable, combineLatest, of } from 'rxjs';

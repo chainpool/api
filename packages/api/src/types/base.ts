@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import type { Observable } from 'rxjs';
-import { AnyFunction, Callback, Codec, CodecArg } from '@polkadot/types/types';
+import { AnyFunction, Callback, Codec, CodecArg } from '@chainx-v2/types/types';
 
 // Prepend an element V onto the beginning of a tuple T.
 // Cons<1, [2,3,4]> is [1,2,3,4]

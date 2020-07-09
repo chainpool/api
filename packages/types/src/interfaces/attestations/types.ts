@@ -1,10 +1,10 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { Struct, Vec } from '@polkadot/types/codec';
-import { CandidateReceipt, ParaId } from '@polkadot/types/interfaces/parachains';
-import { AccountId, BlockNumber, H256, Hash } from '@polkadot/types/interfaces/runtime';
-import { SessionIndex } from '@polkadot/types/interfaces/session';
+import { Struct, Vec } from '@chainx-v2/types/codec';
+import { CandidateReceipt, ParaId } from '@chainx-v2/types/interfaces/parachains';
+import { AccountId, BlockNumber, H256, Hash } from '@chainx-v2/types/interfaces/runtime';
+import { SessionIndex } from '@chainx-v2/types/interfaces/session';
 
 /** @name BlockAttestations */
 export interface BlockAttestations extends Struct {

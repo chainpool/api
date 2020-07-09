@@ -4,7 +4,7 @@
 
 import { Signer, SignerResult } from '@chainx-v2/api/types';
 import { KeyringPair } from '@polkadot/keyring/types';
-import { Registry, SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
+import { Registry, SignerPayloadJSON, SignerPayloadRaw } from '@chainx-v2/types/types';
 
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 

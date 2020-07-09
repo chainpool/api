@@ -4,7 +4,7 @@
 
 import { Observable, of } from 'rxjs';
 import MockProvider from '@chainx-v2/rpc-provider/mock';
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 
 import Rpc from '.';
 

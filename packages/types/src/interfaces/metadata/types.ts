@@ -1,9 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { ITuple } from '@polkadot/types/types';
-import { Enum, Option, Struct, Vec } from '@polkadot/types/codec';
-import { Bytes, Text, Type, bool, u16, u8 } from '@polkadot/types/primitive';
+import { ITuple } from '@chainx-v2/types/types';
+import { Enum, Option, Struct, Vec } from '@chainx-v2/types/codec';
+import { Bytes, Text, Type, bool, u16, u8 } from '@chainx-v2/types/primitive';
 
 /** @name CallMetadataV0 */
 export interface CallMetadataV0 extends Struct {

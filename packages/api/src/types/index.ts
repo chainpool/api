@@ -10,9 +10,9 @@ import { DeriveCustom, ExactDerive } from '@chainx-v2/api-derive';
 import { Constants } from '@chainx-v2/metadata/Decorated/types';
 import { RpcInterface } from '@chainx-v2/rpc-core/types';
 import { ProviderInterface, ProviderInterfaceEmitted } from '@chainx-v2/rpc-provider/types';
-import { Metadata } from '@polkadot/types';
-import { Hash, RuntimeVersion } from '@polkadot/types/interfaces';
-import { DefinitionRpc, DefinitionRpcSub, Signer, SignatureOptions, Registry, RegisteredTypes } from '@polkadot/types/types';
+import { Metadata } from '@chainx-v2/types';
+import { Hash, RuntimeVersion } from '@chainx-v2/types/interfaces';
+import { DefinitionRpc, DefinitionRpcSub, Signer, SignatureOptions, Registry, RegisteredTypes } from '@chainx-v2/types/types';
 
 import { DeriveAllSections } from '../util/decorate';
 import ApiBase from '../base';
@@ -20,7 +20,7 @@ import { DecoratedRpc } from './rpc';
 import { QueryableStorage, QueryableStorageMulti } from './storage';
 import { SubmittableExtrinsics } from './submittable';
 
-export { Signer, SignerResult } from '@polkadot/types/types';
+export { Signer, SignerResult } from '@chainx-v2/types/types';
 export { default as ApiBase } from '../base';
 export * from '../submittable/types';
 export * from './base';

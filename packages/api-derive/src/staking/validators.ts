@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { AccountId } from '@polkadot/types/interfaces';
+import { AccountId } from '@chainx-v2/types/interfaces';
 import { DeriveStakingValidators } from '../types';
 
 import { Observable, combineLatest, of } from 'rxjs';

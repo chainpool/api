@@ -3,10 +3,10 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { Observable } from 'rxjs';
-import { u64 } from '@polkadot/types';
-import { Hash } from '@polkadot/types/interfaces';
-import { AnyFunction, Callback, Codec, CodecArg } from '@polkadot/types/types';
-import StorageKey, { StorageEntry } from '@polkadot/types/primitive/StorageKey';
+import { u64 } from '@chainx-v2/types';
+import { Hash } from '@chainx-v2/types/interfaces';
+import { AnyFunction, Callback, Codec, CodecArg } from '@chainx-v2/types/types';
+import StorageKey, { StorageEntry } from '@chainx-v2/types/primitive/StorageKey';
 
 import { ApiTypes, MethodResult, ObsInnerType, PaginationOptions, PromiseOrObs, UnsubscribePromise } from './base';
 

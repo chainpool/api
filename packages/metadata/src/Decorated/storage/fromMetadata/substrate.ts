@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { StorageEntryMetadataLatest } from '@polkadot/types/interfaces/metadata';
-import { Registry } from '@polkadot/types/types';
+import { StorageEntryMetadataLatest } from '@chainx-v2/types/interfaces/metadata';
+import { Registry } from '@chainx-v2/types/types';
 
-import { StorageEntry } from '@polkadot/types/primitive/StorageKey';
+import { StorageEntry } from '@chainx-v2/types/primitive/StorageKey';
 
 import createFunction from './createFunction';
 

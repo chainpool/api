@@ -2,14 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { BlockNumber, Hash, ReferendumIndex, Scheduled } from '@polkadot/types/interfaces';
-import { ITuple } from '@polkadot/types/types';
+import { BlockNumber, Hash, ReferendumIndex, Scheduled } from '@chainx-v2/types/interfaces';
+import { ITuple } from '@chainx-v2/types/types';
 import { DeriveDispatch, DeriveProposalImage } from '../types';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { Option, Vec, u64 } from '@polkadot/types';
+import { Option, Vec, u64 } from '@chainx-v2/types';
 import { isFunction, stringToHex } from '@polkadot/util';
 
 import { memo } from '../util';

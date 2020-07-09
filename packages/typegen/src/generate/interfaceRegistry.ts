@@ -4,9 +4,9 @@
 
 import Handlebars from 'handlebars';
 
-import Raw from '@polkadot/types/codec/Raw';
-import * as defaultDefinitions from '@polkadot/types/interfaces/definitions';
-import * as defaultPrimitives from '@polkadot/types/primitive';
+import Raw from '@chainx-v2/types/codec/Raw';
+import * as defaultDefinitions from '@chainx-v2/types/interfaces/definitions';
+import * as defaultPrimitives from '@chainx-v2/types/primitive';
 
 import { createImports, getDerivedTypes, readTemplate, setImports, writeFile } from '../util';
 import { ModuleTypes } from '../util/imports';
@@ -71,7 +71,7 @@ export function generateInterfaceTypes(importDefinitions: { [importPath: string]
 // Generate `packages/types/src/interfaceRegistry.ts`, the registry of all interfaces
 export default function generateDefaultInterfaceTypes(): void {
   generateInterfaceTypes(
-    { '@polkadot/types/interfaces': defaultDefinitions },
+    { '@chainx-v2/types/interfaces': defaultDefinitions },
     'packages/types/src/augment/registry.ts'
   );
 }

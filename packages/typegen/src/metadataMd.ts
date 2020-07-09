@@ -2,18 +2,18 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { MetadataLatest } from '@polkadot/types/interfaces/metadata';
-import { Codec } from '@polkadot/types/types';
+import { MetadataLatest } from '@chainx-v2/types/interfaces/metadata';
+import { Codec } from '@chainx-v2/types/types';
 
 import fs from 'fs';
 import Decorated from '@chainx-v2/metadata/Decorated';
 import rpcdata from '@chainx-v2/metadata/Metadata/static';
-import Call from '@polkadot/types/generic/Call';
-import { unwrapStorageType } from '@polkadot/types/primitive/StorageKey';
-import { TypeRegistry } from '@polkadot/types/create';
-import { Vec } from '@polkadot/types/codec';
-import * as definitions from '@polkadot/types/interfaces/definitions';
-import { Text } from '@polkadot/types/primitive';
+import Call from '@chainx-v2/types/generic/Call';
+import { unwrapStorageType } from '@chainx-v2/types/primitive/StorageKey';
+import { TypeRegistry } from '@chainx-v2/types/create';
+import { Vec } from '@chainx-v2/types/codec';
+import * as definitions from '@chainx-v2/types/interfaces/definitions';
+import { Text } from '@chainx-v2/types/primitive';
 import { stringCamelCase, stringLowerFirst } from '@polkadot/util';
 
 interface Page {

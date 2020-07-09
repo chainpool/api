@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Header, Index } from '@polkadot/types/interfaces';
-import { AnyNumber, Codec, IExtrinsicEra } from '@polkadot/types/types';
+import { Header, Index } from '@chainx-v2/types/interfaces';
+import { AnyNumber, Codec, IExtrinsicEra } from '@chainx-v2/types/types';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';

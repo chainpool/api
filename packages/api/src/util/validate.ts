@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { StorageEntry } from '@polkadot/types/primitive/StorageKey';
-import { Type } from '@polkadot/types';
+import { StorageEntry } from '@chainx-v2/types/primitive/StorageKey';
+import { Type } from '@chainx-v2/types';
 
 import { assert, isUndefined } from '@polkadot/util';
 

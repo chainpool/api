@@ -2,11 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { MetadataV4, MetadataV5, ModuleMetadataV5, StorageFunctionMetadataV4, StorageFunctionMetadataV5, StorageHasherV5 } from '@polkadot/types/interfaces/metadata';
-import { Registry } from '@polkadot/types/types';
+import { MetadataV4, MetadataV5, ModuleMetadataV5, StorageFunctionMetadataV4, StorageFunctionMetadataV5, StorageHasherV5 } from '@chainx-v2/types/interfaces/metadata';
+import { Registry } from '@chainx-v2/types/types';
 
-import { Option } from '@polkadot/types/codec';
-import Text from '@polkadot/types/primitive/Text';
+import { Option } from '@chainx-v2/types/codec';
+import Text from '@chainx-v2/types/primitive/Text';
 import { assert } from '@polkadot/util';
 
 const hasherMap: Map<string, string> = new Map([

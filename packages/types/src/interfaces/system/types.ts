@@ -1,12 +1,12 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { ITuple } from '@polkadot/types/types';
-import { Compact, Enum, HashMap, Option, Result, Struct, U8aFixed, Vec } from '@polkadot/types/codec';
-import { GenericEvent } from '@polkadot/types/generic';
-import { Bytes, Text, bool, u32, u64, u8 } from '@polkadot/types/primitive';
-import { AccountData } from '@polkadot/types/interfaces/balances';
-import { BlockNumber, Digest, Hash, Index, Pays, Weight } from '@polkadot/types/interfaces/runtime';
+import { ITuple } from '@chainx-v2/types/types';
+import { Compact, Enum, HashMap, Option, Result, Struct, U8aFixed, Vec } from '@chainx-v2/types/codec';
+import { GenericEvent } from '@chainx-v2/types/generic';
+import { Bytes, Text, bool, u32, u64, u8 } from '@chainx-v2/types/primitive';
+import { AccountData } from '@chainx-v2/types/interfaces/balances';
+import { BlockNumber, Digest, Hash, Index, Pays, Weight } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name AccountInfo */
 export interface AccountInfo extends Struct {

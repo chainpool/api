@@ -2,13 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { TypeDef, TypeDefInfo } from '@polkadot/types/create/types';
+import { TypeDef, TypeDefInfo } from '@chainx-v2/types/create/types';
 import { ModuleTypes } from '../util/imports';
 
 import Handlebars from 'handlebars';
 import path from 'path';
-import { getTypeDef } from '@polkadot/types/create';
-import * as defaultDefinitions from '@polkadot/types/interfaces/definitions';
+import { getTypeDef } from '@chainx-v2/types/create';
+import * as defaultDefinitions from '@chainx-v2/types/interfaces/definitions';
 import { isString, stringCamelCase, stringUpperFirst, assert } from '@polkadot/util';
 
 import { TypeImports, createImports, exportInterface, exportType, readTemplate, formatType, setImports, writeFile } from '../util';
@@ -244,8 +244,8 @@ export function generateTsDef(importDefinitions: { [importPath: string]: Record<
 /** @internal */
 export default function generateTsDefDefault(): void {
   generateTsDef(
-    { '@polkadot/types/interfaces': defaultDefinitions },
+    { '@chainx-v2/types/interfaces': defaultDefinitions },
     'packages/types/src/interfaces',
-    '@polkadot/types/interfaces'
+    '@chainx-v2/types/interfaces'
   );
 }

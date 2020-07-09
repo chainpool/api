@@ -7,7 +7,7 @@ import { Storage } from '@chainx-v2/metadata/Decorated/types';
 import storageFromMeta from '@chainx-v2/metadata/Decorated/storage/fromMetadata';
 import Metadata from '@chainx-v2/metadata/Metadata';
 import metaStatic from '@chainx-v2/metadata/Metadata/static';
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 
 import { extractStorageArgs } from './validate';
 

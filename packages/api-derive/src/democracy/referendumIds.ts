@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { ReferendumIndex } from '@polkadot/types/interfaces';
+import { ReferendumIndex } from '@chainx-v2/types/interfaces';
 
 import BN from 'bn.js';
 import { Observable, of } from 'rxjs';

@@ -3,13 +3,13 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { AccountId, AccountIndex } from '@polkadot/types/interfaces';
+import { AccountId, AccountIndex } from '@chainx-v2/types/interfaces';
 import { AccountIndexes } from '../types';
 
 import { Observable, of } from 'rxjs';
 import { map, startWith, switchMap } from 'rxjs/operators';
-import { ENUMSET_SIZE } from '@polkadot/types/generic/AccountIndex';
-import { Vec } from '@polkadot/types';
+import { ENUMSET_SIZE } from '@chainx-v2/types/generic/AccountIndex';
+import { Vec } from '@chainx-v2/types';
 import { isFunction } from '@polkadot/util';
 
 import { memo } from '../util';

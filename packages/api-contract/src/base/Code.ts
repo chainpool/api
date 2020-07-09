@@ -3,8 +3,8 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ApiTypes, DecorateMethod } from '@chainx-v2/api/types';
-import { AccountId, Address, Hash } from '@polkadot/types/interfaces';
-import { IKeyringPair, ISubmittableResult } from '@polkadot/types/types';
+import { AccountId, Address, Hash } from '@chainx-v2/types/interfaces';
+import { IKeyringPair, ISubmittableResult } from '@chainx-v2/types/types';
 import { ApiObject, ContractABIPre } from '../types';
 
 import BN from 'bn.js';

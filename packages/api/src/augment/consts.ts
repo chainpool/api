@@ -1,13 +1,13 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import { Codec } from '@polkadot/types/types';
-import { Vec } from '@polkadot/types/codec';
-import { u16, u32, u64 } from '@polkadot/types/primitive';
-import { Balance, BalanceOf, BlockNumber, LockIdentifier, ModuleId, Moment, Perbill, Percent, Permill, RuntimeDbWeight, Weight } from '@polkadot/types/interfaces/runtime';
-import { SessionIndex } from '@polkadot/types/interfaces/session';
-import { EraIndex } from '@polkadot/types/interfaces/staking';
-import { WeightToFeeCoefficient } from '@polkadot/types/interfaces/support';
+import { Codec } from '@chainx-v2/types/types';
+import { Vec } from '@chainx-v2/types/codec';
+import { u16, u32, u64 } from '@chainx-v2/types/primitive';
+import { Balance, BalanceOf, BlockNumber, LockIdentifier, ModuleId, Moment, Perbill, Percent, Permill, RuntimeDbWeight, Weight } from '@chainx-v2/types/interfaces/runtime';
+import { SessionIndex } from '@chainx-v2/types/interfaces/session';
+import { EraIndex } from '@chainx-v2/types/interfaces/staking';
+import { WeightToFeeCoefficient } from '@chainx-v2/types/interfaces/support';
 
 declare module '@chainx-v2/metadata/Decorated/consts/types' {
 export interface Constants {

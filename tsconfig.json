@@ -44,10 +44,10 @@
       "@chainx-v2/rpc-provider/*": [
         "packages/rpc-provider/src/*"
       ],
-      "@polkadot/types": [
+      "@chainx-v2/types": [
         "packages/types/src"
       ],
-      "@polkadot/types/*": [
+      "@chainx-v2/types/*": [
         "packages/types/src/*"
       ],
       "@chainx-v2/types-known": [

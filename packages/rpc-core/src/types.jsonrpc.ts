@@ -4,7 +4,7 @@
 
 // FIXME, this whole file needs to move to API
 
-import { AnyFunction } from '@polkadot/types/types';
+import { AnyFunction } from '@chainx-v2/types/types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RpcInterface { }

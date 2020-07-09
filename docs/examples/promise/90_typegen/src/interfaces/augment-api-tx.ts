@@ -1,22 +1,22 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable @typescript-eslint/no-empty-interface */
 
-import { AnyNumber, ITuple } from '@polkadot/types/types';
-import { Compact, Option, U8aFixed, Vec } from '@polkadot/types/codec';
-import { Bytes, Data, bool, u16, u32, u64 } from '@polkadot/types/primitive';
-import { MemberCount, ProposalIndex } from '@polkadot/types/interfaces/collective';
-import { CodeHash, Gas, Schedule } from '@polkadot/types/interfaces/contracts';
-import { Conviction, PropIndex, Proposal, ReferendumIndex } from '@polkadot/types/interfaces/democracy';
-import { Vote } from '@polkadot/types/interfaces/elections';
-import { Signature } from '@polkadot/types/interfaces/extrinsics';
-import { IdentityFields, IdentityInfo, IdentityJudgement, RegistrarIndex } from '@polkadot/types/interfaces/identity';
-import { Heartbeat } from '@polkadot/types/interfaces/imOnline';
-import { AccountId, AccountIndex, Address, Balance, BalanceOf, BlockNumber, Call, ChangesTrieConfiguration, Hash, Header, KeyValue, LookupSource, Moment } from '@polkadot/types/interfaces/runtime';
-import { Keys } from '@polkadot/types/interfaces/session';
+import { AnyNumber, ITuple } from '@chainx-v2/types/types';
+import { Compact, Option, U8aFixed, Vec } from '@chainx-v2/types/codec';
+import { Bytes, Data, bool, u16, u32, u64 } from '@chainx-v2/types/primitive';
+import { MemberCount, ProposalIndex } from '@chainx-v2/types/interfaces/collective';
+import { CodeHash, Gas, Schedule } from '@chainx-v2/types/interfaces/contracts';
+import { Conviction, PropIndex, Proposal, ReferendumIndex } from '@chainx-v2/types/interfaces/democracy';
+import { Vote } from '@chainx-v2/types/interfaces/elections';
+import { Signature } from '@chainx-v2/types/interfaces/extrinsics';
+import { IdentityFields, IdentityInfo, IdentityJudgement, RegistrarIndex } from '@chainx-v2/types/interfaces/identity';
+import { Heartbeat } from '@chainx-v2/types/interfaces/imOnline';
+import { AccountId, AccountIndex, Address, Balance, BalanceOf, BlockNumber, Call, ChangesTrieConfiguration, Hash, Header, KeyValue, LookupSource, Moment } from '@chainx-v2/types/interfaces/runtime';
+import { Keys } from '@chainx-v2/types/interfaces/session';
 import { ProposalContents, ProposalTitle } from 'sample-polkadotjs-typegen/interfaces/signaling';
-import { EraIndex, RewardDestination, ValidatorPrefs } from '@polkadot/types/interfaces/staking';
-import { Key } from '@polkadot/types/interfaces/system';
-import { Timepoint } from '@polkadot/types/interfaces/utility';
+import { EraIndex, RewardDestination, ValidatorPrefs } from '@chainx-v2/types/interfaces/staking';
+import { Key } from '@chainx-v2/types/interfaces/system';
+import { Timepoint } from '@chainx-v2/types/interfaces/utility';
 import { TallyType, VoteOutcome, VoteType } from 'sample-polkadotjs-typegen/interfaces/voting';
 import { ApiTypes, SubmittableExtrinsic } from '@chainx-v2/api/types';
 

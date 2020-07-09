@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { Balance, StakingLedger, UnlockChunk } from '@polkadot/types/interfaces';
+import { Balance, StakingLedger, UnlockChunk } from '@chainx-v2/types/interfaces';
 import { DeriveSessionInfo, DeriveStakingAccount, DeriveStakingQuery, DeriveUnlocking } from '../types';
 
 import BN from 'bn.js';

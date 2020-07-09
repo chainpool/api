@@ -2,14 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AccountId, AccountIndex, Address, Balance, BalanceLock, BalanceLockTo212, BlockNumber, VestingInfo, VestingSchedule } from '@polkadot/types/interfaces';
+import { AccountId, AccountIndex, Address, Balance, BalanceLock, BalanceLockTo212, BlockNumber, VestingInfo, VestingSchedule } from '@chainx-v2/types/interfaces';
 import { DeriveBalancesAccount, DeriveBalancesAll } from '../types';
 
 import BN from 'bn.js';
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { Option, Vec } from '@polkadot/types';
+import { Option, Vec } from '@chainx-v2/types';
 import { bnMax, isFunction } from '@polkadot/util';
 
 import { memo } from '../util';

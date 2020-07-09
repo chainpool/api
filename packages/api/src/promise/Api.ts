@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Callback, Codec } from '@polkadot/types/types';
+import { Callback, Codec } from '@chainx-v2/types/types';
 import { ApiOptions, DecorateFn, DecorateMethodOptions, ObsInnerType, StorageEntryPromiseOverloads, UnsubscribePromise, VoidFn } from '../types';
 
 import { EMPTY, Observable, Subscription } from 'rxjs';

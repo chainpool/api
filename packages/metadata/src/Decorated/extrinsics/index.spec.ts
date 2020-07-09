@@ -4,7 +4,7 @@
 
 import BN from 'bn.js';
 import testingPairs from '@polkadot/keyring/testingPairs';
-import { Metadata, TypeRegistry } from '@polkadot/types';
+import { Metadata, TypeRegistry } from '@chainx-v2/types';
 
 import metadataStatic from '../../Metadata/static';
 import fromMetadata from './fromMetadata';

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import testingPairs from '@polkadot/keyring/testingPairs';
 import Mock from '@chainx-v2/rpc-provider/mock/index';
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 import { isObservable } from '@polkadot/util';
 
 import { SingleAccountSigner } from '../../test/util';

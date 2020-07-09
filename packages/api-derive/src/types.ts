@@ -3,9 +3,9 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import type BN from 'bn.js';
-import { AccountId, Balance, BalanceLock, BalanceLockTo212, BalanceOf, Bid, BidKind, BlockNumber, Hash, Index, Proposal, ProposalIndex, SetIndex, SocietyVote, StrikeCount, TreasuryProposal, Votes, VoteIndex, VouchingStatus } from '@polkadot/types/interfaces';
+import { AccountId, Balance, BalanceLock, BalanceLockTo212, BalanceOf, Bid, BidKind, BlockNumber, Hash, Index, Proposal, ProposalIndex, SetIndex, SocietyVote, StrikeCount, TreasuryProposal, Votes, VoteIndex, VouchingStatus } from '@chainx-v2/types/interfaces';
 
-import { u32 } from '@polkadot/types';
+import { u32 } from '@chainx-v2/types';
 
 export * from './accounts/types';
 export * from './council/types';

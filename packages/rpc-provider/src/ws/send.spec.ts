@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Constructor } from '@polkadot/types/types';
+import { Constructor } from '@chainx-v2/types/types';
 
 import WsProvider from './';
 import { Global, Mock } from './../mock/types';

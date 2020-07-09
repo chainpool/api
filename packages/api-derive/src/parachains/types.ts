@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { CollatorId, ParaId, ParaInfo, Retriable, UpwardMessage } from '@polkadot/types/interfaces';
-import { ITuple } from '@polkadot/types/types';
+import { CollatorId, ParaId, ParaInfo, Retriable, UpwardMessage } from '@chainx-v2/types/interfaces';
+import { ITuple } from '@chainx-v2/types/types';
 
-import { Bytes, Option, u32, Vec } from '@polkadot/types';
+import { Bytes, Option, u32, Vec } from '@chainx-v2/types';
 
 export type ParaInfoResult = Option<ParaInfo>;
 export type PendingSwap = Option<ParaId>;

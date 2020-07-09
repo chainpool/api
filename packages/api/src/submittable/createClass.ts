@@ -4,8 +4,8 @@
 
 /* eslint-disable no-dupe-class-members */
 
-import { Address, Call, Extrinsic, ExtrinsicEra, ExtrinsicStatus, Hash, Header, Index, RuntimeDispatchInfo } from '@polkadot/types/interfaces';
-import { Callback, Codec, Constructor, IKeyringPair, Registry, SignatureOptions, ISubmittableResult } from '@polkadot/types/types';
+import { Address, Call, Extrinsic, ExtrinsicEra, ExtrinsicStatus, Hash, Header, Index, RuntimeDispatchInfo } from '@chainx-v2/types/interfaces';
+import { Callback, Codec, Constructor, IKeyringPair, Registry, SignatureOptions, ISubmittableResult } from '@chainx-v2/types/types';
 import { ApiInterfaceRx, ApiTypes, SignerResult } from '../types';
 import { AddressOrPair, SignerOptions, SubmittableExtrinsic, SubmittablePaymentResult, SubmittableResultResult, SubmittableResultSubscription, SubmittableThis } from './types';
 

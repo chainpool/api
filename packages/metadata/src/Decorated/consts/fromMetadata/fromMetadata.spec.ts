@@ -4,7 +4,7 @@
 
 import { Constants } from '../../types';
 
-import { Metadata, TypeRegistry } from '@polkadot/types';
+import { Metadata, TypeRegistry } from '@chainx-v2/types';
 
 import rpcMetadata from '../../../Metadata/static';
 import rpcMetadataV10 from '../../../Metadata/v10/static';

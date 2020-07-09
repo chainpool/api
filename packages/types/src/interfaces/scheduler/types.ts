@@ -1,10 +1,10 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { ITuple } from '@polkadot/types/types';
-import { Option, Struct } from '@polkadot/types/codec';
-import { Bytes, u32, u8 } from '@polkadot/types/primitive';
-import { BlockNumber, Call } from '@polkadot/types/interfaces/runtime';
+import { ITuple } from '@chainx-v2/types/types';
+import { Option, Struct } from '@chainx-v2/types/codec';
+import { Bytes, u32, u8 } from '@chainx-v2/types/primitive';
+import { BlockNumber, Call } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name Period */
 export interface Period extends ITuple<[BlockNumber, u32]> {}

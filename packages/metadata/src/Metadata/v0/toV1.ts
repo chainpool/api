@@ -3,11 +3,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { EventMetadataV1, FunctionMetadataV1, MetadataV0, MetadataV1, ModuleMetadataV1, RuntimeModuleMetadataV0, StorageFunctionMetadataV1 } from '@polkadot/types/interfaces/metadata';
-import { Registry } from '@polkadot/types/types';
+import { EventMetadataV1, FunctionMetadataV1, MetadataV0, MetadataV1, ModuleMetadataV1, RuntimeModuleMetadataV0, StorageFunctionMetadataV1 } from '@chainx-v2/types/interfaces/metadata';
+import { Registry } from '@chainx-v2/types/types';
 
-import { Option } from '@polkadot/types/codec';
-import { Text } from '@polkadot/types/primitive';
+import { Option } from '@chainx-v2/types/codec';
+import { Text } from '@chainx-v2/types/primitive';
 import { stringUpperFirst } from '@polkadot/util';
 
 /** @internal */

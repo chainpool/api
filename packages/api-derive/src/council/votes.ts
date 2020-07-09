@@ -2,14 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AccountId, Balance } from '@polkadot/types/interfaces';
-import { ITuple } from '@polkadot/types/types';
+import { AccountId, Balance } from '@chainx-v2/types/interfaces';
+import { ITuple } from '@chainx-v2/types/types';
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { DeriveCouncilVote, DeriveCouncilVotes } from '../types';
 
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Vec } from '@polkadot/types';
+import { Vec } from '@chainx-v2/types';
 
 import { memo } from '../util';
 

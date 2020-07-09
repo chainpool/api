@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AllHashers } from '@polkadot/types/interfaces/metadata/definitions';
-import { StorageHasher } from '@polkadot/types/interfaces';
+import { AllHashers } from '@chainx-v2/types/interfaces/metadata/definitions';
+import { StorageHasher } from '@chainx-v2/types/interfaces';
 import { u8aConcat, u8aToU8a } from '@polkadot/util';
 import { blake2AsU8a, xxhashAsU8a } from '@polkadot/util-crypto';
 

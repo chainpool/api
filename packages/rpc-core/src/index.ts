@@ -3,15 +3,15 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ProviderInterface, ProviderInterfaceCallback } from '@chainx-v2/rpc-provider/types';
-import { Hash } from '@polkadot/types/interfaces';
-import { AnyJson, Codec, DefinitionRpc, DefinitionRpcExt, DefinitionRpcSub, Registry } from '@polkadot/types/types';
+import { Hash } from '@chainx-v2/types/interfaces';
+import { AnyJson, Codec, DefinitionRpc, DefinitionRpcExt, DefinitionRpcSub, Registry } from '@chainx-v2/types/types';
 import { RpcInterface, RpcInterfaceMethod } from './types';
 
 import memoizee from 'memoizee';
 import { combineLatest, from, Observable, Observer, of, throwError } from 'rxjs';
 import { catchError, map, publishReplay, refCount, switchMap } from 'rxjs/operators';
-import jsonrpc from '@polkadot/types/interfaces/jsonrpc';
-import { Option, StorageKey, Vec, createClass, createTypeUnsafe } from '@polkadot/types';
+import jsonrpc from '@chainx-v2/types/interfaces/jsonrpc';
+import { Option, StorageKey, Vec, createClass, createTypeUnsafe } from '@chainx-v2/types';
 import { assert, hexToU8a, isFunction, isNull, isUndefined, logger, u8aToU8a } from '@polkadot/util';
 
 import { drr } from './rxjs';

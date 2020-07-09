@@ -1,8 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { Compact, Enum, Struct } from '@polkadot/types/codec';
-import { AccountId, Balance } from '@polkadot/types/interfaces/runtime';
+import { Compact, Enum, Struct } from '@chainx-v2/types/codec';
+import { AccountId, Balance } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name AssetOptions */
 export interface AssetOptions extends Struct {

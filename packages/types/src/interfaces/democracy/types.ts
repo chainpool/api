@@ -1,11 +1,11 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { ITuple } from '@polkadot/types/types';
-import { Enum, Option, Struct, Vec } from '@polkadot/types/codec';
-import { Bytes, bool, u32 } from '@polkadot/types/primitive';
-import { Vote, VoteThreshold } from '@polkadot/types/interfaces/elections';
-import { AccountId, Balance, BlockNumber, Call, Hash } from '@polkadot/types/interfaces/runtime';
+import { ITuple } from '@chainx-v2/types/types';
+import { Enum, Option, Struct, Vec } from '@chainx-v2/types/codec';
+import { Bytes, bool, u32 } from '@chainx-v2/types/primitive';
+import { Vote, VoteThreshold } from '@chainx-v2/types/interfaces/elections';
+import { AccountId, Balance, BlockNumber, Call, Hash } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name AccountVote */
 export interface AccountVote extends Enum {

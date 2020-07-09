@@ -1,9 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { Struct } from '@polkadot/types/codec';
-import { bool, u8 } from '@polkadot/types/primitive';
-import { Balance, Perbill } from '@polkadot/types/interfaces/runtime';
+import { Struct } from '@chainx-v2/types/codec';
+import { bool, u8 } from '@chainx-v2/types/primitive';
+import { Balance, Perbill } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name WeightToFeeCoefficient */
 export interface WeightToFeeCoefficient extends Struct {

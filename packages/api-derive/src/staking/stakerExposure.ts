@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { EraIndex } from '@polkadot/types/interfaces';
+import { EraIndex } from '@chainx-v2/types/interfaces';
 import { DeriveStakerExposure, DeriveEraValidatorExposure } from '../types';
 
 import { Observable } from 'rxjs';

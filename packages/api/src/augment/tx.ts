@@ -1,25 +1,25 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import { AnyNumber, ITuple } from '@polkadot/types/types';
-import { Compact, Option, U8aFixed, Vec } from '@polkadot/types/codec';
-import { Bytes, Data, bool, u16, u32, u64 } from '@polkadot/types/primitive';
-import { MemberCount, ProposalIndex } from '@polkadot/types/interfaces/collective';
-import { CodeHash, Gas, Schedule } from '@polkadot/types/interfaces/contracts';
-import { AccountVote, Conviction, PropIndex, Proposal, ReferendumIndex } from '@polkadot/types/interfaces/democracy';
-import { DefunctVoter, Renouncing } from '@polkadot/types/interfaces/elections';
-import { Extrinsic, Signature } from '@polkadot/types/interfaces/extrinsics';
-import { GrandpaEquivocationProof, KeyOwnerProof } from '@polkadot/types/interfaces/grandpa';
-import { IdentityFields, IdentityInfo, IdentityJudgement, RegistrarIndex } from '@polkadot/types/interfaces/identity';
-import { Heartbeat } from '@polkadot/types/interfaces/imOnline';
-import { AccountId, AccountIndex, Address, Balance, BalanceOf, BlockNumber, Call, ChangesTrieConfiguration, Hash, Header, KeyValue, LookupSource, Moment, Perbill, Percent, ProxyType, Weight } from '@polkadot/types/interfaces/runtime';
-import { Period, Priority } from '@polkadot/types/interfaces/scheduler';
-import { Keys } from '@polkadot/types/interfaces/session';
-import { SocietyJudgement } from '@polkadot/types/interfaces/society';
-import { CompactAssignments, ElectionScore, ElectionSize, EraIndex, RewardDestination, ValidatorIndex, ValidatorPrefs } from '@polkadot/types/interfaces/staking';
-import { Key } from '@polkadot/types/interfaces/system';
-import { Timepoint } from '@polkadot/types/interfaces/utility';
-import { VestingInfo } from '@polkadot/types/interfaces/vesting';
+import { AnyNumber, ITuple } from '@chainx-v2/types/types';
+import { Compact, Option, U8aFixed, Vec } from '@chainx-v2/types/codec';
+import { Bytes, Data, bool, u16, u32, u64 } from '@chainx-v2/types/primitive';
+import { MemberCount, ProposalIndex } from '@chainx-v2/types/interfaces/collective';
+import { CodeHash, Gas, Schedule } from '@chainx-v2/types/interfaces/contracts';
+import { AccountVote, Conviction, PropIndex, Proposal, ReferendumIndex } from '@chainx-v2/types/interfaces/democracy';
+import { DefunctVoter, Renouncing } from '@chainx-v2/types/interfaces/elections';
+import { Extrinsic, Signature } from '@chainx-v2/types/interfaces/extrinsics';
+import { GrandpaEquivocationProof, KeyOwnerProof } from '@chainx-v2/types/interfaces/grandpa';
+import { IdentityFields, IdentityInfo, IdentityJudgement, RegistrarIndex } from '@chainx-v2/types/interfaces/identity';
+import { Heartbeat } from '@chainx-v2/types/interfaces/imOnline';
+import { AccountId, AccountIndex, Address, Balance, BalanceOf, BlockNumber, Call, ChangesTrieConfiguration, Hash, Header, KeyValue, LookupSource, Moment, Perbill, Percent, ProxyType, Weight } from '@chainx-v2/types/interfaces/runtime';
+import { Period, Priority } from '@chainx-v2/types/interfaces/scheduler';
+import { Keys } from '@chainx-v2/types/interfaces/session';
+import { SocietyJudgement } from '@chainx-v2/types/interfaces/society';
+import { CompactAssignments, ElectionScore, ElectionSize, EraIndex, RewardDestination, ValidatorIndex, ValidatorPrefs } from '@chainx-v2/types/interfaces/staking';
+import { Key } from '@chainx-v2/types/interfaces/system';
+import { Timepoint } from '@chainx-v2/types/interfaces/utility';
+import { VestingInfo } from '@chainx-v2/types/interfaces/vesting';
 import { ApiTypes, SubmittableExtrinsic } from '@chainx-v2/api/types';
 
 declare module '@chainx-v2/api/types/submittable' {

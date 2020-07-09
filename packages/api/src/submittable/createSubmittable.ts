@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Call, Extrinsic } from '@polkadot/types/interfaces';
-import { Constructor } from '@polkadot/types/types';
+import { Call, Extrinsic } from '@chainx-v2/types/interfaces';
+import { Constructor } from '@chainx-v2/types/types';
 import { ApiInterfaceRx, ApiTypes } from '../types';
 import { SubmittableExtrinsic } from './types';
 

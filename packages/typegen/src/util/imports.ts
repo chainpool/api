@@ -2,13 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { TypeDefInfo } from '@polkadot/types/create/types';
+import { TypeDefInfo } from '@chainx-v2/types/create/types';
 
-import * as codecClasses from '@polkadot/types/codec';
-import { getTypeDef } from '@polkadot/types/create';
-import * as extrinsicClasses from '@polkadot/types/extrinsic';
-import * as genericClasses from '@polkadot/types/generic';
-import * as primitiveClasses from '@polkadot/types/primitive';
+import * as codecClasses from '@chainx-v2/types/codec';
+import { getTypeDef } from '@chainx-v2/types/create';
+import * as extrinsicClasses from '@chainx-v2/types/extrinsic';
+import * as genericClasses from '@chainx-v2/types/generic';
+import * as primitiveClasses from '@chainx-v2/types/primitive';
 
 export interface ModuleTypes {
   types: Record<string, unknown>;
@@ -23,13 +23,13 @@ type TypeExist = Record<string, boolean>;
 type TypeExistMap = Record<string, TypeExist>;
 
 export interface TypeImports {
-  codecTypes: TypeExist; // `import {} from '@polkadot/types/codec`
-  extrinsicTypes: TypeExist; // `import {} from '@polkadot/types/extrinsic`
-  genericTypes: TypeExist; // `import {} from '@polkadot/types/generic`
+  codecTypes: TypeExist; // `import {} from '@chainx-v2/types/codec`
+  extrinsicTypes: TypeExist; // `import {} from '@chainx-v2/types/extrinsic`
+  genericTypes: TypeExist; // `import {} from '@chainx-v2/types/generic`
   ignoredTypes: string[]; // No need to import these types
   localTypes: TypeExistMap; // `import {} from '../something'`
-  primitiveTypes: TypeExist; // `import {} from '@polkadot/types/primitive`
-  typesTypes: TypeExist; // `import {} from '@polkadot/types/types`
+  primitiveTypes: TypeExist; // `import {} from '@chainx-v2/types/primitive`
+  typesTypes: TypeExist; // `import {} from '@chainx-v2/types/types`
   definitions: Record<string, ModuleTypes>; // all definitions
   typeToModule: Record<string, string>;
 }

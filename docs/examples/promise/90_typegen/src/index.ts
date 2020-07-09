@@ -9,7 +9,7 @@ import type { VoteRecord } from './interfaces';
 
 // external imports
 import { ApiPromise } from '@chainx-v2/api';
-import { createType } from '@polkadot/types';
+import { createType } from '@chainx-v2/types';
 
 // our local stuff
 import * as definitions from './interfaces/definitions';

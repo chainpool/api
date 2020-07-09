@@ -4,13 +4,13 @@
 
 // Simple non-runnable checks to test type definitions in the editor itself
 
-import { Balance, Header, Index } from '@polkadot/types/interfaces';
-import { IExtrinsic, IMethod } from '@polkadot/types/types';
+import { Balance, Header, Index } from '@chainx-v2/types/interfaces';
+import { IExtrinsic, IMethod } from '@chainx-v2/types/types';
 
 import { ApiPromise } from '@chainx-v2/api';
 import { HeaderExtended } from '@chainx-v2/api-derive';
 import testKeyring, { TestKeyringMap } from '@polkadot/keyring/testingPairs';
-import { createTypeUnsafe, TypeRegistry } from '@polkadot/types';
+import { createTypeUnsafe, TypeRegistry } from '@chainx-v2/types';
 
 import { SubmittableResult } from './';
 

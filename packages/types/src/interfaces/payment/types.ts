@@ -1,9 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { Struct } from '@polkadot/types/codec';
-import { Balance, Weight } from '@polkadot/types/interfaces/runtime';
-import { DispatchClass } from '@polkadot/types/interfaces/system';
+import { Struct } from '@chainx-v2/types/codec';
+import { Balance, Weight } from '@chainx-v2/types/interfaces/runtime';
+import { DispatchClass } from '@chainx-v2/types/interfaces/system';
 
 /** @name RuntimeDispatchInfo */
 export interface RuntimeDispatchInfo extends Struct {

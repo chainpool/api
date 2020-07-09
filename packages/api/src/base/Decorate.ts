@@ -4,8 +4,8 @@
 
 import { Constants, Storage } from '@chainx-v2/metadata/Decorated/types';
 import { RpcInterface } from '@chainx-v2/rpc-core/types';
-import { Call, Hash, RuntimeVersion } from '@polkadot/types/interfaces';
-import { AnyFunction, CallFunction, Codec, CodecArg as Arg, ITuple, InterfaceTypes, ModulesWithCalls, Registry, RegistryTypes } from '@polkadot/types/types';
+import { Call, Hash, RuntimeVersion } from '@chainx-v2/types/interfaces';
+import { AnyFunction, CallFunction, Codec, CodecArg as Arg, ITuple, InterfaceTypes, ModulesWithCalls, Registry, RegistryTypes } from '@chainx-v2/types/types';
 import { SubmittableExtrinsic } from '../submittable/types';
 import { ApiInterfaceRx, ApiOptions, ApiTypes, DecorateMethod, DecoratedRpc, DecoratedRpcSection, PaginationOptions, QueryableModuleStorage, QueryableStorage, QueryableStorageEntry, QueryableStorageMulti, QueryableStorageMultiArg, SubmittableExtrinsicFunction, SubmittableExtrinsics, SubmittableModuleExtrinsics } from '../types';
 
@@ -17,10 +17,10 @@ import { memo } from '@chainx-v2/api-derive/util';
 import DecoratedMeta from '@chainx-v2/metadata/Decorated';
 import RpcCore from '@chainx-v2/rpc-core';
 import { WsProvider } from '@chainx-v2/rpc-provider';
-import { Metadata, Null, Option, Raw, Text, TypeRegistry, u64 } from '@polkadot/types';
-import Linkage, { LinkageResult } from '@polkadot/types/codec/Linkage';
-import { DEFAULT_VERSION as EXTRINSIC_DEFAULT_VERSION } from '@polkadot/types/extrinsic/constants';
-import StorageKey, { StorageEntry, unwrapStorageType } from '@polkadot/types/primitive/StorageKey';
+import { Metadata, Null, Option, Raw, Text, TypeRegistry, u64 } from '@chainx-v2/types';
+import Linkage, { LinkageResult } from '@chainx-v2/types/codec/Linkage';
+import { DEFAULT_VERSION as EXTRINSIC_DEFAULT_VERSION } from '@chainx-v2/types/extrinsic/constants';
+import StorageKey, { StorageEntry, unwrapStorageType } from '@chainx-v2/types/primitive/StorageKey';
 import { assert, compactStripLength, logger, u8aToHex } from '@polkadot/util';
 
 import { createSubmittable } from '../submittable';

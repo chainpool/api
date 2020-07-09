@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { MetadataV3, MetadataV4, ModuleMetadataV4, StorageFunctionMetadataV3, StorageFunctionMetadataV4 } from '@polkadot/types/interfaces/metadata';
-import { Registry } from '@polkadot/types/types';
+import { MetadataV3, MetadataV4, ModuleMetadataV4, StorageFunctionMetadataV3, StorageFunctionMetadataV4 } from '@chainx-v2/types/interfaces/metadata';
+import { Registry } from '@chainx-v2/types/types';
 
-import { Option } from '@polkadot/types/codec';
+import { Option } from '@chainx-v2/types/codec';
 
 /** @internal */
 function toV4StorageFunction(registry: Registry, storageFn: StorageFunctionMetadataV3): StorageFunctionMetadataV4 {

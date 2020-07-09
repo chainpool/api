@@ -2,9 +2,9 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Registry, TypeDef, TypeDefInfo } from '@polkadot/types/types';
+import { Registry, TypeDef, TypeDefInfo } from '@chainx-v2/types/types';
 
-import { getTypeDef } from '@polkadot/types/create';
+import { getTypeDef } from '@chainx-v2/types/create';
 
 import flattenUniq from './flattenUniq';
 

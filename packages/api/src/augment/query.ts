@@ -1,32 +1,32 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import { AnyNumber, ITuple, Observable } from '@polkadot/types/types';
-import { Option, U8aFixed, Vec } from '@polkadot/types/codec';
-import { Bytes, Data, bool, u32, u64 } from '@polkadot/types/primitive';
-import { UncleEntryItem } from '@polkadot/types/interfaces/authorship';
-import { BabeAuthorityWeight, MaybeRandomness, NextConfigDescriptor, Randomness } from '@polkadot/types/interfaces/babe';
-import { AccountData, BalanceLock } from '@polkadot/types/interfaces/balances';
-import { ProposalIndex, Votes } from '@polkadot/types/interfaces/collective';
-import { AuthorityId } from '@polkadot/types/interfaces/consensus';
-import { CodeHash, ContractInfo, PrefabWasmModule, Schedule } from '@polkadot/types/interfaces/contracts';
-import { PreimageStatus, PropIndex, Proposal, ReferendumIndex, ReferendumInfo, Voting } from '@polkadot/types/interfaces/democracy';
-import { VoteThreshold } from '@polkadot/types/interfaces/elections';
-import { SetId, StoredPendingChange, StoredState } from '@polkadot/types/interfaces/grandpa';
-import { RegistrarInfo, Registration } from '@polkadot/types/interfaces/identity';
-import { AuthIndex } from '@polkadot/types/interfaces/imOnline';
-import { DeferredOffenceOf, Kind, OffenceDetails, OpaqueTimeSlot, ReportIdOf } from '@polkadot/types/interfaces/offences';
-import { ActiveRecovery, RecoveryConfig } from '@polkadot/types/interfaces/recovery';
-import { AccountId, AccountIndex, Balance, BalanceOf, BlockNumber, ExtrinsicsWeight, Hash, KeyTypeId, Moment, Perbill, ProxyType, Releases, ValidatorId } from '@polkadot/types/interfaces/runtime';
-import { Scheduled, TaskAddress } from '@polkadot/types/interfaces/scheduler';
-import { Keys, SessionIndex } from '@polkadot/types/interfaces/session';
-import { Bid, BidKind, SocietyVote, StrikeCount, VouchingStatus } from '@polkadot/types/interfaces/society';
-import { ActiveEraInfo, ElectionResult, ElectionScore, ElectionStatus, EraIndex, EraRewardPoints, Exposure, Forcing, Nominations, RewardDestination, SlashingSpans, SpanIndex, SpanRecord, StakingLedger, UnappliedSlash, ValidatorPrefs } from '@polkadot/types/interfaces/staking';
-import { AccountInfo, DigestOf, EventIndex, EventRecord, LastRuntimeUpgradeInfo, Phase } from '@polkadot/types/interfaces/system';
-import { OpenTip, TreasuryProposal } from '@polkadot/types/interfaces/treasury';
-import { Multiplier } from '@polkadot/types/interfaces/txpayment';
-import { Multisig } from '@polkadot/types/interfaces/utility';
-import { VestingInfo } from '@polkadot/types/interfaces/vesting';
+import { AnyNumber, ITuple, Observable } from '@chainx-v2/types/types';
+import { Option, U8aFixed, Vec } from '@chainx-v2/types/codec';
+import { Bytes, Data, bool, u32, u64 } from '@chainx-v2/types/primitive';
+import { UncleEntryItem } from '@chainx-v2/types/interfaces/authorship';
+import { BabeAuthorityWeight, MaybeRandomness, NextConfigDescriptor, Randomness } from '@chainx-v2/types/interfaces/babe';
+import { AccountData, BalanceLock } from '@chainx-v2/types/interfaces/balances';
+import { ProposalIndex, Votes } from '@chainx-v2/types/interfaces/collective';
+import { AuthorityId } from '@chainx-v2/types/interfaces/consensus';
+import { CodeHash, ContractInfo, PrefabWasmModule, Schedule } from '@chainx-v2/types/interfaces/contracts';
+import { PreimageStatus, PropIndex, Proposal, ReferendumIndex, ReferendumInfo, Voting } from '@chainx-v2/types/interfaces/democracy';
+import { VoteThreshold } from '@chainx-v2/types/interfaces/elections';
+import { SetId, StoredPendingChange, StoredState } from '@chainx-v2/types/interfaces/grandpa';
+import { RegistrarInfo, Registration } from '@chainx-v2/types/interfaces/identity';
+import { AuthIndex } from '@chainx-v2/types/interfaces/imOnline';
+import { DeferredOffenceOf, Kind, OffenceDetails, OpaqueTimeSlot, ReportIdOf } from '@chainx-v2/types/interfaces/offences';
+import { ActiveRecovery, RecoveryConfig } from '@chainx-v2/types/interfaces/recovery';
+import { AccountId, AccountIndex, Balance, BalanceOf, BlockNumber, ExtrinsicsWeight, Hash, KeyTypeId, Moment, Perbill, ProxyType, Releases, ValidatorId } from '@chainx-v2/types/interfaces/runtime';
+import { Scheduled, TaskAddress } from '@chainx-v2/types/interfaces/scheduler';
+import { Keys, SessionIndex } from '@chainx-v2/types/interfaces/session';
+import { Bid, BidKind, SocietyVote, StrikeCount, VouchingStatus } from '@chainx-v2/types/interfaces/society';
+import { ActiveEraInfo, ElectionResult, ElectionScore, ElectionStatus, EraIndex, EraRewardPoints, Exposure, Forcing, Nominations, RewardDestination, SlashingSpans, SpanIndex, SpanRecord, StakingLedger, UnappliedSlash, ValidatorPrefs } from '@chainx-v2/types/interfaces/staking';
+import { AccountInfo, DigestOf, EventIndex, EventRecord, LastRuntimeUpgradeInfo, Phase } from '@chainx-v2/types/interfaces/system';
+import { OpenTip, TreasuryProposal } from '@chainx-v2/types/interfaces/treasury';
+import { Multiplier } from '@chainx-v2/types/interfaces/txpayment';
+import { Multisig } from '@chainx-v2/types/interfaces/utility';
+import { VestingInfo } from '@chainx-v2/types/interfaces/vesting';
 import { ApiTypes } from '@chainx-v2/api/types';
 
 declare module '@chainx-v2/api/types/storage' {

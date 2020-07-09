@@ -95,7 +95,7 @@ module.exports = {
         ]
       },
       ['/api/', '@chainx-v2/api'],
-      ['/types/', '@polkadot/types'],
+      ['/types/', '@chainx-v2/types'],
       '/CONTRIBUTING.md'
     ]
   },

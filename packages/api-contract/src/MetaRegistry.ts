@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { MetaRegistryItem, MetaRegistryJson, MetaTypeDefClikeEnum, MetaType, MetaTypeDefEnum, MetaTypeDefEnumVariant, MetaTypeDefEnumVariantStruct, MetaTypeDefEnumVariantTupleStruct, MetaTypeDefEnumVariantUnit, MetaTypeDefStruct, MetaTypeDefStructField, MetaTypeDefTupleStruct, MetaTypeDefUnion, MetaTypeIdCustom, MetaTypeIdVec, MetaTypeIdVecFixed, MetaTypeInfo, Registry, StringIndex, TypeDef, TypeDefInfo, TypeIndex } from '@polkadot/types/types';
+import { MetaRegistryItem, MetaRegistryJson, MetaTypeDefClikeEnum, MetaType, MetaTypeDefEnum, MetaTypeDefEnumVariant, MetaTypeDefEnumVariantStruct, MetaTypeDefEnumVariantTupleStruct, MetaTypeDefEnumVariantUnit, MetaTypeDefStruct, MetaTypeDefStructField, MetaTypeDefTupleStruct, MetaTypeDefUnion, MetaTypeIdCustom, MetaTypeIdVec, MetaTypeIdVecFixed, MetaTypeInfo, Registry, StringIndex, TypeDef, TypeDefInfo, TypeIndex } from '@chainx-v2/types/types';
 
 import { assert } from '@polkadot/util';
-import { displayType, withTypeString } from '@polkadot/types';
+import { displayType, withTypeString } from '@chainx-v2/types';
 
 const builtinMap: [(id: unknown | unknown[] | { 'array.type': unknown } | { 'slice.type': unknown }) => boolean, MetaTypeInfo][] = [
   [(id: any) => typeof id === 'string', MetaTypeInfo.BuiltinPlain],

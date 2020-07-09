@@ -2,14 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AccountId, ReferendumInfo, ReferendumInfoTo239, VotingDirect, VotingDirectVote } from '@polkadot/types/interfaces';
+import { AccountId, ReferendumInfo, ReferendumInfoTo239, VotingDirect, VotingDirectVote } from '@chainx-v2/types/interfaces';
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { DeriveDemocracyLock } from '../types';
 
 import BN from 'bn.js';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Option } from '@polkadot/types';
+import { Option } from '@chainx-v2/types';
 import { isUndefined } from '@polkadot/util';
 
 import { memo } from '../util';

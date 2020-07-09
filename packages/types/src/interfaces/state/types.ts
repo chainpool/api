@@ -1,10 +1,10 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { ITuple } from '@polkadot/types/types';
-import { Option, Struct, U8aFixed, Vec } from '@polkadot/types/codec';
-import { Bytes, StorageKey, Text, u32 } from '@polkadot/types/primitive';
-import { Hash, StorageData } from '@polkadot/types/interfaces/runtime';
+import { ITuple } from '@chainx-v2/types/types';
+import { Option, Struct, U8aFixed, Vec } from '@chainx-v2/types/codec';
+import { Bytes, StorageKey, Text, u32 } from '@chainx-v2/types/primitive';
+import { Hash, StorageData } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name ApiId */
 export interface ApiId extends U8aFixed {}

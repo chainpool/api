@@ -4,8 +4,8 @@
 
 import Handlebars from 'handlebars';
 
-import { TypeRegistry } from '@polkadot/types/create';
-import * as definitions from '@polkadot/types/interfaces/definitions';
+import { TypeRegistry } from '@chainx-v2/types/create';
+import * as definitions from '@chainx-v2/types/interfaces/definitions';
 
 import { createImports, getSimilarTypes, readTemplate, setImports, writeFile } from '../util';
 
@@ -18,7 +18,7 @@ const generateRpcTypesTemplate = Handlebars.compile(template);
 export default function generateRpcTypes(dest = 'packages/api/src/augment/rpc.ts'): void {
   writeFile(dest, (): string => {
     const registry = new TypeRegistry();
-    const allTypes = { '@polkadot/types/interfaces': definitions };
+    const allTypes = { '@chainx-v2/types/interfaces': definitions };
     const imports = createImports(allTypes);
     const allDefs = Object.entries(allTypes).reduce((defs, [path, obj]) => {
       return Object.entries(obj).reduce((defs, [key, value]) => ({ ...defs, [`${path}/${key}`]: value }), defs);

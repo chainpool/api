@@ -2,13 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { StorageEntryMetadataLatest } from '@polkadot/types/interfaces/metadata';
-import { Codec, Registry } from '@polkadot/types/types';
+import { StorageEntryMetadataLatest } from '@chainx-v2/types/interfaces/metadata';
+import { Codec, Registry } from '@chainx-v2/types/types';
 
 import BN from 'bn.js';
-import { Compact, Raw } from '@polkadot/types/codec';
-import { createTypeUnsafe } from '@polkadot/types/create';
-import StorageKey, { StorageEntry } from '@polkadot/types/primitive/StorageKey';
+import { Compact, Raw } from '@chainx-v2/types/codec';
+import { createTypeUnsafe } from '@chainx-v2/types/create';
+import StorageKey, { StorageEntry } from '@chainx-v2/types/primitive/StorageKey';
 import { assert, compactStripLength, isNull, isUndefined, stringLowerFirst, stringToU8a, u8aConcat } from '@polkadot/util';
 import { xxhashAsU8a } from '@polkadot/util-crypto';
 

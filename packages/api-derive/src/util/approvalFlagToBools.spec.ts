@@ -2,9 +2,9 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ApprovalFlag } from '@polkadot/types/interfaces';
+import { ApprovalFlag } from '@chainx-v2/types/interfaces';
 
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 
 import { approvalFlagsToBools } from './approvalFlagsToBools';
 

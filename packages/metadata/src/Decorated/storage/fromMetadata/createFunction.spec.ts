@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Text, TypeRegistry } from '@polkadot/types';
-import { StorageEntry } from '@polkadot/types/primitive/StorageKey';
+import { Text, TypeRegistry } from '@chainx-v2/types';
+import { StorageEntry } from '@chainx-v2/types/primitive/StorageKey';
 import { assert, stringToU8a, u8aConcat, u8aToHex } from '@polkadot/util';
 
 import createFunction from './createFunction';

@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { CollatorId, ParaId } from '@polkadot/types/interfaces';
+import { CollatorId, ParaId } from '@chainx-v2/types/interfaces';
 import { DeriveParachainInfo, DeriveParachainFull, DeriveParachainActive } from '../types';
 import { Active, DidUpdate, Heads, ParaInfoResult, PendingSwap, RelayDispatchQueue, RetryQueue, SelectedThreads } from './types';
 

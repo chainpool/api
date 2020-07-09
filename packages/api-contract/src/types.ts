@@ -3,9 +3,9 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ApiTypes, DecorateMethod } from '@chainx-v2/api/types';
-import { AccountId, Address, ContractExecResult } from '@polkadot/types/interfaces';
-import { Codec, CodecArg } from '@polkadot/types/types';
-import { MetaRegistryJson, StringIndex, TypeIndex, TypeDef } from '@polkadot/types/create/types';
+import { AccountId, Address, ContractExecResult } from '@chainx-v2/types/interfaces';
+import { Codec, CodecArg } from '@chainx-v2/types/types';
+import { MetaRegistryJson, StringIndex, TypeIndex, TypeDef } from '@chainx-v2/types/create/types';
 
 import { ApiPromise, ApiRx } from '@chainx-v2/api';
 

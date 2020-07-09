@@ -2,14 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AccountId, AccountIndex, BalanceOf } from '@polkadot/types/interfaces';
-import { ITuple } from '@polkadot/types/types';
+import { AccountId, AccountIndex, BalanceOf } from '@chainx-v2/types/interfaces';
+import { ITuple } from '@chainx-v2/types/types';
 
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { ENUMSET_SIZE } from '@polkadot/types/generic/AccountIndex';
-import { Option, Vec } from '@polkadot/types';
+import { ENUMSET_SIZE } from '@chainx-v2/types/generic/AccountIndex';
+import { Option, Vec } from '@chainx-v2/types';
 import { isFunction } from '@polkadot/util';
 
 import { memo } from '../util';

@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import MockProvider from '@chainx-v2/rpc-provider/mock';
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 import { isFunction } from '@polkadot/util';
 
 import Rpc from '.';

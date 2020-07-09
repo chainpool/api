@@ -1,10 +1,10 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { ITuple } from '@polkadot/types/types';
-import { Enum, Struct } from '@polkadot/types/codec';
-import { u32 } from '@polkadot/types/primitive';
-import { AccountId, Balance } from '@polkadot/types/interfaces/runtime';
+import { ITuple } from '@chainx-v2/types/types';
+import { Enum, Struct } from '@chainx-v2/types/codec';
+import { u32 } from '@chainx-v2/types/primitive';
+import { AccountId, Balance } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name Bid */
 export interface Bid extends Struct {

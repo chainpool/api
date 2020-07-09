@@ -2,13 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { SessionIndex } from '@polkadot/types/interfaces';
+import { SessionIndex } from '@chainx-v2/types/interfaces';
 import { DeriveSessionInfo, DeriveSessionProgress } from '../types';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
-import { Option, u64 } from '@polkadot/types';
+import { Option, u64 } from '@chainx-v2/types';
 import { isFunction } from '@polkadot/util';
 
 import { memo } from '../util';

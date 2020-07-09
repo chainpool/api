@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { MetadataV9, MetadataV10, ModuleMetadataV9, ModuleMetadataV10, StorageEntryMetadataV9, StorageEntryTypeV9, StorageHasherV9, StorageHasherV10 } from '@polkadot/types/interfaces/metadata';
-import { Registry } from '@polkadot/types/types';
+import { MetadataV9, MetadataV10, ModuleMetadataV9, ModuleMetadataV10, StorageEntryMetadataV9, StorageEntryTypeV9, StorageHasherV9, StorageHasherV10 } from '@chainx-v2/types/interfaces/metadata';
+import { Registry } from '@chainx-v2/types/types';
 
 // migrate a storage hasher type
 // see https://github.com/paritytech/substrate/pull/4462

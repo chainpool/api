@@ -1,9 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable @typescript-eslint/no-empty-interface */
 
-import { Struct } from '@polkadot/types/codec';
-import { Bytes, Text, u32, u64 } from '@polkadot/types/primitive';
-import { AccountId } from '@polkadot/types/interfaces/runtime';
+import { Struct } from '@chainx-v2/types/codec';
+import { Bytes, Text, u32, u64 } from '@chainx-v2/types/primitive';
+import { AccountId } from '@chainx-v2/types/interfaces/runtime';
 import { VoteStage } from 'sample-polkadotjs-typegen/interfaces/voting';
 
 /** @name ProposalContents */

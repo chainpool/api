@@ -4,7 +4,7 @@
 
 import { ProviderInterfaceEmitted } from '../types';
 
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 
 import Mock from './';
 

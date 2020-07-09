@@ -2,11 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AccountId, Header } from '@polkadot/types/interfaces';
-import { AnyJson, Constructor, Registry } from '@polkadot/types/types';
+import { AccountId, Header } from '@chainx-v2/types/interfaces';
+import { AnyJson, Constructor, Registry } from '@chainx-v2/types/types';
 
-import runtimeTypes from '@polkadot/types/interfaces/runtime/definitions';
-import { Struct } from '@polkadot/types';
+import runtimeTypes from '@chainx-v2/types/interfaces/runtime/definitions';
+import { Struct } from '@chainx-v2/types';
 
 // We can ignore the properties, added via Struct.with
 const _Header = Struct.with(runtimeTypes.types.Header as any) as Constructor<Header>;

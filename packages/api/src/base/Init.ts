@@ -2,13 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { SignedBlock, RuntimeVersion } from '@polkadot/types/interfaces';
+import { SignedBlock, RuntimeVersion } from '@chainx-v2/types/interfaces';
 import { ApiBase, ApiOptions, ApiTypes, DecorateMethod } from '../types';
 
 import { Observable, Subscription, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Metadata, Text } from '@polkadot/types';
-import { LATEST_EXTRINSIC_VERSION } from '@polkadot/types/extrinsic/Extrinsic';
+import { Metadata, Text } from '@chainx-v2/types';
+import { LATEST_EXTRINSIC_VERSION } from '@chainx-v2/types/extrinsic/Extrinsic';
 import { getMetadataTypes, getSpecTypes } from '@chainx-v2/types-known';
 import { logger } from '@polkadot/util';
 import { cryptoWaitReady } from '@polkadot/util-crypto';

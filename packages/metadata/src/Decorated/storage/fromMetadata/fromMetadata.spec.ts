@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import testingPairs from '@polkadot/keyring/testingPairs';
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 import { u8aToHex } from '@polkadot/util';
 
 import rpcMetadata from '../../../Metadata/static';

@@ -1,10 +1,10 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable @typescript-eslint/no-empty-interface */
 
-import { ITuple } from '@polkadot/types/types';
-import { Enum, Option, Struct, U8aFixed, Vec } from '@polkadot/types/codec';
-import { bool, u128, u64 } from '@polkadot/types/primitive';
-import { AccountId } from '@polkadot/types/interfaces/runtime';
+import { ITuple } from '@chainx-v2/types/types';
+import { Enum, Option, Struct, U8aFixed, Vec } from '@chainx-v2/types/codec';
+import { bool, u128, u64 } from '@chainx-v2/types/primitive';
+import { AccountId } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name Commitments */
 export interface Commitments extends Vec<ITuple<[AccountId, VoteOutcome]>> {}

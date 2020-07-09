@@ -1,11 +1,11 @@
-// Copyright 2017-2020 @polkadot/types-known authors & contributors
+// Copyright 2017-2020 @chainx-v2/types-known authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import type BN from 'bn.js';
-import { Registry, RegistryTypes, OverrideModuleType, OverrideVersionedType } from '@polkadot/types/types';
+import { Registry, RegistryTypes, OverrideModuleType, OverrideVersionedType } from '@chainx-v2/types/types';
 
-import { Text } from '@polkadot/types';
+import { Text } from '@chainx-v2/types';
 import { bnToBn, isUndefined } from '@polkadot/util';
 
 import typesChain from './chain';

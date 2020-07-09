@@ -1,9 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { Enum, Vec } from '@polkadot/types/codec';
-import { Bytes, Text } from '@polkadot/types/primitive';
-import { Hash } from '@polkadot/types/interfaces/runtime';
+import { Enum, Vec } from '@chainx-v2/types/codec';
+import { Bytes, Text } from '@chainx-v2/types/primitive';
+import { Hash } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name ExtrinsicOrHash */
 export interface ExtrinsicOrHash extends Enum {

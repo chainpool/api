@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AnyFunction, CallBase } from '@polkadot/types/types';
+import { AnyFunction, CallBase } from '@chainx-v2/types/types';
 
 import { SubmittableExtrinsic } from '../submittable/types';
 import { ApiTypes } from './base';

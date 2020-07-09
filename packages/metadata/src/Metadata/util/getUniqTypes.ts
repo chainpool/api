@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Codec, Registry } from '@polkadot/types/types';
+import { Codec, Registry } from '@chainx-v2/types/types';
 
-import { Option, Vec } from '@polkadot/types/codec';
-import { Text, Type } from '@polkadot/types/primitive';
+import { Option, Vec } from '@chainx-v2/types/codec';
+import { Text, Type } from '@chainx-v2/types/primitive';
 
 import flattenUniq from './flattenUniq';
 import validateTypes from './validateTypes';

@@ -1,25 +1,25 @@
-// Copyright 2017-2020 @polkadot/types authors & contributors
+// Copyright 2017-2020 @chainx-v2/types authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { TypeDef, TypeDefInfo } from '@polkadot/types/create/types';
-import { Constructor, Registry } from '@polkadot/types/types';
+import { TypeDef, TypeDefInfo } from '@chainx-v2/types/create/types';
+import { Constructor, Registry } from '@chainx-v2/types/types';
 
-import { ClassOfUnsafe, getTypeDef } from '@polkadot/types/create';
-import AbstractInt from '@polkadot/types/codec/AbstractInt';
-import Compact from '@polkadot/types/codec/Compact';
-import Enum from '@polkadot/types/codec/Enum';
-import Option from '@polkadot/types/codec/Option';
-import Struct from '@polkadot/types/codec/Struct';
-import UInt from '@polkadot/types/codec/UInt';
-import Vec from '@polkadot/types/codec/Vec';
-import Tuple from '@polkadot/types/codec/Tuple';
-import { AllConvictions } from '@polkadot/types/interfaces/democracy/definitions';
-import GenericAccountId from '@polkadot/types/generic/AccountId';
-import GenericAddress from '@polkadot/types/generic/Address';
-import Vote from '@polkadot/types/generic/Vote';
-import Null from '@polkadot/types/primitive/Null';
-import * as primitiveClasses from '@polkadot/types/primitive';
+import { ClassOfUnsafe, getTypeDef } from '@chainx-v2/types/create';
+import AbstractInt from '@chainx-v2/types/codec/AbstractInt';
+import Compact from '@chainx-v2/types/codec/Compact';
+import Enum from '@chainx-v2/types/codec/Enum';
+import Option from '@chainx-v2/types/codec/Option';
+import Struct from '@chainx-v2/types/codec/Struct';
+import UInt from '@chainx-v2/types/codec/UInt';
+import Vec from '@chainx-v2/types/codec/Vec';
+import Tuple from '@chainx-v2/types/codec/Tuple';
+import { AllConvictions } from '@chainx-v2/types/interfaces/democracy/definitions';
+import GenericAccountId from '@chainx-v2/types/generic/AccountId';
+import GenericAddress from '@chainx-v2/types/generic/Address';
+import Vote from '@chainx-v2/types/generic/Vote';
+import Null from '@chainx-v2/types/primitive/Null';
+import * as primitiveClasses from '@chainx-v2/types/primitive';
 import { isChildClass } from '@polkadot/util';
 
 import { isCompactEncodable } from './class';

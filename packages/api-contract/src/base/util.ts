@@ -4,7 +4,7 @@
 
 import { ApiTypes, DecorateMethod, DecoratedRpc, SubmittableModuleExtrinsics } from '@chainx-v2/api/types';
 import { RpcInterface } from '@chainx-v2/rpc-core/types';
-import { Registry } from '@polkadot/types/types';
+import { Registry } from '@chainx-v2/types/types';
 import { ApiObject, ContractABIMessage, ContractABIPre, ContractBase, ContractMessage } from '../types';
 
 import { assert, isFunction, stringCamelCase } from '@polkadot/util';

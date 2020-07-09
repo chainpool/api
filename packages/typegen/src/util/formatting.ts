@@ -4,10 +4,10 @@
 
 import Handlebars from 'handlebars';
 
-import { TypeDef, TypeDefInfo } from '@polkadot/types/create/types';
+import { TypeDef, TypeDefInfo } from '@chainx-v2/types/create/types';
 
-import { getTypeDef } from '@polkadot/types/create';
-import { paramsNotation } from '@polkadot/types/codec/utils';
+import { getTypeDef } from '@chainx-v2/types/create';
+import { paramsNotation } from '@chainx-v2/types/codec/utils';
 
 import { setImports, ModuleTypes, TypeImports } from './imports';
 import { readTemplate } from './file';
@@ -34,31 +34,31 @@ Handlebars.registerHelper({
     const { imports, types } = this as unknown as This;
     const defs = [
       {
-        file: '@polkadot/types/types',
+        file: '@chainx-v2/types/types',
         types: Object.keys(imports.typesTypes)
       },
       {
-        file: '@polkadot/types/codec',
+        file: '@chainx-v2/types/codec',
         types: Object
           .keys(imports.codecTypes)
           .filter((name) => name !== 'Tuple')
       },
       {
-        file: '@polkadot/types/extrinsic',
+        file: '@chainx-v2/types/extrinsic',
         types: Object.keys(imports.extrinsicTypes)
       },
       {
-        file: '@polkadot/types/generic',
+        file: '@chainx-v2/types/generic',
         types: Object.keys(imports.genericTypes)
       },
       {
-        file: '@polkadot/types/primitive',
+        file: '@chainx-v2/types/primitive',
         types: Object
           .keys(imports.primitiveTypes)
           .filter((name) => !TYPES_NON_PRIMITIVE.includes(name))
       },
       {
-        file: '@polkadot/types',
+        file: '@chainx-v2/types',
         types: Object
           .keys(imports.primitiveTypes)
           .filter((name) => TYPES_NON_PRIMITIVE.includes(name))

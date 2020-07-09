@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/types authors & contributors
+// Copyright 2017-2020 @chainx-v2/types authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -7,7 +7,7 @@ import { AnyJson, AnyU8a, Codec, InterfaceTypes, Registry } from '../types';
 
 import { assert, isFunction, isString, isU8a } from '@polkadot/util';
 
-import { AllHashers } from '@polkadot/types/interfaces/metadata/definitions';
+import { AllHashers } from '@chainx-v2/types/interfaces/metadata/definitions';
 import Bytes from './Bytes';
 
 export interface StorageEntry {

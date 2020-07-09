@@ -1,8 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import { Enum } from '@polkadot/types/codec';
-import { H160 } from '@polkadot/types/interfaces/runtime';
+import { Enum } from '@chainx-v2/types/codec';
+import { H160 } from '@chainx-v2/types/interfaces/runtime';
 
 /** @name EthereumAddress */
 export interface EthereumAddress extends H160 {}

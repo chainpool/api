@@ -4,7 +4,7 @@
 
 import path from 'path';
 import yargs from 'yargs';
-import * as substrateDefs from '@polkadot/types/interfaces/definitions';
+import * as substrateDefs from '@chainx-v2/types/interfaces/definitions';
 
 import { generateInterfaceTypes } from './generate/interfaceRegistry';
 import { generateTsDef } from './generate/tsDef';
@@ -30,7 +30,7 @@ export default function main(): void {
     .entries(substrateDefs as Record<string, unknown>)
     .filter(([key]) => {
       if (userKeys.includes(key)) {
-        console.warn(`Override found for ${key} in user types, ignoring in @polkadot/types`);
+        console.warn(`Override found for ${key} in user types, ignoring in @chainx-v2/types`);
 
         return false;
       }
@@ -44,7 +44,7 @@ export default function main(): void {
     }, {});
 
   const allDefs = {
-    '@polkadot/types/interfaces': filteredBase,
+    '@chainx-v2/types/interfaces': filteredBase,
     [pkg]: userDefs
   };
 

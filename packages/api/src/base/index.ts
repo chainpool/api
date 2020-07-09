@@ -4,11 +4,11 @@
 
 import { Constants } from '@chainx-v2/metadata/Decorated/types';
 import { RpcInterface } from '@chainx-v2/rpc-core/types';
-import { Hash, RuntimeVersion } from '@polkadot/types/interfaces';
-import { CallFunction, RegistryError, SignerPayloadRawBase } from '@polkadot/types/types';
+import { Hash, RuntimeVersion } from '@chainx-v2/types/interfaces';
+import { CallFunction, RegistryError, SignerPayloadRawBase } from '@chainx-v2/types/types';
 import { ApiInterfaceRx, ApiOptions, ApiTypes, DecoratedRpc, DecorateMethod, QueryableStorage, QueryableStorageMulti, SubmittableExtrinsics, Signer } from '../types';
 
-import { Metadata } from '@polkadot/types';
+import { Metadata } from '@chainx-v2/types';
 import { assert, isString, isUndefined, u8aToHex, u8aToU8a } from '@polkadot/util';
 
 import Init from './Init';

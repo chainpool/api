@@ -4,13 +4,13 @@
 
 import Handlebars from 'handlebars';
 
-import { Registry } from '@polkadot/types/types';
+import { Registry } from '@chainx-v2/types/types';
 
 import staticData from '@chainx-v2/metadata/Metadata/static';
 import Metadata from '@chainx-v2/metadata/Metadata';
-import * as defaultDefs from '@polkadot/types/interfaces/definitions';
-import { Text } from '@polkadot/types/primitive';
-import { TypeRegistry } from '@polkadot/types/create';
+import * as defaultDefs from '@chainx-v2/types/interfaces/definitions';
+import { Text } from '@chainx-v2/types/primitive';
+import { TypeRegistry } from '@chainx-v2/types/create';
 import { stringCamelCase } from '@polkadot/util';
 
 import { createImports, compareName, formatType, getSimilarTypes, readTemplate, registerDefinitions, setImports, writeFile } from '../util';
@@ -31,7 +31,7 @@ const generateForMetaTemplate = Handlebars.compile(template);
 /** @internal */
 function generateForMeta(registry: Registry, meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
   writeFile(dest, (): string => {
-    const allTypes: Record<string, Record<string, { types: Record<string, any> }>> = { '@polkadot/types/interfaces': defaultDefs, ...extraTypes };
+    const allTypes: Record<string, Record<string, { types: Record<string, any> }>> = { '@chainx-v2/types/interfaces': defaultDefs, ...extraTypes };
     const imports = createImports(allTypes);
     const allDefs = Object.entries(allTypes).reduce((defs, [path, obj]) => {
       return Object.entries(obj).reduce((defs, [key, value]) => ({ ...defs, [`${path}/${key}`]: value }), defs);

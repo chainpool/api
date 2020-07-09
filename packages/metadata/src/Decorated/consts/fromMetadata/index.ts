@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Registry } from '@polkadot/types/types';
+import { Registry } from '@chainx-v2/types/types';
 import { Constants, ConstantCodec, ModuleConstants } from '../../types';
 
-import { createTypeUnsafe } from '@polkadot/types/create';
+import { createTypeUnsafe } from '@chainx-v2/types/create';
 import { hexToU8a, stringCamelCase } from '@polkadot/util';
 
 import Metadata from '../../../Metadata';

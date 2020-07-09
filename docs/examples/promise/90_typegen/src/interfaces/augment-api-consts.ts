@@ -1,11 +1,11 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable @typescript-eslint/no-empty-interface */
 
-import { Bytes, u32 } from '@polkadot/types/primitive';
-import { Gas } from '@polkadot/types/interfaces/contracts';
-import { Balance, BalanceOf, BlockNumber, Moment, Percent, Permill } from '@polkadot/types/interfaces/runtime';
-import { SessionIndex } from '@polkadot/types/interfaces/session';
-import { EraIndex } from '@polkadot/types/interfaces/staking';
+import { Bytes, u32 } from '@chainx-v2/types/primitive';
+import { Gas } from '@chainx-v2/types/interfaces/contracts';
+import { Balance, BalanceOf, BlockNumber, Moment, Percent, Permill } from '@chainx-v2/types/interfaces/runtime';
+import { SessionIndex } from '@chainx-v2/types/interfaces/session';
+import { EraIndex } from '@chainx-v2/types/interfaces/staking';
 
 declare module '@chainx-v2/metadata/Decorated/consts/types' {
   export interface Constants {

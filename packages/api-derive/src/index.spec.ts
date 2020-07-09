@@ -9,7 +9,7 @@
 import { Observable, from } from 'rxjs';
 import ApiRx from '@chainx-v2/api/rx/Api';
 import MockProvider from '@chainx-v2/rpc-provider/mock';
-import { TypeRegistry } from '@polkadot/types';
+import { TypeRegistry } from '@chainx-v2/types';
 
 import { ExactDerive } from '.';
 

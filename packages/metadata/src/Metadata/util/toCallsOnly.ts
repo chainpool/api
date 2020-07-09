@@ -2,10 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { FunctionMetadataLatest, MetadataLatest } from '@polkadot/types/interfaces/metadata';
-import { AnyJson, Registry } from '@polkadot/types/types';
+import { FunctionMetadataLatest, MetadataLatest } from '@chainx-v2/types/interfaces/metadata';
+import { AnyJson, Registry } from '@chainx-v2/types/types';
 
-import { Option, Text, Vec } from '@polkadot/types';
+import { Option, Text, Vec } from '@chainx-v2/types';
 
 interface ModuleMetadataTrimmed {
   name: Text;
