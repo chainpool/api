@@ -1,5 +1,6 @@
 {
-  "repository": "https://github.com/polkadot-js/api",
+  "name": "chainx-v2",
+  "repository": "https://github.com/chainpool/chainx.js-v2",
   "author": "Jaco Greeff <jacogr@gmail.com>",
   "license": "Apache-2",
   "private": true,
