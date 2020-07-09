@@ -23,7 +23,7 @@ import { memo } from '../util';
  * });
  * ```
  */
-export function bestNumberLag(api: ApiInterfaceRx): () => Observable<BlockNumber> {
+export function bestNumberLag (api: ApiInterfaceRx): () => Observable<BlockNumber> {
   return memo((): Observable<BlockNumber> =>
     combineLatest([
       api.derive.chain.bestNumber(),

@@ -14,7 +14,7 @@ console.log(__dirname);
 
 const CPX = ['css', 'gif', 'hbs', 'jpg', 'js', 'png', 'svg', 'd.ts']
   .map((ext) => `src/**/*.${ext}`)
-.concat('package.json');
+  .concat('package.json');
 
 console.log('$ polkadot-dev-build-ts', process.argv.slice(2).join(' '));
 
@@ -36,14 +36,13 @@ async function buildBabel (dir) {
   });
 
   [...CPX]
-.concat(`../../build/${dir}/src/**/*.d.ts`, `../../build/packages/${dir}/src/**/*.d.ts`)
+    .concat(`../../build/${dir}/src/**/*.d.ts`, `../../build/packages/${dir}/src/**/*.d.ts`)
     .forEach((src) => cpx.copySync(src, 'build'));
 }
 
 async function buildJs (dir) {
   if (!fs.existsSync(path.join(process.cwd(), '.skip-build'))) {
     const { name, version } = require(path.join(process.cwd(), './package.json'));
-
 
     if (!name.startsWith('@polkadot/') && !name.startsWith('@chainx-v2/')) {
       return;
@@ -87,5 +86,5 @@ async function main () {
 
 main().catch((error) => {
   console.error(error);
-process.exit(-1);
+  process.exit(-1);
 });

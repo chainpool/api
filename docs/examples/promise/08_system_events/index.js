@@ -6,7 +6,7 @@
 // Import the API
 const { ApiPromise } = require('@chainx-v2/api');
 
-async function main() {
+async function main () {
   // Create our API with a default connection to the local node
   const api = await ApiPromise.create();
 

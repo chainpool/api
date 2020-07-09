@@ -6,7 +6,7 @@ import { MetadataV7, MetadataV8, ModuleMetadataV8 } from '@chainx-v2/types/inter
 import { Registry } from '@chainx-v2/types/types';
 
 /** @internal */
-export default function toV8(registry: Registry, { modules }: MetadataV7): MetadataV8 {
+export default function toV8 (registry: Registry, { modules }: MetadataV7): MetadataV8 {
   return registry.createType('MetadataV8', {
     modules: modules.map(({ calls, constants, events, name, storage }): ModuleMetadataV8 =>
       registry.createType('ModuleMetadataV8', {

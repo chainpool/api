@@ -26,7 +26,7 @@ export default class Decorated {
 
   public readonly tx: ModulesWithCalls;
 
-  constructor(registry: Registry, value?: Uint8Array | string | Metadata) {
+  constructor (registry: Registry, value?: Uint8Array | string | Metadata) {
     this.registry = registry;
     this.metadata = value instanceof Metadata ? value : new Metadata(registry, value);
 

@@ -23,7 +23,7 @@ import { memo } from '../util';
  * });
  * ```
  */
-export function subscribeNewHeads(api: ApiInterfaceRx): () => Observable<HeaderExtended> {
+export function subscribeNewHeads (api: ApiInterfaceRx): () => Observable<HeaderExtended> {
   return memo((): Observable<HeaderExtended> =>
     combineLatest([
       api.rpc.chain.subscribeNewHeads(),

@@ -20,7 +20,7 @@ const template = readTemplate('interfaceRegistry');
 const generateInterfaceTypesTemplate = Handlebars.compile(template);
 
 /** @internal */
-export function generateInterfaceTypes(importDefinitions: { [importPath: string]: Record<string, ModuleTypes> }, dest: string): void {
+export function generateInterfaceTypes (importDefinitions: { [importPath: string]: Record<string, ModuleTypes> }, dest: string): void {
   writeFile(dest, (): string => {
     Object.entries(importDefinitions).reduce((acc, def) => Object.assign(acc, def), {});
 
@@ -69,7 +69,7 @@ export function generateInterfaceTypes(importDefinitions: { [importPath: string]
 }
 
 // Generate `packages/types/src/interfaceRegistry.ts`, the registry of all interfaces
-export default function generateDefaultInterfaceTypes(): void {
+export default function generateDefaultInterfaceTypes (): void {
   generateInterfaceTypes(
     { '@chainx-v2/types/interfaces': defaultDefinitions },
     'packages/types/src/augment/registry.ts'

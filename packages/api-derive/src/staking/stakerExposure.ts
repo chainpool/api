@@ -11,7 +11,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { memo } from '../util';
 
-export function _stakerExposure(api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerExposure[]> {
+export function _stakerExposure (api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerExposure[]> {
   return memo((accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean): Observable<DeriveStakerExposure[]> => {
     const stakerId = api.registry.createType('AccountId', accountId).toString();
 
@@ -37,7 +37,7 @@ export function _stakerExposure(api: ApiInterfaceRx): (accountId: Uint8Array | s
   });
 }
 
-export function stakerExposure(api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerExposure[]> {
+export function stakerExposure (api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerExposure[]> {
   return memo((accountId: Uint8Array | string, withActive = false): Observable<DeriveStakerExposure[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._stakerExposure(accountId, eras, withActive))

@@ -17,7 +17,7 @@ type Result = [Vec<Bid>, Option<AccountId>, Option<AccountId>, Option<AccountId>
 /**
  * @description Get the overall info for a society
  */
-export function info(api: ApiInterfaceRx): () => Observable<DeriveSociety> {
+export function info (api: ApiInterfaceRx): () => Observable<DeriveSociety> {
   return memo((): Observable<DeriveSociety> =>
     api.queryMulti<Result>([
       api.query.society.bids,

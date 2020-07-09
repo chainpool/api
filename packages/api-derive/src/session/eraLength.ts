@@ -10,7 +10,7 @@ import { ApiInterfaceRx } from '@chainx-v2/api/types';
 
 import { memo } from '../util';
 
-export function eraLength(api: ApiInterfaceRx): () => Observable<BlockNumber> {
+export function eraLength (api: ApiInterfaceRx): () => Observable<BlockNumber> {
   return memo((): Observable<BlockNumber> =>
     api.derive.session.info().pipe(
       map((info) => info.eraLength)

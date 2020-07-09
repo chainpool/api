@@ -11,7 +11,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { memo } from '../util';
 
-export function _stakerSlashes(api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerSlashes[]> {
+export function _stakerSlashes (api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerSlashes[]> {
   return memo((accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean): Observable<DeriveStakerSlashes[]> => {
     const stakerId = api.registry.createType('AccountId', accountId).toString();
 
@@ -26,7 +26,7 @@ export function _stakerSlashes(api: ApiInterfaceRx): (accountId: Uint8Array | st
   });
 }
 
-export function stakerSlashes(api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerSlashes[]> {
+export function stakerSlashes (api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerSlashes[]> {
   return memo((accountId: Uint8Array | string, withActive = false): Observable<DeriveStakerSlashes[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._stakerSlashes(accountId, eras, withActive))

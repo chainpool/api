@@ -1,167 +1,202 @@
+// eslint-disable-next-line sort-keys,header/header
 export default {
-  "Address": "AccountId",
-  "Token": "Text",
-  "Desc": "Text",
-  "Memo": "Text",
-  "AddrStr": "Text",
-  "NetworkType": {
-    "_enum": [
-      "Mainnet",
-      "Testnet"
+  Address: 'AccountId',
+  Token: 'Text',
+  // eslint-disable-next-line sort-keys
+  Desc: 'Text',
+  Memo: 'Text',
+  // eslint-disable-next-line sort-keys
+  AddrStr: 'Text',
+  NetworkType: {
+    _enum: [
+      'Mainnet',
+      'Testnet'
     ]
   },
-  "Chain": {
-    "_enum": [
-      "ChainX",
-      "Bitcoin",
-      "Ethereum",
-      "Polkadot"
+  // eslint-disable-next-line sort-keys
+  Chain: {
+    _enum: [
+      'ChainX',
+      'Bitcoin',
+      'Ethereum',
+      'Polkadot'
     ]
   },
-  "Precision": "u8",
-  "AssetId": "u32",
-  "AssetInfo": {
-    "token": "Token",
-    "token_name": "Token",
-    "chain": "Chain",
-    "precision": "Precision",
-    "desc": "Desc"
+  Precision: 'u8',
+  // eslint-disable-next-line sort-keys
+  AssetId: 'u32',
+  AssetInfo: {
+    token: 'Token',
+    token_name: 'Token',
+    // eslint-disable-next-line sort-keys
+    chain: 'Chain',
+    precision: 'Precision',
+    // eslint-disable-next-line sort-keys
+    desc: 'Desc'
   },
-  "AssetType": {
-    "_enum": [
-      "Free",
-      "ReservedStaking",
-      "ReservedStakingRevocation",
-      "ReservedWithdrawal",
-      "ReservedDexSpot",
-      "ReservedDexFuture",
-      "ReservedCurrency",
-      "ReservedXRC20"
+  AssetType: {
+    _enum: [
+      'Free',
+      'ReservedStaking',
+      'ReservedStakingRevocation',
+      'ReservedWithdrawal',
+      'ReservedDexSpot',
+      'ReservedDexFuture',
+      'ReservedCurrency',
+      'ReservedXRC20'
     ]
   },
-  "AssetRestrictions": {
-    "mask": "u32"
+  // eslint-disable-next-line sort-keys
+  AssetRestrictions: {
+    mask: 'u32'
   },
-  "AssetRestriction": {
-    "_enum": [
-      "Move",
-      "Transfer",
-      "Deposit",
-      "Withdraw",
-      "DestroyWithdrawal",
-      "DestroyFree"
+  // eslint-disable-next-line sort-keys
+  AssetRestriction: {
+    _enum: [
+      'Move',
+      'Transfer',
+      'Deposit',
+      'Withdraw',
+      'DestroyWithdrawal',
+      'DestroyFree'
     ]
   },
-  "SignedBalance": {
-    "_enum": {
-      "Positive": "Balance",
-      "Negative": "Balance"
+  SignedBalance: {
+    _enum: {
+      Positive: 'Balance',
+      // eslint-disable-next-line sort-keys
+      Negative: 'Balance'
     }
   },
-  "Compact": "u32",
-  "BTCHeader": {
-    "version": "u32",
-    "previous_header_hash": "H256",
-    "merkle_root_hash": "H256",
-    "time": "u32",
-    "bits": "Compact",
-    "once": "u32"
+  // eslint-disable-next-line sort-keys
+  Compact: 'u32',
+  // eslint-disable-next-line sort-keys
+  BTCHeader: {
+    version: 'u32',
+    // eslint-disable-next-line sort-keys
+    previous_header_hash: 'H256',
+    // eslint-disable-next-line sort-keys
+    merkle_root_hash: 'H256',
+    time: 'u32',
+    // eslint-disable-next-line sort-keys
+    bits: 'Compact',
+    once: 'u32'
   },
-  "BTCHeaderInfo": {
-    "header": "BTCHeader",
-    "height": "u32",
-    "confirmed": "bool",
-    "txid_list": "Vec<H256>"
+  BTCHeaderInfo: {
+    header: 'BTCHeader',
+    height: 'u32',
+    // eslint-disable-next-line sort-keys
+    confirmed: 'bool',
+    txid_list: 'Vec<H256>'
   },
-  "OutPoint": {
-    "hash": "H256",
-    "index": "u32"
+  OutPoint: {
+    hash: 'H256',
+    index: 'u32'
   },
-  "TransactionInput": {
-    "previous_output": "OutPoint",
-    "script_sig": "Bytes",
-    "sequence": "u32",
-    "script_witness": "Vec<Bytes>"
+  TransactionInput: {
+    previous_output: 'OutPoint',
+    script_sig: 'Bytes',
+    sequence: 'u32',
+    // eslint-disable-next-line sort-keys
+    script_witness: 'Vec<Bytes>'
   },
-  "TransactionOutput": {
-    "value": "u64",
-    "script_pubkey": "Bytes"
+  TransactionOutput: {
+    value: 'u64',
+    // eslint-disable-next-line sort-keys
+    script_pubkey: 'Bytes'
   },
-  "BTCTransaction": {
-    "version": "i32",
-    "inputs": "Vec<TransactionInput>",
-    "outputs": "Vec<TransactionOutput>",
-    "lock_time": "u32"
+  // eslint-disable-next-line sort-keys
+  BTCTransaction: {
+    version: 'i32',
+    // eslint-disable-next-line sort-keys
+    inputs: 'Vec<TransactionInput>',
+    outputs: 'Vec<TransactionOutput>',
+    // eslint-disable-next-line sort-keys
+    lock_time: 'u32'
   },
-  "BTCTxType": {
-    "_enum": [
-      "Withdrawal",
-      "Deposit",
-      "HotAndCold",
-      "TrusteeTransition",
-      "Lock",
-      "Unlock",
-      "Irrelevance"
+  BTCTxType: {
+    _enum: [
+      'Withdrawal',
+      'Deposit',
+      'HotAndCold',
+      'TrusteeTransition',
+      'Lock',
+      'Unlock',
+      'Irrelevance'
     ]
   },
-  "BTCTxInfo": {
-    "raw_tx": "BTCTransaction",
-    "tx_type": "BTCTxType",
-    "height": "u32"
+  // eslint-disable-next-line sort-keys
+  BTCTxInfo: {
+    raw_tx: 'BTCTransaction',
+    tx_type: 'BTCTxType',
+    // eslint-disable-next-line sort-keys
+    height: 'u32'
   },
-  "BTCAddrTyep": {
-    "_enum": [
-      "P2PKH",
-      "P2SH"
+  // eslint-disable-next-line sort-keys
+  BTCAddrTyep: {
+    _enum: [
+      'P2PKH',
+      'P2SH'
     ]
   },
-  "BTCNetwork": {
-    "_enum": [
-      "Mainnet",
-      "Testnet"
+  BTCNetwork: {
+    _enum: [
+      'Mainnet',
+      'Testnet'
     ]
   },
-  "AddressHash": "H160",
-  "BTCAddress": {
-    "kind": "Type",
-    "network": "Network",
-    "hash": "AddressHash"
+  // eslint-disable-next-line sort-keys
+  AddressHash: 'H160',
+  BTCAddress: {
+    kind: 'Type',
+    network: 'Network',
+    // eslint-disable-next-line sort-keys
+    hash: 'AddressHash'
   },
-  "BTCParams": {
-    "max_bits": "u32",
-    "block_max_future": "u32",
-    "target_timespan_seconds": "u32",
-    "target_spacing_seconds": "u32",
-    "retargeting_factor": "u32",
-    "retargeting_interval": "u32",
-    "min_timespan": "u32",
-    "max_timespan": "u32"
+  BTCParams: {
+    max_bits: 'u32',
+    // eslint-disable-next-line sort-keys
+    block_max_future: 'u32',
+    target_timespan_seconds: 'u32',
+    // eslint-disable-next-line sort-keys
+    target_spacing_seconds: 'u32',
+    // eslint-disable-next-line sort-keys
+    retargeting_factor: 'u32',
+    retargeting_interval: 'u32',
+    // eslint-disable-next-line sort-keys
+    min_timespan: 'u32',
+    // eslint-disable-next-line sort-keys
+    max_timespan: 'u32'
   },
-  "ContractInfo": "RawAliveContractInfo",
-  "XRC20Selector": {
-    "_enum": [
-      "BalanceOf",
-      "TotalSupply",
-      "Name",
-      "Symbol",
-      "Decimals",
-      "Issue",
-      "Destroy"
+  ContractInfo: 'RawAliveContractInfo',
+  XRC20Selector: {
+    _enum: [
+      'BalanceOf',
+      'TotalSupply',
+      'Name',
+      'Symbol',
+      'Decimals',
+      'Issue',
+      'Destroy'
     ]
   },
-  "Selector": "[u8; 4]",
-  "AssetInfoForRpc": {
-    "token": "String",
-    "token_name": "String",
-    "chain": "Chain",
-    "precision": "Precision",
-    "desc": "String"
+  // eslint-disable-next-line sort-keys
+  Selector: '[u8; 4]',
+  // eslint-disable-next-line sort-keys
+  AssetInfoForRpc: {
+    token: 'String',
+    token_name: 'String',
+    // eslint-disable-next-line sort-keys
+    chain: 'Chain',
+    precision: 'Precision',
+    // eslint-disable-next-line sort-keys
+    desc: 'String'
   },
-  "TotalAssetInfoForRpc": {
-    "info": "AssetInfoForRpc",
-    "balance": "BTreeMap<AssetType, String>",
-    "isOnline": "bool",
-    "restrictions": "AssetRestrictions"
+  TotalAssetInfoForRpc: {
+    info: 'AssetInfoForRpc',
+    // eslint-disable-next-line sort-keys
+    balance: 'BTreeMap<AssetType, String>',
+    isOnline: 'bool',
+    restrictions: 'AssetRestrictions'
   }
 };
-

@@ -37,7 +37,7 @@ export interface TypeImports {
 // Maps the types as found to the source location. This is used to generate the
 // imports in the output file, dep-duped and sorted
 /** @internal */
-export function setImports(allDefs: Record<string, ModuleTypes>, imports: TypeImports, types: string[]): void {
+export function setImports (allDefs: Record<string, ModuleTypes>, imports: TypeImports, types: string[]): void {
   const { codecTypes, extrinsicTypes, genericTypes, ignoredTypes, localTypes, primitiveTypes, typesTypes } = imports;
 
   types.forEach((type): void => {
@@ -88,7 +88,7 @@ export function setImports(allDefs: Record<string, ModuleTypes>, imports: TypeIm
 
 // Create an Imports object, can be pre-filled with `ignoredTypes`
 /** @internal */
-export function createImports(importDefinitions: Record<string, Record<string, ModuleTypes>>, { types }: ModuleTypes = { types: {} }): TypeImports {
+export function createImports (importDefinitions: Record<string, Record<string, ModuleTypes>>, { types }: ModuleTypes = { types: {} }): TypeImports {
   const definitions = {} as Record<string, ModuleTypes>;
   const typeToModule = {} as Record<string, string>;
 

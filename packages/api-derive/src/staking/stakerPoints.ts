@@ -11,7 +11,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { memo } from '../util';
 
-export function _stakerPoints(api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerPoints[]> {
+export function _stakerPoints (api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerPoints[]> {
   return memo((accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean): Observable<DeriveStakerPoints[]> => {
     const stakerId = api.registry.createType('AccountId', accountId).toString();
 
@@ -27,7 +27,7 @@ export function _stakerPoints(api: ApiInterfaceRx): (accountId: Uint8Array | str
   });
 }
 
-export function stakerPoints(api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerPoints[]> {
+export function stakerPoints (api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerPoints[]> {
   return memo((accountId: Uint8Array | string, withActive = false): Observable<DeriveStakerPoints[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._stakerPoints(accountId, eras, withActive))

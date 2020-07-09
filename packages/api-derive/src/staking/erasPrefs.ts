@@ -14,7 +14,7 @@ import { deriveCache, memo } from '../util';
 
 const CACHE_KEY = 'eraPrefs';
 
-function mapPrefs(era: EraIndex, all: [StorageKey, ValidatorPrefs][]): DeriveEraPrefs {
+function mapPrefs (era: EraIndex, all: [StorageKey, ValidatorPrefs][]): DeriveEraPrefs {
   const validators: DeriveEraValPrefs = {};
 
   all.forEach(([key, prefs]): void => {
@@ -24,7 +24,7 @@ function mapPrefs(era: EraIndex, all: [StorageKey, ValidatorPrefs][]): DeriveEra
   return { era, validators };
 }
 
-export function _eraPrefs(api: ApiInterfaceRx): (era: EraIndex, withActive: boolean) => Observable<DeriveEraPrefs> {
+export function _eraPrefs (api: ApiInterfaceRx): (era: EraIndex, withActive: boolean) => Observable<DeriveEraPrefs> {
   return memo((era: EraIndex, withActive: boolean): Observable<DeriveEraPrefs> => {
     const cacheKey = `${CACHE_KEY}-${era.toString()}`;
     const cached = withActive
@@ -45,13 +45,13 @@ export function _eraPrefs(api: ApiInterfaceRx): (era: EraIndex, withActive: bool
   });
 }
 
-export function eraPrefs(api: ApiInterfaceRx): (era: EraIndex) => Observable<DeriveEraPrefs> {
+export function eraPrefs (api: ApiInterfaceRx): (era: EraIndex) => Observable<DeriveEraPrefs> {
   return memo((era: EraIndex): Observable<DeriveEraPrefs> =>
     api.derive.staking._eraPrefs(era, true)
   );
 }
 
-export function _erasPrefs(api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraPrefs[]> {
+export function _erasPrefs (api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraPrefs[]> {
   return memo((eras: EraIndex[], withActive: boolean): Observable<DeriveEraPrefs[]> =>
     eras.length
       ? combineLatest(eras.map((era) => api.derive.staking._eraPrefs(era, withActive)))
@@ -59,7 +59,7 @@ export function _erasPrefs(api: ApiInterfaceRx): (eras: EraIndex[], withActive: 
   );
 }
 
-export function erasPrefs(api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraPrefs[]> {
+export function erasPrefs (api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraPrefs[]> {
   return memo((withActive = false): Observable<DeriveEraPrefs[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._erasPrefs(eras, withActive))

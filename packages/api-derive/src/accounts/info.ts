@@ -14,7 +14,7 @@ import { u8aToString } from '@polkadot/util';
 
 import { memo } from '../util';
 
-function dataAsString(data: Data): string | undefined {
+function dataAsString (data: Data): string | undefined {
   return data.isRaw
     ? u8aToString(data.asRaw.toU8a(true))
     : data.isNone
@@ -22,7 +22,7 @@ function dataAsString(data: Data): string | undefined {
       : data.toHex();
 }
 
-function retrieveNick(api: ApiInterfaceRx, accountId?: AccountId): Observable<string | undefined> {
+function retrieveNick (api: ApiInterfaceRx, accountId?: AccountId): Observable<string | undefined> {
   return ((
     accountId && api.query.nicks?.nameOf
       ? api.query.nicks.nameOf<Option<ITuple<[Bytes, Balance]>>>(accountId)
@@ -36,7 +36,7 @@ function retrieveNick(api: ApiInterfaceRx, accountId?: AccountId): Observable<st
   );
 }
 
-function extractIdentity(identityOfOpt?: Option<Registration>, superOf?: [AccountId, Data]): DeriveAccountRegistration {
+function extractIdentity (identityOfOpt?: Option<Registration>, superOf?: [AccountId, Data]): DeriveAccountRegistration {
   if (!identityOfOpt?.isSome) {
     return { judgements: [] };
   }
@@ -77,7 +77,7 @@ function extractIdentity(identityOfOpt?: Option<Registration>, superOf?: [Accoun
   };
 }
 
-function retrieveIdentity(api: ApiInterfaceRx, accountId?: AccountId): Observable<DeriveAccountRegistration> {
+function retrieveIdentity (api: ApiInterfaceRx, accountId?: AccountId): Observable<DeriveAccountRegistration> {
   return ((
     accountId && api.query.identity?.identityOf
       ? api.queryMulti([
@@ -113,7 +113,7 @@ function retrieveIdentity(api: ApiInterfaceRx, accountId?: AccountId): Observabl
  * @name info
  * @description Returns aux. info with regards to an account, current that includes the accountId, accountIndex and nickname
  */
-export function info(api: ApiInterfaceRx): (address?: AccountIndex | AccountId | Address | string | null) => Observable<DeriveAccountInfo> {
+export function info (api: ApiInterfaceRx): (address?: AccountIndex | AccountId | Address | string | null) => Observable<DeriveAccountInfo> {
   return memo((address?: AccountIndex | AccountId | Address | string | null): Observable<DeriveAccountInfo> =>
     api.derive.accounts.idAndIndex(address).pipe(
       switchMap(([accountId, accountIndex]): Observable<[Partial<DeriveAccountInfo>, DeriveAccountRegistration, string?]> =>

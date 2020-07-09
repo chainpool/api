@@ -27,7 +27,7 @@ const registry = new TypeRegistry();
 // eslint-disable-next-line no-new
 new Metadata(registry, metadataStatic);
 
-function testTypes(type: string, typeNames: string[]): void {
+function testTypes (type: string, typeNames: string[]): void {
   describe(type, (): void => {
     describe(`${type}:: default creation`, (): void => {
       typeNames.forEach((name): void => {

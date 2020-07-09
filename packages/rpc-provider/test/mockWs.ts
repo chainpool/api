@@ -29,7 +29,7 @@ interface ReplyDef {
 }
 
 // should be JSONRPC def return
-function createError({ error: { code, message }, id }: ErrorDef): any {
+function createError ({ error: { code, message }, id }: ErrorDef): any {
   return {
     error: {
       code,
@@ -41,7 +41,7 @@ function createError({ error: { code, message }, id }: ErrorDef): any {
 }
 
 // should be JSONRPC def return
-function createReply({ id, reply: { result } }: ReplyDef): any {
+function createReply ({ id, reply: { result } }: ReplyDef): any {
   return {
     id,
     jsonrpc: '2.0',
@@ -50,7 +50,7 @@ function createReply({ id, reply: { result } }: ReplyDef): any {
 }
 
 // scope definition returned
-function mockWs(requests: ({ method: string } & ErrorDef)[], wsUrl: string = TEST_WS_URL): Scope {
+function mockWs (requests: ({ method: string } & ErrorDef)[], wsUrl: string = TEST_WS_URL): Scope {
   const server = new Server(wsUrl);
 
   let requestCount = 0;

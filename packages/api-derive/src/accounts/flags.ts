@@ -21,7 +21,7 @@ type FlagsIntermediate = [
   AccountId | undefined
 ];
 
-function isIncludedFn(accountId: AccountId | Address | string): (_: AccountId | Address | string) => boolean {
+function isIncludedFn (accountId: AccountId | Address | string): (_: AccountId | Address | string) => boolean {
   return function (id: AccountId | Address | string): boolean {
     return id.toString() === accountId.toString();
   };
@@ -31,7 +31,7 @@ function isIncludedFn(accountId: AccountId | Address | string): (_: AccountId | 
  * @name info
  * @description Returns account membership flags
  */
-export function flags(api: ApiInterfaceRx): (address?: AccountId | Address | string | null) => Observable<DeriveAccountFlags> {
+export function flags (api: ApiInterfaceRx): (address?: AccountId | Address | string | null) => Observable<DeriveAccountFlags> {
   return memo((address?: AccountId | Address | string | null): Observable<DeriveAccountFlags> => {
     const councilSection = api.query.electionsPhragmen ? 'electionsPhragmen' : 'elections';
 

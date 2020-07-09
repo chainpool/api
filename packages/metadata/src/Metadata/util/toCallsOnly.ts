@@ -12,7 +12,7 @@ interface ModuleMetadataTrimmed {
   calls: Option<Vec<FunctionMetadataLatest>>;
 }
 
-function trimDocs(documentation: Vec<Text>): string[] {
+function trimDocs (documentation: Vec<Text>): string[] {
   const strings = documentation.map((doc) => doc.toString().trim());
   const firstEmpty = strings.findIndex((doc) => !doc.length);
 
@@ -21,7 +21,7 @@ function trimDocs(documentation: Vec<Text>): string[] {
     : strings.slice(0, firstEmpty);
 }
 
-function mapCalls(registry: Registry, _calls: Option<Vec<FunctionMetadataLatest>>): Option<Vec<FunctionMetadataLatest>> {
+function mapCalls (registry: Registry, _calls: Option<Vec<FunctionMetadataLatest>>): Option<Vec<FunctionMetadataLatest>> {
   const calls = _calls.unwrapOr(null);
 
   return registry.createType(
@@ -39,7 +39,7 @@ function mapCalls(registry: Registry, _calls: Option<Vec<FunctionMetadataLatest>
 }
 
 /** @internal */
-export default function toCallsOnly(registry: Registry, { extrinsic, modules }: MetadataLatest): AnyJson {
+export default function toCallsOnly (registry: Registry, { extrinsic, modules }: MetadataLatest): AnyJson {
   return registry.createType('MetadataLatest', {
     extrinsic,
     modules: modules.map(({ calls, name }): ModuleMetadataTrimmed => ({

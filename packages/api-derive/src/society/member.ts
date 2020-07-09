@@ -18,7 +18,7 @@ type Result = [Vec<ITuple<[BlockNumber, Balance]>>, StrikeCount, Option<SocietyV
 /**
  * @description Get the member info for a society
  */
-export function member(api: ApiInterfaceRx): (accountId: AccountId) => Observable<DeriveSocietyMember> {
+export function member (api: ApiInterfaceRx): (accountId: AccountId) => Observable<DeriveSocietyMember> {
   return memo((accountId: AccountId): Observable<DeriveSocietyMember> =>
     api.queryMulti<Result>([
       [api.query.society.payouts, accountId],

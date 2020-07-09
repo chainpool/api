@@ -10,7 +10,7 @@ import { ApiInterfaceRx } from '@chainx-v2/api/types';
 
 import { memo } from '../util';
 
-export function votingBalances(api: ApiInterfaceRx): (addresses?: (AccountId | AccountIndex | Address | string)[]) => Observable<DeriveBalancesAccount[]> {
+export function votingBalances (api: ApiInterfaceRx): (addresses?: (AccountId | AccountIndex | Address | string)[]) => Observable<DeriveBalancesAccount[]> {
   return memo((addresses?: (AccountId | AccountIndex | Address | string)[]): Observable<DeriveBalancesAccount[]> =>
     !addresses || !addresses.length
       ? of([] as DeriveBalancesAccount[])

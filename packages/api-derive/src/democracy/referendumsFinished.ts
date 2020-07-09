@@ -11,7 +11,7 @@ import { Option } from '@chainx-v2/types';
 
 import { memo } from '../util';
 
-export function referendumsFinished(api: ApiInterfaceRx): () => Observable<ReferendumInfoFinished[]> {
+export function referendumsFinished (api: ApiInterfaceRx): () => Observable<ReferendumInfoFinished[]> {
   return memo((): Observable<ReferendumInfoFinished[]> =>
     api.derive.democracy.referendumIds().pipe(
       switchMap((ids) => api.query.democracy.referendumInfoOf.multi<Option<ReferendumInfo>>(ids)),

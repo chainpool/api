@@ -6,7 +6,7 @@
 const { switchMap } = require('rxjs/operators');
 const { ApiRx } = require('@chainx-v2/api');
 
-async function main() {
+async function main () {
   // Create our API with a default connection to the local node
   ApiRx.create()
     .pipe(

@@ -13,7 +13,7 @@ import { getMetadataTypes, getSpecTypes } from '@chainx-v2/types-known';
 import { logger } from '@polkadot/util';
 import { cryptoWaitReady } from '@polkadot/util-crypto';
 
-import chainxTypes from './chainx/chainx-types'
+import chainxTypes from './chainx/chainx-types';
 
 import Decorate from './Decorate';
 

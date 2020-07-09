@@ -6,7 +6,7 @@ import { Codec, Registry, TypeDef, TypeDefInfo } from '@chainx-v2/types/types';
 
 import { Option, Raw, createClass, createTypeUnsafe } from '@chainx-v2/types';
 
-export function formatData(registry: Registry, data: Raw, { info, type }: TypeDef): Codec {
+export function formatData (registry: Registry, data: Raw, { info, type }: TypeDef): Codec {
   if (info === TypeDefInfo.Option) {
     return new Option(
       registry,

@@ -22,7 +22,7 @@ import { memo } from '../util';
  * });
  * ```
  */
-export function bestNumber(api: ApiInterfaceRx): () => Observable<BlockNumber> {
+export function bestNumber (api: ApiInterfaceRx): () => Observable<BlockNumber> {
   return memo((): Observable<BlockNumber> =>
     api.derive.chain.subscribeNewHeads().pipe(
       map((header) => header.number.unwrap())

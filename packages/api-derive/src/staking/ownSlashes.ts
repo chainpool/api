@@ -15,7 +15,7 @@ import { deriveCache, memo } from '../util';
 
 const CACHE_KEY = 'ownSlash';
 
-export function _ownSlash(api: ApiInterfaceRx): (accountId: Uint8Array | string, era: EraIndex, withActive: boolean) => Observable<DeriveStakerSlashes> {
+export function _ownSlash (api: ApiInterfaceRx): (accountId: Uint8Array | string, era: EraIndex, withActive: boolean) => Observable<DeriveStakerSlashes> {
   return memo((accountId: Uint8Array | string, era: EraIndex, withActive: boolean): Observable<DeriveStakerSlashes> => {
     const cacheKey = `${CACHE_KEY}-${era.toString()}-${accountId.toString()}`;
     const cached = withActive
@@ -44,13 +44,13 @@ export function _ownSlash(api: ApiInterfaceRx): (accountId: Uint8Array | string,
   });
 }
 
-export function ownSlash(api: ApiInterfaceRx): (accountId: Uint8Array | string, era: EraIndex) => Observable<DeriveStakerSlashes> {
+export function ownSlash (api: ApiInterfaceRx): (accountId: Uint8Array | string, era: EraIndex) => Observable<DeriveStakerSlashes> {
   return memo((accountId: Uint8Array | string, era: EraIndex): Observable<DeriveStakerSlashes> =>
     api.derive.staking._ownSlash(accountId, era, true)
   );
 }
 
-export function _ownSlashes(api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerSlashes[]> {
+export function _ownSlashes (api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerSlashes[]> {
   return memo((accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean): Observable<DeriveStakerSlashes[]> =>
     eras.length
       ? combineLatest(
@@ -60,7 +60,7 @@ export function _ownSlashes(api: ApiInterfaceRx): (accountId: Uint8Array | strin
   );
 }
 
-export function ownSlashes(api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerSlashes[]> {
+export function ownSlashes (api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerSlashes[]> {
   return memo((accountId: Uint8Array | string, withActive = false): Observable<DeriveStakerSlashes[]> => {
     return api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) =>

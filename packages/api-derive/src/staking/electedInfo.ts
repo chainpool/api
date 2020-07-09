@@ -10,7 +10,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { memo } from '../util';
 
-export function electedInfo(api: ApiInterfaceRx): () => Observable<DeriveStakingElected> {
+export function electedInfo (api: ApiInterfaceRx): () => Observable<DeriveStakingElected> {
   return memo((): Observable<DeriveStakingElected> =>
     api.derive.staking.validators().pipe(
       switchMap(({ nextElected }): Observable<DeriveStakingElected> =>

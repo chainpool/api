@@ -18,11 +18,11 @@ export type Cons<V, T extends any[]> = ((v: V, ...t: T) => void) extends ((...r:
 export type Push<T extends any[], V> = (
   (
     Cons<any, Required<T>> extends infer R
-    ? { [K in keyof R]: K extends keyof T ? T[K] : V }
-    : never
+      ? { [K in keyof R]: K extends keyof T ? T[K] : V }
+      : never
   ) extends infer P
-  ? P extends any[] ? P : never
-  : never
+    ? P extends any[] ? P : never
+    : never
 );
 
 export type ApiTypes = 'promise' | 'rxjs';

@@ -9,7 +9,7 @@ const { ApiPromise } = require('@chainx-v2/api');
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 const BOB = '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty';
 
-async function main() {
+async function main () {
   // Create our API with a default connection to the local node
   const api = await ApiPromise.create();
 

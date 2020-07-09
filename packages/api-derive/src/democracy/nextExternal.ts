@@ -13,7 +13,7 @@ import { Option } from '@chainx-v2/types';
 
 import { memo } from '../util';
 
-function withImage(api: ApiInterfaceRx, nextOpt: Option<ITuple<[Hash, VoteThreshold]>>): Observable<DeriveProposalExternal | null> {
+function withImage (api: ApiInterfaceRx, nextOpt: Option<ITuple<[Hash, VoteThreshold]>>): Observable<DeriveProposalExternal | null> {
   if (nextOpt.isNone) {
     return of(null);
   }
@@ -29,7 +29,7 @@ function withImage(api: ApiInterfaceRx, nextOpt: Option<ITuple<[Hash, VoteThresh
   );
 }
 
-export function nextExternal(api: ApiInterfaceRx): () => Observable<DeriveProposalExternal | null> {
+export function nextExternal (api: ApiInterfaceRx): () => Observable<DeriveProposalExternal | null> {
   return memo((): Observable<DeriveProposalExternal | null> =>
     api.query.democracy?.nextExternal
       ? api.query.democracy.nextExternal<Option<ITuple<[Hash, VoteThreshold]>>>().pipe(
