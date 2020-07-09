@@ -32,6 +32,7 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1eO6culDMw2vtrQIBxHwnbwdTeh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -107,6 +108,7 @@
       <workItem from="1594180375622" duration="1176000" />
       <workItem from="1594181625271" duration="3630000" />
       <workItem from="1594192788653" duration="10162000" />
+      <workItem from="1594269621618" duration="258000" />
     </task>
     <servers />
   </component>
@@ -217,7 +219,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/packages/api-derive/src/council/votesOf.ts</url>
           <line>4</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
