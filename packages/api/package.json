@@ -31,7 +31,7 @@
     "@chainx-v2/types-known": "1.22.0-beta.3",
     "@polkadot/api-derive": "1.22.0-beta.3",
     "@polkadot/keyring": "^2.15.1",
-    "@polkadot/rpc-core": "1.22.0-beta.3",
+    "@chainx-v2/rpc-core": "1.22.0-beta.3",
     "@polkadot/rpc-provider": "1.22.0-beta.3",
     "@polkadot/types": "1.22.0-beta.3",
     "@polkadot/util": "^2.15.1",

@@ -18,7 +18,7 @@ try {
           // eslint-disable-next-line sort-keys
           '^@polkadot/api(.*)': './packages/api/src/\\1',
           '^@chainx-v2/metadata(.*)': './packages/metadata/src\\1',
-          '^@polkadot/rpc-core(.*)': './packages/rpc-core/src\\1',
+          '^@chainx-v2/rpc-core(.*)': './packages/rpc-core/src\\1',
           '^@polkadot/rpc-provider(.*)': './packages/rpc-provider/src\\1',
           '^@chainx-v2/types-known(.*)': './packages/types-known/src\\1',
           // eslint-disable-next-line sort-keys

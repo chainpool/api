@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/rpc-core authors & contributors
+// Copyright 2017-2020 @chainx-v2/rpc-core authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -35,7 +35,7 @@ const NOOP = (): void => undefined;
  * @ignore
  * @internal
  */
-export const drr = ({ skipChange = false, skipTimeout = false }: Options = {}): DrrResult => <T> (source$: Observable<T>): Observable<T> =>
+export const drr = ({ skipChange = false, skipTimeout = false }: Options = {}): DrrResult => <T>(source$: Observable<T>): Observable<T> =>
   source$.pipe(
     catchError(ERR),
     skipChange

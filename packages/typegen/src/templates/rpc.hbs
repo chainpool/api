@@ -2,16 +2,16 @@
 
 {{{ imports }}}
 
-declare module '@polkadot/rpc-core/types.jsonrpc' {
-  export interface RpcInterface {
-    {{#each modules}}
-    {{{name}}}: {
-      {{#each items}}
-      {{> docs}}
-      {{{name}}}: AugmentedRpc<{{#if generic}}<{{{generic}}}>{{/if}}({{{args}}}) => Observable<{{{type}}}>>;
-      {{/each}}
+declare module '@chainx-v2/rpc-core/types.jsonrpc' {
+export interface RpcInterface {
+{{#each modules}}
+{{{name}}}: {
+{{#each items}}
+{{> docs}}
+{{{name}}}: AugmentedRpc<{{#if generic}}<{{{generic}}}>{{/if}}({{{args}}}) => Observable<{{{type}}}>>;
+    {{/each}}
     };
     {{/each}}
-  }
-}
-{{> footer }}
+    }
+    }
+    {{> footer }}

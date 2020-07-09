@@ -1,4 +1,4 @@
-# @polkadot/rpc-core
+# @chainx-v2/rpc-core
 
 This library provides a clean wrapper around all the methods exposed by a Polkadot network client.
 
@@ -7,13 +7,13 @@ This library provides a clean wrapper around all the methods exposed by a Polkad
 Installation -
 
 ```
-yarn add @polkadot/rpc-core
+yarn add @chainx-v2/rpc-core
 ```
 
 Initialisation -
 
 ```js
-import Rpc from '@polkadot/rpc-core';
+import Rpc from '@chainx-v2/rpc-core';
 import WsProvider from '@polkadot/rpc-provider/ws';
 
 const provider = new WsProvider('http://127.0.0.1:9944');

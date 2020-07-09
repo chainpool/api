@@ -2696,7 +2696,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.10.3
     "@polkadot/api": 1.22.0-beta.3
-    "@polkadot/rpc-core": 1.22.0-beta.3
+    "@chainx-v2/rpc-core": 1.22.0-beta.3
     "@polkadot/types": 1.22.0-beta.3
     "@polkadot/util": ^2.15.1
     bn.js: ^5.1.2
@@ -2711,7 +2711,7 @@ __metadata:
     "@babel/runtime": ^7.10.3
     "@polkadot/api": 1.22.0-beta.3
     "@polkadot/keyring": ^2.15.1
-    "@polkadot/rpc-core": 1.22.0-beta.3
+    "@chainx-v2/rpc-core": 1.22.0-beta.3
     "@polkadot/rpc-provider": 1.22.0-beta.3
     "@polkadot/types": 1.22.0-beta.3
     "@polkadot/util": ^2.15.1
@@ -2731,7 +2731,7 @@ __metadata:
     "@chainx-v2/types-known": 1.22.0-beta.3
     "@polkadot/api-derive": 1.22.0-beta.3
     "@polkadot/keyring": ^2.15.1
-    "@polkadot/rpc-core": 1.22.0-beta.3
+    "@chainx-v2/rpc-core": 1.22.0-beta.3
     "@polkadot/rpc-provider": 1.22.0-beta.3
     "@polkadot/types": 1.22.0-beta.3
     "@polkadot/util": ^2.15.1
@@ -2842,9 +2842,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/rpc-core@1.22.0-beta.3, @polkadot/rpc-core@workspace:packages/rpc-core":
+"@chainx-v2/rpc-core@1.22.0-beta.3, @chainx-v2/rpc-core@workspace:packages/rpc-core":
   version: 0.0.0-use.local
-  resolution: "@polkadot/rpc-core@workspace:packages/rpc-core"
+  resolution: "@chainx-v2/rpc-core@workspace:packages/rpc-core"
   dependencies:
     "@babel/runtime": ^7.10.3
     "@chainx-v2/metadata": 1.22.0-beta.3

@@ -7,24 +7,55 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
-    "paths":
-    {
-      "@polkadot/api": ["packages/api/src"],
-      "@polkadot/api/*": ["packages/api/src/*"],
-      "@polkadot/api-contract": ["packages/api-contract/src"],
-      "@polkadot/api-contract/*": ["packages/api-contract/src/*"],
-      "@polkadot/api-derive": ["packages/api-derive/src"],
-      "@polkadot/api-derive/*": ["packages/api-derive/src/*"],
-      "@chainx-v2/metadata": ["packages/metadata/src"],
-      "@chainx-v2/metadata/*": ["packages/metadata/src/*"],
-      "@polkadot/rpc-core": ["packages/rpc-core/src"],
-      "@polkadot/rpc-core/*": ["packages/rpc-core/src/*"],
-      "@polkadot/rpc-provider": ["packages/rpc-provider/src"],
-      "@polkadot/rpc-provider/*": ["packages/rpc-provider/src/*"],
-      "@polkadot/types": ["packages/types/src"],
-      "@polkadot/types/*": ["packages/types/src/*"],
-      "@chainx-v2/types-known": ["packages/types-known/src"],
-      "@chainx-v2/types-known/*": ["packages/types-known/src/*"]
+    "paths": {
+      "@polkadot/api": [
+        "packages/api/src"
+      ],
+      "@polkadot/api/*": [
+        "packages/api/src/*"
+      ],
+      "@polkadot/api-contract": [
+        "packages/api-contract/src"
+      ],
+      "@polkadot/api-contract/*": [
+        "packages/api-contract/src/*"
+      ],
+      "@polkadot/api-derive": [
+        "packages/api-derive/src"
+      ],
+      "@polkadot/api-derive/*": [
+        "packages/api-derive/src/*"
+      ],
+      "@chainx-v2/metadata": [
+        "packages/metadata/src"
+      ],
+      "@chainx-v2/metadata/*": [
+        "packages/metadata/src/*"
+      ],
+      "@chainx-v2/rpc-core": [
+        "packages/rpc-core/src"
+      ],
+      "@chainx-v2/rpc-core/*": [
+        "packages/rpc-core/src/*"
+      ],
+      "@polkadot/rpc-provider": [
+        "packages/rpc-provider/src"
+      ],
+      "@polkadot/rpc-provider/*": [
+        "packages/rpc-provider/src/*"
+      ],
+      "@polkadot/types": [
+        "packages/types/src"
+      ],
+      "@polkadot/types/*": [
+        "packages/types/src/*"
+      ],
+      "@chainx-v2/types-known": [
+        "packages/types-known/src"
+      ],
+      "@chainx-v2/types-known/*": [
+        "packages/types-known/src/*"
+      ]
     },
     "skipLibCheck": true,
     "typeRoots": [

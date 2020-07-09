@@ -8,7 +8,7 @@ import '@polkadot/api/augment';
 import type BN from 'bn.js';
 import { DeriveCustom, ExactDerive } from '@polkadot/api-derive';
 import { Constants } from '@chainx-v2/metadata/Decorated/types';
-import { RpcInterface } from '@polkadot/rpc-core/types';
+import { RpcInterface } from '@chainx-v2/rpc-core/types';
 import { ProviderInterface, ProviderInterfaceEmitted } from '@polkadot/rpc-provider/types';
 import { Metadata } from '@polkadot/types';
 import { Hash, RuntimeVersion } from '@polkadot/types/interfaces';
