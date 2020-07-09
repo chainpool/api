@@ -9,7 +9,7 @@ import { mockWs, TEST_WS_URL } from '../../test/mockWs';
 let ws: WsProvider;
 let mock: Mock;
 
-function createWs(requests: any[], autoConnect: number | undefined = 1000): WsProvider {
+function createWs (requests: any[], autoConnect: number | undefined = 1000): WsProvider {
   mock = mockWs(requests);
   ws = new WsProvider(TEST_WS_URL, autoConnect);
 

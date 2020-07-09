@@ -6,6 +6,6 @@ import { MetadataV2, MetadataV3 } from '@chainx-v2/types/interfaces/metadata';
 import { Registry } from '@chainx-v2/types/types';
 
 /** @internal */
-export default function toV3(registry: Registry, metadataV2: MetadataV2): MetadataV3 {
+export default function toV3 (registry: Registry, metadataV2: MetadataV2): MetadataV3 {
   return registry.createType('MetadataV3', metadataV2);
 }

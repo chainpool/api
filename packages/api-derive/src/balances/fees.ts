@@ -24,7 +24,7 @@ import { memo } from '../util';
  * });
  * ```
  */
-export function fees(api: ApiInterfaceRx): () => Observable<DeriveFees> {
+export function fees (api: ApiInterfaceRx): () => Observable<DeriveFees> {
   return memo((): Observable<DeriveFees> =>
     of([
       // deprecated - remove

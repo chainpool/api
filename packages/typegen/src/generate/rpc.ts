@@ -15,7 +15,7 @@ const template = readTemplate('rpc');
 const generateRpcTypesTemplate = Handlebars.compile(template);
 
 /** @internal */
-export default function generateRpcTypes(dest = 'packages/api/src/augment/rpc.ts'): void {
+export default function generateRpcTypes (dest = 'packages/api/src/augment/rpc.ts'): void {
   writeFile(dest, (): string => {
     const registry = new TypeRegistry();
     const allTypes = { '@chainx-v2/types/interfaces': definitions };

@@ -16,12 +16,12 @@ export default class ContractAbi extends ContractRegistry implements InterfaceAb
 
   public readonly messages: AbiMessages;
 
-  constructor(registry: Registry, abi: ContractABIPre) {
+  constructor (registry: Registry, abi: ContractABIPre) {
     super(registry, abi);
     [this.abi, this.constructors, this.messages] = this._decodeAbi(abi);
   }
 
-  private _decodeAbi(abiPre: ContractABIPre): [ContractABI, ContractABIFn[], AbiMessages] {
+  private _decodeAbi (abiPre: ContractABIPre): [ContractABI, ContractABIFn[], AbiMessages] {
     this.validateAbi(abiPre);
 
     const abi = this.convertAbi(abiPre);

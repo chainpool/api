@@ -9,7 +9,7 @@ import * as substrateDefs from '@chainx-v2/types/interfaces/definitions';
 import { generateInterfaceTypes } from './generate/interfaceRegistry';
 import { generateTsDef } from './generate/tsDef';
 
-export default function main(): void {
+export default function main (): void {
   const { input, package: pkg } = yargs.strict().options({
     input: {
       description: 'The directory to use for the user definitions',

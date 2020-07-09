@@ -7,7 +7,7 @@ import { asapScheduler, ConnectableObservable, MonoTypeOperatorFunction, Observa
 const DELAY = 1750;
 
 /** @internal */
-function refCountDelayInner<T>(source: Observable<T>): Observable<T> {
+function refCountDelayInner<T> (source: Observable<T>): Observable<T> {
   // state: 0 = disconnected, 1 = disconnecting, 2 = connecting, 3 = connected
   let [state, refCount, connection, scheduler] = [0, 0, Subscription.EMPTY, Subscription.EMPTY];
 
@@ -43,6 +43,6 @@ function refCountDelayInner<T>(source: Observable<T>): Observable<T> {
 }
 
 /** @internal */
-export function refCountDelay<T>(): MonoTypeOperatorFunction<T> {
+export function refCountDelay<T> (): MonoTypeOperatorFunction<T> {
   return refCountDelayInner;
 }

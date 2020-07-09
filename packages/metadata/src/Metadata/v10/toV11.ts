@@ -6,7 +6,7 @@ import { MetadataV10, MetadataV11 } from '@chainx-v2/types/interfaces/metadata';
 import { Registry } from '@chainx-v2/types/types';
 
 /** @internal */
-export default function toV11(registry: Registry, { modules }: MetadataV10): MetadataV11 {
+export default function toV11 (registry: Registry, { modules }: MetadataV10): MetadataV11 {
   return registry.createType('MetadataV11', {
     // This is new in V11, pass V0 here - something non-existing, telling the API to use
     // the fallback for this information (on-chain detection)

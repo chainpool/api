@@ -8,7 +8,7 @@ import { Registry } from '@chainx-v2/types/types';
 import { Option } from '@chainx-v2/types/codec';
 
 /** @internal */
-function toV4StorageFunction(registry: Registry, storageFn: StorageFunctionMetadataV3): StorageFunctionMetadataV4 {
+function toV4StorageFunction (registry: Registry, storageFn: StorageFunctionMetadataV3): StorageFunctionMetadataV4 {
   const { documentation, fallback, modifier, name, type } = storageFn;
 
   // Convert the old type to the new type: there is one new field
@@ -41,7 +41,7 @@ function toV4StorageFunction(registry: Registry, storageFn: StorageFunctionMetad
 }
 
 /** @internal */
-export default function toV4(registry: Registry, { modules }: MetadataV3): MetadataV4 {
+export default function toV4 (registry: Registry, { modules }: MetadataV3): MetadataV4 {
   return registry.createType('MetadataV4', {
     modules: modules.map(({ calls, events, name, prefix, storage }): ModuleMetadataV4 =>
       registry.createType('ModuleMetadataV4', {

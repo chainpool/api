@@ -15,7 +15,7 @@ const CHACHE_EXPIRY = 7 * (24 * 60) * (60 * 1000);
 
 let deriveCache: DeriveCache;
 
-function wrapCache(keyStart: string, cache: DeriveCache): DeriveCache {
+function wrapCache (keyStart: string, cache: DeriveCache): DeriveCache {
   return {
     del: (partial: string): void => cache.del(`${keyStart}${partial}`),
     forEach: cache.forEach,
@@ -38,7 +38,7 @@ function wrapCache(keyStart: string, cache: DeriveCache): DeriveCache {
   };
 }
 
-function clearCache(cache: DeriveCache): void {
+function clearCache (cache: DeriveCache): void {
   // clear all expired values
   const now = Date.now();
   const all: any[] = [];
@@ -51,7 +51,7 @@ function clearCache(cache: DeriveCache): void {
   all.forEach((key) => cache.del(key));
 }
 
-export function setDeriveCache(prefix = '', cache?: DeriveCache): void {
+export function setDeriveCache (prefix = '', cache?: DeriveCache): void {
   deriveCache = cache
     ? wrapCache(`derive:${prefix}:`, cache)
     : deriveNoopCache;

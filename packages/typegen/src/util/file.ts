@@ -4,7 +4,7 @@
 
 import fs from 'fs';
 
-export function writeFile(dest: string, generator: () => string, noLog?: boolean): void {
+export function writeFile (dest: string, generator: () => string, noLog?: boolean): void {
   !noLog && console.log(`${dest}\n\tGenerating`);
 
   let generated = generator();
@@ -20,6 +20,6 @@ export function writeFile(dest: string, generator: () => string, noLog?: boolean
   !noLog && console.log('');
 }
 
-export function readTemplate(path: string): string {
+export function readTemplate (path: string): string {
   return fs.readFileSync(`${__dirname}/../templates/${path}.hbs`).toString();
 }

@@ -4,7 +4,7 @@
 
 import { ApiPromise, WsProvider } from '@chainx-v2/api';
 
-function createApi(): Promise<ApiPromise> {
+function createApi (): Promise<ApiPromise> {
   jest.setTimeout(30000);
   process.env.NODE_ENV = 'test';
 

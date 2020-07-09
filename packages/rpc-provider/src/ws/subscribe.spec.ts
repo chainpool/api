@@ -13,11 +13,11 @@ declare const global: Global;
 let ws: WsProvider;
 let mock: Mock;
 
-function createMock(requests: any[]): void {
+function createMock (requests: any[]): void {
   mock = mockWs(requests);
 }
 
-function createWs(autoConnect = 1000): WsProvider {
+function createWs (autoConnect = 1000): WsProvider {
   ws = new WsProvider(TEST_WS_URL, autoConnect);
 
   return ws;

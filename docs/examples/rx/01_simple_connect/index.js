@@ -7,7 +7,7 @@ const { zip } = require('rxjs');
 const { ApiRx } = require('@chainx-v2/api');
 const { WsProvider } = require('@chainx-v2/rpc-provider');
 
-async function main() {
+async function main () {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://127.0.0.1:9944');
 

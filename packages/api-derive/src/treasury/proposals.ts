@@ -20,7 +20,7 @@ interface Result {
   proposalCount: ProposalIndex;
 }
 
-function parseResult(_api: ApiInterfaceRx, { allIds, allProposals, approvalIds, councilProposals, proposalCount }: Result): DeriveTreasuryProposals {
+function parseResult (_api: ApiInterfaceRx, { allIds, allProposals, approvalIds, councilProposals, proposalCount }: Result): DeriveTreasuryProposals {
   const approvals: DeriveTreasuryProposal[] = [];
   const proposals: DeriveTreasuryProposal[] = [];
   const councilTreasury = councilProposals.filter(({ proposal: { methodName, sectionName } }): boolean =>
@@ -47,7 +47,7 @@ function parseResult(_api: ApiInterfaceRx, { allIds, allProposals, approvalIds, 
   return { approvals, proposalCount, proposals };
 }
 
-function retrieveProposals(api: ApiInterfaceRx, proposalCount: ProposalIndex, approvalIds: ProposalIndex[]): Observable<DeriveTreasuryProposals> {
+function retrieveProposals (api: ApiInterfaceRx, proposalCount: ProposalIndex, approvalIds: ProposalIndex[]): Observable<DeriveTreasuryProposals> {
   const proposalIds: ProposalIndex[] = [];
   const count = proposalCount.toNumber();
 
@@ -74,7 +74,7 @@ function retrieveProposals(api: ApiInterfaceRx, proposalCount: ProposalIndex, ap
 /**
  * @description Retrieve all active and approved treasury proposals, along with their info
  */
-export function proposals(api: ApiInterfaceRx): () => Observable<DeriveTreasuryProposals> {
+export function proposals (api: ApiInterfaceRx): () => Observable<DeriveTreasuryProposals> {
   return memo((): Observable<DeriveTreasuryProposals> =>
     api.query.treasury
       ? combineLatest([

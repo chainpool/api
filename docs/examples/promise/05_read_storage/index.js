@@ -8,7 +8,7 @@ const { ApiPromise } = require('@chainx-v2/api');
 // Our address for Alice on the dev chain
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 
-async function main() {
+async function main () {
   // Create our API with a default connection to the local node
   const api = await ApiPromise.create();
 

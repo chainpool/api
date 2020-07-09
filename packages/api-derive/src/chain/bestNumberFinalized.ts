@@ -23,7 +23,7 @@ import { memo } from '../util';
  * });
  * ```
  */
-export function bestNumberFinalized(api: ApiInterfaceRx): () => Observable<BlockNumber> {
+export function bestNumberFinalized (api: ApiInterfaceRx): () => Observable<BlockNumber> {
   return memo((): Observable<BlockNumber> =>
     api.rpc.chain.subscribeFinalizedHeads().pipe(
       map((header) => header.number.unwrap())

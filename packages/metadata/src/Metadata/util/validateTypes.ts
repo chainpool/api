@@ -11,7 +11,7 @@ import flattenUniq from './flattenUniq';
 type Extracted = string | Extracted[];
 
 /** @internal */
-function extractTypes(types: string[]): Extracted[] {
+function extractTypes (types: string[]): Extracted[] {
   return types.map((type): Extracted => {
     const decoded = getTypeDef(type);
 
@@ -39,7 +39,7 @@ function extractTypes(types: string[]): Extracted[] {
 }
 
 /** @internal */
-export default function validateTypes(registry: Registry, types: string[], throwError: boolean): void {
+export default function validateTypes (registry: Registry, types: string[], throwError: boolean): void {
   const missing = flattenUniq(extractTypes(types)).filter((type) => !registry.hasType(type));
 
   if (missing.length !== 0) {

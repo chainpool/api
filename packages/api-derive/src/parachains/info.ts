@@ -23,7 +23,7 @@ type Result = [
   RelayDispatchQueue
 ];
 
-function parseActive(id: ParaId, active: Active): DeriveParachainActive | null {
+function parseActive (id: ParaId, active: Active): DeriveParachainActive | null {
   const found = active.find(([paraId]): boolean => paraId === id);
 
   if (found && found[1].isSome) {
@@ -48,7 +48,7 @@ function parseActive(id: ParaId, active: Active): DeriveParachainActive | null {
   return null;
 }
 
-function parseCollators(id: ParaId, collatorQueue: SelectedThreads | RetryQueue): (CollatorId | null)[] {
+function parseCollators (id: ParaId, collatorQueue: SelectedThreads | RetryQueue): (CollatorId | null)[] {
   return collatorQueue
     .map((queue): CollatorId | null => {
       const found = queue.find(([paraId]): boolean => paraId === id);
@@ -57,7 +57,7 @@ function parseCollators(id: ParaId, collatorQueue: SelectedThreads | RetryQueue)
     });
 }
 
-function parse(id: ParaId, [active, retryQueue, selectedThreads, didUpdate, info, pendingSwap, heads, relayDispatchQueue]: Result): DeriveParachainFull | null {
+function parse (id: ParaId, [active, retryQueue, selectedThreads, didUpdate, info, pendingSwap, heads, relayDispatchQueue]: Result): DeriveParachainFull | null {
   if (info.isNone) {
     return null;
   }
@@ -77,7 +77,7 @@ function parse(id: ParaId, [active, retryQueue, selectedThreads, didUpdate, info
   };
 }
 
-export function info(api: ApiInterfaceRx): (id: ParaId | number) => Observable<DeriveParachainFull | null> {
+export function info (api: ApiInterfaceRx): (id: ParaId | number) => Observable<DeriveParachainFull | null> {
   return memo((id: ParaId | number): Observable<DeriveParachainFull | null> =>
     api.query.registrar && api.query.parachains
       ? api.queryMulti<Result>([

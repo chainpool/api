@@ -4,7 +4,7 @@
 
 import { TypeRegistry } from '@chainx-v2/types/create';
 
-export function registerDefinitions(registry: TypeRegistry, extras: Record<string, Record<string, { types: Record<string, any> }>>): void {
+export function registerDefinitions (registry: TypeRegistry, extras: Record<string, Record<string, { types: Record<string, any> }>>): void {
   Object.values(extras).forEach((def): void => {
     Object.values(def).forEach(({ types }): void => {
       registry.register(types);

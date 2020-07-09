@@ -7,7 +7,7 @@ import { ApprovalFlag } from '@chainx-v2/types/interfaces/elections';
 import { Vec } from '@chainx-v2/types';
 
 /** @internal */
-export function approvalFlagsToBools(flags: Vec<ApprovalFlag> | ApprovalFlag[]): boolean[] {
+export function approvalFlagsToBools (flags: Vec<ApprovalFlag> | ApprovalFlag[]): boolean[] {
   const bools: boolean[] = [];
 
   flags.forEach((flag: ApprovalFlag): void => {

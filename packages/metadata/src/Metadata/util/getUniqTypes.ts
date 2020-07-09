@@ -70,7 +70,7 @@ interface ExtractionMetadata {
 }
 
 /** @internal */
-function unwrapCalls(mod: Module): Call[] {
+function unwrapCalls (mod: Module): Call[] {
   return mod.calls
     ? mod.calls.unwrapOr([])
     // V0
@@ -80,7 +80,7 @@ function unwrapCalls(mod: Module): Call[] {
 }
 
 /** @internal */
-function getCallNames({ modules }: ExtractionMetadata): string[][][] {
+function getCallNames ({ modules }: ExtractionMetadata): string[][][] {
   return modules.map((mod): string[][] =>
     unwrapCalls(mod).map(({ args }): string[] =>
       args.map((arg): string =>
@@ -91,7 +91,7 @@ function getCallNames({ modules }: ExtractionMetadata): string[][][] {
 }
 
 /** @internal */
-function getConstantNames({ modules }: ExtractionMetadata): string[][] {
+function getConstantNames ({ modules }: ExtractionMetadata): string[][] {
   return modules.map(({ constants }): string[] =>
     constants
       ? constants.map((constant): string =>
@@ -102,7 +102,7 @@ function getConstantNames({ modules }: ExtractionMetadata): string[][] {
 }
 
 /** @internal */
-function unwrapEvents(events?: Events): Event[] {
+function unwrapEvents (events?: Events): Event[] {
   if (!events) {
     return [];
   }
@@ -111,7 +111,7 @@ function unwrapEvents(events?: Events): Event[] {
 }
 
 /** @internal */
-function getEventNames({ modules, outerEvent }: ExtractionMetadata): string[][][] {
+function getEventNames ({ modules, outerEvent }: ExtractionMetadata): string[][][] {
   const mapArg = ({ args }: Event): string[] =>
     args.map((arg): string =>
       arg.toString()
@@ -131,7 +131,7 @@ function getEventNames({ modules, outerEvent }: ExtractionMetadata): string[][][
 }
 
 /** @internal */
-function unwrapStorage(storage?: Storage): Item[] {
+function unwrapStorage (storage?: Storage): Item[] {
   if (!storage) {
     return [];
   }
@@ -144,7 +144,7 @@ function unwrapStorage(storage?: Storage): Item[] {
 }
 
 /** @internal */
-function getStorageNames({ modules }: ExtractionMetadata): string[][][] {
+function getStorageNames ({ modules }: ExtractionMetadata): string[][][] {
   return modules.map(({ storage }): string[][] =>
     unwrapStorage(storage).map(({ type }): string[] => {
       if (type.isDoubleMap && type.asDoubleMap) {
@@ -168,7 +168,7 @@ function getStorageNames({ modules }: ExtractionMetadata): string[][][] {
 }
 
 /** @internal */
-export default function getUniqTypes(registry: Registry, meta: ExtractionMetadata, throwError: boolean): string[] {
+export default function getUniqTypes (registry: Registry, meta: ExtractionMetadata, throwError: boolean): string[] {
   const types = flattenUniq([
     getCallNames(meta),
     getConstantNames(meta),

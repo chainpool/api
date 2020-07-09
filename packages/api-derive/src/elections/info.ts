@@ -13,11 +13,11 @@ import { Vec, u32 } from '@chainx-v2/types';
 import { DeriveElectionsInfo } from '../types';
 import { memo } from '../util';
 
-function sortAccounts([, balanceA]: ITuple<[AccountId, Balance]>, [, balanceB]: ITuple<[AccountId, Balance]>): number {
+function sortAccounts ([, balanceA]: ITuple<[AccountId, Balance]>, [, balanceB]: ITuple<[AccountId, Balance]>): number {
   return balanceB.cmp(balanceA);
 }
 
-function queryElections(api: ApiInterfaceRx): Observable<DeriveElectionsInfo> {
+function queryElections (api: ApiInterfaceRx): Observable<DeriveElectionsInfo> {
   const section = api.query.electionsPhragmen ? 'electionsPhragmen' : 'elections';
 
   return api.queryMulti<[Vec<AccountId>, Vec<AccountId>, Vec<ITuple<[AccountId, Balance]>>, Vec<ITuple<[AccountId, Balance]>>]>([
@@ -54,6 +54,6 @@ function queryElections(api: ApiInterfaceRx): Observable<DeriveElectionsInfo> {
  * });
  * ```
  */
-export function info(api: ApiInterfaceRx): () => Observable<DeriveElectionsInfo> {
+export function info (api: ApiInterfaceRx): () => Observable<DeriveElectionsInfo> {
   return memo((): Observable<DeriveElectionsInfo> => queryElections(api));
 }

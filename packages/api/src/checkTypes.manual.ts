@@ -16,7 +16,7 @@ import { SubmittableResult } from './';
 
 const registry = new TypeRegistry();
 
-function consts(api: ApiPromise): void {
+function consts (api: ApiPromise): void {
   // constants has actual value & metadata
   console.log(
     api.consts.foo.bar,
@@ -25,7 +25,7 @@ function consts(api: ApiPromise): void {
   );
 }
 
-async function derive(api: ApiPromise): Promise<void> {
+async function derive (api: ApiPromise): Promise<void> {
   await api.derive.chain.subscribeNewHeads((header: HeaderExtended): void => {
     console.log('current author:', header.author);
   });
@@ -35,7 +35,7 @@ async function derive(api: ApiPromise): Promise<void> {
   console.log('fees', fees);
 }
 
-async function query(api: ApiPromise, keyring: TestKeyringMap): Promise<void> {
+async function query (api: ApiPromise, keyring: TestKeyringMap): Promise<void> {
   const intentions = await api.query.staking.bonded();
 
   console.log('intentions:', intentions);
@@ -90,7 +90,7 @@ async function query(api: ApiPromise, keyring: TestKeyringMap): Promise<void> {
   console.log(`Received ${entries.length} entries, ${entries.map(([hash, events]) => `${hash.toHex()}: ${events.length} events`).join(', ')}`);
 }
 
-async function rpc(api: ApiPromise): Promise<void> {
+async function rpc (api: ApiPromise): Promise<void> {
   // defaults
   await api.rpc.chain.subscribeNewHeads((header): void => {
     console.log('current header #', header.number.toNumber());
@@ -111,7 +111,7 @@ async function rpc(api: ApiPromise): Promise<void> {
   });
 }
 
-function types(api: ApiPromise): void {
+function types (api: ApiPromise): void {
   // check correct types with `createType`
   const balance = registry.createType('Balance', 2);
   const gas = registry.createType('Gas', 2);
@@ -124,7 +124,7 @@ function types(api: ApiPromise): void {
   console.log(balance, gas, compact, gasUnsafe, overriddenUnsafe, api.createType('AccountData'));
 }
 
-async function tx(api: ApiPromise, keyring: TestKeyringMap): Promise<void> {
+async function tx (api: ApiPromise, keyring: TestKeyringMap): Promise<void> {
   // transfer, also allows for BigInt inputs here
   const transfer = api.tx.balances.transfer(keyring.bob.address, 123456789n);
 
@@ -171,7 +171,7 @@ async function tx(api: ApiPromise, keyring: TestKeyringMap): Promise<void> {
   await api.tx.democracy.proxyVote(123, { Split: { nay: 456, yay: 123 } }).signAndSend(keyring.alice);
 }
 
-async function main(): Promise<void> {
+async function main (): Promise<void> {
   const api = await ApiPromise.create();
   const keyring = testKeyring();
 

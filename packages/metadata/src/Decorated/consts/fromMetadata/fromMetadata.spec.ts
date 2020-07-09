@@ -10,7 +10,7 @@ import rpcMetadata from '../../../Metadata/static';
 import rpcMetadataV10 from '../../../Metadata/v10/static';
 import fromMetadata from '../fromMetadata';
 
-function init(meta: string): [Constants, TypeRegistry] {
+function init (meta: string): [Constants, TypeRegistry] {
   const registry = new TypeRegistry();
   const metadata = new Metadata(registry, meta);
 

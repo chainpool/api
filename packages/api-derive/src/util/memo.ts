@@ -12,7 +12,7 @@ type ObsFn<T> = (...params: any[]) => Observable<T>;
 //   1. creates a memo of the inner fn -> Observable, removing when unsubscribed
 //   2. wraps the observable in a drr() (which includes an unsub delay)
 /** @internal */
-export function memo<T>(inner: ObsFn<T>): ObsFn<T> {
+export function memo<T> (inner: ObsFn<T>): ObsFn<T> {
   const cached = createMemo(
     (...params: any[]): Observable<T> =>
       new Observable((observer: Observer<T>): TeardownLogic => {

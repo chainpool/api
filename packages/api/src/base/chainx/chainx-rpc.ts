@@ -1,30 +1,34 @@
+// eslint-disable-next-line header/header
 export default {
-  "xassets": {
-    "getAssetsByAccount": {
-      "description": "get all assets balance for an account",
-      "params": [
+  xassets: {
+    getAssetsByAccount: {
+      description: 'get all assets balance for an account',
+      params: [
         {
-          "name": "who",
-          "type": "AccountId"
+          name: 'who',
+          type: 'AccountId'
         },
         {
-          "name": "at",
-          "type": "Hash",
-          "isOptional": true
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
         }
       ],
-      "type": "BTreeMap<AssetId, BTreeMap<AssetType, String>>"
+      type: 'BTreeMap<AssetId, BTreeMap<AssetType, String>>'
     },
-    "getAssets": {
-      "description": "get all assets balance and infos",
-      "params": [
+    // eslint-disable-next-line sort-keys
+    getAssets: {
+      description: 'get all assets balance and infos',
+      params: [
         {
-          "name": "at",
-          "type": "Hash",
-          "isOptional": true
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
         }
       ],
-      "type": "BTreeMap<AssetId, TotalAssetInfoForRpc>"
+      type: 'BTreeMap<AssetId, TotalAssetInfoForRpc>'
     }
   }
 };

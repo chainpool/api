@@ -5,7 +5,7 @@
 // Import the API
 const { ApiPromise } = require('@chainx-v2/api');
 
-async function main() {
+async function main () {
   // Create a new instance of the api
   const api = await ApiPromise.create();
 

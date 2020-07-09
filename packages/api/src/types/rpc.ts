@@ -24,8 +24,8 @@ export type RpcMethodResult<ApiType extends ApiTypes, F extends AnyFunction> = A
 
 export type DecoratedRpcSection<ApiType extends ApiTypes, Section> = {
   [Method in keyof Section]: Section[Method] extends AnyFunction
-  ? RpcMethodResult<ApiType, Section[Method]>
-  : never
+    ? RpcMethodResult<ApiType, Section[Method]>
+    : never
 }
 
 export type DecoratedRpc<ApiType extends ApiTypes, AllSections> = {

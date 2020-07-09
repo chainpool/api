@@ -15,7 +15,7 @@ import { deriveCache, memo } from '../util';
 
 const CACHE_KEY = 'eraSlashes';
 
-function mapSlashes(era: EraIndex, noms: [StorageKey, Option<BalanceOf>][], vals: [StorageKey, Option<ITuple<[Perbill, BalanceOf]>>][]): DeriveEraSlashes {
+function mapSlashes (era: EraIndex, noms: [StorageKey, Option<BalanceOf>][], vals: [StorageKey, Option<ITuple<[Perbill, BalanceOf]>>][]): DeriveEraSlashes {
   const nominators: DeriveEraValSlash = {};
   const validators: DeriveEraValSlash = {};
 
@@ -30,7 +30,7 @@ function mapSlashes(era: EraIndex, noms: [StorageKey, Option<BalanceOf>][], vals
   return { era, nominators, validators };
 }
 
-export function _eraSlashes(api: ApiInterfaceRx): (era: EraIndex, withActive: boolean) => Observable<DeriveEraSlashes> {
+export function _eraSlashes (api: ApiInterfaceRx): (era: EraIndex, withActive: boolean) => Observable<DeriveEraSlashes> {
   return memo((era: EraIndex, withActive: boolean): Observable<DeriveEraSlashes> => {
     const cacheKey = `${CACHE_KEY}-${era.toString()}`;
     const cached = withActive
@@ -54,13 +54,13 @@ export function _eraSlashes(api: ApiInterfaceRx): (era: EraIndex, withActive: bo
   });
 }
 
-export function eraSlashes(api: ApiInterfaceRx): (era: EraIndex) => Observable<DeriveEraSlashes> {
+export function eraSlashes (api: ApiInterfaceRx): (era: EraIndex) => Observable<DeriveEraSlashes> {
   return memo((era: EraIndex): Observable<DeriveEraSlashes> =>
     api.derive.staking._eraSlashes(era, true)
   );
 }
 
-export function _erasSlashes(api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraSlashes[]> {
+export function _erasSlashes (api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraSlashes[]> {
   return memo((eras: EraIndex[], withActive: boolean): Observable<DeriveEraSlashes[]> =>
     eras.length
       ? combineLatest(
@@ -70,7 +70,7 @@ export function _erasSlashes(api: ApiInterfaceRx): (eras: EraIndex[], withActive
   );
 }
 
-export function erasSlashes(api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraSlashes[]> {
+export function erasSlashes (api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraSlashes[]> {
   return memo((withActive = false): Observable<DeriveEraSlashes[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._erasSlashes(eras, withActive))

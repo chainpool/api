@@ -10,7 +10,7 @@ import yargs from 'yargs';
 import { ApiPromise, WsProvider } from '@chainx-v2/api/index';
 
 /** @internal */
-async function run(ws: string): Promise<void> {
+async function run (ws: string): Promise<void> {
   const provider = new WsProvider(ws);
   const api = await ApiPromise.create({ provider });
   const [chain, props] = await Promise.all([
@@ -25,7 +25,7 @@ async function run(ws: string): Promise<void> {
   api.runtimeMetadata.getUniqTypes(false);
 }
 
-export default function main(): void {
+export default function main (): void {
   // retrieve and parse arguments - we do this globally, since this is a single command
   const { ws } = yargs
     .usage('Usage: [options]')

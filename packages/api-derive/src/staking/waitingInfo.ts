@@ -10,7 +10,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { memo } from '../util';
 
-export function waitingInfo(api: ApiInterfaceRx): () => Observable<DeriveStakingWaiting> {
+export function waitingInfo (api: ApiInterfaceRx): () => Observable<DeriveStakingWaiting> {
   return memo((): Observable<DeriveStakingWaiting> =>
     combineLatest([
       api.derive.staking.validators(),

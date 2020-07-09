@@ -20,7 +20,7 @@ type Result = [
   RelayDispatchQueueSize[]
 ];
 
-function parse([ids, didUpdate, infos, pendingSwaps, relayDispatchQueueSizes]: Result): DeriveParachain[] {
+function parse ([ids, didUpdate, infos, pendingSwaps, relayDispatchQueueSizes]: Result): DeriveParachain[] {
   return ids.map((id, index): DeriveParachain => {
     return {
       didUpdate: didUpdate.isSome
@@ -34,7 +34,7 @@ function parse([ids, didUpdate, infos, pendingSwaps, relayDispatchQueueSizes]: R
   });
 }
 
-export function overview(api: ApiInterfaceRx): () => Observable<DeriveParachain[]> {
+export function overview (api: ApiInterfaceRx): () => Observable<DeriveParachain[]> {
   return memo((): Observable<DeriveParachain[]> =>
     api.query.registrar?.parachains && api.query.parachains
       ? api.query.registrar.parachains<ParaId[]>().pipe(

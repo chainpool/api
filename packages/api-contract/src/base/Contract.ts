@@ -32,7 +32,7 @@ export type ContractCallResult<CallType extends ContractCallTypes> = CallType ex
 export default class Contract<ApiType extends ApiTypes> extends BaseWithTxAndRpcCall<ApiType> {
   public readonly address: Address;
 
-  constructor(api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, address: string | AccountId | Address) {
+  constructor (api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, address: string | AccountId | Address) {
     super(api, abi, decorateMethod);
 
     this.address = this.registry.createType('Address', address);
@@ -40,7 +40,7 @@ export default class Contract<ApiType extends ApiTypes> extends BaseWithTxAndRpc
 
   public call(as: 'rpc', message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, 'rpc'>;
   public call(as: 'tx', message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, 'tx'>;
-  public call<CallType extends ContractCallTypes>(as: CallType, message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, CallType> {
+  public call<CallType extends ContractCallTypes> (as: CallType, message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, CallType> {
     const { def, fn } = this.getMessage(message);
 
     return {
@@ -67,7 +67,7 @@ export default class Contract<ApiType extends ApiTypes> extends BaseWithTxAndRpc
     };
   }
 
-  private _createOutcome(result: ContractExecResult, origin: AccountId, message: ContractABIMessage, params: any[]): ContractCallOutcome {
+  private _createOutcome (result: ContractExecResult, origin: AccountId, message: ContractABIMessage, params: any[]): ContractCallOutcome {
     let output: Codec | null = null;
 
     if (result.isSuccess) {

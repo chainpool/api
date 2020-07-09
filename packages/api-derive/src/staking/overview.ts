@@ -13,7 +13,7 @@ import { memo } from '../util';
 /**
  * @description Retrieve the staking overview, including elected and points earned
  */
-export function overview(api: ApiInterfaceRx): () => Observable<DeriveStakingOverview> {
+export function overview (api: ApiInterfaceRx): () => Observable<DeriveStakingOverview> {
   return memo((): Observable<DeriveStakingOverview> =>
     combineLatest([
       api.derive.session.indexes(),

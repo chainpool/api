@@ -15,7 +15,7 @@ interface Result {
   events: EventRecord[];
 }
 
-export function events(api: ApiInterfaceRx): (at: Hash) => Observable<Result> {
+export function events (api: ApiInterfaceRx): (at: Hash) => Observable<Result> {
   return memo((at: Hash): Observable<Result> =>
     combineLatest([
       api.query.system.events.at(at),
