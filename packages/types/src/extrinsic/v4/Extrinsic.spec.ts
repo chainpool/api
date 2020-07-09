@@ -4,9 +4,9 @@
 
 import BN from 'bn.js';
 import testingPairs from '@polkadot/keyring/testingPairs';
-import Decorated from '@polkadot/metadata/Decorated';
-import Metadata from '@polkadot/metadata/Metadata';
-import metadataStatic from '@polkadot/metadata/Metadata/static';
+import Decorated from '@chainx-v2/metadata/Decorated';
+import Metadata from '@chainx-v2/metadata/Metadata';
+import metadataStatic from '@chainx-v2/metadata/Metadata/static';
 
 import { TypeRegistry } from '../../create';
 import Extrinsic from './Extrinsic';

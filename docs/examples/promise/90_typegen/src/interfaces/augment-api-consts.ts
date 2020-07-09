@@ -7,7 +7,7 @@ import { Balance, BalanceOf, BlockNumber, Moment, Percent, Permill } from '@polk
 import { SessionIndex } from '@polkadot/types/interfaces/session';
 import { EraIndex } from '@polkadot/types/interfaces/staking';
 
-declare module '@polkadot/metadata/Decorated/consts/types' {
+declare module '@chainx-v2/metadata/Decorated/consts/types' {
   export interface Constants {
     timestamp: {
 

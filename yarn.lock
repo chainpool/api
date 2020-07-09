@@ -1395,6 +1395,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@chainx-v2/metadata@1.22.0-beta.3, @chainx-v2/metadata@workspace:packages/metadata":
+  version: 0.0.0-use.local
+  resolution: "@chainx-v2/metadata@workspace:packages/metadata"
+  dependencies:
+    "@babel/runtime": ^7.10.3
+    "@chainx-v2/types-known": 1.22.0-beta.3
+    "@polkadot/keyring": ^2.15.1
+    "@polkadot/types": 1.22.0-beta.3
+    "@polkadot/util": ^2.15.1
+    "@polkadot/util-crypto": ^2.15.1
+    bn.js: ^5.1.2
+  languageName: unknown
+  linkType: soft
+
 "@chainx-v2/types-known@1.22.0-beta.3, @chainx-v2/types-known@workspace:packages/types-known":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/types-known@workspace:packages/types-known"
@@ -2713,10 +2727,10 @@ __metadata:
   resolution: "@polkadot/api@workspace:packages/api"
   dependencies:
     "@babel/runtime": ^7.10.3
+    "@chainx-v2/metadata": 1.22.0-beta.3
     "@chainx-v2/types-known": 1.22.0-beta.3
     "@polkadot/api-derive": 1.22.0-beta.3
     "@polkadot/keyring": ^2.15.1
-    "@polkadot/metadata": 1.22.0-beta.3
     "@polkadot/rpc-core": 1.22.0-beta.3
     "@polkadot/rpc-provider": 1.22.0-beta.3
     "@polkadot/types": 1.22.0-beta.3
@@ -2828,27 +2842,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/metadata@1.22.0-beta.3, @polkadot/metadata@workspace:packages/metadata":
-  version: 0.0.0-use.local
-  resolution: "@polkadot/metadata@workspace:packages/metadata"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/types-known": 1.22.0-beta.3
-    "@polkadot/keyring": ^2.15.1
-    "@polkadot/types": 1.22.0-beta.3
-    "@polkadot/util": ^2.15.1
-    "@polkadot/util-crypto": ^2.15.1
-    bn.js: ^5.1.2
-  languageName: unknown
-  linkType: soft
-
 "@polkadot/rpc-core@1.22.0-beta.3, @polkadot/rpc-core@workspace:packages/rpc-core":
   version: 0.0.0-use.local
   resolution: "@polkadot/rpc-core@workspace:packages/rpc-core"
   dependencies:
     "@babel/runtime": ^7.10.3
+    "@chainx-v2/metadata": 1.22.0-beta.3
     "@polkadot/keyring": ^2.15.1
-    "@polkadot/metadata": 1.22.0-beta.3
     "@polkadot/rpc-provider": 1.22.0-beta.3
     "@polkadot/types": 1.22.0-beta.3
     "@polkadot/util": ^2.15.1
@@ -2862,8 +2862,8 @@ __metadata:
   resolution: "@polkadot/rpc-provider@workspace:packages/rpc-provider"
   dependencies:
     "@babel/runtime": ^7.10.3
+    "@chainx-v2/metadata": 1.22.0-beta.3
     "@polkadot/keyring": ^2.15.1
-    "@polkadot/metadata": 1.22.0-beta.3
     "@polkadot/types": 1.22.0-beta.3
     "@polkadot/util": ^2.15.1
     "@polkadot/util-crypto": ^2.15.1
@@ -2892,8 +2892,8 @@ __metadata:
     "@babel/core": ^7.10.3
     "@babel/register": ^7.10.3
     "@babel/runtime": ^7.10.3
+    "@chainx-v2/metadata": 1.22.0-beta.3
     "@polkadot/api": 1.22.0-beta.3
-    "@polkadot/metadata": 1.22.0-beta.3
     "@polkadot/rpc-provider": 1.22.0-beta.3
     "@polkadot/types": 1.22.0-beta.3
     "@polkadot/util": ^2.15.1
@@ -2916,8 +2916,8 @@ __metadata:
   resolution: "@polkadot/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.3
+    "@chainx-v2/metadata": 1.22.0-beta.3
     "@polkadot/keyring": ^2.15.1
-    "@polkadot/metadata": 1.22.0-beta.3
     "@polkadot/util": ^2.15.1
     "@polkadot/util-crypto": ^2.15.1
     "@types/bn.js": ^4.11.6

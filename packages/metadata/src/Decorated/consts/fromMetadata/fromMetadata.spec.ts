@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/metadata authors & contributors
+// Copyright 2017-2020 @chainx-v2/metadata authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -10,7 +10,7 @@ import rpcMetadata from '../../../Metadata/static';
 import rpcMetadataV10 from '../../../Metadata/v10/static';
 import fromMetadata from '../fromMetadata';
 
-function init (meta: string): [Constants, TypeRegistry] {
+function init(meta: string): [Constants, TypeRegistry] {
   const registry = new TypeRegistry();
   const metadata = new Metadata(registry, meta);
 

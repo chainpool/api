@@ -1,9 +1,9 @@
-// Copyright 2017-2020 @polkadot/metadata authors & contributors
+// Copyright 2017-2020 @chainx-v2/metadata authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import Metadata from '@polkadot/metadata/Metadata';
-import metadataStatic from '@polkadot/metadata/Metadata/static';
+import Metadata from '@chainx-v2/metadata/Metadata';
+import metadataStatic from '@chainx-v2/metadata/Metadata/static';
 
 import { TypeRegistry } from '../create';
 import Call from './Call';

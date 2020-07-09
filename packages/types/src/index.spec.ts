@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import Metadata from '@polkadot/metadata/Metadata';
-import metadataStatic from '@polkadot/metadata/Metadata/static';
+import Metadata from '@chainx-v2/metadata/Metadata';
+import metadataStatic from '@chainx-v2/metadata/Metadata/static';
 
 import { createTypeUnsafe, TypeRegistry } from './create';
 import { Codec } from './types';
@@ -27,7 +27,7 @@ const registry = new TypeRegistry();
 // eslint-disable-next-line no-new
 new Metadata(registry, metadataStatic);
 
-function testTypes (type: string, typeNames: string[]): void {
+function testTypes(type: string, typeNames: string[]): void {
   describe(type, (): void => {
     describe(`${type}:: default creation`, (): void => {
       typeNames.forEach((name): void => {

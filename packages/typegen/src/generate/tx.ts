@@ -6,8 +6,8 @@ import Handlebars from 'handlebars';
 
 import { Registry } from '@polkadot/types/types';
 
-import staticData from '@polkadot/metadata/Metadata/static';
-import Metadata from '@polkadot/metadata/Metadata';
+import staticData from '@chainx-v2/metadata/Metadata/static';
+import Metadata from '@chainx-v2/metadata/Metadata';
 import * as defaultDefs from '@polkadot/types/interfaces/definitions';
 import { Text } from '@polkadot/types/primitive';
 import { TypeRegistry } from '@polkadot/types/create';
@@ -19,7 +19,7 @@ const MAPPED_NAMES: Record<string, string> = {
   new: 'updated'
 };
 
-function mapName (_name: Text): string {
+function mapName(_name: Text): string {
   const name = stringCamelCase(_name.toString());
 
   return MAPPED_NAMES[name] || name;
@@ -29,7 +29,7 @@ const template = readTemplate('tx');
 const generateForMetaTemplate = Handlebars.compile(template);
 
 /** @internal */
-function generateForMeta (registry: Registry, meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
+function generateForMeta(registry: Registry, meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
   writeFile(dest, (): string => {
     const allTypes: Record<string, Record<string, { types: Record<string, any> }>> = { '@polkadot/types/interfaces': defaultDefs, ...extraTypes };
     const imports = createImports(allTypes);
@@ -94,7 +94,7 @@ function generateForMeta (registry: Registry, meta: Metadata, dest: string, extr
 
 // Call `generateForMeta()` with current static metadata
 /** @internal */
-export default function generateTx (dest = 'packages/api/src/augment/tx.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
+export default function generateTx(dest = 'packages/api/src/augment/tx.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
   const registry = new TypeRegistry();
 
   registerDefinitions(registry, extraTypes);

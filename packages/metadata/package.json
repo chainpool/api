@@ -1,5 +1,5 @@
 {
-  "name": "@polkadot/metadata",
+  "name": "@chainx-v2/metadata",
   "version": "1.22.0-beta.3",
   "description": "Helpers to extract information from runtime metadata",
   "main": "index.js",

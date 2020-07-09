@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/metadata authors & contributors
+// Copyright 2017-2020 @chainx-v2/metadata authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -12,7 +12,7 @@ import createFunction from './createFunction';
 import getStorage from './storage';
 
 /** @internal */
-export default function fromMetadata (registry: Registry, metadata: Metadata): Storage {
+export default function fromMetadata(registry: Registry, metadata: Metadata): Storage {
   return metadata.asLatest.modules.reduce((result, moduleMetadata): Storage => {
     if (moduleMetadata.storage.isNone) {
       return result;

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/metadata authors & contributors
+// Copyright 2017-2020 @chainx-v2/metadata authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -8,7 +8,7 @@ import { Registry } from '@polkadot/types/types';
 import { Option } from '@polkadot/types/codec';
 
 /** @internal */
-function toV4StorageFunction (registry: Registry, storageFn: StorageFunctionMetadataV3): StorageFunctionMetadataV4 {
+function toV4StorageFunction(registry: Registry, storageFn: StorageFunctionMetadataV3): StorageFunctionMetadataV4 {
   const { documentation, fallback, modifier, name, type } = storageFn;
 
   // Convert the old type to the new type: there is one new field
@@ -41,7 +41,7 @@ function toV4StorageFunction (registry: Registry, storageFn: StorageFunctionMeta
 }
 
 /** @internal */
-export default function toV4 (registry: Registry, { modules }: MetadataV3): MetadataV4 {
+export default function toV4(registry: Registry, { modules }: MetadataV3): MetadataV4 {
   return registry.createType('MetadataV4', {
     modules: modules.map(({ calls, events, name, prefix, storage }): ModuleMetadataV4 =>
       registry.createType('ModuleMetadataV4', {

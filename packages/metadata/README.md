@@ -1,1 +1,1 @@
-# @polkadot/metadata
+# @chainx-v2/metadata

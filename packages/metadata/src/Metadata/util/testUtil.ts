@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/metadata authors & contributors
+// Copyright 2017-2020 @chainx-v2/metadata authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,7 +11,7 @@ import getUniqTypes from './getUniqTypes';
 import Metadata from '../Metadata';
 
 /** @internal */
-export function decodeLatestSubstrate<Modules extends Codec> (registry: Registry, version: number, rpcData: string, staticSubstrate: Record<string, unknown>): void {
+export function decodeLatestSubstrate<Modules extends Codec>(registry: Registry, version: number, rpcData: string, staticSubstrate: Record<string, unknown>): void {
   it('decodes latest substrate properly', (): void => {
     const metadata = new Metadata(registry, rpcData);
 
@@ -28,7 +28,7 @@ export function decodeLatestSubstrate<Modules extends Codec> (registry: Registry
 }
 
 /** @internal */
-export function toLatest<Modules extends Codec> (registry: Registry, version: number, rpcData: string, withThrow = true): void {
+export function toLatest<Modules extends Codec>(registry: Registry, version: number, rpcData: string, withThrow = true): void {
   it(`converts v${version} to latest`, (): void => {
     const metadata = new Metadata(registry, rpcData)[`asV${version}` as keyof Metadata];
     const metadataLatest = new Metadata(registry, rpcData).asLatest;
@@ -42,7 +42,7 @@ export function toLatest<Modules extends Codec> (registry: Registry, version: nu
 }
 
 /** @internal */
-export function defaultValues (registry: Registry, rpcData: string, withThrow = true): void {
+export function defaultValues(registry: Registry, rpcData: string, withThrow = true): void {
   describe('storage with default values', (): void => {
     const metadata = new Metadata(registry, rpcData);
 

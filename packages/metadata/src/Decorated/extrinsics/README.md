@@ -1,3 +1,3 @@
-# @polkadot/metadata/extrinsics
+# @chainx-v2/metadata/extrinsics
 
 Base extrinsic definitions & codecs

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/metadata authors & contributors
+// Copyright 2017-2020 @chainx-v2/metadata authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -26,7 +26,7 @@ export default class Decorated {
 
   public readonly tx: ModulesWithCalls;
 
-  constructor (registry: Registry, value?: Uint8Array | string | Metadata) {
+  constructor(registry: Registry, value?: Uint8Array | string | Metadata) {
     this.registry = registry;
     this.metadata = value instanceof Metadata ? value : new Metadata(registry, value);
 

@@ -4,8 +4,8 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import Metadata from '@polkadot/metadata/Metadata';
-import metadataStatic from '@polkadot/metadata/Metadata/static';
+import Metadata from '@chainx-v2/metadata/Metadata';
+import metadataStatic from '@chainx-v2/metadata/Metadata/static';
 
 import { TypeRegistry } from '../../create';
 import immortalTxs from '../../json/SignedBlock.004.immortal.json';

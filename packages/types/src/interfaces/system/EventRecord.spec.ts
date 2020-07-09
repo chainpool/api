@@ -5,9 +5,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import Metadata from '@polkadot/metadata/Metadata';
-import rpcMetadataV1 from '@polkadot/metadata/Metadata/v1/static';
-import rpcMetadata from '@polkadot/metadata/Metadata/static';
+import Metadata from '@chainx-v2/metadata/Metadata';
+import rpcMetadataV1 from '@chainx-v2/metadata/Metadata/v1/static';
+import rpcMetadata from '@chainx-v2/metadata/Metadata/static';
 
 import { TypeRegistry } from '../../create';
 import json1 from '../../json/EventRecord.001.json';

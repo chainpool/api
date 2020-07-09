@@ -3,9 +3,9 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import BN from 'bn.js';
-import Decorated from '@polkadot/metadata/Decorated';
-import Metadata from '@polkadot/metadata/Metadata';
-import rpcMetadata from '@polkadot/metadata/Metadata/static';
+import Decorated from '@chainx-v2/metadata/Decorated';
+import Metadata from '@chainx-v2/metadata/Metadata';
+import rpcMetadata from '@chainx-v2/metadata/Metadata/static';
 import testingPairs from '@polkadot/keyring/testingPairs';
 
 import { TypeRegistry } from '../../create';

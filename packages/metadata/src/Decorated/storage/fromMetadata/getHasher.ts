@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/metadata authors & contributors
+// Copyright 2017-2020 @chainx-v2/metadata authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -31,6 +31,6 @@ const HASHERS: Record<keyof typeof AllHashers, HasherFunction> = {
 };
 
 /** @internal */
-export default function getHasher (hasher?: StorageHasher): HasherFunction {
+export default function getHasher(hasher?: StorageHasher): HasherFunction {
   return HASHERS[hasher?.type as 'Identity'] || DEFAULT_FN;
 }

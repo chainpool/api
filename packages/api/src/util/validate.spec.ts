@@ -2,11 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Storage } from '@polkadot/metadata/Decorated/types';
+import { Storage } from '@chainx-v2/metadata/Decorated/types';
 
-import storageFromMeta from '@polkadot/metadata/Decorated/storage/fromMetadata';
-import Metadata from '@polkadot/metadata/Metadata';
-import metaStatic from '@polkadot/metadata/Metadata/static';
+import storageFromMeta from '@chainx-v2/metadata/Decorated/storage/fromMetadata';
+import Metadata from '@chainx-v2/metadata/Metadata';
+import metaStatic from '@chainx-v2/metadata/Metadata/static';
 import { TypeRegistry } from '@polkadot/types';
 
 import { extractStorageArgs } from './validate';

@@ -2,14 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import Metadata from '@polkadot/metadata/Decorated';
-import rpcDataV3 from '@polkadot/metadata/Metadata/v3/static';
-import rpcDataV4 from '@polkadot/metadata/Metadata/v4/static';
-import rpcDataV5 from '@polkadot/metadata/Metadata/v5/static';
-import rpcDataV6 from '@polkadot/metadata/Metadata/v6/static';
-import rpcDataV7 from '@polkadot/metadata/Metadata/v7/static';
-import rpcDataV8 from '@polkadot/metadata/Metadata/v8/static';
-import rpcDataV11 from '@polkadot/metadata/Metadata/v11/static';
+import Metadata from '@chainx-v2/metadata/Decorated';
+import rpcDataV3 from '@chainx-v2/metadata/Metadata/v3/static';
+import rpcDataV4 from '@chainx-v2/metadata/Metadata/v4/static';
+import rpcDataV5 from '@chainx-v2/metadata/Metadata/v5/static';
+import rpcDataV6 from '@chainx-v2/metadata/Metadata/v6/static';
+import rpcDataV7 from '@chainx-v2/metadata/Metadata/v7/static';
+import rpcDataV8 from '@chainx-v2/metadata/Metadata/v8/static';
+import rpcDataV11 from '@chainx-v2/metadata/Metadata/v11/static';
 import { hexToU8a } from '@polkadot/util';
 
 import { TypeRegistry } from '../create';
