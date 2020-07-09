@@ -2690,9 +2690,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/api-contract@workspace:packages/api-contract":
+"@chainx-v2/api-contract@workspace:packages/api-contract":
   version: 0.0.0-use.local
-  resolution: "@polkadot/api-contract@workspace:packages/api-contract"
+  resolution: "@chainx-v2/api-contract@workspace:packages/api-contract"
   dependencies:
     "@babel/runtime": ^7.10.3
     "@polkadot/api": 1.22.0-beta.3

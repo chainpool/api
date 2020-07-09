@@ -1,10 +1,10 @@
-# @polkadot/api-contract
+# @chainx-v2/api-contract
 
 Interfaces to allow for the encoding and decoding of Substrate contract ABIs.
 
 ```js
 import {ApiPromise, WsProvider } from '@polkadot/api';
-import { Abi } from '@polkadot/api-contract';
+import { Abi } from '@chainx-v2/api-contract';
 
 const wsProvider = new WsProvider(<...Node Url...>);
 const api = await ApiPromise.create({ provider: wsProvider });

@@ -14,10 +14,10 @@
       "@polkadot/api/*": [
         "packages/api/src/*"
       ],
-      "@polkadot/api-contract": [
+      "@chainx-v2/api-contract": [
         "packages/api-contract/src"
       ],
-      "@polkadot/api-contract/*": [
+      "@chainx-v2/api-contract/*": [
         "packages/api-contract/src/*"
       ],
       "@chainx-v2/api-derive": [

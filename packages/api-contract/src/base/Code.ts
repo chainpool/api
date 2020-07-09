@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-contract authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-contract authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -20,13 +20,13 @@ import { BaseWithTx } from './util';
 type CodePutCodeResultSubscription<ApiType extends ApiTypes> = Observable<CodePutCodeResult<ApiType>>;
 
 export interface CodePutCode<ApiType extends ApiTypes> {
-  signAndSend (account: IKeyringPair | string | AccountId | Address): CodePutCodeResultSubscription<ApiType>;
+  signAndSend(account: IKeyringPair | string | AccountId | Address): CodePutCodeResultSubscription<ApiType>;
 }
 
 class CodePutCodeResult<ApiType extends ApiTypes> extends SubmittableResult {
   public readonly blueprint?: Blueprint<ApiType>;
 
-  constructor (result: ISubmittableResult, blueprint?: Blueprint<ApiType>) {
+  constructor(result: ISubmittableResult, blueprint?: Blueprint<ApiType>) {
     super(result);
 
     this.blueprint = blueprint;
@@ -37,7 +37,7 @@ class CodePutCodeResult<ApiType extends ApiTypes> extends SubmittableResult {
 export default class Code<ApiType extends ApiTypes> extends BaseWithTx<ApiType> {
   public readonly code: Uint8Array;
 
-  constructor (api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, wasm: string | Uint8Array) {
+  constructor(api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, wasm: string | Uint8Array) {
     super(api, abi, decorateMethod);
 
     this.code = u8aToU8a(wasm);

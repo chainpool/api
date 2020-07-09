@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-contract authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-contract authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -22,7 +22,7 @@ type ContractCallResultSubscription<ApiType extends ApiTypes, CallType extends C
   : Promise<ObsInnerType<ContractCallResult<CallType>>>;
 
 export interface ContractCall<ApiType extends ApiTypes, CallType extends ContractCallTypes> {
-  send (account: IKeyringPair | string | AccountId | Address): ContractCallResultSubscription<ApiType, CallType>;
+  send(account: IKeyringPair | string | AccountId | Address): ContractCallResultSubscription<ApiType, CallType>;
 }
 
 export type ContractCallResult<CallType extends ContractCallTypes> = CallType extends 'rpc'
@@ -32,15 +32,15 @@ export type ContractCallResult<CallType extends ContractCallTypes> = CallType ex
 export default class Contract<ApiType extends ApiTypes> extends BaseWithTxAndRpcCall<ApiType> {
   public readonly address: Address;
 
-  constructor (api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, address: string | AccountId | Address) {
+  constructor(api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, address: string | AccountId | Address) {
     super(api, abi, decorateMethod);
 
     this.address = this.registry.createType('Address', address);
   }
 
-  public call (as: 'rpc', message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, 'rpc'>;
-  public call (as: 'tx', message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, 'tx'>;
-  public call<CallType extends ContractCallTypes> (as: CallType, message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, CallType> {
+  public call(as: 'rpc', message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, 'rpc'>;
+  public call(as: 'tx', message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, 'tx'>;
+  public call<CallType extends ContractCallTypes>(as: CallType, message: string, value: BN | number, gasLimit: BN | number, ...params: any[]): ContractCall<ApiType, CallType> {
     const { def, fn } = this.getMessage(message);
 
     return {
@@ -67,7 +67,7 @@ export default class Contract<ApiType extends ApiTypes> extends BaseWithTxAndRpc
     };
   }
 
-  private _createOutcome (result: ContractExecResult, origin: AccountId, message: ContractABIMessage, params: any[]): ContractCallOutcome {
+  private _createOutcome(result: ContractExecResult, origin: AccountId, message: ContractABIMessage, params: any[]): ContractCallOutcome {
     let output: Codec | null = null;
 
     if (result.isSuccess) {

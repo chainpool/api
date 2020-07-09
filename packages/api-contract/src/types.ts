@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-contract authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-contract authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -116,9 +116,9 @@ export interface ContractABIEventArgBase {
   indexed: boolean;
 }
 
-export interface ContractABIEventArgPre extends ContractABIArgBasePre, ContractABIEventArgBase {}
+export interface ContractABIEventArgPre extends ContractABIArgBasePre, ContractABIEventArgBase { }
 
-export interface ContractABIEventArg extends ContractABIArgBase, ContractABIEventArgBase {}
+export interface ContractABIEventArg extends ContractABIArgBase, ContractABIEventArgBase { }
 
 export type ContractABIDocs = string[];
 
