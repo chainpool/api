@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/rpc-provider authors & contributors
+// Copyright 2017-2020 @chainx-v2/rpc-provider authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -16,7 +16,7 @@ const ERROR_SUBSCRIBE = 'HTTP Provider does not have subscriptions, use WebSocke
 const l = logger('api-http');
 
 /**
- * # @polkadot/rpc-provider/https
+ * # @chainx-v2/rpc-provider/https
  *
  * @name HttpProvider
  *
@@ -27,7 +27,7 @@ const l = logger('api-http');
  *
  * ```javascript
  * import Api from '@polkadot/api/promise';
- * import HttpProvider from '@polkadot/rpc-provider/http';
+ * import HttpProvider from '@chainx-v2/rpc-provider/http';
  *
  * const provider = new HttpProvider('http://127.0.0.1:9933');
  * const api = new Api(provider);
@@ -43,7 +43,7 @@ export default class HttpProvider implements ProviderInterface {
   /**
    * @param {string} endpoint The endpoint url starting with http://
    */
-  constructor (endpoint: string = defaults.HTTP_URL) {
+  constructor(endpoint: string = defaults.HTTP_URL) {
     assert(/^(https|http):\/\//.test(endpoint), `Endpoint should start with 'http://', received '${endpoint}'`);
 
     this.#coder = new Coder();
@@ -53,21 +53,21 @@ export default class HttpProvider implements ProviderInterface {
   /**
    * @summary `true` when this provider supports subscriptions
    */
-  public get hasSubscriptions (): boolean {
+  public get hasSubscriptions(): boolean {
     return false;
   }
 
   /**
    * @description Returns a clone of the object
    */
-  public clone (): HttpProvider {
+  public clone(): HttpProvider {
     throw new Error('Unimplemented');
   }
 
   /**
    * @description Manually disconnect from the connection
    */
-  public disconnect (): void {
+  public disconnect(): void {
     // noop
   }
 
@@ -75,7 +75,7 @@ export default class HttpProvider implements ProviderInterface {
    * @summary Whether the node is connected or not.
    * @return {boolean} true if connected
    */
-  public isConnected (): boolean {
+  public isConnected(): boolean {
     return true;
   }
 
@@ -84,7 +84,7 @@ export default class HttpProvider implements ProviderInterface {
    * @description HTTP Provider does not have 'on' emitters. WebSockets should be used instead.
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public on (type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
+  public on(type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
     l.error('HTTP Provider does not have \'on\' emitters, use WebSockets instead');
 
     return (): void => {
@@ -95,7 +95,7 @@ export default class HttpProvider implements ProviderInterface {
   /**
    * @summary Send HTTP POST Request with Body to configured HTTP Endpoint.
    */
-  public async send (method: string, params: any[]): Promise<any> {
+  public async send(method: string, params: any[]): Promise<any> {
     const body = this.#coder.encodeJson(method, params);
     const response = await fetch(this.#endpoint, {
       body,
@@ -119,7 +119,7 @@ export default class HttpProvider implements ProviderInterface {
    * @summary Subscriptions are not supported with the HttpProvider, see [[WsProvider]].
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/require-await
-  public async subscribe (types: string, method: string, params: any[], cb: ProviderInterfaceCallback): Promise<number> {
+  public async subscribe(types: string, method: string, params: any[], cb: ProviderInterfaceCallback): Promise<number> {
     l.error(ERROR_SUBSCRIBE);
 
     throw new Error(ERROR_SUBSCRIBE);
@@ -129,7 +129,7 @@ export default class HttpProvider implements ProviderInterface {
    * @summary Subscriptions are not supported with the HttpProvider, see [[WsProvider]].
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/require-await
-  public async unsubscribe (type: string, method: string, id: number): Promise<boolean> {
+  public async unsubscribe(type: string, method: string, id: number): Promise<boolean> {
     l.error(ERROR_SUBSCRIBE);
 
     throw new Error(ERROR_SUBSCRIBE);

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -12,7 +12,7 @@ import { Option, u32 } from '@polkadot/types';
 
 import { memo } from '../util';
 
-export function erasHistoric (api: ApiInterfaceRx): (withActive: boolean) => Observable<EraIndex[]> {
+export function erasHistoric(api: ApiInterfaceRx): (withActive: boolean) => Observable<EraIndex[]> {
   return memo((withActive: boolean): Observable<EraIndex[]> =>
     api.query.staking?.activeEra
       ? api.queryMulti<[Option<ActiveEraInfo>, u32]>([

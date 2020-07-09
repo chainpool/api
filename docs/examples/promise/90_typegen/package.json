@@ -1,7 +1,7 @@
 {
   "name": "sample-polkadotjs-typegen",
   "version": "0.0.1",
-  "description": "A sample using @polkadot/typegen to generate type definitions",
+  "description": "A sample using @chainx-v2/typegen to generate type definitions",
   "main": "index.js",
   "repository": "https://github.com/jacogr/sample-polkadotjs-typegen",
   "author": "Jaco Greeff <jacogr@gmail.com>",
@@ -17,7 +17,7 @@
     "@polkadot/api": "^1.4.0"
   },
   "devDependencies": {
-    "@polkadot/typegen": "^1.4.0",
+    "@chainx-v2/typegen": "^1.4.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.2"
   }

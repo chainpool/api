@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,7 +11,7 @@ import { Option } from '@polkadot/types';
 
 import { memo } from '../util';
 
-export function referendumsFinished (api: ApiInterfaceRx): () => Observable<ReferendumInfoFinished[]> {
+export function referendumsFinished(api: ApiInterfaceRx): () => Observable<ReferendumInfoFinished[]> {
   return memo((): Observable<ReferendumInfoFinished[]> =>
     api.derive.democracy.referendumIds().pipe(
       switchMap((ids) => api.query.democracy.referendumInfoOf.multi<Option<ReferendumInfo>>(ids)),

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/rpc-provider authors & contributors
+// Copyright 2017-2020 @chainx-v2/rpc-provider authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -6,7 +6,7 @@ import WsProvider from './';
 import { Mock } from './../mock/types';
 import { mockWs, TEST_WS_URL } from '../../test/mockWs';
 
-function sleepMs (ms = 0): Promise<void> {
+function sleepMs(ms = 0): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -64,7 +64,7 @@ describe('onConnect', (): void => {
 
   it('Connects to the second endpoint when the first is unreachable', async () => {
     /* eslint-disable @typescript-eslint/no-empty-function */
-    jest.spyOn(console, 'error').mockImplementation((): void => {});
+    jest.spyOn(console, 'error').mockImplementation((): void => { });
 
     const endpoints: string[] = ['ws://localhost:9956', TEST_WS_URL];
     const provider: WsProvider = new WsProvider(endpoints, 1);

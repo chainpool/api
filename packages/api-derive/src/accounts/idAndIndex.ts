@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,7 +13,7 @@ import { decodeAddress } from '@polkadot/util-crypto';
 
 import { memo } from '../util';
 
-function retrieve (api: ApiInterfaceRx, address: Address | AccountId | AccountIndex | string | null | undefined): Observable<AccountIdAndIndex> {
+function retrieve(api: ApiInterfaceRx, address: Address | AccountId | AccountIndex | string | null | undefined): Observable<AccountIdAndIndex> {
   try {
     // yes, this can fail, don't care too much, catch will catch it
     const decoded = isU8a(address)
@@ -51,7 +51,7 @@ function retrieve (api: ApiInterfaceRx, address: Address | AccountId | AccountIn
  * });
  * ```
  */
-export function idAndIndex (api: ApiInterfaceRx): (address?: Address | AccountId | AccountIndex | string | null) => Observable<AccountIdAndIndex> {
+export function idAndIndex(api: ApiInterfaceRx): (address?: Address | AccountId | AccountIndex | string | null) => Observable<AccountIdAndIndex> {
   return memo((address?: Address | AccountId | AccountIndex | string | null): Observable<AccountIdAndIndex> =>
     retrieve(api, address));
 }

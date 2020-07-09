@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -19,13 +19,13 @@ const _Header = Struct.with(runtimeTypes.types.Header as any) as Constructor<Hea
 export default class HeaderExtended extends _Header {
   readonly #author?: AccountId;
 
-  constructor (registry: Registry, header?: Header, sessionValidators?: AccountId[]) {
+  constructor(registry: Registry, header?: Header, sessionValidators?: AccountId[]) {
     super(registry, header);
 
     this.#author = this._extractAuthor(sessionValidators);
   }
 
-  private _extractAuthor (sessionValidators: AccountId[] = []): AccountId | undefined {
+  private _extractAuthor(sessionValidators: AccountId[] = []): AccountId | undefined {
     const [pitem] = this.digest.logs.filter(({ type }) => type === 'PreRuntime');
 
     // extract from the substrate 2.0 PreRuntime digest
@@ -50,14 +50,14 @@ export default class HeaderExtended extends _Header {
   /**
    * @description Convenience method, returns the author for the block
    */
-  public get author (): AccountId | undefined {
+  public get author(): AccountId | undefined {
     return this.#author;
   }
 
   /**
    * @description Creates a human-friendly JSON representation
    */
-  public toHuman (isExtended?: boolean): AnyJson {
+  public toHuman(isExtended?: boolean): AnyJson {
     return {
       ...super.toHuman(isExtended) as { [index: string]: AnyJson },
       author: this.author
@@ -69,7 +69,7 @@ export default class HeaderExtended extends _Header {
   /**
    * @description Creates the JSON representation
    */
-  public toJSON (): AnyJson {
+  public toJSON(): AnyJson {
     return {
       ...super.toJSON() as { [index: string]: AnyJson },
       author: this.author

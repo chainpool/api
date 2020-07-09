@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,7 +15,7 @@ import { memo } from '../util';
 type ResultType = [boolean, u64, SessionIndex];
 type Result = [ResultType, DeriveSessionIndexes];
 
-function createDerive (api: ApiInterfaceRx, [[hasBabe, epochDuration, sessionsPerEra], { activeEra, activeEraStart, currentEra, currentIndex, validatorCount }]: Result): DeriveSessionInfo {
+function createDerive(api: ApiInterfaceRx, [[hasBabe, epochDuration, sessionsPerEra], { activeEra, activeEraStart, currentEra, currentIndex, validatorCount }]: Result): DeriveSessionInfo {
   return {
     activeEra,
     activeEraStart,
@@ -29,7 +29,7 @@ function createDerive (api: ApiInterfaceRx, [[hasBabe, epochDuration, sessionsPe
   };
 }
 
-function queryAura (api: ApiInterfaceRx): Observable<DeriveSessionInfo> {
+function queryAura(api: ApiInterfaceRx): Observable<DeriveSessionInfo> {
   return api.derive.session.indexes().pipe(
     map((indexes): DeriveSessionInfo =>
       createDerive(api, [
@@ -44,7 +44,7 @@ function queryAura (api: ApiInterfaceRx): Observable<DeriveSessionInfo> {
   );
 }
 
-function queryBabe (api: ApiInterfaceRx): Observable<DeriveSessionInfo> {
+function queryBabe(api: ApiInterfaceRx): Observable<DeriveSessionInfo> {
   return api.derive.session.indexes().pipe(
     map((indexes) =>
       createDerive(api, [
@@ -62,7 +62,7 @@ function queryBabe (api: ApiInterfaceRx): Observable<DeriveSessionInfo> {
 /**
  * @description Retrieves all the session and era query and calculates specific values on it as the length of the session and eras
  */
-export function info (api: ApiInterfaceRx): () => Observable<DeriveSessionInfo> {
+export function info(api: ApiInterfaceRx): () => Observable<DeriveSessionInfo> {
   return memo((): Observable<DeriveSessionInfo> =>
     api.consts.babe
       ? queryBabe(api)

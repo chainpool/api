@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/typegen authors & contributors
+// Copyright 2017-2020 @chainx-v2/typegen authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -16,7 +16,7 @@ const template = readTemplate('consts');
 const generateForMetaTemplate = Handlebars.compile(template);
 
 /** @internal */
-function generateForMeta (meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
+function generateForMeta(meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
   writeFile(dest, (): string => {
     const allTypes: Record<string, Record<string, { types: Record<string, unknown> }>> = { '@polkadot/types/interfaces': defaultDefs, ...extraTypes };
     const imports = createImports(allTypes);
@@ -69,7 +69,7 @@ function generateForMeta (meta: Metadata, dest: string, extraTypes: Record<strin
 
 // Call `generateForMeta()` with current static metadata
 /** @internal */
-export default function generateConsts (dest = 'packages/api/src/augment/consts.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
+export default function generateConsts(dest = 'packages/api/src/augment/consts.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
   const registry = new TypeRegistry();
 
   registerDefinitions(registry, extraTypes);

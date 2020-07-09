@@ -12,11 +12,11 @@ import { ApiInterfaceRx, ApiOptions, ApiTypes, DecorateMethod, DecoratedRpc, Dec
 import BN from 'bn.js';
 import { BehaviorSubject, Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap, tap, toArray } from 'rxjs/operators';
-import decorateDerive, { ExactDerive } from '@polkadot/api-derive';
-import { memo } from '@polkadot/api-derive/util';
+import decorateDerive, { ExactDerive } from '@chainx-v2/api-derive';
+import { memo } from '@chainx-v2/api-derive/util';
 import DecoratedMeta from '@chainx-v2/metadata/Decorated';
 import RpcCore from '@chainx-v2/rpc-core';
-import { WsProvider } from '@polkadot/rpc-provider';
+import { WsProvider } from '@chainx-v2/rpc-provider';
 import { Metadata, Null, Option, Raw, Text, TypeRegistry, u64 } from '@polkadot/types';
 import Linkage, { LinkageResult } from '@polkadot/types/codec/Linkage';
 import { DEFAULT_VERSION as EXTRINSIC_DEFAULT_VERSION } from '@polkadot/types/extrinsic/constants';

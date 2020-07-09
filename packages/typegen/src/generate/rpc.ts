@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/typegen authors & contributors
+// Copyright 2017-2020 @chainx-v2/typegen authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,7 +15,7 @@ const template = readTemplate('rpc');
 const generateRpcTypesTemplate = Handlebars.compile(template);
 
 /** @internal */
-export default function generateRpcTypes (dest = 'packages/api/src/augment/rpc.ts'): void {
+export default function generateRpcTypes(dest = 'packages/api/src/augment/rpc.ts'): void {
   writeFile(dest, (): string => {
     const registry = new TypeRegistry();
     const allTypes = { '@polkadot/types/interfaces': definitions };

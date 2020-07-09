@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,7 +14,7 @@ import { memo } from '../util';
 type ResultV2 = [BN, BN, BN, BN, BN, BN, BN, BN, BN, BN];
 
 // query via constants (current applicable path)
-function queryConstants (api: ApiInterfaceRx): Observable<ResultV2> {
+function queryConstants(api: ApiInterfaceRx): Observable<ResultV2> {
   return of([
     // deprecated
     api.consts.contracts.callBaseFee || api.registry.createType('Balance'),
@@ -45,7 +45,7 @@ function queryConstants (api: ApiInterfaceRx): Observable<ResultV2> {
  * });
  * ```
  */
-export function fees (api: ApiInterfaceRx): () => Observable<DeriveContractFees> {
+export function fees(api: ApiInterfaceRx): () => Observable<DeriveContractFees> {
   return memo((): Observable<DeriveContractFees> => {
     return queryConstants(api).pipe(
       map(([callBaseFee, contractFee, creationFee, transactionBaseFee, transactionByteFee, transferFee, rentByteFee, rentDepositOffset, surchargeReward, tombstoneDeposit]): DeriveContractFees => ({

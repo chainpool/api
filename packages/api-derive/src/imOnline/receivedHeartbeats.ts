@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,7 +15,7 @@ import { memo } from '../util';
 /**
  * @description Return a boolean array indicating whether the passed accounts had received heartbeats in the current session
  */
-export function receivedHeartbeats (api: ApiInterfaceRx): () => Observable<DeriveHeartbeats> {
+export function receivedHeartbeats(api: ApiInterfaceRx): () => Observable<DeriveHeartbeats> {
   return memo((): Observable<DeriveHeartbeats> =>
     api.query.imOnline?.receivedHeartbeats
       ? api.derive.staking.overview().pipe(

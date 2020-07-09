@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,7 +13,7 @@ import { Vec } from '@polkadot/types';
 
 import { memo } from '../util';
 
-function retrieveStakeOf (api: ApiInterfaceRx): Observable<[AccountId, Balance][]> {
+function retrieveStakeOf(api: ApiInterfaceRx): Observable<[AccountId, Balance][]> {
   const elections = (api.query.electionsPhragmen || api.query.elections);
 
   return elections.stakeOf.creator.meta.type.asMap.linked.isTrue
@@ -29,7 +29,7 @@ function retrieveStakeOf (api: ApiInterfaceRx): Observable<[AccountId, Balance][
     );
 }
 
-function retrieveVoteOf (api: ApiInterfaceRx): Observable<[AccountId, AccountId[]][]> {
+function retrieveVoteOf(api: ApiInterfaceRx): Observable<[AccountId, AccountId[]][]> {
   const elections = (api.query.electionsPhragmen || api.query.elections);
 
   return elections.votesOf.creator.meta.type.asMap.linked.isTrue
@@ -45,7 +45,7 @@ function retrieveVoteOf (api: ApiInterfaceRx): Observable<[AccountId, AccountId[
     );
 }
 
-function retrievePrev (api: ApiInterfaceRx): Observable<DeriveCouncilVotes> {
+function retrievePrev(api: ApiInterfaceRx): Observable<DeriveCouncilVotes> {
   return combineLatest([retrieveStakeOf(api), retrieveVoteOf(api)]).pipe(
     map(([stakes, votes]): DeriveCouncilVotes => {
       const result: DeriveCouncilVotes = [];
@@ -69,7 +69,7 @@ function retrievePrev (api: ApiInterfaceRx): Observable<DeriveCouncilVotes> {
   );
 }
 
-function retrieveCurrent (api: ApiInterfaceRx): Observable<DeriveCouncilVotes> {
+function retrieveCurrent(api: ApiInterfaceRx): Observable<DeriveCouncilVotes> {
   const elections = (api.query.electionsPhragmen || api.query.elections);
 
   return elections.voting.entries<ITuple<[Balance, Vec<AccountId>]>>().pipe(
@@ -81,7 +81,7 @@ function retrieveCurrent (api: ApiInterfaceRx): Observable<DeriveCouncilVotes> {
   );
 }
 
-export function votes (api: ApiInterfaceRx): () => Observable<DeriveCouncilVotes> {
+export function votes(api: ApiInterfaceRx): () => Observable<DeriveCouncilVotes> {
   return memo((): Observable<DeriveCouncilVotes> =>
     (api.query.electionsPhragmen || api.query.elections).stakeOf
       ? retrievePrev(api)

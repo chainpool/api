@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -17,7 +17,7 @@ type Result = [Vec<Bid>, Option<AccountId>, Option<AccountId>, Option<AccountId>
 /**
  * @description Get the overall info for a society
  */
-export function info (api: ApiInterfaceRx): () => Observable<DeriveSociety> {
+export function info(api: ApiInterfaceRx): () => Observable<DeriveSociety> {
   return memo((): Observable<DeriveSociety> =>
     api.queryMulti<Result>([
       api.query.society.bids,

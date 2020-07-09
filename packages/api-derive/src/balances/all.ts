@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -17,7 +17,7 @@ import { memo } from '../util';
 type ResultBalance = [VestingInfo | null, (BalanceLock | BalanceLockTo212)[]];
 type Result = [DeriveBalancesAccount, BlockNumber, ResultBalance];
 
-function calcBalances (api: ApiInterfaceRx, [{ accountId, accountNonce, freeBalance, frozenFee, frozenMisc, reservedBalance, votingBalance }, bestNumber, [vesting, locks]]: Result): DeriveBalancesAll {
+function calcBalances(api: ApiInterfaceRx, [{ accountId, accountNonce, freeBalance, frozenFee, frozenMisc, reservedBalance, votingBalance }, bestNumber, [vesting, locks]]: Result): DeriveBalancesAll {
   let lockedBalance = api.registry.createType('Balance');
   let lockedBreakdown: (BalanceLock | BalanceLockTo212)[] = [];
   let allLocked = false;
@@ -73,7 +73,7 @@ function calcBalances (api: ApiInterfaceRx, [{ accountId, accountNonce, freeBala
 }
 
 // old
-function queryOld (api: ApiInterfaceRx, accountId: AccountId): Observable<ResultBalance> {
+function queryOld(api: ApiInterfaceRx, accountId: AccountId): Observable<ResultBalance> {
   return api.queryMulti<[Vec<BalanceLock>, Option<VestingSchedule>]>([
     [api.query.balances.locks, accountId],
     [api.query.balances.vesting, accountId]
@@ -93,7 +93,7 @@ function queryOld (api: ApiInterfaceRx, accountId: AccountId): Observable<Result
 }
 
 // current (balances  vesting)
-function queryCurrent (api: ApiInterfaceRx, accountId: AccountId): Observable<ResultBalance> {
+function queryCurrent(api: ApiInterfaceRx, accountId: AccountId): Observable<ResultBalance> {
   return (
     api.query.vesting?.vesting
       ? api.queryMulti<[Vec<BalanceLock>, Option<VestingInfo>]>([
@@ -127,7 +127,7 @@ function queryCurrent (api: ApiInterfaceRx, accountId: AccountId): Observable<Re
  * });
  * ```
  */
-export function all (api: ApiInterfaceRx): (address: AccountIndex | AccountId | Address | string) => Observable<DeriveBalancesAll> {
+export function all(api: ApiInterfaceRx): (address: AccountIndex | AccountId | Address | string) => Observable<DeriveBalancesAll> {
   return memo((address: AccountIndex | AccountId | Address | string): Observable<DeriveBalancesAll> =>
     api.derive.balances.account(address).pipe(
       switchMap((account): Observable<Result> =>

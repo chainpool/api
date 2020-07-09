@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,14 +14,14 @@ import { deriveCache, memo } from '../util';
 
 const CACHE_KEY = 'eraRewards';
 
-function mapRewards (eras: EraIndex[], optRewards: Option<Balance>[]): DeriveEraRewards[] {
+function mapRewards(eras: EraIndex[], optRewards: Option<Balance>[]): DeriveEraRewards[] {
   return eras.map((era, index): DeriveEraRewards => ({
     era,
     eraReward: optRewards[index].unwrapOrDefault()
   }));
 }
 
-export function _erasRewards (api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraRewards[]> {
+export function _erasRewards(api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraRewards[]> {
   return memo((eras: EraIndex[], withActive: boolean): Observable<DeriveEraRewards[]> => {
     if (!eras.length) {
       return of([]);
@@ -53,7 +53,7 @@ export function _erasRewards (api: ApiInterfaceRx): (eras: EraIndex[], withActiv
   });
 }
 
-export function erasRewards (api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraRewards[]> {
+export function erasRewards(api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraRewards[]> {
   return memo((withActive = false): Observable<DeriveEraRewards[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._erasRewards(eras, withActive))

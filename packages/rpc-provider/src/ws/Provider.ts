@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/rpc-provider authors & contributors
+// Copyright 2017-2020 @chainx-v2/rpc-provider authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -31,7 +31,7 @@ interface WsStateSubscription extends SubscriptionHandler {
 }
 
 interface WSProviderInterface extends ProviderInterface {
-  connect (): void;
+  connect(): void;
 }
 
 const ALIASSES: { [index: string]: string } = {
@@ -43,7 +43,7 @@ const ALIASSES: { [index: string]: string } = {
 const l = logger('api-ws');
 
 /**
- * # @polkadot/rpc-provider/ws
+ * # @chainx-v2/rpc-provider/ws
  *
  * @name WsProvider
  *
@@ -54,7 +54,7 @@ const l = logger('api-ws');
  *
  * ```javascript
  * import Api from '@polkadot/api/promise';
- * import WsProvider from '@polkadot/rpc-provider/ws';
+ * import WsProvider from '@chainx-v2/rpc-provider/ws';
  *
  * const provider = new WsProvider('ws://127.0.0.1:9944');
  * const api = new Api(provider);
@@ -89,7 +89,7 @@ export default class WsProvider implements WSProviderInterface {
    * @param {string | string[]}  endpoint    The endpoint url. Usually `ws://ip:9944` or `wss://ip:9944`, may provide an array of endpoint strings.
    * @param {boolean} autoConnect Whether to connect automatically or not.
    */
-  constructor (endpoint: string | string[] = defaults.WS_URL, autoConnectMs: number | false = 1000) {
+  constructor(endpoint: string | string[] = defaults.WS_URL, autoConnectMs: number | false = 1000) {
     const endpoints = Array.isArray(endpoint)
       ? endpoint
       : [endpoint];
@@ -116,14 +116,14 @@ export default class WsProvider implements WSProviderInterface {
   /**
    * @summary `true` when this provider supports subscriptions
    */
-  public get hasSubscriptions (): boolean {
+  public get hasSubscriptions(): boolean {
     return true;
   }
 
   /**
    * @description Returns a clone of the object
    */
-  public clone (): WsProvider {
+  public clone(): WsProvider {
     return new WsProvider(this.#endpoints);
   }
 
@@ -132,7 +132,7 @@ export default class WsProvider implements WSProviderInterface {
    * @description The [[WsProvider]] connects automatically by default, however if you decided otherwise, you may
    * connect manually using this method.
    */
-  public async connect (): Promise<void> {
+  public async connect(): Promise<void> {
     try {
       this.#endpointIndex = (this.#endpointIndex + 1) % this.#endpoints.length;
 
@@ -151,7 +151,7 @@ export default class WsProvider implements WSProviderInterface {
   /**
    * @description Manually disconnect from the connection, clearing autoconnect logic
    */
-  public disconnect (): void {
+  public disconnect(): void {
     if (isNull(this.#websocket)) {
       throw new Error('Cannot disconnect on a non-open websocket');
     }
@@ -168,7 +168,7 @@ export default class WsProvider implements WSProviderInterface {
    * @summary Whether the node is connected or not.
    * @return {boolean} true if connected
    */
-  public isConnected (): boolean {
+  public isConnected(): boolean {
     return this.#isConnected;
   }
 
@@ -178,7 +178,7 @@ export default class WsProvider implements WSProviderInterface {
    * @param  {ProviderInterfaceEmitCb}  sub  Callback
    * @return unsubscribe function
    */
-  public on (type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
+  public on(type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
     this.#eventemitter.on(type, sub);
 
     return (): void => {
@@ -192,7 +192,7 @@ export default class WsProvider implements WSProviderInterface {
    * @param params Encoded paramaters as appliucable for the method
    * @param subscription Subscription details (internally used)
    */
-  public send (method: string, params: any[], subscription?: SubscriptionHandler): Promise<any> {
+  public send(method: string, params: any[], subscription?: SubscriptionHandler): Promise<any> {
     return new Promise((resolve, reject): void => {
       try {
         const json = this.#coder.encodeJson(method, params);
@@ -247,7 +247,7 @@ export default class WsProvider implements WSProviderInterface {
    * })
    * ```
    */
-  public async subscribe (type: string, method: string, params: any[], callback: ProviderInterfaceCallback): Promise<number | string> {
+  public async subscribe(type: string, method: string, params: any[], callback: ProviderInterfaceCallback): Promise<number | string> {
     const id = await this.send(method, params, { callback, type }) as Promise<number | string>;
 
     return id;
@@ -256,7 +256,7 @@ export default class WsProvider implements WSProviderInterface {
   /**
    * @summary Allows unsubscribing to subscriptions made with [[subscribe]].
    */
-  public async unsubscribe (type: string, method: string, id: number | string): Promise<boolean> {
+  public async unsubscribe(type: string, method: string, id: number | string): Promise<boolean> {
     const subscription = `${type}::${id}`;
 
     // FIXME This now could happen with re-subscriptions. The issue is that with a re-sub

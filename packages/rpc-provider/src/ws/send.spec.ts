@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/rpc-provider authors & contributors
+// Copyright 2017-2020 @chainx-v2/rpc-provider authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,11 +13,11 @@ declare const global: Global;
 let provider: WsProvider;
 let mock: Mock;
 
-function createMock (requests: any[]): void {
+function createMock(requests: any[]): void {
   mock = mockWs(requests);
 }
 
-function createWs (autoConnect = 1000): WsProvider {
+function createWs(autoConnect = 1000): WsProvider {
   provider = new WsProvider(TEST_WS_URL, autoConnect);
 
   return provider;

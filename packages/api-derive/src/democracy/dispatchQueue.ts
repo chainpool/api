@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -22,7 +22,7 @@ interface SchedulerInfo {
   index: ReferendumIndex;
 }
 
-function queryQueue (api: ApiInterfaceRx): Observable<DeriveDispatch[]> {
+function queryQueue(api: ApiInterfaceRx): Observable<DeriveDispatch[]> {
   return api.query.democracy.dispatchQueue<Vec<ITuple<[BlockNumber, Hash, ReferendumIndex]>>>().pipe(
     switchMap((dispatches) =>
       combineLatest([
@@ -42,7 +42,7 @@ function queryQueue (api: ApiInterfaceRx): Observable<DeriveDispatch[]> {
   );
 }
 
-function schedulerEntries (api: ApiInterfaceRx): Observable<[BlockNumber[], Option<Scheduled>[][]]> {
+function schedulerEntries(api: ApiInterfaceRx): Observable<[BlockNumber[], Option<Scheduled>[][]]> {
   // We don't get entries, but rather we get the keys (triggered via finished referendums) and
   // the subscribe to those keys - this means we pickup when the schedulers actually executes
   // at a block, the entry for that block will become empty
@@ -61,7 +61,7 @@ function schedulerEntries (api: ApiInterfaceRx): Observable<[BlockNumber[], Opti
   );
 }
 
-function queryScheduler (api: ApiInterfaceRx): Observable<DeriveDispatch[]> {
+function queryScheduler(api: ApiInterfaceRx): Observable<DeriveDispatch[]> {
   return schedulerEntries(api).pipe(
     switchMap(([blockNumbers, agendas]): Observable<[SchedulerInfo[], (DeriveProposalImage | undefined)[]]> => {
       const result: SchedulerInfo[] = [];
@@ -94,7 +94,7 @@ function queryScheduler (api: ApiInterfaceRx): Observable<DeriveDispatch[]> {
   );
 }
 
-export function dispatchQueue (api: ApiInterfaceRx): () => Observable<DeriveDispatch[]> {
+export function dispatchQueue(api: ApiInterfaceRx): () => Observable<DeriveDispatch[]> {
   return memo((): Observable<DeriveDispatch[]> =>
     isFunction(api.query.scheduler?.agenda)
       ? queryScheduler(api)

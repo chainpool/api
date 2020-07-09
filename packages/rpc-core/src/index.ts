@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ProviderInterface, ProviderInterfaceCallback } from '@polkadot/rpc-provider/types';
+import { ProviderInterface, ProviderInterfaceCallback } from '@chainx-v2/rpc-provider/types';
 import { Hash } from '@polkadot/types/interfaces';
 import { AnyJson, Codec, DefinitionRpc, DefinitionRpcExt, DefinitionRpcSub, Registry } from '@polkadot/types/types';
 import { RpcInterface, RpcInterfaceMethod } from './types';
@@ -59,7 +59,7 @@ function logErrorMessage(method: string, { params, type }: DefinitionRpc, error:
  *
  * ```javascript
  * import Rpc from '@chainx-v2/rpc-core';
- * import WsProvider from '@polkadot/rpc-provider/ws';
+ * import WsProvider from '@chainx-v2/rpc-provider/ws';
  *
  * const provider = new WsProvider('ws://127.0.0.1:9944');
  * const rpc = new Rpc(provider);

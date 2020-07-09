@@ -13,7 +13,7 @@ To create TypeScript-aware definitions and keep your files in a single place, yo
 
 With this structure setup, you can generate TypeScript definitions.
 
-In the root of your project (with the `@polkadot/typegen` package installed), you can run `yarn polkadot-types-from-defs --input ./stuff/interfaces --package @MeInc/stuff/interfaces` which will create `types.ts` and `index.ts` files with the generated types. You can use these in exactly the same way as you would use your types from `@polkadot/types/interfaces`.
+In the root of your project (with the `@chainx-v2/typegen` package installed), you can run `yarn polkadot-types-from-defs --input ./stuff/interfaces --package @MeInc/stuff/interfaces` which will create `types.ts` and `index.ts` files with the generated types. You can use these in exactly the same way as you would use your types from `@polkadot/types/interfaces`.
 
 ## Chain modules
 

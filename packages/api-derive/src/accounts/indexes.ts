@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -18,7 +18,7 @@ const enumsetSize = ENUMSET_SIZE.toNumber();
 
 let indicesCache: AccountIndexes | null = null;
 
-function queryEnumSet (api: ApiInterfaceRx): Observable<AccountIndexes> {
+function queryEnumSet(api: ApiInterfaceRx): Observable<AccountIndexes> {
   return api.query.indices.nextEnumSet<AccountIndex>().pipe(
     // use the nextEnumSet (which is a counter of the number of sets) to construct
     // a range of values to query [0, 1, 2, ...]. Retrieve the full enum set for the
@@ -43,7 +43,7 @@ function queryEnumSet (api: ApiInterfaceRx): Observable<AccountIndexes> {
   );
 }
 
-function queryAccounts (api: ApiInterfaceRx): Observable<AccountIndexes> {
+function queryAccounts(api: ApiInterfaceRx): Observable<AccountIndexes> {
   return api.query.indices.accounts.entries().pipe(
     map((entries): AccountIndexes =>
       entries.reduce((indexes: AccountIndexes, [key, idOpt]): AccountIndexes => {
@@ -72,7 +72,7 @@ function queryAccounts (api: ApiInterfaceRx): Observable<AccountIndexes> {
  * });
  * ```
  */
-export function indexes (api: ApiInterfaceRx): () => Observable<AccountIndexes> {
+export function indexes(api: ApiInterfaceRx): () => Observable<AccountIndexes> {
   return memo((): Observable<AccountIndexes> =>
     indicesCache
       ? of(indicesCache)

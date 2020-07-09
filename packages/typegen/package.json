@@ -1,5 +1,5 @@
 {
-  "name": "@polkadot/typegen",
+  "name": "@chainx-v2/typegen",
   "version": "1.22.0-beta.3",
   "description": "Type generation scripts",
   "main": "index.js",
@@ -38,7 +38,7 @@
     "@babel/runtime": "^7.10.3",
     "@chainx-v2/metadata": "1.22.0-beta.3",
     "@polkadot/api": "1.22.0-beta.3",
-    "@polkadot/rpc-provider": "1.22.0-beta.3",
+    "@chainx-v2/rpc-provider": "1.22.0-beta.3",
     "@polkadot/types": "1.22.0-beta.3",
     "@polkadot/util": "^2.15.1",
     "handlebars": "^4.7.6",

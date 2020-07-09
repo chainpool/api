@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -16,7 +16,7 @@ import { memo } from '../util';
 type ResultSlots = [u64, u64, u64, Option<SessionIndex>];
 type ResultSlotsFlat = [u64, u64, u64, SessionIndex];
 
-function createDerive (api: ApiInterfaceRx, info: DeriveSessionInfo, [currentSlot, epochIndex, epochOrGenesisStartSlot, activeEraStartSessionIndex]: ResultSlotsFlat): DeriveSessionProgress {
+function createDerive(api: ApiInterfaceRx, info: DeriveSessionInfo, [currentSlot, epochIndex, epochOrGenesisStartSlot, activeEraStartSessionIndex]: ResultSlotsFlat): DeriveSessionProgress {
   const epochStartSlot = epochIndex.mul(info.sessionLength).iadd(epochOrGenesisStartSlot);
   const sessionProgress = currentSlot.sub(epochStartSlot);
   const eraProgress = info.currentIndex.sub(activeEraStartSessionIndex).imul(info.sessionLength).iadd(sessionProgress);
@@ -28,7 +28,7 @@ function createDerive (api: ApiInterfaceRx, info: DeriveSessionInfo, [currentSlo
   };
 }
 
-function queryAura (api: ApiInterfaceRx): Observable<DeriveSessionProgress> {
+function queryAura(api: ApiInterfaceRx): Observable<DeriveSessionProgress> {
   return api.derive.session.info().pipe(
     map((info): DeriveSessionProgress =>
       createDerive(api, info, [
@@ -41,7 +41,7 @@ function queryAura (api: ApiInterfaceRx): Observable<DeriveSessionProgress> {
   );
 }
 
-function queryBabe (api: ApiInterfaceRx): Observable<[DeriveSessionInfo, ResultSlotsFlat]> {
+function queryBabe(api: ApiInterfaceRx): Observable<[DeriveSessionInfo, ResultSlotsFlat]> {
   return api.derive.session.info().pipe(
     switchMap((info): Observable<[DeriveSessionInfo, ResultSlots]> =>
       combineLatest([
@@ -60,7 +60,7 @@ function queryBabe (api: ApiInterfaceRx): Observable<[DeriveSessionInfo, ResultS
   );
 }
 
-function queryBabeNoHistory (api: ApiInterfaceRx): Observable<[DeriveSessionInfo, ResultSlotsFlat]> {
+function queryBabeNoHistory(api: ApiInterfaceRx): Observable<[DeriveSessionInfo, ResultSlotsFlat]> {
   return combineLatest([
     api.derive.session.info(),
     api.queryMulti<ResultSlotsFlat>([
@@ -75,7 +75,7 @@ function queryBabeNoHistory (api: ApiInterfaceRx): Observable<[DeriveSessionInfo
 /**
  * @description Retrieves all the session and era query and calculates specific values on it as the length of the session and eras
  */
-export function progress (api: ApiInterfaceRx): () => Observable<DeriveSessionProgress> {
+export function progress(api: ApiInterfaceRx): () => Observable<DeriveSessionProgress> {
   return memo((): Observable<DeriveSessionProgress> =>
     api.consts.babe
       ? (

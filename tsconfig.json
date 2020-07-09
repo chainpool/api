@@ -20,10 +20,10 @@
       "@polkadot/api-contract/*": [
         "packages/api-contract/src/*"
       ],
-      "@polkadot/api-derive": [
+      "@chainx-v2/api-derive": [
         "packages/api-derive/src"
       ],
-      "@polkadot/api-derive/*": [
+      "@chainx-v2/api-derive/*": [
         "packages/api-derive/src/*"
       ],
       "@chainx-v2/metadata": [
@@ -38,10 +38,10 @@
       "@chainx-v2/rpc-core/*": [
         "packages/rpc-core/src/*"
       ],
-      "@polkadot/rpc-provider": [
+      "@chainx-v2/rpc-provider": [
         "packages/rpc-provider/src"
       ],
-      "@polkadot/rpc-provider/*": [
+      "@chainx-v2/rpc-provider/*": [
         "packages/rpc-provider/src/*"
       ],
       "@polkadot/types": [

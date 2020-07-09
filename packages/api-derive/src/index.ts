@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -29,8 +29,8 @@ export const derive = { accounts, balances, chain, contracts, council, democracy
 
 type DeriveSection<Section> = {
   [Method in keyof Section]: Section[Method] extends AnyFunction
-    ? ReturnType<Section[Method]> // ReturnType<Section[Method]> will be the inner function, i.e. without (api) argument
-    : never;
+  ? ReturnType<Section[Method]> // ReturnType<Section[Method]> will be the inner function, i.e. without (api) argument
+  : never;
 };
 type DeriveAllSections<AllSections> = {
   [Section in keyof AllSections]: DeriveSection<AllSections[Section]>
@@ -60,7 +60,7 @@ const deriveAvail: Record<string, string[]> = {
  * `allSections`, and keep the object architecture of `allSections`.
  */
 /** @internal */
-function injectFunctions<AllSections> (api: ApiInterfaceRx, allSections: AllSections): DeriveAllSections<AllSections> {
+function injectFunctions<AllSections>(api: ApiInterfaceRx, allSections: AllSections): DeriveAllSections<AllSections> {
   const queryKeys = Object.keys(api.query);
 
   return Object
@@ -93,7 +93,7 @@ function injectFunctions<AllSections> (api: ApiInterfaceRx, allSections: AllSect
 // FIXME The return type of this function should be {...ExactDerive, ...DeriveCustom}
 // For now we just drop the custom derive typings
 /** @internal */
-export default function decorateDerive (api: ApiInterfaceRx, custom: DeriveCustom = {}): ExactDerive {
+export default function decorateDerive(api: ApiInterfaceRx, custom: DeriveCustom = {}): ExactDerive {
   return {
     ...injectFunctions(api, derive),
     ...injectFunctions(api, custom)

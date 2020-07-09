@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -19,7 +19,7 @@ type Result = [Bid[], ResultSuspend[]]
 /**
  * @description Get the candidate info for a society
  */
-export function candidates (api: ApiInterfaceRx): () => Observable<DeriveSocietyCandidate[]> {
+export function candidates(api: ApiInterfaceRx): () => Observable<DeriveSocietyCandidate[]> {
   return memo((): Observable<DeriveSocietyCandidate[]> =>
     api.query.society.candidates<Vec<Bid>>().pipe(
       switchMap((candidates: Vec<Bid>): Observable<Result> =>

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/typegen authors & contributors
+// Copyright 2017-2020 @chainx-v2/typegen authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -20,7 +20,7 @@ const template = readTemplate('interfaceRegistry');
 const generateInterfaceTypesTemplate = Handlebars.compile(template);
 
 /** @internal */
-export function generateInterfaceTypes (importDefinitions: { [importPath: string]: Record<string, ModuleTypes> }, dest: string): void {
+export function generateInterfaceTypes(importDefinitions: { [importPath: string]: Record<string, ModuleTypes> }, dest: string): void {
   writeFile(dest, (): string => {
     Object.entries(importDefinitions).reduce((acc, def) => Object.assign(acc, def), {});
 
@@ -69,7 +69,7 @@ export function generateInterfaceTypes (importDefinitions: { [importPath: string
 }
 
 // Generate `packages/types/src/interfaceRegistry.ts`, the registry of all interfaces
-export default function generateDefaultInterfaceTypes (): void {
+export default function generateDefaultInterfaceTypes(): void {
   generateInterfaceTypes(
     { '@polkadot/types/interfaces': defaultDefinitions },
     'packages/types/src/augment/registry.ts'

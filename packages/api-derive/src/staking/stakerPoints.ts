@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,7 +11,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { memo } from '../util';
 
-export function _stakerPoints (api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerPoints[]> {
+export function _stakerPoints(api: ApiInterfaceRx): (accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean) => Observable<DeriveStakerPoints[]> {
   return memo((accountId: Uint8Array | string, eras: EraIndex[], withActive: boolean): Observable<DeriveStakerPoints[]> => {
     const stakerId = api.registry.createType('AccountId', accountId).toString();
 
@@ -27,7 +27,7 @@ export function _stakerPoints (api: ApiInterfaceRx): (accountId: Uint8Array | st
   });
 }
 
-export function stakerPoints (api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerPoints[]> {
+export function stakerPoints(api: ApiInterfaceRx): (accountId: Uint8Array | string, withActive?: boolean) => Observable<DeriveStakerPoints[]> {
   return memo((accountId: Uint8Array | string, withActive = false): Observable<DeriveStakerPoints[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._stakerPoints(accountId, eras, withActive))

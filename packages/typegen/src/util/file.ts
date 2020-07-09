@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @polkadot/typegen authors & contributors
+// Copyright 2017-2020 @chainx-v2/typegen authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import fs from 'fs';
 
-export function writeFile (dest: string, generator: () => string, noLog?: boolean): void {
+export function writeFile(dest: string, generator: () => string, noLog?: boolean): void {
   !noLog && console.log(`${dest}\n\tGenerating`);
 
   let generated = generator();
@@ -20,6 +20,6 @@ export function writeFile (dest: string, generator: () => string, noLog?: boolea
   !noLog && console.log('');
 }
 
-export function readTemplate (path: string): string {
+export function readTemplate(path: string): string {
   return fs.readFileSync(`${__dirname}/../templates/${path}.hbs`).toString();
 }

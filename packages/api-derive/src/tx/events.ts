@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,7 +15,7 @@ interface Result {
   events: EventRecord[];
 }
 
-export function events (api: ApiInterfaceRx): (at: Hash) => Observable<Result> {
+export function events(api: ApiInterfaceRx): (at: Hash) => Observable<Result> {
   return memo((at: Hash): Observable<Result> =>
     combineLatest([
       api.query.system.events.at(at),

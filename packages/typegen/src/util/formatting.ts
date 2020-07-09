@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/typegen authors & contributors
+// Copyright 2017-2020 @chainx-v2/typegen authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -30,7 +30,7 @@ Handlebars.registerPartial({
 });
 
 Handlebars.registerHelper({
-  imports () {
+  imports() {
     const { imports, types } = this as unknown as This;
     const defs = [
       {
@@ -72,17 +72,17 @@ Handlebars.registerHelper({
         : result;
     }, '');
   },
-  trim (options: { fn: (self: unknown) => string }) {
+  trim(options: { fn: (self: unknown) => string }) {
     return options.fn(this).trim();
   },
-  upper (options: { fn: (self: unknown) => string }) {
+  upper(options: { fn: (self: unknown) => string }) {
     return options.fn(this).toUpperCase();
   }
 });
 
 // helper to generate a `export interface <Name> extends <Base> {<Body>}
 /** @internal */
-export function exportInterface (name = '', base: string, body = ''): string {
+export function exportInterface(name = '', base: string, body = ''): string {
   // * @description extends [[${base}]]
   const doc = `/** @name ${name} */\n`;
 
@@ -93,7 +93,7 @@ export function exportInterface (name = '', base: string, body = ''): string {
 // but since we don't want type alias (TS doesn't preserve names) we use
 // interface here.
 /** @internal */
-export function exportType (name = '', base: string): string {
+export function exportType(name = '', base: string): string {
   return exportInterface(name, base);
 }
 
@@ -101,7 +101,7 @@ export function exportType (name = '', base: string): string {
  * Given the inner `K` & `V`, return a `BTreeMap<K, V>`  string
  */
 /** @internal */
-function formatBTreeMap (key: string, val: string): string {
+function formatBTreeMap(key: string, val: string): string {
   return `BTreeMap<${key}, ${val}>`;
 }
 
@@ -109,7 +109,7 @@ function formatBTreeMap (key: string, val: string): string {
  * Given the inner `V`, return a `BTreeSet<V>`  string
  */
 /** @internal */
-function formatBTreeSet (val: string): string {
+function formatBTreeSet(val: string): string {
   return `BTreeSet<${val}>`;
 }
 
@@ -117,7 +117,7 @@ function formatBTreeSet (val: string): string {
  * Given the inner `T`, return a `Compact<T>` string
  */
 /** @internal */
-function formatCompact (inner: string): string {
+function formatCompact(inner: string): string {
   return paramsNotation('Compact', inner);
 }
 
@@ -125,7 +125,7 @@ function formatCompact (inner: string): string {
  * Simple return
  */
 /** @internal */
-function formatDoNoConstruct (): string {
+function formatDoNoConstruct(): string {
   return 'DoNotConstruct';
 }
 
@@ -133,7 +133,7 @@ function formatDoNoConstruct (): string {
  * Given the inner `K` & `V`, return a `BTreeMap<K, V>`  string
  */
 /** @internal */
-function formatHashMap (key: string, val: string): string {
+function formatHashMap(key: string, val: string): string {
   return `HashMap<${key}, ${val}>`;
 }
 
@@ -141,7 +141,7 @@ function formatHashMap (key: string, val: string): string {
  * Given the inner `T`, return a `Vec<T>` string
  */
 /** @internal */
-function formatLinkage (inner: string): string {
+function formatLinkage(inner: string): string {
   return paramsNotation('Linkage', inner);
 }
 
@@ -149,7 +149,7 @@ function formatLinkage (inner: string): string {
  * Given the inner `O` & `E`, return a `Result<O, E>`  string
  */
 /** @internal */
-function formatResult (innerOk: string, innerError: string): string {
+function formatResult(innerOk: string, innerError: string): string {
   return `Result<${innerOk}, ${innerError}>`;
 }
 
@@ -157,7 +157,7 @@ function formatResult (innerOk: string, innerError: string): string {
  * Given the inner `T`, return a `Option<T>` string
  */
 /** @internal */
-function formatOption (inner: string): string {
+function formatOption(inner: string): string {
   return paramsNotation('Option', inner);
 }
 
@@ -165,7 +165,7 @@ function formatOption (inner: string): string {
  * Given the inners `T[]`, return a `ITuple<...T>` string
  */
 /** @internal */
-function formatTuple (inners: string[]): string {
+function formatTuple(inners: string[]): string {
   return paramsNotation('ITuple', `[${inners.join(', ')}]`);
 }
 
@@ -173,7 +173,7 @@ function formatTuple (inners: string[]): string {
  * Given the inner `T`, return a `Vec<T>` string
  */
 /** @internal */
-function formatVec (inner: string): string {
+function formatVec(inner: string): string {
   return paramsNotation('Vec', inner);
 }
 
@@ -181,7 +181,7 @@ function formatVec (inner: string): string {
  * Correctly format a given type
  */
 /** @internal */
-export function formatType (definitions: Record<string, ModuleTypes>, type: string | TypeDef, imports: TypeImports): string {
+export function formatType(definitions: Record<string, ModuleTypes>, type: string | TypeDef, imports: TypeImports): string {
   let typeDef: TypeDef;
 
   if (typeof type === 'string') {

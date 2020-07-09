@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -21,7 +21,7 @@ type FlagsIntermediate = [
   AccountId | undefined
 ];
 
-function isIncludedFn (accountId: AccountId | Address | string): (_: AccountId | Address |string) => boolean {
+function isIncludedFn(accountId: AccountId | Address | string): (_: AccountId | Address | string) => boolean {
   return function (id: AccountId | Address | string): boolean {
     return id.toString() === accountId.toString();
   };
@@ -31,7 +31,7 @@ function isIncludedFn (accountId: AccountId | Address | string): (_: AccountId |
  * @name info
  * @description Returns account membership flags
  */
-export function flags (api: ApiInterfaceRx): (address?: AccountId | Address | string | null) => Observable<DeriveAccountFlags> {
+export function flags(api: ApiInterfaceRx): (address?: AccountId | Address | string | null) => Observable<DeriveAccountFlags> {
   return memo((address?: AccountId | Address | string | null): Observable<DeriveAccountFlags> => {
     const councilSection = api.query.electionsPhragmen ? 'electionsPhragmen' : 'elections';
 

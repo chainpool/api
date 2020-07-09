@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,11 +13,11 @@ import { Vec, u32 } from '@polkadot/types';
 import { DeriveElectionsInfo } from '../types';
 import { memo } from '../util';
 
-function sortAccounts ([, balanceA]: ITuple<[AccountId, Balance]>, [, balanceB]: ITuple<[AccountId, Balance]>): number {
+function sortAccounts([, balanceA]: ITuple<[AccountId, Balance]>, [, balanceB]: ITuple<[AccountId, Balance]>): number {
   return balanceB.cmp(balanceA);
 }
 
-function queryElections (api: ApiInterfaceRx): Observable<DeriveElectionsInfo> {
+function queryElections(api: ApiInterfaceRx): Observable<DeriveElectionsInfo> {
   const section = api.query.electionsPhragmen ? 'electionsPhragmen' : 'elections';
 
   return api.queryMulti<[Vec<AccountId>, Vec<AccountId>, Vec<ITuple<[AccountId, Balance]>>, Vec<ITuple<[AccountId, Balance]>>]>([
@@ -54,6 +54,6 @@ function queryElections (api: ApiInterfaceRx): Observable<DeriveElectionsInfo> {
  * });
  * ```
  */
-export function info (api: ApiInterfaceRx): () => Observable<DeriveElectionsInfo> {
+export function info(api: ApiInterfaceRx): () => Observable<DeriveElectionsInfo> {
   return memo((): Observable<DeriveElectionsInfo> => queryElections(api));
 }

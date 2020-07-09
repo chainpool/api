@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,7 +13,7 @@ import { deriveCache, memo } from '../util';
 
 const CACHE_KEY = 'eraPoints';
 
-function mapValidators ({ individual }: EraRewardPoints): DeriveEraValPoints {
+function mapValidators({ individual }: EraRewardPoints): DeriveEraValPoints {
   return [...individual.entries()]
     .filter(([, points]): boolean => points.gtn(0))
     .reduce((result: DeriveEraValPoints, [validatorId, points]): DeriveEraValPoints => {
@@ -23,7 +23,7 @@ function mapValidators ({ individual }: EraRewardPoints): DeriveEraValPoints {
     }, {});
 }
 
-function mapPoints (eras: EraIndex[], points: EraRewardPoints[]): DeriveEraPoints[] {
+function mapPoints(eras: EraIndex[], points: EraRewardPoints[]): DeriveEraPoints[] {
   return eras.map((era, index): DeriveEraPoints => ({
     era,
     eraPoints: points[index].total,
@@ -31,7 +31,7 @@ function mapPoints (eras: EraIndex[], points: EraRewardPoints[]): DeriveEraPoint
   }));
 }
 
-export function _erasPoints (api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraPoints[]> {
+export function _erasPoints(api: ApiInterfaceRx): (eras: EraIndex[], withActive: boolean) => Observable<DeriveEraPoints[]> {
   return memo((eras: EraIndex[], withActive: boolean): Observable<DeriveEraPoints[]> => {
     if (!eras.length) {
       return of([]);
@@ -61,7 +61,7 @@ export function _erasPoints (api: ApiInterfaceRx): (eras: EraIndex[], withActive
   });
 }
 
-export function erasPoints (api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraPoints[]> {
+export function erasPoints(api: ApiInterfaceRx): (withActive?: boolean) => Observable<DeriveEraPoints[]> {
   return memo((withActive = false): Observable<DeriveEraPoints[]> =>
     api.derive.staking.erasHistoric(withActive).pipe(
       switchMap((eras) => api.derive.staking._erasPoints(eras, withActive))

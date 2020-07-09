@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api-derive authors & contributors
+// Copyright 2017-2020 @chainx-v2/api-derive authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -10,7 +10,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { memo } from '../util';
 
-function retrievePointsPrev (api: ApiInterfaceRx, currentElected: AccountId[]): Observable<EraRewardPoints> {
+function retrievePointsPrev(api: ApiInterfaceRx, currentElected: AccountId[]): Observable<EraRewardPoints> {
   return api.query.staking.currentEraPointsEarned<EraPoints>().pipe(
     map(({ individual, total }): EraRewardPoints =>
       api.registry.createType('EraRewardPoints', {
@@ -28,7 +28,7 @@ function retrievePointsPrev (api: ApiInterfaceRx, currentElected: AccountId[]): 
 /**
  * @description Retrieve the staking overview, including elected and points earned
  */
-export function currentPoints (api: ApiInterfaceRx): () => Observable<EraRewardPoints> {
+export function currentPoints(api: ApiInterfaceRx): () => Observable<EraRewardPoints> {
   return memo((): Observable<EraRewardPoints> =>
     api.derive.staking.overview().pipe(
       switchMap(({ activeEra, nextElected }) =>
