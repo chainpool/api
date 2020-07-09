@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { AccountId, Address, Balance } from '@polkadot/types/interfaces';
 import { ITuple } from '@polkadot/types/types';
 import { DeriveAccountFlags } from '../types';

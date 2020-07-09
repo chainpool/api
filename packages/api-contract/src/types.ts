@@ -2,12 +2,12 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ApiTypes, DecorateMethod } from '@polkadot/api/types';
+import { ApiTypes, DecorateMethod } from '@chainx-v2/api/types';
 import { AccountId, Address, ContractExecResult } from '@polkadot/types/interfaces';
 import { Codec, CodecArg } from '@polkadot/types/types';
 import { MetaRegistryJson, StringIndex, TypeIndex, TypeDef } from '@polkadot/types/create/types';
 
-import { ApiPromise, ApiRx } from '@polkadot/api';
+import { ApiPromise, ApiRx } from '@chainx-v2/api';
 
 export type ApiObject<ApiType extends ApiTypes> = ApiType extends 'rxjs'
   ? ApiRx

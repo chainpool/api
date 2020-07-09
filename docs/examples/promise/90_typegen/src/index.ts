@@ -8,13 +8,13 @@ import './interfaces/augment-types';
 import type { VoteRecord } from './interfaces';
 
 // external imports
-import { ApiPromise } from '@polkadot/api';
+import { ApiPromise } from '@chainx-v2/api';
 import { createType } from '@polkadot/types';
 
 // our local stuff
 import * as definitions from './interfaces/definitions';
 
-async function main (): Promise<void> {
+async function main(): Promise<void> {
   // extract all types from definitions - fast and dirty approach, flatted on 'types'
   const types = Object.values(definitions).reduce((res, { types }): object => ({ ...res, ...types }), {});
 

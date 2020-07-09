@@ -7,7 +7,7 @@ import { ITuple } from '@polkadot/types/types';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { Vec, u32 } from '@polkadot/types';
 
 import { DeriveElectionsInfo } from '../types';

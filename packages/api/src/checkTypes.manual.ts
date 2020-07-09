@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -7,7 +7,7 @@
 import { Balance, Header, Index } from '@polkadot/types/interfaces';
 import { IExtrinsic, IMethod } from '@polkadot/types/types';
 
-import { ApiPromise } from '@polkadot/api';
+import { ApiPromise } from '@chainx-v2/api';
 import { HeaderExtended } from '@chainx-v2/api-derive';
 import testKeyring, { TestKeyringMap } from '@polkadot/keyring/testingPairs';
 import { createTypeUnsafe, TypeRegistry } from '@polkadot/types';

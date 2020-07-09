@@ -3,9 +3,9 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 
 // Required imports
-const { ApiPromise, WsProvider } = require('@polkadot/api');
+const { ApiPromise, WsProvider } = require('@chainx-v2/api');
 
-async function main () {
+async function main() {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://127.0.0.1:9944');
 

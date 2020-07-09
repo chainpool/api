@@ -30,7 +30,7 @@ function generate(metaHex: string, pkg: string | undefined, output: string, isSt
     [
       HEADER('chain'),
       ...[
-        '@polkadot/api/augment/rpc',
+        '@chainx-v2/api/augment/rpc',
         ...['consts', 'query', 'tx'].filter((key) => !!key).map((key) => `./augment-api-${key}`)
       ].map((path) => `import '${path}';\n`)
     ].join('')

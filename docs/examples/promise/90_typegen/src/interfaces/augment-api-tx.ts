@@ -18,9 +18,9 @@ import { EraIndex, RewardDestination, ValidatorPrefs } from '@polkadot/types/int
 import { Key } from '@polkadot/types/interfaces/system';
 import { Timepoint } from '@polkadot/types/interfaces/utility';
 import { TallyType, VoteOutcome, VoteType } from 'sample-polkadotjs-typegen/interfaces/voting';
-import { ApiTypes, SubmittableExtrinsic } from '@polkadot/api/types';
+import { ApiTypes, SubmittableExtrinsic } from '@chainx-v2/api/types';
 
-declare module '@polkadot/api/types/submittable' {
+declare module '@chainx-v2/api/types/submittable' {
   export interface AugmentedSubmittables<ApiType> {
     system: {
 

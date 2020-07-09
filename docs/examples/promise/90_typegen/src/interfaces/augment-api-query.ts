@@ -25,9 +25,9 @@ import { Multiplier } from '@polkadot/types/interfaces/txpayment';
 import { Multisig } from '@polkadot/types/interfaces/utility';
 import { VoteRecord } from 'sample-polkadotjs-typegen/interfaces/voting';
 import { Observable } from 'rxjs';
-import { ApiTypes } from '@polkadot/api/types';
+import { ApiTypes } from '@chainx-v2/api/types';
 
-declare module '@polkadot/api/types/storage' {
+declare module '@chainx-v2/api/types/storage' {
   export interface AugmentedQueries<ApiType> {
     system: {
 

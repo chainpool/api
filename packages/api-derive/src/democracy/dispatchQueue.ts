@@ -8,7 +8,7 @@ import { DeriveDispatch, DeriveProposalImage } from '../types';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { Option, Vec, u64 } from '@polkadot/types';
 import { isFunction, stringToHex } from '@polkadot/util';
 

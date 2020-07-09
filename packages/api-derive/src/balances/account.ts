@@ -8,7 +8,7 @@ import { DeriveBalancesAccount } from '../types';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { isFunction } from '@polkadot/util';
 
 import { memo } from '../util';

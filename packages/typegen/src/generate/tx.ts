@@ -77,7 +77,7 @@ function generateForMeta(registry: Registry, meta: Metadata, dest: string, extra
         types: Object.keys(imports.localTypes[packagePath])
       })),
       {
-        file: '@polkadot/api/types',
+        file: '@chainx-v2/api/types',
         types: ['ApiTypes', 'SubmittableExtrinsic']
       }
     ];

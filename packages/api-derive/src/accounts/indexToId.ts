@@ -7,7 +7,7 @@ import { ITuple } from '@polkadot/types/types';
 
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { ENUMSET_SIZE } from '@polkadot/types/generic/AccountIndex';
 import { Option, Vec } from '@polkadot/types';
 import { isFunction } from '@polkadot/util';

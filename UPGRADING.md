@@ -65,7 +65,7 @@ const blockNumber = createType(api.registry, 'BlockNumber', 12345);
 In some cases, you would want to explicitly pass a `Registry` interface to the API, instead of relying on it explicitly. This is generally applicable in the cases where you want to use the `createType` independently from the API -
 
 ```js
-import { ApiPromise } from '@polkadot/api';
+import { ApiPromise } from '@chainx-v2/api';
 import { TypeRegistry, createType } from '@polkadot/types';
 
 ...
@@ -111,7 +111,7 @@ To better align with the actual types from the metadata, and avoid (too much) co
 
 ### Type usage
 
-The [@polkadot/api](packages/api) has always handled the conversion of types for parameters when making calls or queries. For example, when making a transfer to `BOB` (address), any of the following is valid -
+The [@chainx-v2/api](packages/api) has always handled the conversion of types for parameters when making calls or queries. For example, when making a transfer to `BOB` (address), any of the following is valid -
 
 - `api.tx.balances.transfer(BOB, 12345)` - value specified as a number
 - `api.tx.balances.transfer(BOB, '12345')` - value specified as a string

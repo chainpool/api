@@ -1,9 +1,9 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 // Augment the modules
-import '@polkadot/api/augment';
+import '@chainx-v2/api/augment';
 
 import type BN from 'bn.js';
 import { DeriveCustom, ExactDerive } from '@chainx-v2/api-derive';

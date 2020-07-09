@@ -1,8 +1,8 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Signer, SignerResult } from '@polkadot/api/types';
+import { Signer, SignerResult } from '@chainx-v2/api/types';
 import { KeyringPair } from '@polkadot/keyring/types';
 import { Registry, SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 
@@ -17,13 +17,13 @@ export class SingleAccountSigner implements Signer {
 
   readonly #signDelay: number;
 
-  constructor (registry: Registry, keyringPair: KeyringPair, signDelay = 0) {
+  constructor(registry: Registry, keyringPair: KeyringPair, signDelay = 0) {
     this.#keyringPair = keyringPair;
     this.#registry = registry;
     this.#signDelay = signDelay;
   }
 
-  public async signPayload (payload: SignerPayloadJSON): Promise<SignerResult> {
+  public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     if (payload.address !== this.#keyringPair.address) {
       throw new Error('does not have the keyringPair');
     }
@@ -40,7 +40,7 @@ export class SingleAccountSigner implements Signer {
     });
   }
 
-  public async signRaw ({ address, data }: SignerPayloadRaw): Promise<SignerResult> {
+  public async signRaw({ address, data }: SignerPayloadRaw): Promise<SignerResult> {
     if (address !== this.#keyringPair.address) {
       throw new Error('does not have the keyringPair');
     }

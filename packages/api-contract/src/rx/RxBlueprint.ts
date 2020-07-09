@@ -5,8 +5,8 @@
 import { Hash } from '@polkadot/types/interfaces';
 import { ContractABIPre } from '../types';
 
-import { ApiRx } from '@polkadot/api';
-import { decorateMethod } from '@polkadot/api/rx';
+import { ApiRx } from '@chainx-v2/api';
+import { decorateMethod } from '@chainx-v2/api/rx';
 
 import Abi from '../Abi';
 import Blueprint from '../base/Blueprint';

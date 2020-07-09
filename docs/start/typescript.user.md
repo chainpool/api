@@ -17,7 +17,7 @@ In the root of your project (with the `@chainx-v2/typegen` package installed), y
 
 ## Chain modules
 
-In the same way as the type library provides defaults from a substrate-base chain, you can also, directly from chain from metadata, generate a complete `api.{consts,query}.*` definition for your specific chain. The command will create 2 files, `{consts, query}.types.ts` which you can either use to augment the TypeScript definitions, or replace those in `@polkadot/api/*` with your versions (copy, TypeScript replacement or browser/node aliasing).
+In the same way as the type library provides defaults from a substrate-base chain, you can also, directly from chain from metadata, generate a complete `api.{consts,query}.*` definition for your specific chain. The command will create 2 files, `{consts, query}.types.ts` which you can either use to augment the TypeScript definitions, or replace those in `@chainx-v2/api/*` with your versions (copy, TypeScript replacement or browser/node aliasing).
 
 In the root of your project, you can run `yarn polkadot-types-from-chain --endpoint wss://<url> --output ./stuff` and it will create the required output. (Here you can specify an optional `--package @MeInc/stuff` to read definitions for the targeted output folder with the specified package name.)
 

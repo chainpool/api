@@ -414,7 +414,7 @@
 
 - The API now correctly sets the ss58 prefix as retrieved from the chain properties via `ss58Format`
 - Bump to `@polkadot/util` 1.4.1, removing use of `ExtError`
-- The `Keyring` from `@polkadot/keyring` is now exposed on the API as well. You can do `import { Keyring } from '@polkadot/api'` - this alleviates the need for extra dependencies (apart from `@polkadot/api`), and since the keyring is critical for signing operations, aligns everything in one bundle
+- The `Keyring` from `@polkadot/keyring` is now exposed on the API as well. You can do `import { Keyring } from '@chainx-v2/api'` - this alleviates the need for extra dependencies (apart from `@chainx-v2/api`), and since the keyring is critical for signing operations, aligns everything in one bundle
 - Support the latest Polkadot & Substrate master branches (incl. metadata updates)
 - Getting started documentation has been made available
 
@@ -459,7 +459,7 @@ If you are upgrading form an older version, use the CHANGELOG hand-in-hand with 
 
 - Support latest substrate 2 v6 metadata with module constants using `api.consts`.
   - The api now uses the module name for the storage methods, aligning module names for consistency with transactions. The methods of the grandpa module moved from `api.query.grandpaFinality` to `api.query.grandpa`.
-  - Internally the `@polkadot/extrinsics` and `@polkadot/storage` have been moved to `@polkadot/api-metadata` and are now accessible as `@polkadot/api-metadata/extrinsics` and `@polkadot/api-metadata/storage`, respectively.
+  - Internally the `@polkadot/extrinsics` and `@polkadot/storage` have been moved to `@chainx-v2/api-metadata` and are now accessible as `@chainx-v2/api-metadata/extrinsics` and `@chainx-v2/api-metadata/storage`, respectively.
   - **Breaking Change** Vote interface extends U8a instead of i8. Vote properties can be accessed via the `isAye`, `isNay`, and `conviction` getters. Votes can still be constructed as before with a raw JS boolean, a SCALE encoded Boolean, an i8 number, or a JS object with properties `aye` and `conviction` defined.
 
 - Support V2 Extrinsics in addition to V1, v2 includes an optional `tip`

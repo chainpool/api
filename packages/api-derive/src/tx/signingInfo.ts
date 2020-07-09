@@ -7,7 +7,7 @@ import { AnyNumber, Codec, IExtrinsicEra } from '@polkadot/types/types';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { isNumber, isUndefined } from '@polkadot/util';
 
 import { FALLBACK_PERIOD, MAX_FINALITY_LAG, MORTAL_PERIOD } from './constants';

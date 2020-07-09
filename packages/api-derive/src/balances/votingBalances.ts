@@ -6,7 +6,7 @@ import { AccountId, AccountIndex, Address } from '@polkadot/types/interfaces';
 import { DeriveBalancesAccount } from '../types';
 
 import { Observable, combineLatest, of } from 'rxjs';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 
 import { memo } from '../util';
 

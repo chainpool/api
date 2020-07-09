@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ApiTypes, DecorateMethod } from '@polkadot/api/types';
+import { ApiTypes, DecorateMethod } from '@chainx-v2/api/types';
 import { AccountId, Address, Hash } from '@polkadot/types/interfaces';
 import { IKeyringPair, ISubmittableResult } from '@polkadot/types/types';
 import { ApiObject, ContractABIPre } from '../types';
@@ -10,7 +10,7 @@ import { ApiObject, ContractABIPre } from '../types';
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { SubmittableResult } from '@polkadot/api';
+import { SubmittableResult } from '@chainx-v2/api';
 import { compactAddLength, u8aToU8a } from '@polkadot/util';
 
 import Abi from '../Abi';

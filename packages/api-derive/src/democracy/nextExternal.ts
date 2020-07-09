@@ -8,7 +8,7 @@ import { DeriveProposalExternal } from '../types';
 
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { Option } from '@polkadot/types';
 
 import { memo } from '../util';

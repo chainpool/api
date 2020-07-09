@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -26,7 +26,7 @@ interface PkgJson {
   version: string;
 }
 
-let pkgJson: PkgJson = { name: '@polkadot/api', version: '-' };
+let pkgJson: PkgJson = { name: '@chainx-v2/api', version: '-' };
 
 import('../package.json')
   .then((_pkgJson: unknown): void => {
@@ -52,7 +52,7 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    * <BR>
    *
    * ```javascript
-   * import Api from '@polkadot/api/promise';
+   * import Api from '@chainx-v2/api/promise';
    *
    * const api = new Api().isReady();
    *

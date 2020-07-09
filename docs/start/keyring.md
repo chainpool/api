@@ -14,7 +14,7 @@ Once installed, you can create an instance by just creating an instance of the `
 
 ```js
 // Import the keyring as required
-import { Keyring } from '@polkadot/api';
+import { Keyring } from '@chainx-v2/api';
 
 // Initialize the API as we would normally do
 ...

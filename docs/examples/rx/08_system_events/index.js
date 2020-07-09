@@ -4,9 +4,9 @@
 
 // Import the API and selected RxJs operators
 const { switchMap } = require('rxjs/operators');
-const { ApiRx } = require('@polkadot/api');
+const { ApiRx } = require('@chainx-v2/api');
 
-async function main () {
+async function main() {
   // Create our API with a default connection to the local node
   ApiRx.create()
     .pipe(
@@ -20,7 +20,7 @@ async function main () {
       console.log(`\nReceived ${events.length} events:`);
       // loop through the Vec<EventRecord>
       events.forEach((record) => {
-      // extract the phase, event and the event types
+        // extract the phase, event and the event types
         const { event, phase } = record;
         const types = event.typeDef;
 

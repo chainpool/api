@@ -53,7 +53,7 @@ const l = logger('api-ws');
  * <BR>
  *
  * ```javascript
- * import Api from '@polkadot/api/promise';
+ * import Api from '@chainx-v2/api/promise';
  * import WsProvider from '@chainx-v2/rpc-provider/ws';
  *
  * const provider = new WsProvider('ws://127.0.0.1:9944');

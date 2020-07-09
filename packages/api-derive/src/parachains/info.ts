@@ -8,7 +8,7 @@ import { Active, DidUpdate, Heads, ParaInfoResult, PendingSwap, RelayDispatchQue
 
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 
 import { memo } from '../util';
 

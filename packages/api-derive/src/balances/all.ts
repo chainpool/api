@@ -8,7 +8,7 @@ import { DeriveBalancesAccount, DeriveBalancesAll } from '../types';
 import BN from 'bn.js';
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { Option, Vec } from '@polkadot/types';
 import { bnMax, isFunction } from '@polkadot/util';
 

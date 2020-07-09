@@ -7,7 +7,7 @@ import { DeriveHeartbeats } from '../types';
 
 import { Observable, of, combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { Bytes, Option, u32 } from '@polkadot/types';
 
 import { memo } from '../util';

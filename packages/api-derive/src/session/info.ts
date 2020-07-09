@@ -7,7 +7,7 @@ import { DeriveSessionInfo, DeriveSessionIndexes } from '../types';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { u64 } from '@polkadot/types';
 
 import { memo } from '../util';

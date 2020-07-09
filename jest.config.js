@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -9,7 +9,7 @@ module.exports = Object.assign({}, config, {
     '@chainx-v2/api-contract(.*)$': '<rootDir>/packages/api-contract/src/$1',
     '@chainx-v2/api-derive(.*)$': '<rootDir>/packages/api-derive/src/$1',
     // eslint-disable-next-line sort-keys
-    '@polkadot/api(.*)$': '<rootDir>/packages/api/src/$1',
+    '@chainx-v2/api(.*)$': '<rootDir>/packages/api/src/$1',
     '@chainx-v2/metadata(.*)$': '<rootDir>/packages/metadata/src/$1',
     '@polkadot/rpc-(core|provider)(.*)$': '<rootDir>/packages/rpc-$1/src/$2',
     '@chainx-v2/types-known(.*)$': '<rootDir>/packages/types-known/src/$1',

@@ -4,7 +4,7 @@ We have the API installed, we have an understanding of what will actually be exp
 
 ```js
 // Import
-import { ApiPromise, WsProvider } from '@polkadot/api';
+import { ApiPromise, WsProvider } from '@chainx-v2/api';
 
 ...
 // Construct
@@ -27,7 +27,7 @@ In the case of Node.js you would change the `import` into `require`, i.e.
 
 ```js
 // Import
-const { ApiPromise, WsProvider } = require('@polkadot/api');
+const { ApiPromise, WsProvider } = require('@chainx-v2/api');
 ...
 ```
 

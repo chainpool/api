@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -23,21 +23,21 @@ interface SubmittableOptions<ApiType extends ApiTypes> {
   decorateMethod: ApiBase<ApiType>['_decorateMethod'];
 }
 
-export default function createClass <ApiType extends ApiTypes> ({ api, apiType, decorateMethod }: SubmittableOptions<ApiType>): Constructor<SubmittableExtrinsic<ApiType>> {
+export default function createClass<ApiType extends ApiTypes>({ api, apiType, decorateMethod }: SubmittableOptions<ApiType>): Constructor<SubmittableExtrinsic<ApiType>> {
   // an instance of the base extrinsic for us to extend
   const ExtrinsicBase = api.registry.createClass('Extrinsic');
 
   return class Submittable extends ExtrinsicBase implements SubmittableExtrinsic<ApiType> {
     readonly #ignoreStatusCb: boolean;
 
-    constructor (registry: Registry, extrinsic: Call | Extrinsic | Uint8Array | string) {
+    constructor(registry: Registry, extrinsic: Call | Extrinsic | Uint8Array | string) {
       super(registry, extrinsic, { version: api.extrinsicType });
 
       this.#ignoreStatusCb = apiType === 'rxjs';
     }
 
     // calculate the payment info for this transaction (if signed and submitted)
-    public paymentInfo (account: AddressOrPair, options?: Partial<SignerOptions>): SubmittablePaymentResult<ApiType> {
+    public paymentInfo(account: AddressOrPair, options?: Partial<SignerOptions>): SubmittablePaymentResult<ApiType> {
       const [allOptions] = this.#makeSignAndSendOptions(options);
       const address = isKeyringPair(account) ? account.address : account.toString();
 
@@ -61,7 +61,7 @@ export default function createClass <ApiType extends ApiTypes> ({ api, apiType, 
     }
 
     // sign a transaction, returning the this to allow chaining, i.e. .sign(...).send()
-    public sign (account: IKeyringPair, optionsOrNonce?: Partial<SignerOptions>): this {
+    public sign(account: IKeyringPair, optionsOrNonce?: Partial<SignerOptions>): this {
       super.sign(account, this.#makeSignOptions(this.#optionsOrNonce(optionsOrNonce), {}));
 
       return this;
@@ -70,7 +70,7 @@ export default function createClass <ApiType extends ApiTypes> ({ api, apiType, 
     // signs a transaction, returning `this` to allow chaining. E.g.: `sign(...).send()`
     //
     // also supports signing through external signers
-    public signAsync (account: AddressOrPair, optionsOrNonce?: Partial<SignerOptions>): SubmittableThis<ApiType, this> {
+    public signAsync(account: AddressOrPair, optionsOrNonce?: Partial<SignerOptions>): SubmittableThis<ApiType, this> {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
       return decorateMethod(
         (): Observable<this> =>
@@ -79,16 +79,16 @@ export default function createClass <ApiType extends ApiTypes> ({ api, apiType, 
     }
 
     // signAndSend with an immediate Hash result
-    public signAndSend (account: AddressOrPair, options?: Partial<SignerOptions>): SubmittableResultResult<ApiType>;
+    public signAndSend(account: AddressOrPair, options?: Partial<SignerOptions>): SubmittableResultResult<ApiType>;
 
     // signAndSend with a subscription, i.e. callback provided
-    public signAndSend (account: AddressOrPair, statusCb: Callback<ISubmittableResult>): SubmittableResultSubscription<ApiType>;
+    public signAndSend(account: AddressOrPair, statusCb: Callback<ISubmittableResult>): SubmittableResultSubscription<ApiType>;
 
     // signAndSend with options and a callback
-    public signAndSend (account: AddressOrPair, options: Partial<SignerOptions>, statusCb?: Callback<ISubmittableResult>): SubmittableResultSubscription<ApiType>;
+    public signAndSend(account: AddressOrPair, options: Partial<SignerOptions>, statusCb?: Callback<ISubmittableResult>): SubmittableResultSubscription<ApiType>;
 
     // signAndSend implementation for all 3 cases above
-    public signAndSend (account: AddressOrPair, optionsOrStatus?: Partial<SignerOptions> | Callback<ISubmittableResult>, optionalStatusCb?: Callback<ISubmittableResult>): SubmittableResultResult<ApiType> | SubmittableResultSubscription<ApiType> {
+    public signAndSend(account: AddressOrPair, optionsOrStatus?: Partial<SignerOptions> | Callback<ISubmittableResult>, optionalStatusCb?: Callback<ISubmittableResult>): SubmittableResultResult<ApiType> | SubmittableResultSubscription<ApiType> {
       const [options, statusCb] = this.#makeSignAndSendOptions(optionsOrStatus, optionalStatusCb);
       const isSubscription = api.hasSubscriptions && (this.#ignoreStatusCb || !!statusCb);
 
@@ -106,13 +106,13 @@ export default function createClass <ApiType extends ApiTypes> ({ api, apiType, 
     }
 
     // send with an immediate Hash result
-    public send (): SubmittableResultResult<ApiType>;
+    public send(): SubmittableResultResult<ApiType>;
 
     // send with a status callback
-    public send (statusCb: Callback<ISubmittableResult>): SubmittableResultSubscription<ApiType>;
+    public send(statusCb: Callback<ISubmittableResult>): SubmittableResultSubscription<ApiType>;
 
     // send implementation for both immediate Hash and statusCb variants
-    public send (statusCb?: Callback<ISubmittableResult>): SubmittableResultResult<ApiType> | SubmittableResultSubscription<ApiType> {
+    public send(statusCb?: Callback<ISubmittableResult>): SubmittableResultResult<ApiType> | SubmittableResultSubscription<ApiType> {
       const isSubscription = api.hasSubscriptions && (this.#ignoreStatusCb || !!statusCb);
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call

@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ApiPromise, WsProvider } from '@polkadot/api';
+import { ApiPromise, WsProvider } from '@chainx-v2/api';
 
-function createApi (): Promise<ApiPromise> {
+function createApi(): Promise<ApiPromise> {
   jest.setTimeout(30000);
   process.env.NODE_ENV = 'test';
 

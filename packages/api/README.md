@@ -1,4 +1,4 @@
-# @polkadot/api
+# @chainx-v2/api
 
 The Polkadot-JS API provides easy-to-use wrappers around JSONRPC calls that flow from an application to a node. It handles all the encoding and decoding or parameters, provides access to RPC functions and allows for the query of chain state and the submission of transactions.
 
@@ -33,13 +33,13 @@ Due to this dynamic nature, this API departs from traditional APIs which only ha
 Installation -
 
 ```
-npm install --save @polkadot/api
+npm install --save @chainx-v2/api
 ```
 
 Subscribing to blocks via Promise-based API -
 
 ```javascript
-import { ApiPromise } from '@polkadot/api';
+import { ApiPromise } from '@chainx-v2/api';
 
 // initialise via static create
 const api = await ApiPromise.create();
@@ -53,7 +53,7 @@ api.rpc.chain.subscribeNewHeads((header) => {
 Subscribing to blocks via RxJS-based API -
 
 ```javascript
-import { ApiRx } from '@polkadot/api';
+import { ApiRx } from '@chainx-v2/api';
 
 // initialise via static create
 const api = await ApiRx.create().toPromise();
@@ -69,7 +69,7 @@ api.rpc.chain.subscribeNewHeads().subscribe((header) => {
 Additional types used by runtime modules can be added when a new instance of the API is created. This is necessary if the runtime modules use types which are not available in the base Substrate runtime.
 
 ```javascript
-import { ApiPromise } from '@polkadot/api';
+import { ApiPromise } from '@chainx-v2/api';
 
 // initialise via static create and register custom types
 const api = await ApiPromise.create({

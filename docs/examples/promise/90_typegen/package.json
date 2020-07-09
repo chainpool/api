@@ -14,7 +14,7 @@
     "lint": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "@polkadot/api": "^1.4.0"
+    "@chainx-v2/api": "^1.4.0"
   },
   "devDependencies": {
     "@chainx-v2/typegen": "^1.4.0",

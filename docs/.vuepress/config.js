@@ -94,7 +94,7 @@ module.exports = {
           ['substrate/errors.md', 'Errors']
         ]
       },
-      ['/api/', '@polkadot/api'],
+      ['/api/', '@chainx-v2/api'],
       ['/types/', '@polkadot/types'],
       '/CONTRIBUTING.md'
     ]

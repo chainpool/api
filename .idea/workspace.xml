@@ -25,6 +25,12 @@
       </set>
     </option>
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1eO6culDMw2vtrQIBxHwnbwdTeh" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -141,85 +147,71 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/dev-build-ts.js</url>
           <line>43</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/dev-build-ts.js</url>
           <line>14</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/dev-build-ts.js</url>
           <line>20</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/dev-build-ts.js</url>
           <line>24</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/dev-build-ts.js</url>
           <line>25</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/.bin/polkadot-dev-build-ts</url>
           <line>44</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/.bin/polkadot-dev-build-ts</url>
           <line>41</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/.bin/polkadot-dev-build-ts</url>
           <line>42</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/.bin/polkadot-dev-build-ts</url>
           <line>48</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/.bin/polkadot-dev-build-ts</url>
           <line>23</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/.bin/polkadot-dev-build-ts</url>
           <line>45</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/@polkadot/dev/scripts/polkadot-dev-build-ts.js</url>
           <line>41</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/@polkadot/dev/scripts/polkadot-dev-build-ts.js</url>
           <line>44</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/@polkadot/dev/scripts/polkadot-dev-build-ts.js</url>
           <line>46</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>

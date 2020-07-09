@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -22,8 +22,8 @@ type GenericStorageEntryFunction = (arg1?: CodecArg, arg2?: CodecArg) => Observa
 
 export type QueryableStorageEntry<ApiType extends ApiTypes> =
   ApiType extends 'rxjs'
-    ? AugmentedQuery<'rxjs', GenericStorageEntryFunction>
-    : AugmentedQuery<'promise', GenericStorageEntryFunction> & StorageEntryPromiseOverloads;
+  ? AugmentedQuery<'rxjs', GenericStorageEntryFunction>
+  : AugmentedQuery<'promise', GenericStorageEntryFunction> & StorageEntryPromiseOverloads;
 
 export interface StorageEntryBase<ApiType extends ApiTypes, F extends AnyFunction> {
   at: <T extends Codec | any = ObsInnerType<ReturnType<F>>>(hash: Hash | Uint8Array | string, ...args: Parameters<F>) => PromiseOrObs<ApiType, T>;
@@ -80,5 +80,5 @@ export interface QueryableStorageMultiPromise<ApiType extends ApiTypes> {
 
 export type QueryableStorageMulti<ApiType extends ApiTypes> =
   ApiType extends 'rxjs'
-    ? QueryableStorageMultiBase<ApiType>
-    : QueryableStorageMultiPromise<ApiType>;
+  ? QueryableStorageMultiBase<ApiType>
+  : QueryableStorageMultiPromise<ApiType>;

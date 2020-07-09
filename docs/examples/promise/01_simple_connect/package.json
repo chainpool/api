@@ -9,9 +9,8 @@
     "clean": "rimraf node_modules",
     "start": "node index.js"
   },
-
   "dependencies": {
-    "@polkadot/api": "*"
+    "@chainx-v2/api": "*"
   },
   "devDependencies": {
     "rimraf": "^2.6.2"

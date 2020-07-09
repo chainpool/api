@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -18,11 +18,11 @@ export type Cons<V, T extends any[]> = ((v: V, ...t: T) => void) extends ((...r:
 export type Push<T extends any[], V> = (
   (
     Cons<any, Required<T>> extends infer R
-      ? { [K in keyof R]: K extends keyof T ? T[K] : V }
-      : never
-  ) extends infer P
-    ? P extends any[] ? P : never
+    ? { [K in keyof R]: K extends keyof T ? T[K] : V }
     : never
+  ) extends infer P
+  ? P extends any[] ? P : never
+  : never
 );
 
 export type ApiTypes = 'promise' | 'rxjs';
@@ -71,7 +71,7 @@ export interface DecorateMethodOptions {
   overrideNoSub?: (...args: unknown[]) => Observable<Codec>;
 }
 
-export type DecorateFn <T extends Codec> = (...args: any[]) => Observable<T>;
+export type DecorateFn<T extends Codec> = (...args: any[]) => Observable<T>;
 
 export interface PaginationOptions<ArgType = CodecArg> {
   arg?: ArgType;

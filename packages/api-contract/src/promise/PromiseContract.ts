@@ -5,8 +5,8 @@
 import { AccountId } from '@polkadot/types/interfaces';
 import { ContractABIPre } from '../types';
 
-import { ApiPromise } from '@polkadot/api';
-import { decorateMethod } from '@polkadot/api/promise';
+import { ApiPromise } from '@chainx-v2/api';
+import { decorateMethod } from '@chainx-v2/api/promise';
 
 import Abi from '../Abi';
 import Contract from '../base/Contract';

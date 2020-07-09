@@ -4,7 +4,7 @@
 
 import { AccountId, Balance } from '@polkadot/types/interfaces';
 import { ITuple } from '@polkadot/types/types';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { DeriveCouncilVote, DeriveCouncilVotes } from '../types';
 
 import { Observable, combineLatest } from 'rxjs';

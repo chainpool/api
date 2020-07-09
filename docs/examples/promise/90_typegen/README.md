@@ -1,12 +1,12 @@
 # typegen
 
-This is a sample TypeScript project [with full source & config on GithHub](https://github.com/polkadot-js/api/tree/master/docs/examples/promise/90_typegen), that uses `@chainx-v2/typegen` to generate type definitions that can be used to decorate the `@polkadot/api`. It uses both types defined for the specific chain as well as the chain metadata to generate TypeScript interfaces. This means that interfaces such as `api.query.*`, `api.tx.*` and `api.consts.*` will be decorated based on chain-specific information, instead of an un-augmented catch-all definition.
+This is a sample TypeScript project [with full source & config on GithHub](https://github.com/polkadot-js/api/tree/master/docs/examples/promise/90_typegen), that uses `@chainx-v2/typegen` to generate type definitions that can be used to decorate the `@chainx-v2/api`. It uses both types defined for the specific chain as well as the chain metadata to generate TypeScript interfaces. This means that interfaces such as `api.query.*`, `api.tx.*` and `api.consts.*` will be decorated based on chain-specific information, instead of an un-augmented catch-all definition.
 
-**NOTE** This is built using the updates in the `1.4.0` api track and as such it uses the latest (at the time of writing) `@polkadot/api 1.4.0`. If you want to play on your own, it is also suggested that you use the `1.4+` series since some generation types have moved around internally, making it easier to augment.
+**NOTE** This is built using the updates in the `1.4.0` api track and as such it uses the latest (at the time of writing) `@chainx-v2/api 1.4.0`. If you want to play on your own, it is also suggested that you use the `1.4+` series since some generation types have moved around internally, making it easier to augment.
 
 ## Packages
 
-For the packages we need from the `@polkadot/*` we have added `@polkadot/api` (we want to do API stuff) and `@chainx-v2/typegen` (to generate the actual interfaces). So our scripts and dependencies inside `package.json` contain the following -
+For the packages we need from the `@polkadot/*` we have added `@chainx-v2/api` (we want to do API stuff) and `@chainx-v2/typegen` (to generate the actual interfaces). So our scripts and dependencies inside `package.json` contain the following -
 
 ```json
 {
@@ -17,7 +17,7 @@ For the packages we need from the `@polkadot/*` we have added `@polkadot/api` (w
     "lint": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "@polkadot/api": "^1.4.0"
+    "@chainx-v2/api": "^1.4.0"
   },
   "devDependencies": {
     "@chainx-v2/typegen": "^1.4.0",
@@ -173,7 +173,7 @@ Now that we have files generated, it is time to make TypeScript aware of the typ
   "compilerOptions": {
     "paths": {
       "sample-polkadotjs-typegen/*": ["src/*"],
-      "@polkadot/api/augment": ["src/interfaces/augment-api.ts"],
+      "@chainx-v2/api/augment": ["src/interfaces/augment-api.ts"],
       "@polkadot/types/augment": ["src/interfaces/augment-types.ts"]
     }
   }
@@ -197,7 +197,7 @@ import './interfaces/augment-types';
 import type { VoteRecord } from './interfaces';
 
 // external imports
-import { ApiPromise } from '@polkadot/api';
+import { ApiPromise } from '@chainx-v2/api';
 import { createType } from '@polkadot/types';
 
 // our local stuff

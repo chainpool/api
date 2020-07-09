@@ -3,14 +3,14 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 
 // Import the API
-const { ApiRx } = require('@polkadot/api');
+const { ApiRx } = require('@chainx-v2/api');
 const { combineLatest, of } = require('rxjs');
 const { first, switchMap } = require('rxjs/operators');
 
 // Our address for Alice on the dev chain
 const Alice = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 
-function main () {
+function main() {
   // Create our API with a default connection to the local node
   new ApiRx().isReady
     .pipe(

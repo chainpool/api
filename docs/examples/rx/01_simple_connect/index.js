@@ -4,7 +4,7 @@
 
 // Required imports
 const { zip } = require('rxjs');
-const { ApiRx } = require('@polkadot/api');
+const { ApiRx } = require('@chainx-v2/api');
 const { WsProvider } = require('@chainx-v2/rpc-provider');
 
 async function main() {

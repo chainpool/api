@@ -8,10 +8,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@polkadot/api": [
+      "@chainx-v2/api": [
         "packages/api/src"
       ],
-      "@polkadot/api/*": [
+      "@chainx-v2/api/*": [
         "packages/api/src/*"
       ],
       "@chainx-v2/api-contract": [

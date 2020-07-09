@@ -1,6 +1,6 @@
 # Basics & Metadata
 
-One of the most important things to understand about the `@polkadot/api` is that most interfaces are actually generated automatically when it connects to a running node. This is quite a departure from other APIs in projects where the interfaces are static. While sounding quite scary, it actually is a powerful concept that exists in both Polkadot and Substrate chains, and allows the API to be used in environments where the chain is customized.
+One of the most important things to understand about the `@chainx-v2/api` is that most interfaces are actually generated automatically when it connects to a running node. This is quite a departure from other APIs in projects where the interfaces are static. While sounding quite scary, it actually is a powerful concept that exists in both Polkadot and Substrate chains, and allows the API to be used in environments where the chain is customized.
 
 To unpack this, we will start with the Metadata and explain what it actually provides, since it is critical for understanding how to interact with the API and any underlying chain.
 
@@ -29,7 +29,7 @@ In addition to the `api.[consts | query | tx]` detailed above, the API, upon con
 - `api.genesisHash` - The genesisHash of the connected chain
 - `api.runtimeMetadata` - The metadata as retrieved from the chain
 - `api.runtimeVersion` - The chain runtime version (including spec/impl. versions and types)
-- `api.libraryInfo` - The version of the API, i.e. `@polkadot/api v0.90.1`
+- `api.libraryInfo` - The version of the API, i.e. `@chainx-v2/api v0.90.1`
 
 ## Let's do something!
 

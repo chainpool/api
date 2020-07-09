@@ -7,7 +7,7 @@ import { AccountIdAndIndex } from '../types';
 
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { isU8a } from '@polkadot/util';
 import { decodeAddress } from '@polkadot/util-crypto';
 

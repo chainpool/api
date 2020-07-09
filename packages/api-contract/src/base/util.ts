@@ -1,8 +1,8 @@
-// Copyright 2017-2020 @polkadot/api authors & contributors
+// Copyright 2017-2020 @chainx-v2/api authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ApiTypes, DecorateMethod, DecoratedRpc, SubmittableModuleExtrinsics } from '@polkadot/api/types';
+import { ApiTypes, DecorateMethod, DecoratedRpc, SubmittableModuleExtrinsics } from '@chainx-v2/api/types';
 import { RpcInterface } from '@chainx-v2/rpc-core/types';
 import { Registry } from '@polkadot/types/types';
 import { ApiObject, ContractABIMessage, ContractABIPre, ContractBase, ContractMessage } from '../types';

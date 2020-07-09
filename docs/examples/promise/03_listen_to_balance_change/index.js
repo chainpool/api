@@ -4,12 +4,12 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 // Import the API
-const { ApiPromise } = require('@polkadot/api');
+const { ApiPromise } = require('@chainx-v2/api');
 
 // Known account we want to use (available on dev chain, with funds)
 const Alice = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 
-async function main () {
+async function main() {
   // Create an await for the API
   const api = await ApiPromise.create();
 

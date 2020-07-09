@@ -3,10 +3,10 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 
 // Import the API
-const { ApiRx } = require('@polkadot/api');
+const { ApiRx } = require('@chainx-v2/api');
 const { switchMap } = require('rxjs/operators');
 
-async function main () {
+async function main() {
   // Create a new instance of the api
   // Subscribe to chain updates and log the current block number on update.
   const subscription = new ApiRx().isReady

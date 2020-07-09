@@ -7,7 +7,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 
 import { Observable, from } from 'rxjs';
-import ApiRx from '@polkadot/api/rx/Api';
+import ApiRx from '@chainx-v2/api/rx/Api';
 import MockProvider from '@chainx-v2/rpc-provider/mock';
 import { TypeRegistry } from '@polkadot/types';
 

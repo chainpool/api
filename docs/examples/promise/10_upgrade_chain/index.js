@@ -4,14 +4,14 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 // Import the API & Provider and some utility functions
-const { ApiPromise, WsProvider } = require('@polkadot/api');
+const { ApiPromise, WsProvider } = require('@chainx-v2/api');
 
 // import the test keyring (already has dev keys for Alice, Bob, Charlie, Eve & Ferdie)
 const testKeyring = require('@polkadot/keyring/testing');
 
 const fs = require('fs');
 
-async function main () {
+async function main() {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://127.0.0.1:9944');
 

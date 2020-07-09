@@ -26,7 +26,7 @@ const l = logger('api-http');
  * <BR>
  *
  * ```javascript
- * import Api from '@polkadot/api/promise';
+ * import Api from '@chainx-v2/api/promise';
  * import HttpProvider from '@chainx-v2/rpc-provider/http';
  *
  * const provider = new HttpProvider('http://127.0.0.1:9933');
