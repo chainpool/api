@@ -19,10 +19,10 @@ const argv = require('yargs')
   .strict()
   .argv;
 
-const repo = `https://git@github.com/${process.env.GITHUB_REPOSITORY}.git`;
+// const repo = `https://github.com/chainpool/chainx.js-v2.git`;
 const hasLerna = fs.existsSync('lerna.json');
 
-console.log('$ chainx-build-release', process.argv.slice(2).join(' '));
+console.log('$ polkadot-ci-ghact-build', process.argv.slice(2).join(' '));
 
 function runClean () {
   execSync('yarn polkadot-dev-clean-build');
@@ -60,16 +60,16 @@ function lernaBump () {
 
   if (isBeta) {
     // if we have a beta version, just continue the stream of betas
-    execSync('yarn run ./chainx-dev-version.js --type prerelease');
+    execSync('yarn run polkadot-dev-version --type prerelease');
   } else if (argv['skip-beta']) {
     // don't allow beta versions
-    execSync('yarn ./chainx-dev-version.js --type patch');
+    execSync('yarn polkadot-dev-version --type patch');
   } else if (patch === '0') {
     // patch is .0, so publish this as an actual release (surely we did out job on beta)
-    execSync('yarn ./chainx-dev-version.js --type patch');
+    execSync('yarn polkadot-dev-version --type patch');
   } else if (patch === '1') {
     // continue with first new minor as beta
-    execSync('yarn ./chainx-dev-version.js --type preminor');
+    execSync('yarn polkadot-dev-version --type preminor');
   } else {
     // manual setting of version, make some changes so we can commit
     fs.appendFileSync(path.join(process.cwd(), '.123trigger'), lernaGetVersion());
@@ -135,8 +135,8 @@ function npmPublish () {
 function gitSetup () {
   execSync('git config push.default simple');
   execSync('git config merge.ours.driver true');
-  execSync('git config user.name "Github Actions"');
-  execSync('git config user.email "action@github.com"');
+  execSync('git config user.name "qinghuan-chain"');
+  execSync('git config user.email "1245816264@qq.com"');
   execSync('git checkout master');
 }
 
@@ -176,7 +176,7 @@ function gitPush () {
 
 skip-checks: true"`);
 
-  execSync(`git push ${repo} HEAD:${process.env.GITHUB_REF}`, true);
+  execSync('git push --repo=git@github.com/chainpool/chainx.js-v2.git origin master', true);
 
   if (doGHRelease) {
     const files = process.env.GH_RELEASE_FILES
@@ -214,7 +214,7 @@ npmSetup();
 
 runClean();
 runCheck();
-runTest();
+// runTest();
 runBuild();
 
 gitPush();
