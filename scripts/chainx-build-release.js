@@ -204,7 +204,8 @@ function loopFunc (fn) {
 
 gitSetup();
 gitBump();
-//npmSetup();
+
+runCheck();
 
 runClean();
 
