@@ -1,5 +1,6 @@
 {
   "name": "chainx-v2",
+  "author": "qinghuanlyke",
   "repository": "https://github.com/chainpool/chainx.js-v2",
   "license": "Apache-2",
   "private": true,
@@ -34,5 +35,5 @@
     "@vuepress/plugin-search": "^1.5.2",
     "copyfiles": "^2.3.0"
   },
-  "version": "0.0.1-beta.11"
+  "version": "0.0.1-beta.12"
 }
