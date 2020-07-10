@@ -19,7 +19,6 @@ const argv = require('yargs')
   .strict()
   .argv;
 
-// const repo = `https://github.com/chainpool/chainx.js-v2.git`;
 const hasLerna = fs.existsSync('lerna.json');
 
 console.log('$ polkadot-ci-ghact-build', process.argv.slice(2).join(' '));
@@ -214,7 +213,7 @@ npmSetup();
 
 runClean();
 runCheck();
-// runTest();
+
 runBuild();
 
 gitPush();
