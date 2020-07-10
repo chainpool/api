@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/api",
-  "version": "0.0.1-beta.13",
+  "version": "0.0.1-beta.14",
   "description": "Promise and RxJS wrappers around the Polkadot JS RPC",
   "main": "index.js",
   "keywords": [
@@ -27,12 +27,12 @@
   "homepage": "https://github.com/polkadot-js/api/tree/master/packages/api#readme",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
-    "@chainx-v2/api-derive": "0.0.1-beta.13",
-    "@chainx-v2/metadata": "0.0.1-beta.13",
-    "@chainx-v2/rpc-core": "0.0.1-beta.13",
-    "@chainx-v2/rpc-provider": "0.0.1-beta.13",
-    "@chainx-v2/types": "0.0.1-beta.13",
-    "@chainx-v2/types-known": "0.0.1-beta.13",
+    "@chainx-v2/api-derive": "0.0.1-beta.14",
+    "@chainx-v2/metadata": "0.0.1-beta.14",
+    "@chainx-v2/rpc-core": "0.0.1-beta.14",
+    "@chainx-v2/rpc-provider": "0.0.1-beta.14",
+    "@chainx-v2/types": "0.0.1-beta.14",
+    "@chainx-v2/types-known": "0.0.1-beta.14",
     "@polkadot/keyring": "^2.15.1",
     "@polkadot/util": "^2.15.1",
     "@polkadot/util-crypto": "^2.15.1",

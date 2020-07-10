@@ -93,7 +93,7 @@ function npmGetVersion (noLerna) {
 function npmSetup () {
   const registry = 'registry.npmjs.org';
 
-  fs.writeFileSync(path.join(os.homedir(), '.npmrc'), `//${registry}/:_authToken=${process.env.NPM_TOKEN}`);
+  fs.writeFileSync(path.join(os.homedir(), '.npmrc'), `//${registry}/:_authToken=80c82fe6-aa30-46b3-963f-ddba8e918e08`);
 }
 
 function npmPublish () {
