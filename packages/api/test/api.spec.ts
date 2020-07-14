@@ -8,15 +8,15 @@ function createApi (): Promise<ApiPromise> {
   jest.setTimeout(30000);
   process.env.NODE_ENV = 'test';
 
-  const provider = new WsProvider('wss://kusama-rpc.polkadot.io');
+  const provider = new WsProvider('ws://47.114.131.193:9000');
   // const provider = new WsProvider('wss://westend-rpc.polkadot.io/');
   // const provider = new WsProvider('ws://127.0.0.1:9944/');
 
   return new ApiPromise({ provider }).isReady;
 }
 
-describe.skip('misc quick tests', (): void => {
-  it.skip('retrieves balances correctly', async (): Promise<void> => {
+describe('misc quick tests', (): void => {
+  it('retrieves balances correctly', async (): Promise<void> => {
     const api = await createApi();
 
     console.error(JSON.stringify(
@@ -27,7 +27,7 @@ describe.skip('misc quick tests', (): void => {
     ));
   });
 
-  it.skip('handles map keys', async (): Promise<void> => {
+  it('handles map keys', async (): Promise<void> => {
     const api = await createApi();
 
     console.time('map.keys');
@@ -39,7 +39,7 @@ describe.skip('misc quick tests', (): void => {
     console.timeEnd('map.keys');
   });
 
-  it.skip('handles map entries', async (): Promise<void> => {
+  it('handles map entries', async (): Promise<void> => {
     const api = await createApi();
 
     console.time('map.entries');
@@ -51,7 +51,7 @@ describe.skip('misc quick tests', (): void => {
     console.timeEnd('map.entries');
   });
 
-  it.skip('handles doublemap entries', async (): Promise<void> => {
+  it('handles doublemap entries', async (): Promise<void> => {
     const api = await createApi();
     const activeEra = await api.query.staking.activeEra();
 
@@ -60,7 +60,7 @@ describe.skip('misc quick tests', (): void => {
     ));
   });
 
-  it.skip('does something in society', async (): Promise<void> => {
+  it('does something in society', async (): Promise<void> => {
     const api = await createApi();
 
     console.error(JSON.stringify(
@@ -68,7 +68,7 @@ describe.skip('misc quick tests', (): void => {
     ));
   });
 
-  it.skip('allows for range queries', async (): Promise<void> => {
+  it('allows for range queries', async (): Promise<void> => {
     const api = await createApi();
     const header = await api.rpc.chain.getHeader();
 
