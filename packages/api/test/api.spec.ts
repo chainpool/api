@@ -18,16 +18,20 @@ function createApi (): Promise<ApiPromise> {
 describe('misc quick tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
     const api = await createApi();
+    const firstHead = await api.rpc.chain.getHeader();
 
-    console.error(JSON.stringify(
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    console.log('head is' + firstHead);
+
+    console.log(JSON.stringify(
       await api.query.system.account('FPzukZw2mphWsXDqdkNzLaxnanjZEWH9i2vqwobTdtde5me')
     ));
-    console.error(JSON.stringify(
+    console.log(JSON.stringify(
       await api.query.system.account('HUewJvzVuEeyaxH2vx9XiyAPKrpu1Zj5r5Pi9VrGiBVty7q')
     ));
   });
 
-  it('handles map keys', async (): Promise<void> => {
+  it.skip('handles map keys', async (): Promise<void> => {
     const api = await createApi();
 
     console.time('map.keys');
@@ -39,7 +43,7 @@ describe('misc quick tests', (): void => {
     console.timeEnd('map.keys');
   });
 
-  it('handles map entries', async (): Promise<void> => {
+  it.skip('handles map entries', async (): Promise<void> => {
     const api = await createApi();
 
     console.time('map.entries');
@@ -51,7 +55,7 @@ describe('misc quick tests', (): void => {
     console.timeEnd('map.entries');
   });
 
-  it('handles doublemap entries', async (): Promise<void> => {
+  it.skip('handles doublemap entries', async (): Promise<void> => {
     const api = await createApi();
     const activeEra = await api.query.staking.activeEra();
 
@@ -60,7 +64,7 @@ describe('misc quick tests', (): void => {
     ));
   });
 
-  it('does something in society', async (): Promise<void> => {
+  it.skip('does something in society', async (): Promise<void> => {
     const api = await createApi();
 
     console.error(JSON.stringify(
@@ -68,7 +72,7 @@ describe('misc quick tests', (): void => {
     ));
   });
 
-  it('allows for range queries', async (): Promise<void> => {
+  it.skip('allows for range queries', async (): Promise<void> => {
     const api = await createApi();
     const header = await api.rpc.chain.getHeader();
 

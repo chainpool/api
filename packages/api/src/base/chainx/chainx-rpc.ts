@@ -30,5 +30,27 @@ export default {
       ],
       type: 'BTreeMap<AssetId, TotalAssetInfoForRpc>'
     }
+
+  },
+  // eslint-disable-next-line sort-keys
+  chainx: {
+    // eslint-disable-next-line sort-keys
+    contractXRC20Call: {
+      description: 'xrc20 request',
+      params: [
+        {
+          name: 'ContractXRC20CallRequest',
+          type: 'PublicKey'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'Text'
+    }
   }
+
 };
