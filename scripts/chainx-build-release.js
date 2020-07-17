@@ -90,7 +90,6 @@ function npmGetVersion (noLerna) {
   ).version;
 }
 
-
 function npmPublish () {
   if (fs.existsSync('.skip-npm')) {
     return;

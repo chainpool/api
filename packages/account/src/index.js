@@ -1,16 +1,15 @@
+// eslint-disable-next-line header/header
 import bip32 from 'bip32';
 import bs58 from 'bs58';
 
-import {
-  mnemonicGenerate,
+import { mnemonicGenerate,
   mnemonicToSeed,
   mnemonicValidate,
   randomAsHex,
   naclKeypairFromSecret,
   naclKeypairFromSeed,
   naclSign,
-  naclVerify,
-} from '@chainx/util-crypto';
+  naclVerify } from '@chainx/util-crypto';
 
 import { encodeAddress, decodeAddress, setAddressPrefix } from '@chainx/keyring/address';
 import defaults from '@chainx/keyring/address/defaults';
@@ -24,7 +23,8 @@ import u8aFrom from './u8aFrom';
 
 export const NET_PREFIX = {
   testnet: 42,
-  mainnet: 44,
+  // eslint-disable-next-line sort-keys
+  mainnet: 44
 };
 
 setAddressPrefix(NET_PREFIX.mainnet);
@@ -33,14 +33,15 @@ setAddressPrefix(NET_PREFIX.mainnet);
  * 保持兼容 @polkadot/keyring/pair
  */
 class Account {
-  constructor(keyPair) {
+  constructor (keyPair) {
     this._keyPair = keyPair;
   }
 
-  static setNet = net => {
+  static setNet = (net) => {
     if (!net || !NET_PREFIX[net]) {
       throw new Error('expect pass in the network type, testnet or mainnet');
     }
+
     setAddressPrefix(NET_PREFIX[net]);
   };
 
@@ -60,10 +61,11 @@ class Account {
     const publicKey = this._keyPair.publicKey;
     const seed = this._keyPair.secretKey.subarray(0, 32);
     const encoded = encodePkcs8({ publicKey, seed });
+
     return u8aToHex(encoded);
   };
 
-  sign = message => {
+  sign = (message) => {
     return naclSign(message, this._keyPair);
   };
 
@@ -74,15 +76,18 @@ class Account {
   derive = (path = "m/44'/239'/0'/0/0") => {
     const root = bip32.fromSeed(Buffer.from(this._keyPair.secretKey));
     const child = root.derivePath(path);
+
     return Account.fromSeed(child.privateKey);
   };
 
-  static from(unknow) {
+  static from (unknow) {
     if (Account.isMnemonicValid(unknow)) {
       return Account.fromMnemonic(unknow);
     }
+
     if (typeof unknow !== 'string') {
       const u8a = u8aFrom(unknow);
+
       if (u8a.length === 32) {
         return new Account(naclKeypairFromSeed(u8a));
       } else if (u8a.length === 64) {
@@ -104,66 +109,76 @@ class Account {
     }
   }
 
-  static fromMnemonic(mnemonic) {
+  static fromMnemonic (mnemonic) {
     const seed = mnemonicToSeed(mnemonic);
+
     return Account.fromSeed(seed);
   }
 
-  static fromPrivateKey(privateKey) {
+  static fromPrivateKey (privateKey) {
     return Account.fromSeed(privateKey);
   }
 
-  static fromSeed(seedLike) {
+  static fromSeed (seedLike) {
     const seedU8a =
       typeof seedLike === 'string' && !isHex(seedLike, 256)
         ? u8aFrom(seedLike.padEnd(32, ' '), 'utf8')
         : u8aFrom(seedLike, 'hex');
+
     return new Account(naclKeypairFromSeed(seedU8a));
   }
 
-  static fromText(text) {
+  static fromText (text) {
     return Account.fromSeed(text);
   }
 
-  static fromSecretKey(secretKey) {
+  static fromSecretKey (secretKey) {
     const secretKeyU8a = u8aFrom(secretKey, 'hex');
+
     return new Account(naclKeypairFromSecret(secretKeyU8a));
   }
 
-  static fromPkcs8(encoded) {
+  static fromPkcs8 (encoded) {
     const decoded = decodePkcs8(null, u8aFrom(encoded));
+
     return Account.fromSeed(decoded.seed);
   }
 
-  static fromJson(json, passphrase) {
+  static fromJson (json, passphrase) {
     const encoded = json.encoded;
+
     if (!encoded) throw new Error('keystore 格式错误');
     const decoded = decodePkcs8(passphrase, u8aFrom(encoded));
+
     return Account.fromSeed(decoded.seed);
   }
 
-  static fromKeyStore(json, password) {
+  static fromKeyStore (json, password) {
     const privateKey = KeyStore.decrypt(json, password);
+
     return Account.fromPrivateKey(privateKey);
   }
 
-  static generate() {
+  static generate () {
     const random = randomAsHex(32);
+
     return Account.fromSeed(random);
   }
 
-  static newMnemonic() {
+  static newMnemonic () {
     return mnemonicGenerate();
   }
 
-  static isMnemonicValid(mnemonic) {
+  static isMnemonicValid (mnemonic) {
     return mnemonicValidate(mnemonic);
   }
 
-  static isAddressValid(address) {
+  static isAddressValid (address) {
     if (typeof address !== 'string') throw new Error('expect string');
+
     try {
       const decoded = bufferToU8a(bs58.decode(address));
+
       if (decoded[0] !== defaults.prefix) return false;
       this.decodeAddress(address);
     } catch {
@@ -173,30 +188,31 @@ class Account {
     return true;
   }
 
-  static encodeAddress(pulickey) {
+  static encodeAddress (pulickey) {
     return encodeAddress(pulickey);
   }
 
-  static decodeAddress(address, ignoreChecksum, prefix) {
+  static decodeAddress (address, ignoreChecksum, prefix) {
     return u8aToHex(decodeAddress(address, ignoreChecksum, prefix));
   }
 
-  encodePkcs8(passphrase) {
+  encodePkcs8 (passphrase) {
     const publicKey = this._keyPair.publicKey;
     const seed = this._keyPair.secretKey.subarray(0, 32);
     const encoded = encodePkcs8({ publicKey, seed }, passphrase);
+
     return {
       address: encodeAddress(publicKey),
       encoded: u8aToHex(encoded),
       encoding: {
         content: ['pkcs8', 'ed25519'],
         type: 'xsalsa20-poly1305',
-        version: '1',
-      },
+        version: '1'
+      }
     };
   }
 
-  encrypt(password) {
+  encrypt (password) {
     return KeyStore.encrypt(this.privateKey(), password);
   }
 }
