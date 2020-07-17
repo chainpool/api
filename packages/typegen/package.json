@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/typegen",
-  "version": "0.0.1-beta.16",
+  "version": "0.0.2-beta",
   "description": "Type generation scripts",
   "main": "index.js",
   "bin": {
