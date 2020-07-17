@@ -55,6 +55,12 @@
       ],
       "@chainx-v2/types-known/*": [
         "packages/types-known/src/*"
+      ],
+      "@chainx-v2/account": [
+        "packages/account/src"
+      ],
+      "@chainx-v2/account/*": [
+        "packages/account/src/*"
       ]
     },
     "skipLibCheck": true,

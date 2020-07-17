@@ -14,7 +14,9 @@ module.exports = Object.assign({}, config, {
     '@chainx-v2/rpc-(core|provider)(.*)$': '<rootDir>/packages/rpc-$1/src/$2',
     '@chainx-v2/types-known(.*)$': '<rootDir>/packages/types-known/src/$1',
     // eslint-disable-next-line sort-keys
-    '@chainx-v2/types(.*)$': '<rootDir>/packages/types/src/$1'
+    '@chainx-v2/types(.*)$': '<rootDir>/packages/types/src/$1',
+    // eslint-disable-next-line sort-keys
+    '@chainx-v2/account(.*)$': '<rootDir>/packages/account/src/$1'
   },
   modulePathIgnorePatterns: [
     '<rootDir>/packages/api/build',
