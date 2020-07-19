@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/api-contract",
-  "version": "0.0.3-beta.7",
+  "version": "0.0.3-beta.8",
   "description": "Interfaces for interacting with contracts and contract ABIs",
   "main": "index.js",
   "keywords": [

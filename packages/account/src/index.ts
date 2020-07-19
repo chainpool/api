@@ -9,7 +9,7 @@ import { mnemonicGenerate,
   naclVerify } from '@polkadot/util-crypto';
 import { encodeAddress, decodeAddress, setSS58Format } from '@polkadot/keyring';
 import { PKCS8_HEADER } from '@polkadot/keyring/pair/defaults';
-import { isHex, u8aToHex, stringToU8a, hexToU8a } from '@polkadot/util';
+import { isHex, u8aToHex, hexToU8a } from '@polkadot/util';
 import u8aFrom from './u8aFrom';
 import decodePkcs8 from '@polkadot/keyring/pair/decode';
 import encodePkcs8 from '@polkadot/keyring/pair/encode';
@@ -180,11 +180,7 @@ class Account {
      * @param seedLike string
      */
   public static fromSeed (seedLike: string): Account {
-    const seedU8a =
-      typeof seedLike === 'string' && !isHex(seedLike, 256)
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        ? u8aFrom(seedLike.padEnd(32, ' '), 'utf8')
-        : u8aFrom(seedLike, 'hex');
+    const seedU8a = u8aFrom(seedLike, 'hex');
 
     return new Account(naclKeypairFromSeed(seedU8a));
   }
