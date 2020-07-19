@@ -32,7 +32,7 @@ interface KeyPair {
 /**
  * 保持兼容 @polkadot/keyring/pair
  */
-export default class Account {
+class Account {
   /**
      * user publickKey and privateKey
     */
@@ -330,4 +330,4 @@ export default class Account {
   }
 }
 
-export { NET_PREFIX };
+export { Account, NET_PREFIX };

@@ -9,6 +9,7 @@ const Account = require('@chainx-v2/account');
 async function main () {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://47.114.131.193:9000');
+  const account1 = Account.generate();
 
   // Create the API and wait until ready
   const api = await ApiPromise.create({ provider });
