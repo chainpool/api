@@ -14,7 +14,7 @@ import u8aFrom from './u8aFrom';
 import decodePkcs8 from '@polkadot/keyring/pair/decode';
 import encodePkcs8 from '@polkadot/keyring/pair/encode';
 
-export const NET_PREFIX = {
+const NET_PREFIX = {
   testnet: 42,
   // eslint-disable-next-line sort-keys
   mainnet: 44
@@ -32,7 +32,7 @@ interface KeyPair {
 /**
  * 保持兼容 @polkadot/keyring/pair
  */
-class Account {
+export default class Account {
   /**
      * user publickKey and privateKey
     */
@@ -143,9 +143,9 @@ class Account {
       return Account.fromSecretKey(unknow);
     } else if (
       isHex(unknow, 680) &&
-            u8aFrom(unknow)
-              .subarray(0, PKCS8_HEADER.length)
-              .toString() === PKCS8_HEADER.toString()
+      u8aFrom(unknow)
+        .subarray(0, PKCS8_HEADER.length)
+        .toString() === PKCS8_HEADER.toString()
     ) {
       return Account.fromPkcs8(unknow);
     } else {
@@ -330,4 +330,4 @@ class Account {
   }
 }
 
-export default Account;
+export { NET_PREFIX };
