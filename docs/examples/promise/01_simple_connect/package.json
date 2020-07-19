@@ -10,8 +10,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@chainx-v2/api": "0.0.3-beta.4",
-    "@chainx-v2/account": "0.0.3-beta.4"
+    "@chainx-v2/api": "0.0.3-beta.6",
+    "@chainx-v2/account": "0.0.3-beta.6"
   },
   "devDependencies": {
     "rimraf": "^2.6.2"

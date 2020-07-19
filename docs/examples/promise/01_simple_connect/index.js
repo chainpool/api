@@ -4,7 +4,7 @@
 
 // Required imports
 const { ApiPromise, WsProvider } = require('@chainx-v2/api');
-const Account = require('@chainx-v2/account');
+const { Account } = require('@chainx-v2/account');
 
 async function main () {
   // Initialise the provider to connect to the local node

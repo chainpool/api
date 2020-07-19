@@ -2,7 +2,7 @@
 import { mnemonicGenerate,
   mnemonicToMiniSecret,
   mnemonicValidate,
-  randomAsHex,
+  randomAsU8a,
   naclKeypairFromSecret,
   naclKeypairFromSeed,
   naclSign,
@@ -242,9 +242,9 @@ class Account {
     * Returns acount of publicKey and seceretKey.
     */
   public static generate (): Account {
-    const random = randomAsHex(32);
+    const random = randomAsU8a(32);
 
-    return Account.fromSeed(random);
+    return new Account(naclKeypairFromSeed(random));
   }
 
   /**
