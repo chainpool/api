@@ -180,7 +180,11 @@ class Account {
      * @param seedLike string
      */
   public static fromSeed (seedLike: string): Account {
-    const seedU8a = stringToU8a(seedLike);
+    const seedU8a =
+      typeof seedLike === 'string' && !isHex(seedLike, 256)
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        ? u8aFrom(seedLike.padEnd(32, ' '), 'utf8')
+        : u8aFrom(seedLike, 'hex');
 
     return new Account(naclKeypairFromSeed(seedU8a));
   }
