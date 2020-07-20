@@ -12,7 +12,7 @@ import { typeSplit } from './typeSplit';
 // decode an enum of either of the following forms
 //  { _enum: ['A', 'B', 'C'] }
 //  { _enum: { A: AccountId, B: Balance, C: u32 } }
-function _decodeEnum (value: TypeDef, details: string[] | Record<string, string>): TypeDef {
+function _decodeEnum(value: TypeDef, details: string[] | Record<string, string>): TypeDef {
   value.info = TypeDefInfo.Enum;
 
   // not as pretty, but remain compatible with oo7 for both struct and Array types
@@ -32,7 +32,7 @@ function _decodeEnum (value: TypeDef, details: string[] | Record<string, string>
 
 // decode a set of the form
 //   { _set: { A: 0b0001, B: 0b0010, C: 0b0100 } }
-function _decodeSet (value: TypeDef, details: Record<string, number>): TypeDef {
+function _decodeSet(value: TypeDef, details: Record<string, number>): TypeDef {
   value.info = TypeDefInfo.Set;
   value.length = details._bitLength;
   value.sub = Object
@@ -50,7 +50,7 @@ function _decodeSet (value: TypeDef, details: Record<string, number>): TypeDef {
 
 // decode a struct, set or enum
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _decodeStruct (value: TypeDef, type: string, _: string): TypeDef {
+function _decodeStruct(value: TypeDef, type: string, _: string): TypeDef {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const parsed: Record<string, any> = JSON.parse(type);
   const keys = Object.keys(parsed);
@@ -74,7 +74,7 @@ function _decodeStruct (value: TypeDef, type: string, _: string): TypeDef {
 
 // decode a fixed vector, e.g. [u8;32]
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _decodeFixedVec (value: TypeDef, type: string, _: string): TypeDef {
+function _decodeFixedVec(value: TypeDef, type: string, _: string): TypeDef {
   const [vecType, strLength, displayName] = type.substr(1, type.length - 2).split(';');
   const length = parseInt(strLength.trim(), 10);
 
@@ -90,7 +90,7 @@ function _decodeFixedVec (value: TypeDef, type: string, _: string): TypeDef {
 }
 
 // decode a tuple
-function _decodeTuple (value: TypeDef, _: string, subType: string): TypeDef {
+function _decodeTuple(value: TypeDef, _: string, subType: string): TypeDef {
   value.sub = subType.length === 0
     ? []
     : typeSplit(subType).map((inner): TypeDef =>
@@ -103,7 +103,7 @@ function _decodeTuple (value: TypeDef, _: string, subType: string): TypeDef {
 
 // decode a Int/UInt<bitLength[, name]>
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _decodeInt (value: TypeDef, type: string, _: string, clazz: 'Int' | 'UInt' = 'Int'): TypeDef {
+function _decodeInt(value: TypeDef, type: string, _: string, clazz: 'Int' | 'UInt' = 'Int'): TypeDef {
   const [strLength, displayName] = type.substr(clazz.length + 1, type.length - clazz.length - 1 - 1).split(',');
   const length = parseInt(strLength.trim(), 10);
 
@@ -116,12 +116,12 @@ function _decodeInt (value: TypeDef, type: string, _: string, clazz: 'Int' | 'UI
   return value;
 }
 
-function _decodeUInt (value: TypeDef, type: string, subType: string): TypeDef {
+function _decodeUInt(value: TypeDef, type: string, subType: string): TypeDef {
   return _decodeInt(value, type, subType, 'UInt');
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _decodeDoNotConstruct (value: TypeDef, type: string, _: string): TypeDef {
+function _decodeDoNotConstruct(value: TypeDef, type: string, _: string): TypeDef {
   const NAME_LENGTH = 'DoNotConstruct'.length;
 
   value.displayName = type.substr(NAME_LENGTH + 1, type.length - NAME_LENGTH - 1 - 1);
@@ -129,7 +129,7 @@ function _decodeDoNotConstruct (value: TypeDef, type: string, _: string): TypeDe
   return value;
 }
 
-function hasWrapper (type: string, [start, end]: [string, string, TypeDefInfo, any?]): boolean {
+function hasWrapper(type: string, [start, end]: [string, string, TypeDefInfo, any?]): boolean {
   if (type.substr(0, start.length) !== start) {
     return false;
   }
@@ -160,7 +160,7 @@ const wrappedExtraction: [string, string, TypeDefInfo][] = [
   ['Vec<', '>', TypeDefInfo.Vec]
 ];
 
-function extractSubType (type: string, [start, end]: [string, string, TypeDefInfo, any?]): string {
+function extractSubType(type: string, [start, end]: [string, string, TypeDefInfo, any?]): string {
   return type.substr(start.length, type.length - start.length - end.length);
 }
 
@@ -169,7 +169,7 @@ interface TypeDefOptions {
   displayName?: string;
 }
 
-export function getTypeDef (_type: string, { displayName, name }: TypeDefOptions = {}): TypeDef {
+export function getTypeDef(_type: string, { displayName, name }: TypeDefOptions = {}): TypeDef {
   // create the type via Type, allowing types to be sanitized
   const type = sanitize(_type);
   const value: TypeDef = { displayName, info: TypeDefInfo.Plain, name, type };

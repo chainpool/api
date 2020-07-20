@@ -11,14 +11,14 @@ import { Text } from '@chainx-v2/types/primitive';
 import { stringUpperFirst } from '@polkadot/util';
 
 /** @internal */
-function toV1Calls (registry: Registry, { module: { call: { functions } } }: RuntimeModuleMetadataV0): Option<FunctionMetadataV1> {
+function toV1Calls(registry: Registry, { module: { call: { functions } } }: RuntimeModuleMetadataV0): Option<FunctionMetadataV1> {
   return functions.length
     ? new Option(registry, 'Vec<FunctionMetadataV1>', functions)
     : new Option(registry, 'Vec<FunctionMetadataV1>');
 }
 
 /** @internal */
-function toV1Events (registry: Registry, metadataV0: MetadataV0, prefix: Text): Option<EventMetadataV1> {
+function toV1Events(registry: Registry, metadataV0: MetadataV0, prefix: Text): Option<EventMetadataV1> {
   const events = metadataV0.outerEvent.events.find((event): boolean => event[0].eq(prefix));
 
   return events
@@ -27,12 +27,12 @@ function toV1Events (registry: Registry, metadataV0: MetadataV0, prefix: Text): 
 }
 
 /** @internal */
-function toV1Storage (registry: Registry, { storage }: RuntimeModuleMetadataV0): Option<StorageFunctionMetadataV1> {
+function toV1Storage(registry: Registry, { storage }: RuntimeModuleMetadataV0): Option<StorageFunctionMetadataV1> {
   return new Option(registry, 'Vec<StorageFunctionMetadataV1>', storage.unwrapOr(undefined)?.functions);
 }
 
 /** @internal */
-export default function toV1 (registry: Registry, metadataV0: MetadataV0): MetadataV1 {
+export default function toV1(registry: Registry, metadataV0: MetadataV0): MetadataV1 {
   return registry.createType('MetadataV1', {
     modules: metadataV0.modules.map((mod): ModuleMetadataV1 => {
       // The prefix of this module (capitalized)

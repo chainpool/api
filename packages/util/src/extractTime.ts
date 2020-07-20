@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -12,7 +12,7 @@ const DAY = HRS * 24;
  * @summary Add together two Time arrays
  */
 
-function addTime (a: Time, b: Time): Time {
+function addTime(a: Time, b: Time): Time {
   return {
     days: a.days + b.days,
     hours: a.hours + b.hours,
@@ -31,12 +31,12 @@ const ZERO = { days: 0, hours: 0, milliseconds: 0, minutes: 0, seconds: 0 };
  * <BR>
  *
  * ```javascript
- * import { extractTime } from '@chainx-v2/util';
+ * import { extractTime } from '@polkadot/util';
  *
  * const { days, minutes, hours, seconds, milliseconds } = extractTime(6000); // 0, 0, 10, 0, 0
  * ```
  */
-export default function extractTime (milliseconds?: number): Time {
+export default function extractTime(milliseconds?: number): Time {
   if (!milliseconds) {
     return ZERO;
   } else if (milliseconds < 1000) {

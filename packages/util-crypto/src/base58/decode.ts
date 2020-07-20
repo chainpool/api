@@ -13,7 +13,7 @@ import validate from './validate';
  * @description
  * From the provided input, decode the base58 and return the result as an `Uint8Array`.
  */
-export default function base58Decode (value: string): Uint8Array {
+export default function base58Decode(value: string): Uint8Array {
   validate(value);
 
   return bufferToU8a(bs58.decode(value));

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -31,7 +31,7 @@ const chalked = {
   warn: chalk.yellow
 };
 
-function formatObject (value: Record<string, unknown>): Record<string, unknown> {
+function formatObject(value: Record<string, unknown>): Record<string, unknown> {
   const result: Record<string, unknown> = {};
 
   return Object.keys(value).reduce((result, key): Record<string, unknown> => {
@@ -41,7 +41,7 @@ function formatObject (value: Record<string, unknown>): Record<string, unknown> 
   }, result);
 }
 
-export function format (value: unknown): unknown {
+export function format(value: unknown): unknown {
   if (Array.isArray(value)) {
     return value.map(format);
   }
@@ -65,7 +65,7 @@ export function format (value: unknown): unknown {
   return value;
 }
 
-function apply (log: LogType, type: string, values: Logger$Data): void {
+function apply(log: LogType, type: string, values: Logger$Data): void {
   if (values.length === 1 && isFunction(values[0])) {
     const fnResult = values[0]() as unknown;
 
@@ -82,7 +82,7 @@ function apply (log: LogType, type: string, values: Logger$Data): void {
   );
 }
 
-function noop (): void {
+function noop(): void {
   // noop
 }
 
@@ -95,12 +95,12 @@ function noop (): void {
  * <BR>
  *
  * ```javascript
- * const l from '@chainx-v2/util/logger')('test');
+ * const l from '@polkadot/util/logger')('test');
  *
  * l.log('blah'); // <date>     TEST: blah
  * ```
  */
-export default function logger (_type: string): Logger {
+export default function logger(_type: string): Logger {
   const type = `${_type.toUpperCase()}:`.padStart(16);
   let isDebug;
 

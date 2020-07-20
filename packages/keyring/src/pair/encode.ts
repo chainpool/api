@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/keyring authors & contributors
+// Copyright 2017-2020 @chainx-v2/keyring authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -9,7 +9,7 @@ import { naclEncrypt } from '@polkadot/util-crypto';
 
 import { PKCS8_DIVIDER, PKCS8_HEADER } from './defaults';
 
-export default function encode ({ publicKey, secretKey }: PairInfo, passphrase?: string): Uint8Array {
+export default function encode({ publicKey, secretKey }: PairInfo, passphrase?: string): Uint8Array {
   assert(secretKey, 'Expected a valid secretKey to be passed to encode');
 
   const encoded = u8aConcat(

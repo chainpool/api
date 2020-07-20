@@ -24,21 +24,21 @@ const CON_MASK = 0b01111111;
 const DEF_CONV = 0b00000000; // the default conviction, None
 
 /** @internal */
-function decodeVoteBool (value: boolean): Uint8Array {
+function decodeVoteBool(value: boolean): Uint8Array {
   return value
     ? new Uint8Array([AYE_BITS | DEF_CONV])
     : new Uint8Array([NAY_BITS]);
 }
 
 /** @internal */
-function decodeVoteU8a (value: Uint8Array): Uint8Array {
+function decodeVoteU8a(value: Uint8Array): Uint8Array {
   return value.length
     ? value.subarray(0, 1)
     : new Uint8Array([NAY_BITS]);
 }
 
 /** @internal */
-function decodeVote (registry: Registry, value?: InputTypes): Uint8Array {
+function decodeVote(registry: Registry, value?: InputTypes): Uint8Array {
   if (isUndefined(value) || value instanceof Boolean || isBoolean(value)) {
     return decodeVoteBool(new Bool(registry, value).isTrue);
   } else if (isNumber(value)) {
@@ -63,7 +63,7 @@ export default class Vote extends U8aFixed {
 
   private _conviction: Conviction;
 
-  constructor (registry: Registry, value?: InputTypes) {
+  constructor(registry: Registry, value?: InputTypes) {
     // decoded is just 1 byte
     // Aye: Most Significant Bit
     // Conviction: 0000 - 0101
@@ -78,28 +78,28 @@ export default class Vote extends U8aFixed {
   /**
    * @description returns a V2 conviction
    */
-  public get conviction (): Conviction {
+  public get conviction(): Conviction {
     return this._conviction;
   }
 
   /**
    * @description true if the wrapped value is a positive vote
    */
-  public get isAye (): boolean {
+  public get isAye(): boolean {
     return this._aye;
   }
 
   /**
    * @description true if the wrapped value is a negative vote
    */
-  public get isNay (): boolean {
+  public get isNay(): boolean {
     return !this.isAye;
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman (isExpanded?: boolean): AnyJson {
+  public toHuman(isExpanded?: boolean): AnyJson {
     return {
       conviction: this.conviction.toHuman(isExpanded),
       vote: this.isAye ? 'Aye' : 'Nay'
@@ -109,7 +109,7 @@ export default class Vote extends U8aFixed {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'Vote';
   }
 }

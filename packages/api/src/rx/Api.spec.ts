@@ -6,7 +6,7 @@ import { SubmittableExtrinsic } from '../submittable/types';
 
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import testingPairs from '@polkadot/keyring/testingPairs';
+import testingPairs from '@chainx-v2/keyring/testingPairs';
 import Mock from '@chainx-v2/rpc-provider/mock/index';
 import { TypeRegistry } from '@chainx-v2/types';
 import { isObservable } from '@polkadot/util';

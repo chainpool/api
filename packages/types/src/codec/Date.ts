@@ -26,14 +26,14 @@ const BITLENGTH: UIntBitLength = 64;
 export default class CodecDate extends Date implements Codec {
   public readonly registry: Registry;
 
-  constructor (registry: Registry, value: CodecDate | Date | AnyNumber = 0) {
+  constructor(registry: Registry, value: CodecDate | Date | AnyNumber = 0) {
     super(CodecDate.decodeDate(value));
 
     this.registry = registry;
   }
 
   /** @internal */
-  public static decodeDate (value: CodecDate | Date | AnyNumber | unknown): Date {
+  public static decodeDate(value: CodecDate | Date | AnyNumber | unknown): Date {
     if (value instanceof Date) {
       return value;
     } else if (isU8a(value)) {
@@ -50,49 +50,49 @@ export default class CodecDate extends Date implements Codec {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return BITLENGTH / 8;
   }
 
   /**
    * @description returns a hash of the contents
    */
-  public get hash (): H256 {
+  public get hash(): H256 {
     return this.registry.createType('H256', blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description Checks if the value is an empty value
    */
-  public get isEmpty (): boolean {
+  public get isEmpty(): boolean {
     return this.getTime() === 0;
   }
 
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     return CodecDate.decodeDate(other).getTime() === this.getTime();
   }
 
   /**
    * @description Returns the number of bits in the value
    */
-  public bitLength (): UIntBitLength {
+  public bitLength(): UIntBitLength {
     return BITLENGTH;
   }
 
   /**
    * @description Returns the BN representation of the timestamp
    */
-  public toBn (): BN {
+  public toBn(): BN {
     return new BN(this.toNumber());
   }
 
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex (isLe = false): string {
+  public toHex(isLe = false): string {
     return bnToHex(this.toBn(), {
       bitLength: BITLENGTH,
       isLe,
@@ -103,14 +103,14 @@ export default class CodecDate extends Date implements Codec {
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman (): string {
+  public toHuman(): string {
     return this.toISOString();
   }
 
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON (): any {
+  public toJSON(): any {
     // FIXME Return type should be number, but conflicts with Date.toJSON()
     // which returns string
     return this.toNumber();
@@ -119,21 +119,21 @@ export default class CodecDate extends Date implements Codec {
   /**
    * @description Returns the number representation for the timestamp
    */
-  public toNumber (): number {
+  public toNumber(): number {
     return Math.ceil(this.getTime() / 1000);
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'Moment';
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString (): string {
+  public toString(): string {
     // only included here since we do not inherit docs
     return super.toString();
   }
@@ -143,7 +143,7 @@ export default class CodecDate extends Date implements Codec {
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     return bnToU8a(this.toNumber(), BITLENGTH, true);
   }
 }

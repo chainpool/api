@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,11 +13,11 @@ import isInstanceOf from './instanceOf';
  * <BR>
  *
  * ```javascript
- * import { isUint8Array } from '@chainx-v2/util';
+ * import { isUint8Array } from '@polkadot/util';
  *
  * console.log('isU8a', isU8a([])); // => false
  * ```
  */
-export default function isU8a (value?: unknown): value is Uint8Array {
+export default function isU8a(value?: unknown): value is Uint8Array {
   return isInstanceOf(value, Uint8Array);
 }

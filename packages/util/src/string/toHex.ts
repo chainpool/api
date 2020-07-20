@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,12 +14,12 @@ import stringToU8a from './toU8a';
  * <BR>
  *
  * ```javascript
- * import { stringToHex } from '@chainx-v2/util';
+ * import { stringToHex } from '@polkadot/util';
  *
  * stringToU8a('hello'); // 0x68656c6c6f
  * ```
  */
-export default function stringToHex (value?: string): string {
+export default function stringToHex(value?: string): string {
   return u8aToHex(
     stringToU8a(value)
   );

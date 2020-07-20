@@ -19,7 +19,7 @@ import { createType } from './createType';
 import { getTypeDef } from './getTypeDef';
 
 // create error mapping from metadata
-function decorateErrors (_: Registry, metadata: RegistryMetadata, metadataErrors: Record<string, RegistryError>): void {
+function decorateErrors(_: Registry, metadata: RegistryMetadata, metadataErrors: Record<string, RegistryError>): void {
   // decorate the errors
   metadata.asLatest.modules.forEach((section, sectionIndex): void => {
     const sectionName = stringCamelCase(section.name.toString());
@@ -38,7 +38,7 @@ function decorateErrors (_: Registry, metadata: RegistryMetadata, metadataErrors
 }
 
 // create event classes from metadata
-function decorateEvents (registry: Registry, metadata: RegistryMetadata, metadataEvents: Record<string, Constructor<EventData>>): void {
+function decorateEvents(registry: Registry, metadata: RegistryMetadata, metadataEvents: Record<string, Constructor<EventData>>): void {
   // decorate the events
   metadata.asLatest.modules
     .filter(({ events }): boolean => events.isSome)
@@ -59,7 +59,7 @@ function decorateEvents (registry: Registry, metadata: RegistryMetadata, metadat
         }
 
         metadataEvents[u8aToHex(eventIndex)] = class extends EventData {
-          constructor (registry: Registry, value: Uint8Array) {
+          constructor(registry: Registry, value: Uint8Array) {
             super(registry, Types, value, typeDef, meta, sectionName, methodName);
           }
         };
@@ -68,7 +68,7 @@ function decorateEvents (registry: Registry, metadata: RegistryMetadata, metadat
 }
 
 // create extrinsic mapping from metadata
-function decorateExtrinsics (registry: Registry, metadata: RegistryMetadata, metadataCalls: Record<string, CallFunction>): void {
+function decorateExtrinsics(registry: Registry, metadata: RegistryMetadata, metadataCalls: Record<string, CallFunction>): void {
   const extrinsics = extrinsicsFromMeta(registry, metadata);
 
   // decorate the extrinsics
@@ -98,7 +98,7 @@ export class TypeRegistry implements Registry {
 
   #signedExtensions: string[] = defaultExtensions;
 
-  constructor () {
+  constructor() {
     // we only want to import these on creation, i.e. we want to avoid types
     // weird side-effects from circular references. (Since registry is injected
     // into types, this can  be a real concern now)
@@ -116,36 +116,36 @@ export class TypeRegistry implements Registry {
     );
   }
 
-  public get chainDecimals (): number {
+  public get chainDecimals(): number {
     return this.#chainProperties?.tokenDecimals.isSome
       ? this.#chainProperties.tokenDecimals.unwrap().toNumber()
       : 12;
   }
 
-  public get chainSS58 (): number | undefined {
+  public get chainSS58(): number | undefined {
     return this.#chainProperties?.ss58Format.isSome
       ? this.#chainProperties.ss58Format.unwrap().toNumber()
       : undefined;
   }
 
-  public get chainToken (): string {
+  public get chainToken(): string {
     return this.#chainProperties?.tokenSymbol.isSome
       ? this.#chainProperties.tokenSymbol.unwrap().toString()
       : formatBalance.getDefaults().unit;
   }
 
-  public get knownTypes (): RegisteredTypes {
+  public get knownTypes(): RegisteredTypes {
     return this.#knownTypes;
   }
 
-  public get signedExtensions (): string[] {
+  public get signedExtensions(): string[] {
     return this.#signedExtensions;
   }
 
   /**
    * @describe Creates an instance of the class
    */
-  public createClass<K extends keyof InterfaceTypes> (type: K): Constructor<InterfaceTypes[K]> {
+  public createClass<K extends keyof InterfaceTypes>(type: K): Constructor<InterfaceTypes[K]> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return createClass(this, type) as any;
   }
@@ -153,12 +153,12 @@ export class TypeRegistry implements Registry {
   /**
    * @description Creates an instance of a type as registered
    */
-  public createType<K extends keyof InterfaceTypes> (type: K, ...params: unknown[]): InterfaceTypes[K] {
+  public createType<K extends keyof InterfaceTypes>(type: K, ...params: unknown[]): InterfaceTypes[K] {
     return createType(this, type, ...params);
   }
 
   // find a specific call
-  public findMetaCall (callIndex: Uint8Array): CallFunction {
+  public findMetaCall(callIndex: Uint8Array): CallFunction {
     const hexIndex = u8aToHex(callIndex);
     const fn = this.#metadataCalls[hexIndex];
 
@@ -168,7 +168,7 @@ export class TypeRegistry implements Registry {
   }
 
   // finds an error
-  public findMetaError (errorIndex: Uint8Array | DispatchErrorModule): RegistryError {
+  public findMetaError(errorIndex: Uint8Array | DispatchErrorModule): RegistryError {
     const hexIndex = u8aToHex(
       isU8a(errorIndex)
         ? errorIndex
@@ -181,7 +181,7 @@ export class TypeRegistry implements Registry {
     return error;
   }
 
-  public findMetaEvent (eventIndex: Uint8Array): Constructor<EventData> {
+  public findMetaEvent(eventIndex: Uint8Array): Constructor<EventData> {
     const hexIndex = u8aToHex(eventIndex);
     const Event = this.#metadataEvents[hexIndex];
 
@@ -190,7 +190,7 @@ export class TypeRegistry implements Registry {
     return Event;
   }
 
-  public get<T extends Codec = Codec> (name: string, withUnknown?: boolean): Constructor<T> | undefined {
+  public get<T extends Codec = Codec>(name: string, withUnknown?: boolean): Constructor<T> | undefined {
     let Type = this.#classes.get(name);
 
     // we have not already created the type, attempt it
@@ -221,15 +221,15 @@ export class TypeRegistry implements Registry {
     return Type as Constructor<T>;
   }
 
-  public getChainProperties (): ChainProperties | undefined {
+  public getChainProperties(): ChainProperties | undefined {
     return this.#chainProperties;
   }
 
-  public getDefinition (name: string): string | undefined {
+  public getDefinition(name: string): string | undefined {
     return this.#definitions.get(name);
   }
 
-  public getOrThrow<T extends Codec = Codec> (name: string, msg?: string): Constructor<T> {
+  public getOrThrow<T extends Codec = Codec>(name: string, msg?: string): Constructor<T> {
     const Type = this.get<T>(name);
 
     if (isUndefined(Type)) {
@@ -239,27 +239,27 @@ export class TypeRegistry implements Registry {
     return Type;
   }
 
-  public getOrUnknown<T extends Codec = Codec> (name: string): Constructor<T> {
+  public getOrUnknown<T extends Codec = Codec>(name: string): Constructor<T> {
     return this.get<T>(name, true) as Constructor<T>;
   }
 
-  public getSignedExtensionExtra (): Record<string, keyof InterfaceTypes> {
+  public getSignedExtensionExtra(): Record<string, keyof InterfaceTypes> {
     return expandExtensionTypes(this.#signedExtensions, 'extra');
   }
 
-  public getSignedExtensionTypes (): Record<string, keyof InterfaceTypes> {
+  public getSignedExtensionTypes(): Record<string, keyof InterfaceTypes> {
     return expandExtensionTypes(this.#signedExtensions, 'types');
   }
 
-  public hasClass (name: string): boolean {
+  public hasClass(name: string): boolean {
     return this.#classes.has(name);
   }
 
-  public hasDef (name: string): boolean {
+  public hasDef(name: string): boolean {
     return this.#definitions.has(name);
   }
 
-  public hasType (name: string): boolean {
+  public hasType(name: string): boolean {
     return !this.#unknownTypes.get(name) && (this.hasClass(name) || this.hasDef(name));
   }
 
@@ -269,7 +269,7 @@ export class TypeRegistry implements Registry {
   public register(name: string, type: Constructor): void;
 
   // eslint-disable-next-line no-dupe-class-members
-  public register (arg1: string | Constructor | RegistryTypes, arg2?: Constructor): void {
+  public register(arg1: string | Constructor | RegistryTypes, arg2?: Constructor): void {
     // NOTE Constructors appear as functions here
     if (isFunction(arg1)) {
       this.#classes.set(arg1.name, arg1);
@@ -282,7 +282,7 @@ export class TypeRegistry implements Registry {
     }
   }
 
-  private _registerObject (obj: RegistryTypes): void {
+  private _registerObject(obj: RegistryTypes): void {
     Object.entries(obj).forEach(([name, type]): void => {
       if (isFunction(type)) {
         // This _looks_ a bit funny, but `typeof Clazz === 'function'
@@ -303,18 +303,18 @@ export class TypeRegistry implements Registry {
   }
 
   // sets the chain properties
-  public setChainProperties (properties?: ChainProperties): void {
+  public setChainProperties(properties?: ChainProperties): void {
     if (properties) {
       this.#chainProperties = properties;
     }
   }
 
-  setKnownTypes (knownTypes: RegisteredTypes): void {
+  setKnownTypes(knownTypes: RegisteredTypes): void {
     this.#knownTypes = knownTypes;
   }
 
   // sets the metadata
-  public setMetadata (metadata: RegistryMetadata, signedExtensions?: string[]): void {
+  public setMetadata(metadata: RegistryMetadata, signedExtensions?: string[]): void {
     decorateExtrinsics(this, metadata, this.#metadataCalls);
     decorateErrors(this, metadata, this.#metadataErrors);
     decorateEvents(this, metadata, this.#metadataEvents);
@@ -330,7 +330,7 @@ export class TypeRegistry implements Registry {
   }
 
   // sets the available signed extensions
-  setSignedExtensions (signedExtensions: string[] = defaultExtensions): void {
+  setSignedExtensions(signedExtensions: string[] = defaultExtensions): void {
     this.#signedExtensions = signedExtensions;
 
     const unknown = findUnknownExtensions(this.#signedExtensions);

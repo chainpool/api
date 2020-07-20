@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,12 +11,12 @@
  * <BR>
  *
  * ```javascript
- * import { stringLowerFirst } from '@chainx-v2/util';
+ * import { stringLowerFirst } from '@polkadot/util';
  *
  * stringLowerFirst('ABC'); // => 'aBC'
  * ```
  */
-export default function stringLowerFirst (value?: string | null): string {
+export default function stringLowerFirst(value?: string | null): string {
   return value
     ? value.charAt(0).toLowerCase() + value.slice(1)
     : '';

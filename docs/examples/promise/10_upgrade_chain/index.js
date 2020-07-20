@@ -7,11 +7,11 @@
 const { ApiPromise, WsProvider } = require('@chainx-v2/api');
 
 // import the test keyring (already has dev keys for Alice, Bob, Charlie, Eve & Ferdie)
-const testKeyring = require('@polkadot/keyring/testing');
+const testKeyring = require('@chainx-v2/keyring/testing');
 
 const fs = require('fs');
 
-async function main () {
+async function main() {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://127.0.0.1:9944');
 

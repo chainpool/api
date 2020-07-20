@@ -25,7 +25,7 @@ interface Sealed {
  * naclSeal([...], [...], [...], [...]); // => [...]
  * ```
  */
-export default function naclSeal (message: Uint8Array, senderBoxSecret: Uint8Array, receiverBoxPublic: Uint8Array, nonce: Uint8Array = randomAsU8a(24)): Sealed {
+export default function naclSeal(message: Uint8Array, senderBoxSecret: Uint8Array, receiverBoxPublic: Uint8Array, nonce: Uint8Array = randomAsU8a(24)): Sealed {
   return {
     nonce,
     sealed: nacl.box(message, nonce, receiverBoxPublic, senderBoxSecret)

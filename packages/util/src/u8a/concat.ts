@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,7 +13,7 @@ import u8aToU8a from './toU8a';
  * <BR>
  *
  * ```javascript
- * import { u8aConcat } from '@chainx-v2/util';
+ * import { u8aConcat } from '@polkadot/util';
  *
  * u8aConcat(
  *   new Uint8Array([1, 2, 3]),
@@ -21,7 +21,7 @@ import u8aToU8a from './toU8a';
  * ); // [1, 2, 3, 4, 5, 6]
  * ```
  */
-export default function u8aConcat (...list: (Uint8Array | string)[]): Uint8Array {
+export default function u8aConcat(...list: (Uint8Array | string)[]): Uint8Array {
   let length = 0;
   let offset = 0;
   const u8as = new Array(list.length) as Uint8Array[];

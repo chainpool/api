@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -12,12 +12,12 @@ import compactToU8a from './toU8a';
  * <BR>
  *
  * ```javascript
- * import { compactAddLength } from '@chainx-v2/util';
+ * import { compactAddLength } from '@polkadot/util';
  *
  * console.log(compactAddLength(new Uint8Array([0xde, 0xad, 0xbe, 0xef]))); // Uint8Array([4 << 2, 0xde, 0xad, 0xbe, 0xef])
  * ```
  */
-export default function compactAddLength (input: Uint8Array): Uint8Array {
+export default function compactAddLength(input: Uint8Array): Uint8Array {
   return u8aConcat(
     compactToU8a(input.length),
     input

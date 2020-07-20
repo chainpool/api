@@ -10,7 +10,7 @@ import naclDeriveHard from '../nacl/deriveHard';
 import naclKeypairFromSeed from '../nacl/keypair/fromSeed';
 import DeriveJunction from './DeriveJunction';
 
-export default function keyHdkdEd25519 (keypair: Keypair, { chainCode, isHard }: DeriveJunction): Keypair {
+export default function keyHdkdEd25519(keypair: Keypair, { chainCode, isHard }: DeriveJunction): Keypair {
   assert(isHard, 'A soft key was found in the path (and is unsupported)');
 
   return naclKeypairFromSeed(

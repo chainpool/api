@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,14 +11,14 @@
  * <BR>
  *
  * ```javascript
- * import { u8aFixLength } from '@chainx-v2/util';
+ * import { u8aFixLength } from '@polkadot/util';
  *
  * u8aFixLength('0x12') // => 0x12
  * u8aFixLength('0x12', 16) // => 0x0012
  * u8aFixLength('0x1234', 8) // => 0x12
  * ```
  */
-export default function u8aFixLength (value: Uint8Array, bitLength = -1, atStart = false): Uint8Array {
+export default function u8aFixLength(value: Uint8Array, bitLength = -1, atStart = false): Uint8Array {
   const byteLength = Math.ceil(bitLength / 8);
 
   if (bitLength === -1 || value.length === byteLength) {

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -25,12 +25,12 @@ interface PjsChecks extends This {
 type PjsGlobal = NodeJS.Global & PjsChecks;
 type PjsWindow = Window & PjsChecks;
 
-function expandPath (path?: string): string {
+function expandPath(path?: string): string {
   return (!path || path.length < 5) ? '<unknown>' : path;
 }
 
 /** @internal */
-function flattenVersions (_all: (VersionPath | string)[]): string {
+function flattenVersions(_all: (VersionPath | string)[]): string {
   const all: VersionPath[] = _all.map((version: VersionPath | string): VersionPath =>
     isString(version)
       ? { version }
@@ -47,7 +47,7 @@ function flattenVersions (_all: (VersionPath | string)[]): string {
  * @name detectPackage
  * @summary Checks that a specific package is only imported once
  */
-export default function detectPackage ({ name, version }: PackageJson, path?: string | false): void {
+export default function detectPackage({ name, version }: PackageJson, path?: string | false): void {
   const _global = typeof window !== 'undefined'
     ? window as PjsWindow
     : global as PjsGlobal;
@@ -56,7 +56,7 @@ export default function detectPackage ({ name, version }: PackageJson, path?: st
     _global.__polkadotjs = {};
   }
 
-  assert(name.startsWith('@chaix-v2'), `Invalid package descriptor ${name}`);
+  assert(name.startsWith('@chainx-v2'), `Invalid package descriptor ${name}`);
 
   _global.__polkadotjs[name] = [...(_global.__polkadotjs[name] || []), { path: path || '', version }];
 

@@ -10,7 +10,7 @@ import { BASE58_ALPHABET } from './bs58';
  * @description
  * Validates the the supplied value is valid base58
  */
-export default function base58Validate (value: string): true {
+export default function base58Validate(value: string): true {
   for (let i = 0; i < value.length; i++) {
     if (!BASE58_ALPHABET.includes(value[i])) {
       throw new TypeError(`Invalid base58 character "${value[i]}" (0x${value.charCodeAt(i).toString(16)}) at index ${i}`);

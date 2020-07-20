@@ -8,7 +8,7 @@ import { AnyJson, CallFunction, Registry, RegistryMetadataCall } from '@chainx-v
 import { assert, stringCamelCase } from '@polkadot/util';
 
 /** @internal */
-export default function createDescriptor (registry: Registry, section: string, sectionIndex: number, methodIndex: number, callMetadata: RegistryMetadataCall): CallFunction {
+export default function createDescriptor(registry: Registry, section: string, sectionIndex: number, methodIndex: number, callMetadata: RegistryMetadataCall): CallFunction {
   const callIndex = new Uint8Array([sectionIndex, methodIndex]);
   const expectedArgs = callMetadata.args;
   const funcName = stringCamelCase(callMetadata.name.toString());

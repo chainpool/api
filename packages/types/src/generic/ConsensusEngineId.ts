@@ -22,14 +22,14 @@ export { CID_AURA, CID_BABE, CID_GRPA };
  * A 4-byte identifier (actually a [u8; 4]) identifying the engine, e.g. for Aura it would be [b'a', b'u', b'r', b'a']
  */
 export default class ConsensusEngineId extends U32 {
-  public static idToString (input: number | BN): string {
+  public static idToString(input: number | BN): string {
     return bnToBn(input)
       .toArray('le')
       .map((code): string => String.fromCharCode(code))
       .join('');
   }
 
-  public static stringToId (input: string): number {
+  public static stringToId(input: string): number {
     return input
       .split('')
       .reverse()
@@ -39,25 +39,25 @@ export default class ConsensusEngineId extends U32 {
   /**
    * @description `true` if the engine matches aura
    */
-  public get isAura (): boolean {
+  public get isAura(): boolean {
     return this.eq(CID_AURA);
   }
 
   /**
    * @description `true` is the engine matches babe
    */
-  public get isBabe (): boolean {
+  public get isBabe(): boolean {
     return this.eq(CID_BABE);
   }
 
   /**
    * @description `true` is the engine matches grandpa
    */
-  public get isGrandpa (): boolean {
+  public get isGrandpa(): boolean {
     return this.eq(CID_GRPA);
   }
 
-  private _getAuraAuthor (bytes: Bytes, sessionValidators: AccountId[]): AccountId {
+  private _getAuraAuthor(bytes: Bytes, sessionValidators: AccountId[]): AccountId {
     return sessionValidators[
       this.registry.createType('RawAuraPreDigest', bytes.toU8a(true))
         .slotNumber
@@ -66,7 +66,7 @@ export default class ConsensusEngineId extends U32 {
     ];
   }
 
-  private _getBabeAuthor (bytes: Bytes, sessionValidators: AccountId[]): AccountId {
+  private _getBabeAuthor(bytes: Bytes, sessionValidators: AccountId[]): AccountId {
     const digest = this.registry.createType('RawBabePreDigestCompat', bytes.toU8a(true));
 
     return sessionValidators[
@@ -77,7 +77,7 @@ export default class ConsensusEngineId extends U32 {
   /**
    * @description From the input bytes, decode into an author
    */
-  public extractAuthor (bytes: Bytes, sessionValidators: AccountId[]): AccountId | undefined {
+  public extractAuthor(bytes: Bytes, sessionValidators: AccountId[]): AccountId | undefined {
     if (sessionValidators?.length) {
       if (this.isAura) {
         return this._getAuraAuthor(bytes, sessionValidators);
@@ -92,7 +92,7 @@ export default class ConsensusEngineId extends U32 {
   /**
    * @description Override the default toString to return a 4-byte string
    */
-  public toString (): string {
+  public toString(): string {
     return ConsensusEngineId.idToString(this as BN);
   }
 }

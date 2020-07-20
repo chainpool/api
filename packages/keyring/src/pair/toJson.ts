@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/keyring authors & contributors
+// Copyright 2017-2020 @chainx-v2/keyring authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -12,7 +12,7 @@ interface PairStateJson {
   meta: KeyringPair$Meta;
 }
 
-export default function toJson (type: KeypairType, { address, meta }: PairStateJson, encoded: Uint8Array, isEncrypted: boolean): KeyringPair$Json {
+export default function toJson(type: KeypairType, { address, meta }: PairStateJson, encoded: Uint8Array, isEncrypted: boolean): KeyringPair$Json {
   return {
     address,
     encoded: u8aToHex(encoded),

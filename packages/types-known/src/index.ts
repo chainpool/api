@@ -16,7 +16,7 @@ import warnings from './warnings';
 
 // flatten a VersionedType[] into a Record<string, string>
 /** @internal */
-function filterVersions (versions: OverrideVersionedType[] = [], specVersion: number): RegistryTypes {
+function filterVersions(versions: OverrideVersionedType[] = [], specVersion: number): RegistryTypes {
   return versions
     .filter(({ minmax: [min, max] }) =>
       (isUndefined(min) || specVersion >= min) &&
@@ -31,14 +31,14 @@ function filterVersions (versions: OverrideVersionedType[] = [], specVersion: nu
 /**
  * @description Based on the metadata version, return the registry types
  */
-export function getMetadataTypes (_registry: Registry, specVersion: number): RegistryTypes {
+export function getMetadataTypes(_registry: Registry, specVersion: number): RegistryTypes {
   return filterVersions(typesMeta, specVersion);
 }
 
 /**
  * @description Get types for specific modules (metadata override)
  */
-export function getModuleTypes ({ knownTypes }: Registry, section: string): OverrideModuleType {
+export function getModuleTypes({ knownTypes }: Registry, section: string): OverrideModuleType {
   return {
     ...(typesModules[section] || {}),
     ...(knownTypes.typesAlias?.[section] || {})
@@ -48,7 +48,7 @@ export function getModuleTypes ({ knownTypes }: Registry, section: string): Over
 /**
  * @description Based on the chain and runtimeVersion, get the applicable types (ready for registration)
  */
-export function getSpecTypes ({ knownTypes }: Registry, chainName: Text | string, specName: Text | string, specVersion: BigInt | BN | number): RegistryTypes {
+export function getSpecTypes({ knownTypes }: Registry, chainName: Text | string, specName: Text | string, specVersion: BigInt | BN | number): RegistryTypes {
   const _chainName = chainName.toString();
   const _specName = specName.toString();
   const _specVersion = bnToBn(specVersion).toNumber();

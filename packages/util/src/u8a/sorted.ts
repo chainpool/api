@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import isUndefined from '../is/undefined';
 
-export default function u8aSorted (u8as: Uint8Array[]): Uint8Array[] {
+export default function u8aSorted(u8as: Uint8Array[]): Uint8Array[] {
   return u8as.sort((a, b): number => {
     let i = 0;
 

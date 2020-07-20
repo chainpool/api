@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -16,12 +16,12 @@ import numberToHex from './toHex';
  * <BR>
  *
  * ```javascript
- * import { numberToU8a } from '@chainx-v2/util';
+ * import { numberToU8a } from '@polkadot/util';
  *
  * numberToU8a(0x1234); // => [0x12, 0x34]
  * ```
  */
-export default function numberToU8a (value?: number | null, bitLength = -1): Uint8Array {
+export default function numberToU8a(value?: number | null, bitLength = -1): Uint8Array {
   if (isUndefined(value) || isNull(value) || isNaN(value)) {
     return new Uint8Array();
   }

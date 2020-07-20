@@ -6,7 +6,7 @@ import BN from 'bn.js';
 import Decorated from '@chainx-v2/metadata/Decorated';
 import Metadata from '@chainx-v2/metadata/Metadata';
 import rpcMetadata from '@chainx-v2/metadata/Metadata/static';
-import testingPairs from '@polkadot/keyring/testingPairs';
+import testingPairs from '@chainx-v2/keyring/testingPairs';
 
 import { TypeRegistry } from '../../create';
 import Extrinsic from './Extrinsic';

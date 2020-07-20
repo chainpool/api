@@ -44,6 +44,12 @@
       "@chainx-v2/rpc-provider/*": [
         "packages/rpc-provider/src/*"
       ],
+      "@chainx-v2/account": [
+        "packages/account/src"
+      ],
+      "@chainx-v2/account/*": [
+        "packages/account/src/*"
+      ],
       "@chainx-v2/types": [
         "packages/types/src"
       ],
@@ -56,14 +62,20 @@
       "@chainx-v2/types-known/*": [
         "packages/types-known/src/*"
       ],
-      "@chainx-v2/account": [
-        "packages/account/src"
+      "@chainx-v2/util": [
+        "packages/util/src"
       ],
       "@chainx-v2/util/*": [
         "packages/util/src/*"
       ],
+      "@chainx-v2/util-crypto": [
+        "packages/util-crypto/src"
+      ],
       "@chainx-v2/util-crypto/*": [
         "packages/util-crypto/src/*"
+      ],
+      "@chainx-v2/keyring": [
+        "packages/keyring/src"
       ],
       "@chainx-v2/keyring/*": [
         "packages/keyring/src/*"

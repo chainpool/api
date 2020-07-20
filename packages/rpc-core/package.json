@@ -3,28 +3,7 @@
   "version": "0.0.3-beta.14",
   "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
   "main": "index.js",
-  "keywords": [
-    "Polkadot",
-    "JsonRPC"
-  ],
-  "author": "Jaco Greeff <jacogr@gmail.com>",
-  "maintainers": [
-    "Jaco Greeff <jacogr@gmail.com>"
-  ],
-  "contributors": [],
   "license": "Apache-2.0",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/polkadot-js/api.git"
-  },
-  "bugs": {
-    "url": "https://github.com/polkadot-js/api/issues"
-  },
-  "homepage": "https://github.com/polkadot-js/api/tree/master/packages/rpc-core#readme",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
     "@chainx-v2/metadata": "0.0.1-beta.16",
@@ -35,6 +14,6 @@
     "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "@polkadot/keyring": "^2.15.1"
+    "@chainx-v2/keyring": "^0.0.3-beta.14"
   }
 }

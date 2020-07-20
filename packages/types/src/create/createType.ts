@@ -9,13 +9,13 @@ import { isU8a, u8aToHex } from '@polkadot/util';
 
 import { createClass } from './createClass';
 
-function u8aHasValue (value: Uint8Array): boolean {
+function u8aHasValue(value: Uint8Array): boolean {
   return value.some((v): boolean => !!v);
 }
 
 // With isPedantic, actually check that the encoding matches that supplied. This
 // is much slower, but verifies that we have the correct types defined
-function checkInstance<T extends Codec = Codec, K extends string = string> (value: Uint8Array, created: FromReg<T, K>): void {
+function checkInstance<T extends Codec = Codec, K extends string = string>(value: Uint8Array, created: FromReg<T, K>): void {
   // the underlying type created.toRawType()
   const rawType = created.toRawType();
 
@@ -42,7 +42,7 @@ function checkInstance<T extends Codec = Codec, K extends string = string> (valu
 
 // Initializes a type with a value. This also checks for fallbacks and in the cases
 // where isPedantic is specified (storage decoding), also check the format/structure
-function initType<T extends Codec = Codec, K extends string = string> (registry: Registry, Type: Constructor<FromReg<T, K>>, params: any[] = [], isPedantic?: boolean): FromReg<T, K> {
+function initType<T extends Codec = Codec, K extends string = string>(registry: Registry, Type: Constructor<FromReg<T, K>>, params: any[] = [], isPedantic?: boolean): FromReg<T, K> {
   const created = new Type(registry, ...params);
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [value] = params;
@@ -58,7 +58,7 @@ function initType<T extends Codec = Codec, K extends string = string> (registry:
 // argument here can be any string, which, when it cannot parse, will yield a
 // runtime error.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function createTypeUnsafe<T extends Codec = Codec, K extends string = string> (registry: Registry, type: K, params: any[] = [], isPedantic?: boolean): T {
+export function createTypeUnsafe<T extends Codec = Codec, K extends string = string>(registry: Registry, type: K, params: any[] = [], isPedantic?: boolean): T {
   try {
     // Circle back to isPedantic when it handles all cases 100% - as of now,
     // it provides false warning which is more hinderance than help
@@ -74,6 +74,6 @@ export function createTypeUnsafe<T extends Codec = Codec, K extends string = str
  * instance from
  * @param params - The value to instantiate the type with
  */
-export function createType<K extends keyof InterfaceTypes> (registry: Registry, type: K, ...params: any[]): InterfaceTypes[K] {
+export function createType<K extends keyof InterfaceTypes>(registry: Registry, type: K, ...params: any[]): InterfaceTypes[K] {
   return createTypeUnsafe<InterfaceTypes[K], K>(registry, type, params);
 }

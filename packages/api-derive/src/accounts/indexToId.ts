@@ -14,7 +14,7 @@ import { isFunction } from '@polkadot/util';
 
 import { memo } from '../util';
 
-function queryEnumSet (api: ApiInterfaceRx, _accountIndex: AccountIndex | string): Observable<AccountId | undefined> {
+function queryEnumSet(api: ApiInterfaceRx, _accountIndex: AccountIndex | string): Observable<AccountId | undefined> {
   const accountIndex = _accountIndex instanceof api.registry.createClass('AccountIndex')
     ? _accountIndex
     : api.registry.createType('AccountIndex', _accountIndex);
@@ -28,7 +28,7 @@ function queryEnumSet (api: ApiInterfaceRx, _accountIndex: AccountIndex | string
 }
 
 // current
-function query (api: ApiInterfaceRx, accountIndex: AccountIndex | string): Observable<AccountId | undefined> {
+function query(api: ApiInterfaceRx, accountIndex: AccountIndex | string): Observable<AccountId | undefined> {
   return api.query.indices.accounts<Option<ITuple<[AccountId, BalanceOf]>>>(accountIndex).pipe(
     map((optResult): AccountId | undefined =>
       optResult.unwrapOr([])[0]
@@ -49,7 +49,7 @@ function query (api: ApiInterfaceRx, accountIndex: AccountIndex | string): Obser
  * });
  * ```
  */
-export function indexToId (api: ApiInterfaceRx): (accountIndex: AccountIndex | string) => Observable<AccountId | undefined> {
+export function indexToId(api: ApiInterfaceRx): (accountIndex: AccountIndex | string) => Observable<AccountId | undefined> {
   return memo((accountIndex: AccountIndex | string): Observable<AccountId | undefined> =>
     api.query.indices
       ? isFunction(api.query.indices.accounts)

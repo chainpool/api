@@ -4,11 +4,11 @@
 
 import wasmCrypto from '@polkadot/wasm-crypto';
 
-export function cryptoIsReady (): boolean {
+export function cryptoIsReady(): boolean {
   return wasmCrypto.isReady();
 }
 
-export function cryptoWaitReady (): Promise<boolean> {
+export function cryptoWaitReady(): Promise<boolean> {
   return wasmCrypto
     .waitReady()
     .then((): boolean => true)

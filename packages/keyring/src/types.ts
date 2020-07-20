@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/keyring authors & contributors
+// Copyright 2017-2020 @chainx-v2/keyring authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -43,9 +43,9 @@ export interface KeyringPair {
   encodePkcs8: (passphrase?: string) => Uint8Array;
   lock: () => void;
   setMeta: (meta: KeyringPair$Meta) => void;
-  sign (message: Uint8Array, options?: SignOptions): Uint8Array;
-  toJson (passphrase?: string): KeyringPair$Json;
-  verify (message: Uint8Array, signature: Uint8Array): boolean;
+  sign(message: Uint8Array, options?: SignOptions): Uint8Array;
+  toJson(passphrase?: string): KeyringPair$Json;
+  verify(message: Uint8Array, signature: Uint8Array): boolean;
 }
 
 export interface KeyringPairs {
@@ -60,20 +60,20 @@ export interface KeyringInstance {
   readonly publicKeys: Uint8Array[];
   readonly type: KeypairType;
 
-  decodeAddress (encoded: string | Uint8Array, ignoreChecksum?: boolean, ss58Format?: Prefix): Uint8Array;
-  encodeAddress (key: Uint8Array | string, ss58Format?: Prefix): string;
-  setSS58Format (ss58Format: Prefix): void;
+  decodeAddress(encoded: string | Uint8Array, ignoreChecksum?: boolean, ss58Format?: Prefix): Uint8Array;
+  encodeAddress(key: Uint8Array | string, ss58Format?: Prefix): string;
+  setSS58Format(ss58Format: Prefix): void;
 
-  addPair (pair: KeyringPair): KeyringPair;
-  addFromAddress (address: string | Uint8Array, meta?: KeyringPair$Meta, encoded?: Uint8Array | null, type?: KeypairType, ignoreChecksum?: boolean): KeyringPair;
-  addFromJson (pair: KeyringPair$Json, ignoreChecksum?: boolean): KeyringPair;
-  addFromMnemonic (mnemonic: string, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
-  addFromSeed (seed: Uint8Array, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
-  addFromUri (suri: string, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
-  createFromUri (suri: string, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
-  getPair (address: string | Uint8Array): KeyringPair;
-  getPairs (): KeyringPair[];
-  getPublicKeys (): Uint8Array[];
-  removePair (address: string | Uint8Array): void;
-  toJson (address: string | Uint8Array, passphrase?: string): KeyringPair$Json;
+  addPair(pair: KeyringPair): KeyringPair;
+  addFromAddress(address: string | Uint8Array, meta?: KeyringPair$Meta, encoded?: Uint8Array | null, type?: KeypairType, ignoreChecksum?: boolean): KeyringPair;
+  addFromJson(pair: KeyringPair$Json, ignoreChecksum?: boolean): KeyringPair;
+  addFromMnemonic(mnemonic: string, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
+  addFromSeed(seed: Uint8Array, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
+  addFromUri(suri: string, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
+  createFromUri(suri: string, meta?: KeyringPair$Meta, type?: KeypairType): KeyringPair;
+  getPair(address: string | Uint8Array): KeyringPair;
+  getPairs(): KeyringPair[];
+  getPublicKeys(): Uint8Array[];
+  removePair(address: string | Uint8Array): void;
+  toJson(address: string | Uint8Array, passphrase?: string): KeyringPair$Json;
 }

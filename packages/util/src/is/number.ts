@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,11 +11,11 @@
  * <BR>
  *
  * ```javascript
- * import { isNumber } from '@chainx-v2/util';
+ * import { isNumber } from '@polkadot/util';
  *
  * console.log('isNumber', isNumber(1234)); // => true
  * ```
  */
-export default function isNumber (value: unknown): value is number {
+export default function isNumber(value: unknown): value is number {
   return typeof value === 'number';
 }

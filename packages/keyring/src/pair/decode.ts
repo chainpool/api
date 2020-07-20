@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/keyring authors & contributors
+// Copyright 2017-2020 @chainx-v2/keyring authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,7 +14,7 @@ type DecodeResult = PairInfo & {
   secretKey: Uint8Array;
 };
 
-function decodePkcs8 (encoded: Uint8Array): DecodeResult {
+function decodePkcs8(encoded: Uint8Array): DecodeResult {
   const header = encoded.subarray(0, PKCS8_HEADER.length);
 
   assert(header.toString() === PKCS8_HEADER.toString(), 'Invalid Pkcs8 header found in body');
@@ -41,7 +41,7 @@ function decodePkcs8 (encoded: Uint8Array): DecodeResult {
   };
 }
 
-export default function decode (passphrase?: string, encrypted?: Uint8Array | null): DecodeResult {
+export default function decode(passphrase?: string, encrypted?: Uint8Array | null): DecodeResult {
   assert(encrypted, 'No encrypted data available to decode');
 
   const encoded = passphrase

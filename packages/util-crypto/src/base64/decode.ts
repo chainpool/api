@@ -12,7 +12,7 @@ import validate from './validate';
  * @description
  * From the provided input, decode the base64 and return the result as an `Uint8Array`.
  */
-export default function base64Decode (value: string): Uint8Array {
+export default function base64Decode(value: string): Uint8Array {
   validate(value);
 
   return bufferToU8a(Buffer.from(value, 'base64'));

@@ -26,7 +26,7 @@ export default abstract class Init<ApiType extends ApiTypes> extends Decorate<Ap
 
   #updateSub?: Subscription;
 
-  constructor (options: ApiOptions, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
+  constructor(options: ApiOptions, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
     super(options, type, decorateMethod);
     options.types = {
       ...chainxTypes,
@@ -73,7 +73,7 @@ export default abstract class Init<ApiType extends ApiTypes> extends Decorate<Ap
     }
   }
 
-  protected async _loadMeta (): Promise<boolean> {
+  protected async _loadMeta(): Promise<boolean> {
     const genesisHash = await this._rpcCore.chain.getBlockHash(0).toPromise();
 
     // on re-connection to the same chain, we don't want to re-do everything from chain again
@@ -103,7 +103,7 @@ export default abstract class Init<ApiType extends ApiTypes> extends Decorate<Ap
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  private async _metaFromSource (source: ApiBase<any>): Promise<Metadata> {
+  private async _metaFromSource(source: ApiBase<any>): Promise<Metadata> {
     this._extrinsicType = source.extrinsicVersion;
     this._runtimeVersion = source.runtimeVersion;
     this._genesisHash = source.genesisHash;
@@ -125,7 +125,7 @@ export default abstract class Init<ApiType extends ApiTypes> extends Decorate<Ap
   }
 
   // subscribe to metadata updates, inject the types on changes
-  private _subscribeUpdates (): void {
+  private _subscribeUpdates(): void {
     if (this.#updateSub || !this.hasSubscriptions) {
       return;
     }
@@ -153,7 +153,7 @@ export default abstract class Init<ApiType extends ApiTypes> extends Decorate<Ap
     ).subscribe();
   }
 
-  private async _metaFromChain (optMetadata: Record<string, string>): Promise<Metadata> {
+  private async _metaFromChain(optMetadata: Record<string, string>): Promise<Metadata> {
     const [runtimeVersion, chain, chainProps] = await Promise.all([
       this._rpcCore.state.getRuntimeVersion().toPromise(),
       this._rpcCore.system.chain().toPromise(),
@@ -185,7 +185,7 @@ export default abstract class Init<ApiType extends ApiTypes> extends Decorate<Ap
     return metadata;
   }
 
-  private async _initFromMeta (metadata: Metadata): Promise<boolean> {
+  private async _initFromMeta(metadata: Metadata): Promise<boolean> {
     // inject types based on metadata, if applicable
     this.registerTypes(getMetadataTypes(this.registry, metadata.version));
 

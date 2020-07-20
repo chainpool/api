@@ -20,7 +20,7 @@ import { bip39Validate, isReady } from '@polkadot/wasm-crypto';
  * const isValidMnemonic = mnemonicValidate(mnemonic); // => boolean
  * ```
  */
-export default function mnemonicValidate (mnemonic: string): boolean {
+export default function mnemonicValidate(mnemonic: string): boolean {
   return isReady()
     ? bip39Validate(mnemonic)
     : validateMnemonic(mnemonic);

@@ -9,7 +9,7 @@ import { isU8a, isUndefined, u8aToHex, u8aToU8a } from '@polkadot/util';
 import { blake2AsU8a } from '@polkadot/util-crypto';
 
 /** @internal */
-function decodeU8a (value?: any): Uint8Array {
+function decodeU8a(value?: any): Uint8Array {
   if (isU8a(value)) {
     return value;
   }
@@ -29,7 +29,7 @@ function decodeU8a (value?: any): Uint8Array {
 export default class Raw extends Uint8Array implements IU8a {
   public readonly registry: Registry;
 
-  constructor (registry: Registry, value?: AnyU8a) {
+  constructor(registry: Registry, value?: AnyU8a) {
     super(decodeU8a(value));
 
     this.registry = registry;
@@ -38,28 +38,28 @@ export default class Raw extends Uint8Array implements IU8a {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return this.length;
   }
 
   /**
    * @description returns a hash of the contents
    */
-  public get hash (): H256 {
+  public get hash(): H256 {
     return new Raw(this.registry, blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description Returns true if the type wraps an empty/default all-0 value
    */
-  public get isEmpty (): boolean {
+  public get isEmpty(): boolean {
     return !this.length || isUndefined(this.find((value): boolean => !!value));
   }
 
   /**
    * @description The length of the value
    */
-  public get length (): number {
+  public get length(): number {
     // only included here since we ignore inherited docs
     return super.length;
   }
@@ -67,14 +67,14 @@ export default class Raw extends Uint8Array implements IU8a {
   /**
    * @description Returns the number of bits in the value
    */
-  public bitLength (): number {
+  public bitLength(): number {
     return this.length * 8;
   }
 
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     if (other instanceof Uint8Array) {
       return (this.length === other.length) &&
         !this.some((value, index): boolean => value !== other[index]);
@@ -88,42 +88,42 @@ export default class Raw extends Uint8Array implements IU8a {
    * @param begin The position to start at
    * @param end The position to end at
    */
-  public subarray (begin: number, end?: number): Uint8Array {
+  public subarray(begin: number, end?: number): Uint8Array {
     return Uint8Array.from(this).subarray(begin, end);
   }
 
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex (): string {
+  public toHex(): string {
     return u8aToHex(this);
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman (): AnyJson {
+  public toHuman(): AnyJson {
     return this.toJSON();
   }
 
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON (): string {
+  public toJSON(): string {
     return this.toHex();
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'Raw';
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString (): string {
+  public toString(): string {
     return this.toHex();
   }
 
@@ -132,7 +132,7 @@ export default class Raw extends Uint8Array implements IU8a {
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     return Uint8Array.from(this);
   }
 }

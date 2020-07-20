@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,14 +14,14 @@ import hexStripPrefix from './stripPrefix';
  * <BR>
  *
  * ```javascript
- * import { hexFixLength } from '@chainx-v2/util';
+ * import { hexFixLength } from '@polkadot/util';
  *
  * console.log('fixed', hexFixLength('0x12', 16)); // => 0x12
  * console.log('fixed', hexFixLength('0x12', 16, true)); // => 0x0012
  * console.log('fixed', hexFixLength('0x0012', 8)); // => 0x12
  * ```
  */
-export default function hexFixLength (value: string, bitLength = -1, withPadding = false): string {
+export default function hexFixLength(value: string, bitLength = -1, withPadding = false): string {
   const strLength = Math.ceil(bitLength / 4);
   const hexLength = strLength + 2;
 

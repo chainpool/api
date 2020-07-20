@@ -43,7 +43,7 @@ const HASHER_MAP: Record<keyof typeof AllHashers, [number, boolean]> = {
   Twox64Concat: [8, true]
 };
 
-function getStorageType (type: StorageEntryTypeLatest, isOptionalLinked?: boolean): [boolean, string] {
+function getStorageType(type: StorageEntryTypeLatest, isOptionalLinked?: boolean): [boolean, string] {
   if (type.isPlain) {
     return [false, type.asPlain.toString()];
   } else if (type.isDoubleMap) {
@@ -65,7 +65,7 @@ function getStorageType (type: StorageEntryTypeLatest, isOptionalLinked?: boolea
 
 // we unwrap the type here, turning into an output usable for createType
 /** @internal */
-export function unwrapStorageType (type: StorageEntryTypeLatest, isOptional?: boolean): keyof InterfaceTypes {
+export function unwrapStorageType(type: StorageEntryTypeLatest, isOptional?: boolean): keyof InterfaceTypes {
   const [hasWrapper, outputType] = getStorageType(type, isOptional);
 
   return isOptional && !hasWrapper
@@ -74,7 +74,7 @@ export function unwrapStorageType (type: StorageEntryTypeLatest, isOptional?: bo
 }
 
 /** @internal */
-function decodeStorageKey (value?: AnyU8a | StorageKey | StorageEntry | [StorageEntry, any]): Decoded {
+function decodeStorageKey(value?: AnyU8a | StorageKey | StorageEntry | [StorageEntry, any]): Decoded {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   if (value instanceof StorageKey) {
     return {
@@ -106,7 +106,7 @@ function decodeStorageKey (value?: AnyU8a | StorageKey | StorageEntry | [Storage
   throw new Error(`Unable to convert input ${value as string} to StorageKey`);
 }
 
-function decodeHashers (registry: Registry, value: Uint8Array, hashers: [StorageHasher, string][]): Codec[] {
+function decodeHashers(registry: Registry, value: Uint8Array, hashers: [StorageHasher, string][]): Codec[] {
   // the storage entry is xxhashAsU8a(prefix, 128) + xxhashAsU8a(method, 128), 256 bits total
   let offset = 32;
 
@@ -124,7 +124,7 @@ function decodeHashers (registry: Registry, value: Uint8Array, hashers: [Storage
 }
 
 /** @internal */
-function decodeArgsFromMeta (registry: Registry, value: Uint8Array, meta?: StorageEntryMetadataLatest): Codec[] {
+function decodeArgsFromMeta(registry: Registry, value: Uint8Array, meta?: StorageEntryMetadataLatest): Codec[] {
   if (!meta || !(meta.type.isDoubleMap || meta.type.isMap)) {
     return [];
   }
@@ -164,7 +164,7 @@ export default class StorageKey extends Bytes {
 
   private readonly _section?: string;
 
-  constructor (registry: Registry, value?: AnyU8a | StorageKey | StorageEntry | [StorageEntry, any], override: Partial<StorageKeyExtra> = {}) {
+  constructor(registry: Registry, value?: AnyU8a | StorageKey | StorageEntry | [StorageEntry, any], override: Partial<StorageKeyExtra> = {}) {
     const { key, method, section } = decodeStorageKey(value);
 
     super(registry, key);
@@ -177,7 +177,7 @@ export default class StorageKey extends Bytes {
     this.setMeta(StorageKey.getMeta(value as StorageKey));
   }
 
-  public static getMeta (value: StorageKey | StorageEntry | [StorageEntry, any]): StorageEntryMetadataLatest | undefined {
+  public static getMeta(value: StorageKey | StorageEntry | [StorageEntry, any]): StorageEntryMetadataLatest | undefined {
     if (value instanceof StorageKey) {
       return value.meta;
     } else if (isFunction(value)) {
@@ -191,7 +191,7 @@ export default class StorageKey extends Bytes {
     return undefined;
   }
 
-  public static getType (value: StorageKey | StorageEntry | [StorageEntry, any]): string {
+  public static getType(value: StorageKey | StorageEntry | [StorageEntry, any]): string {
     if (value instanceof StorageKey) {
       return value.outputType;
     } else if (isFunction(value)) {
@@ -211,42 +211,42 @@ export default class StorageKey extends Bytes {
   /**
    * @description Return the decoded arguments (applicable to map/doublemap with decodable values)
    */
-  public get args (): Codec[] {
+  public get args(): Codec[] {
     return this._args;
   }
 
   /**
    * @description The metadata or `undefined` when not available
    */
-  public get meta (): StorageEntryMetadataLatest | undefined {
+  public get meta(): StorageEntryMetadataLatest | undefined {
     return this._meta;
   }
 
   /**
    * @description The key method or `undefined` when not specified
    */
-  public get method (): string | undefined {
+  public get method(): string | undefined {
     return this._method;
   }
 
   /**
    * @description The output type
    */
-  public get outputType (): string {
+  public get outputType(): string {
     return this._outputType;
   }
 
   /**
    * @description The key section or `undefined` when not specified
    */
-  public get section (): string | undefined {
+  public get section(): string | undefined {
     return this._section;
   }
 
   /**
    * @description Sets the meta for this key
    */
-  public setMeta (meta?: StorageEntryMetadataLatest): this {
+  public setMeta(meta?: StorageEntryMetadataLatest): this {
     this._meta = meta;
 
     if (meta) {
@@ -265,7 +265,7 @@ export default class StorageKey extends Bytes {
   /**
    * @description Returns the Human representation for this type
    */
-  public toHuman (): AnyJson {
+  public toHuman(): AnyJson {
     return this._args.length
       ? this._args.map((arg) => arg.toHuman())
       : super.toHuman();
@@ -274,7 +274,7 @@ export default class StorageKey extends Bytes {
   /**
    * @description Returns the raw type for this
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'StorageKey';
   }
 }

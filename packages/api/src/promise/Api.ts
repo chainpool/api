@@ -18,7 +18,7 @@ interface Tracker<T> {
 }
 
 // extract the arguments and callback params from a value array possibly containing a callback
-function extractArgs (args: unknown[], needsCallback: boolean): [unknown[], Callback<Codec> | undefined] {
+function extractArgs(args: unknown[], needsCallback: boolean): [unknown[], Callback<Codec> | undefined] {
   let callback: Callback<Codec> | undefined;
   const actualArgs = args.slice();
 
@@ -35,7 +35,7 @@ function extractArgs (args: unknown[], needsCallback: boolean): [unknown[], Call
 }
 
 // a Promise completion tracker, wrapping an isComplete variable that ensures the promise only resolves once
-function promiseTracker<T> (resolve: (value: T) => void, reject: (value: Error) => void): Tracker<T> {
+function promiseTracker<T>(resolve: (value: T) => void, reject: (value: Error) => void): Tracker<T> {
   let isCompleted = false;
 
   return {
@@ -59,7 +59,7 @@ function promiseTracker<T> (resolve: (value: T) => void, reject: (value: Error) 
 }
 
 // Decorate a call for a single-shot result - retrieve and then immediate unsubscribe
-function decorateCall<Method extends DecorateFn<ObsInnerType<ReturnType<Method>>>> (method: Method, actualArgs: unknown[]): Promise<ObsInnerType<ReturnType<Method>>> {
+function decorateCall<Method extends DecorateFn<ObsInnerType<ReturnType<Method>>>>(method: Method, actualArgs: unknown[]): Promise<ObsInnerType<ReturnType<Method>>> {
   return new Promise((resolve, reject): void => {
     // single result tracker - either reject with Error or resolve with Codec result
     const tracker = promiseTracker(resolve, reject);
@@ -75,7 +75,7 @@ function decorateCall<Method extends DecorateFn<ObsInnerType<ReturnType<Method>>
 }
 
 // Decorate a subscription where we have a result callback specified
-function decorateSubscribe<Method extends DecorateFn<ObsInnerType<ReturnType<Method>>>> (method: Method, actualArgs: unknown[], resultCb: Callback<Codec>): UnsubscribePromise {
+function decorateSubscribe<Method extends DecorateFn<ObsInnerType<ReturnType<Method>>>>(method: Method, actualArgs: unknown[], resultCb: Callback<Codec>): UnsubscribePromise {
   return new Promise<VoidFn>((resolve, reject): void => {
     // either reject with error or resolve with unsubscribe callback
     const tracker = promiseTracker(resolve, reject);
@@ -95,7 +95,7 @@ function decorateSubscribe<Method extends DecorateFn<ObsInnerType<ReturnType<Met
 /**
  * @description Decorate method for ApiPromise, where the results are converted to the Promise equivalent
  */
-export function decorateMethod<Method extends DecorateFn<ObsInnerType<ReturnType<Method>>>> (method: Method, options?: DecorateMethodOptions): StorageEntryPromiseOverloads {
+export function decorateMethod<Method extends DecorateFn<ObsInnerType<ReturnType<Method>>>>(method: Method, options?: DecorateMethodOptions): StorageEntryPromiseOverloads {
   const needsCallback = options && options.methodName && options.methodName.includes('subscribe');
 
   return function (...args: unknown[]): Promise<ObsInnerType<ReturnType<Method>>> | UnsubscribePromise {
@@ -211,7 +211,7 @@ export default class ApiPromise extends ApiBase<'promise'> {
    * });
    * ```
    */
-  public static create (options?: ApiOptions): Promise<ApiPromise> {
+  public static create(options?: ApiOptions): Promise<ApiPromise> {
     return new ApiPromise(options).isReady;
   }
 
@@ -232,7 +232,7 @@ export default class ApiPromise extends ApiBase<'promise'> {
    * });
    * ```
    */
-  constructor (options?: ApiOptions) {
+  constructor(options?: ApiOptions) {
     super(options, 'promise', decorateMethod);
 
     this.#isReadyPromise = new Promise((resolve, reject): void => {
@@ -248,14 +248,14 @@ export default class ApiPromise extends ApiBase<'promise'> {
   /**
    * @description Promise that returns the first time we are connected and loaded
    */
-  public get isReady (): Promise<ApiPromise> {
+  public get isReady(): Promise<ApiPromise> {
     return this.#isReadyPromise;
   }
 
   /**
    * @description Returns a clone of this ApiPromise instance (new underlying provider connection)
    */
-  public clone (): ApiPromise {
+  public clone(): ApiPromise {
     return new ApiPromise({
       ...this._options,
       source: this
@@ -282,7 +282,7 @@ export default class ApiPromise extends ApiBase<'promise'> {
    * ```
    */
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async combineLatest <T extends any[] = any[]> (fns: (CombinatorFunction | [CombinatorFunction, ...any[]])[], callback: CombinatorCallback<T>): UnsubscribePromise {
+  public async combineLatest<T extends any[] = any[]>(fns: (CombinatorFunction | [CombinatorFunction, ...any[]])[], callback: CombinatorCallback<T>): UnsubscribePromise {
     const combinator = new Combinator(fns, callback);
 
     return (): void => {

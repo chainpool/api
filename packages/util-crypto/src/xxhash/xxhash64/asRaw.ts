@@ -18,6 +18,6 @@ import xxhash64AsValue from './asValue';
  * xxhash64AsRaw('abcd', 0xabcd)); // => e29f70f8b8c96df7
  * ```
  */
-export default function xxhash64AsRaw (data: Buffer | Uint8Array | string, seed: number): string {
+export default function xxhash64AsRaw(data: Buffer | Uint8Array | string, seed: number): string {
   return xxhash64AsValue(data, seed).toString(16);
 }

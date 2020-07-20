@@ -5,8 +5,9 @@
 // Required imports
 const { ApiPromise, WsProvider } = require('@chainx-v2/api');
 const { Account } = require('@chainx-v2/account');
+const { encodeAddress, decodeAddress, setSS58Format } = require('@chainx-v2/keyring');
 
-async function main () {
+async function main() {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://47.114.131.193:9000');
   const account1 = Account.generate();

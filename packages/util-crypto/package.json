@@ -1,29 +1,9 @@
 {
   "name": "@chainx-v2/util-crypto",
   "version": "0.0.3-beta.14",
-  "description": "A collection of useful crypto utilities for @polkadot",
+  "description": "A collection of useful crypto utilities for @chainx-v2",
   "main": "index.js",
-  "keywords": [
-    "Polkadot"
-  ],
-  "author": "Jaco Greeff <jacogr@gmail.com>",
-  "maintainers": [
-    "Jaco Greeff <jacogr@gmail.com>"
-  ],
-  "contributors": [],
   "license": "Apache-2.0",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/polkadot-js/common.git"
-  },
-  "bugs": {
-    "url": "https://github.com/polkadot-js/common/issues"
-  },
-  "homepage": "https://github.com/polkadot-js/common/tree/master/packages/util-crypto#readme",
   "dependencies": {
     "@babel/runtime": "^7.10.5",
     "@polkadot/util": "2.19.0-beta.2",

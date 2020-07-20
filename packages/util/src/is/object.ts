@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -16,12 +16,12 @@ interface ObjectIndexed {
  * <BR>
  *
  * ```javascript
- * import { isObject } from '@chainx-v2/util';
+ * import { isObject } from '@polkadot/util';
  *
  * isObject({}); // => true
  * isObject('something'); // => false
  * ```
  */
-export default function isObject (value: unknown): value is ObjectIndexed {
+export default function isObject(value: unknown): value is ObjectIndexed {
   return typeof value === 'object';
 }

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/keyring authors & contributors
+// Copyright 2017-2020 @chainx-v2/keyring authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -23,7 +23,7 @@ const json: KeyringPair$Json = {
   meta
 };
 
-export default function everybody (): KeyringPair {
+export default function everybody(): KeyringPair {
   const pair: KeyringPair = {
     address,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -4,11 +4,11 @@
 
 // Import the API, Keyring and some utility functions
 const { ApiPromise } = require('@chainx-v2/api');
-const { Keyring } = require('@polkadot/keyring');
+const { Keyring } = require('@chainx-v2/keyring');
 
 const BOB = '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty';
 
-async function main () {
+async function main() {
   // Instantiate the API
   const api = await ApiPromise.create();
 

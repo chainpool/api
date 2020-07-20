@@ -7,6 +7,6 @@ import { IKeyringPair } from '@chainx-v2/types/types';
 
 import { isFunction } from '@polkadot/util';
 
-export default function isKeyringPair (account: string | IKeyringPair | AccountId | Address): account is IKeyringPair {
+export default function isKeyringPair(account: string | IKeyringPair | AccountId | Address): account is IKeyringPair {
   return isFunction((account as IKeyringPair).sign);
 }

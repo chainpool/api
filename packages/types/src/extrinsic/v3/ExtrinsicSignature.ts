@@ -20,7 +20,7 @@ export default class ExtrinsicSignatureV3 extends ExtrinsicSignatureV2 {
   /**
    * @description Adds a raw signature
    */
-  public addSignature (signer: Address | Uint8Array | string, signature: Uint8Array | string, payload: ExtrinsicPayloadValue | Uint8Array | string): IExtrinsicSignature {
+  public addSignature(signer: Address | Uint8Array | string, signature: Uint8Array | string, payload: ExtrinsicPayloadValue | Uint8Array | string): IExtrinsicSignature {
     return this._injectSignature(
       this.registry.createType('Address', signer),
       this.registry.createType('Signature', signature),
@@ -31,7 +31,7 @@ export default class ExtrinsicSignatureV3 extends ExtrinsicSignatureV2 {
   /**
    * @description Creates a payload from the supplied options
    */
-  public createPayload (method: Call, { blockHash, era, genesisHash, nonce, runtimeVersion: { specVersion }, tip }: SignatureOptions): ExtrinsicPayloadV3 {
+  public createPayload(method: Call, { blockHash, era, genesisHash, nonce, runtimeVersion: { specVersion }, tip }: SignatureOptions): ExtrinsicPayloadV3 {
     return new ExtrinsicPayloadV3(this.registry, {
       blockHash,
       era: era || IMMORTAL_ERA,
@@ -47,7 +47,7 @@ export default class ExtrinsicSignatureV3 extends ExtrinsicSignatureV2 {
   /**
    * @description Generate a payload and applies the signature from a keypair
    */
-  public sign (method: Call, account: IKeyringPair, options: SignatureOptions): IExtrinsicSignature {
+  public sign(method: Call, account: IKeyringPair, options: SignatureOptions): IExtrinsicSignature {
     const address = account.publicKey.length > 32
       ? blake2AsU8a(account.publicKey, 256)
       : account.publicKey;
@@ -61,7 +61,7 @@ export default class ExtrinsicSignatureV3 extends ExtrinsicSignatureV2 {
   /**
    * @description Generate a payload and applies a fake signature
    */
-  public signFake (method: Call, address: Address | Uint8Array | string, options: SignatureOptions): IExtrinsicSignature {
+  public signFake(method: Call, address: Address | Uint8Array | string, options: SignatureOptions): IExtrinsicSignature {
     const signer = this.registry.createType('Address', address);
     const payload = this.createPayload(method, options);
     const signature = this.registry.createType('Signature', new Uint8Array(64).fill(0x42));

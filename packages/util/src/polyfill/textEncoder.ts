@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,12 +11,12 @@ if (typeof TextEncoder === 'undefined') {
     (global as any).TextEncoder = class {
       #encoder: TextEncoder;
 
-      constructor () {
+      constructor() {
         this.#encoder = new UTE();
       }
 
       // For a Jest 26.0.1 environment, Buffer !== Uint8Array
-      encode (value: string): Uint8Array {
+      encode(value: string): Uint8Array {
         const encoded = this.#encoder.encode(value);
 
         return Uint8Array.from(encoded);

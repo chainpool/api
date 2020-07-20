@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,14 +14,14 @@ import isUndefined from '../is/undefined';
  * <BR>
  *
  * ```javascript
- * import { arrayFilter } from '@chainx-v2/util';
+ * import { arrayFilter } from '@polkadot/util';
  *
  * arrayFilter([0, void 0, true, null, false, '']); // [0, true, null, false, '']
  * arrayFilter([0, void 0, true, null, false, ''], false); // [0, true, false, '']
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function arrayFilter<T = any> (array: T[], allowNulls = true): T[] {
+export default function arrayFilter<T = any>(array: T[], allowNulls = true): T[] {
   return array.filter((value) =>
     !isUndefined(value) && (allowNulls || !isNull(value))
   );

@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -19,11 +19,11 @@ interface Observable {
  * <BR>
  *
  * ```javascript
- * import { isObservable } from '@chainx-v2/util';
+ * import { isObservable } from '@polkadot/util';
  *
  * console.log('isObservable', isObservable(...));
  * ```
  */
-export default function isObservable (value: unknown): value is Observable {
+export default function isObservable(value: unknown): value is Observable {
   return isObject(value) && isFunction((value as Observable).next);
 }

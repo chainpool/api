@@ -20,7 +20,7 @@ import xxhash64AsRaw from './asRaw';
  * xxhash64AsBn('abcd', 0xabcd)); // => new BN(0xe29f70f8b8c96df7)
  * ```
  */
-export default function xxhash64AsBn (data: Buffer | Uint8Array | string, seed: number): BN {
+export default function xxhash64AsBn(data: Buffer | Uint8Array | string, seed: number): BN {
   return new BN(
     xxhash64AsRaw(data, seed),
     16

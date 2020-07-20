@@ -129,7 +129,7 @@ describe('Enum', (): void => {
       class B extends Null { }
       class C extends Null { }
       class Test extends Enum {
-        constructor (registry: Registry, value?: string, index?: number) {
+        constructor(registry: Registry, value?: string, index?: number) {
           super(registry, {
             a: A,
             b: B,
@@ -342,7 +342,7 @@ describe('Enum', (): void => {
         expect(
           // eslint-disable-next-line sort-keys
           new Enum(registry, { foo: Text, bar: U32 }).toRawType()
-        // eslint-disable-next-line sort-keys
+          // eslint-disable-next-line sort-keys
         ).toEqual(JSON.stringify({ _enum: { foo: 'Text', bar: 'u32' } }));
       });
     });

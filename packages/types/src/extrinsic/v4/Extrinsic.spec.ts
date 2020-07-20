@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import BN from 'bn.js';
-import testingPairs from '@polkadot/keyring/testingPairs';
+import testingPairs from '@chainx-v2/keyring/testingPairs';
 import Decorated from '@chainx-v2/metadata/Decorated';
 import Metadata from '@chainx-v2/metadata/Metadata';
 import metadataStatic from '@chainx-v2/metadata/Metadata/static';

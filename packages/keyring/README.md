@@ -1,4 +1,4 @@
-# @polkadot/keyring
+# @chainx-v2/keyring
 
 Key management of user accounts including generation and retrieval of keyring pairs from a variety of input combinations.
 
@@ -7,13 +7,13 @@ Key management of user accounts including generation and retrieval of keyring pa
 Installation -
 
 ```
-yarn add @polkadot/keyring
+yarn add @chainx-v2/keyring
 ```
 
 Classes and Functions can be imported as follows:
 
 ```js
-import Keyring from '@polkadot/keyring';
+import Keyring from '@chainx-v2/keyring';
 ```
 
 ## Utilities

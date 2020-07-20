@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,14 +11,14 @@
  * <BR>
  *
  * ```javascript
- * const { promisify } from '@chainx-v2/util';
+ * const { promisify } from '@polkadot/util';
  *
  * await promisify(null, ((a, cb) => cb(null, a), true); // resolves with `true`
  * await promisify(null, (cb) => cb(new Error('error!'))); // rejects with `error!`
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function promisify<R = any> (self: unknown, fn: (...params: any) => any, ...params: any[]): Promise<R> {
+export default function promisify<R = any>(self: unknown, fn: (...params: any) => any, ...params: any[]): Promise<R> {
   return new Promise((resolve, reject): void => {
     const handler = (error: Error | null, result?: R): void => {
       if (error) {

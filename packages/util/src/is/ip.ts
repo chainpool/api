@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,7 +15,7 @@ type IpTypes = 'v4' | 'v6';
  * <BR>
  *
  * ```javascript
- * import { isIp } from '@chainx-v2/util';
+ * import { isIp } from '@polkadot/util';
  *
  * isIp('192.168.0.1')); // => true
  * isIp('1:2:3:4:5:6:7:8'); // => true
@@ -23,7 +23,7 @@ type IpTypes = 'v4' | 'v6';
  * isIp('1:2:3:4:5:6:7:8', 'v4'); // => false
  * ```
  */
-export default function isIp (value: string, type?: IpTypes): boolean {
+export default function isIp(value: string, type?: IpTypes): boolean {
   if (type === 'v4') {
     return ipRegex.v4({ exact: true }).test(value);
   } else if (type === 'v6') {

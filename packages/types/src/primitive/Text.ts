@@ -12,7 +12,7 @@ import Compact from '../codec/Compact';
 import Raw from '../codec/Raw';
 
 /** @internal */
-function decodeText (value: Text | string | AnyU8a | { toString: () => string }): string {
+function decodeText(value: Text | string | AnyU8a | { toString: () => string }): string {
   if (isHex(value)) {
     return u8aToString(hexToU8a(value.toString()));
   } else if (value instanceof Uint8Array) {
@@ -52,7 +52,7 @@ export default class Text extends String implements Codec {
 
   #override: string | null = null;
 
-  constructor (registry: Registry, value: Text | string | AnyU8a | { toString: () => string } = '') {
+  constructor(registry: Registry, value: Text | string | AnyU8a | { toString: () => string } = '') {
     super(decodeText(value));
 
     this.registry = registry;
@@ -61,28 +61,28 @@ export default class Text extends String implements Codec {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return this.toU8a().length;
   }
 
   /**
    * @description returns a hash of the contents
    */
-  public get hash (): H256 {
+  public get hash(): H256 {
     return this.registry.createType('H256', blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description Checks if the value is an empty value
    */
-  public get isEmpty (): boolean {
+  public get isEmpty(): boolean {
     return this.length === 0;
   }
 
   /**
    * @description The length of the value
    */
-  public get length (): number {
+  public get length(): number {
     // only included here since we ignore inherited docs
     return super.length;
   }
@@ -90,7 +90,7 @@ export default class Text extends String implements Codec {
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     return isString(other)
       ? this.toString() === other.toString()
       : false;
@@ -99,14 +99,14 @@ export default class Text extends String implements Codec {
   /**
    * @description Set an override value for this
    */
-  public setOverride (override: string): void {
+  public setOverride(override: string): void {
     this.#override = override;
   }
 
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex (): string {
+  public toHex(): string {
     // like  with Vec<u8>, when we are encoding to hex, we don't actually add
     // the length prefix (it is already implied by the actual string length)
     return u8aToHex(this.toU8a(true));
@@ -115,28 +115,28 @@ export default class Text extends String implements Codec {
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman (): string {
+  public toHuman(): string {
     return this.toJSON();
   }
 
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON (): string {
+  public toJSON(): string {
     return this.toString();
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'Text';
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString (): string {
+  public toString(): string {
     return this.#override || super.toString();
   }
 
@@ -144,7 +144,7 @@ export default class Text extends String implements Codec {
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     // NOTE Here we use the super toString (we are not taking overrides into account,
     // rather encoding the original value the string was constructed with)
     const encoded = stringToU8a(super.toString());

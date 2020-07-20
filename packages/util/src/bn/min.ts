@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,12 +14,12 @@ import assert from '../assert';
  *
  * ```javascript
  * import BN from 'bn.js';
- * import { bnMin } from '@chainx-v2/util';
+ * import { bnMin } from '@polkadot/util';
  *
  * bnMin([new BN(1), new BN(3), new BN(2)]).toString(); // => '1'
  * ```
  */
-export default function min (...items: BN[]): BN {
+export default function min(...items: BN[]): BN {
   assert(items && items.length >= 1, 'Must provide one or more BN arguments');
 
   return items.reduce((acc: BN, val: BN) => BN.min(acc, val), items[0]);

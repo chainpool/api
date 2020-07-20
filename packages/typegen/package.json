@@ -10,28 +10,6 @@
     "polkadot-types-internal-interfaces": "./scripts/polkadot-types-internal-interfaces.js",
     "polkadot-types-internal-metadata": "./scripts/polkadot-types-internal-metadata.js"
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/polkadot-js/api.git"
-  },
-  "keywords": [
-    "Polkadot",
-    "JsonRPC"
-  ],
-  "author": "Jaco Greeff <jacogr@gmail.com>",
-  "maintainers": [
-    "Jaco Greeff <jacogr@gmail.com>"
-  ],
-  "contributors": [],
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/polkadot-js/api/issues"
-  },
-  "homepage": "https://github.com/polkadot-js/api/tree/master/packages/typegen#readme",
   "dependencies": {
     "@babel/core": "^7.10.3",
     "@babel/register": "^7.10.3",

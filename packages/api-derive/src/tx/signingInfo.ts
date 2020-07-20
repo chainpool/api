@@ -18,13 +18,13 @@ interface Result {
   nonce: Index;
 }
 
-function latestNonce (api: ApiInterfaceRx, address: string): Observable<Index> {
+function latestNonce(api: ApiInterfaceRx, address: string): Observable<Index> {
   return api.derive.balances.account(address).pipe(
     map(({ accountNonce }) => accountNonce)
   );
 }
 
-function signingHeader (api: ApiInterfaceRx): Observable<Header> {
+function signingHeader(api: ApiInterfaceRx): Observable<Header> {
   return combineLatest([
     api.rpc.chain.getHeader(),
     api.rpc.chain.getFinalizedHead().pipe(
@@ -40,7 +40,7 @@ function signingHeader (api: ApiInterfaceRx): Observable<Header> {
   );
 }
 
-export function signingInfo (api: ApiInterfaceRx): (address: string, nonce?: AnyNumber | Codec, era?: IExtrinsicEra | number) => Observable<Result> {
+export function signingInfo(api: ApiInterfaceRx): (address: string, nonce?: AnyNumber | Codec, era?: IExtrinsicEra | number) => Observable<Result> {
   // no memo, we want to do this fresh on each run
   return (address: string, nonce?: AnyNumber | Codec, era?: IExtrinsicEra | number): Observable<Result> =>
     combineLatest([

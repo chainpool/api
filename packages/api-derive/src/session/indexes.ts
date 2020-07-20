@@ -16,7 +16,7 @@ import { memo } from '../util';
 type Result = [EraIndex, Option<Moment>, EraIndex, SessionIndex, u32];
 
 // parse into Indexes
-function parse ([activeEra, activeEraStart, currentEra, currentIndex, validatorCount]: Result): DeriveSessionIndexes {
+function parse([activeEra, activeEraStart, currentEra, currentIndex, validatorCount]: Result): DeriveSessionIndexes {
   return {
     activeEra,
     activeEraStart,
@@ -27,7 +27,7 @@ function parse ([activeEra, activeEraStart, currentEra, currentIndex, validatorC
 }
 
 // query for previous V2
-function queryNoActive (api: ApiInterfaceRx): Observable<Result> {
+function queryNoActive(api: ApiInterfaceRx): Observable<Result> {
   return api.queryMulti<[EraIndex, SessionIndex, u32]>([
     api.query.staking.currentEra,
     api.query.session.currentIndex,
@@ -44,7 +44,7 @@ function queryNoActive (api: ApiInterfaceRx): Observable<Result> {
 }
 
 // query based on latest
-function query (api: ApiInterfaceRx): Observable<Result> {
+function query(api: ApiInterfaceRx): Observable<Result> {
   return api.queryMulti<[Option<ActiveEraInfo>, Option<EraIndex>, SessionIndex, u32]>([
     api.query.staking.activeEra,
     api.query.staking.currentEra,
@@ -66,7 +66,7 @@ function query (api: ApiInterfaceRx): Observable<Result> {
 }
 
 // empty set when none is available
-function empty (api: ApiInterfaceRx): Observable<Result> {
+function empty(api: ApiInterfaceRx): Observable<Result> {
   return of([
     api.registry.createType('EraIndex'),
     api.registry.createType('Option<Moment>'),
@@ -76,7 +76,7 @@ function empty (api: ApiInterfaceRx): Observable<Result> {
   ]);
 }
 
-export function indexes (api: ApiInterfaceRx): () => Observable<DeriveSessionIndexes> {
+export function indexes(api: ApiInterfaceRx): () => Observable<DeriveSessionIndexes> {
   return memo((): Observable<DeriveSessionIndexes> =>
     (
       api.query.session && api.query.staking

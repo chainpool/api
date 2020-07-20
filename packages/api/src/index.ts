@@ -8,7 +8,7 @@ import { detectPackage } from '@polkadot/util';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 detectPackage(require('./package.json'), typeof __dirname !== 'undefined' && __dirname);
 
-export { Keyring } from '@polkadot/keyring';
+export { Keyring } from '@chainx-v2/keyring';
 export { WsProvider } from '@chainx-v2/rpc-provider';
 
 export { default as ApiPromise } from './promise';

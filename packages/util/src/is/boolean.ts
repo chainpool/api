@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,11 +11,11 @@
  * <BR>
  *
  * ```javascript
- * import { isBoolean } from '@chainx-v2/util';
+ * import { isBoolean } from '@polkadot/util';
  *
  * isBoolean(false); // => true
  * ```
  */
-export default function isBoolean (value: unknown): value is boolean {
+export default function isBoolean(value: unknown): value is boolean {
   return typeof value === 'boolean';
 }

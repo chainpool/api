@@ -15,7 +15,7 @@ const generators = {
   sr25519: keyHdkdSr15519
 };
 
-export default function keyFromPath (pair: Keypair, path: DeriveJunction[], type: KeypairType): Keypair {
+export default function keyFromPath(pair: Keypair, path: DeriveJunction[], type: KeypairType): Keypair {
   const keyHdkd = generators[type];
 
   return path.reduce((pair, junction): Keypair => {

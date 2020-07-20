@@ -13,7 +13,7 @@ import checkChecksum from './checkChecksum';
 import defaults from './defaults';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function decode (encoded: string | Uint8Array, ignoreChecksum?: boolean, ss58Format: Prefix = 99): Uint8Array {
+export default function decode(encoded: string | Uint8Array, ignoreChecksum?: boolean, ss58Format: Prefix = 99): Uint8Array {
   if (isU8a(encoded) || isHex(encoded)) {
     return u8aToU8a(encoded);
   }

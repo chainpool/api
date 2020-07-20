@@ -11,7 +11,7 @@ import Enum from '../codec/Enum';
 import Bytes from './Bytes';
 
 /** @internal */
-function decodeDataU8a (registry: Registry, value: Uint8Array): [any, number | undefined] {
+function decodeDataU8a(registry: Registry, value: Uint8Array): [any, number | undefined] {
   if (!value.length) {
     return [undefined, undefined];
   }
@@ -34,7 +34,7 @@ function decodeDataU8a (registry: Registry, value: Uint8Array): [any, number | u
 }
 
 /** @internal */
-function decodeData (registry: Registry, value?: Record<string, any> | Uint8Array | Enum | string): [any, number | undefined] {
+function decodeData(registry: Registry, value?: Record<string, any> | Uint8Array | Enum | string): [any, number | undefined] {
   if (!value) {
     return [undefined, undefined];
   } else if (isString(value)) {
@@ -53,7 +53,7 @@ function decodeData (registry: Registry, value?: Record<string, any> | Uint8Arra
  * A [[Data]] container with node, raw or hashed data
  */
 export default class Data extends Enum {
-  constructor (registry: Registry, value?: Record<string, any> | Uint8Array | Enum | string) {
+  constructor(registry: Registry, value?: Record<string, any> | Uint8Array | Enum | string) {
     super(registry, {
       None: 'Null', // 0
       Raw: 'Bytes', // 1
@@ -66,33 +66,33 @@ export default class Data extends Enum {
     }, ...decodeData(registry, value));
   }
 
-  get asRaw (): Bytes {
+  get asRaw(): Bytes {
     return this._raw as Bytes;
   }
 
-  get asSha256 (): H256 {
+  get asSha256(): H256 {
     return this._raw as H256;
   }
 
-  get isRaw (): boolean {
+  get isRaw(): boolean {
     return this.index === 1;
   }
 
-  get isSha256 (): boolean {
+  get isSha256(): boolean {
     return this.index === 3;
   }
 
   /**
    * @description The encoded length
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return this.toU8a().length;
   }
 
   /**
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    */
-  public toU8a (): Uint8Array {
+  public toU8a(): Uint8Array {
     if (this.index === 0) {
       return new Uint8Array(1);
     } else if (this.index === 1) {

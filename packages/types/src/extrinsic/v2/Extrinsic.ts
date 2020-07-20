@@ -24,7 +24,7 @@ export interface ExtrinsicValueV2 {
  * The second generation of compact extrinsics
  */
 export default class ExtrinsicV2 extends Struct implements IExtrinsicImpl {
-  constructor (registry: Registry, value?: Uint8Array | ExtrinsicValueV2 | Call, { isSigned }: Partial<ExtrinsicOptions> = {}) {
+  constructor(registry: Registry, value?: Uint8Array | ExtrinsicValueV2 | Call, { isSigned }: Partial<ExtrinsicOptions> = {}) {
     super(registry, {
       signature: 'ExtrinsicSignatureV2',
       // eslint-disable-next-line sort-keys
@@ -33,7 +33,7 @@ export default class ExtrinsicV2 extends Struct implements IExtrinsicImpl {
   }
 
   /** @internal */
-  public static decodeExtrinsic (registry: Registry, value?: Call | Uint8Array | ExtrinsicValueV2, isSigned = false): ExtrinsicValueV2 {
+  public static decodeExtrinsic(registry: Registry, value?: Call | Uint8Array | ExtrinsicValueV2, isSigned = false): ExtrinsicValueV2 {
     if (value instanceof ExtrinsicV2) {
       return value;
     } else if (value instanceof registry.createClass('Call')) {
@@ -55,35 +55,35 @@ export default class ExtrinsicV2 extends Struct implements IExtrinsicImpl {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return this.toU8a().length;
   }
 
   /**
    * @description The [[Call]] this extrinsic wraps
    */
-  public get method (): Call {
+  public get method(): Call {
     return this.get('method') as Call;
   }
 
   /**
    * @description The [[ExtrinsicSignatureV2]]
    */
-  public get signature (): ExtrinsicSignatureV2 {
+  public get signature(): ExtrinsicSignatureV2 {
     return this.get('signature') as ExtrinsicSignatureV2;
   }
 
   /**
    * @description The version for the signature
    */
-  public get version (): number {
+  public get version(): number {
     return TRANSACTION_VERSION;
   }
 
   /**
    * @description Add an [[ExtrinsicSignatureV2]] to the extrinsic (already generated)
    */
-  public addSignature (signer: Address | Uint8Array | string, signature: Uint8Array | string, payload: ExtrinsicPayloadValue | Uint8Array | string): ExtrinsicV2 {
+  public addSignature(signer: Address | Uint8Array | string, signature: Uint8Array | string, payload: ExtrinsicPayloadValue | Uint8Array | string): ExtrinsicV2 {
     this.signature.addSignature(signer, signature, payload);
 
     return this;
@@ -92,7 +92,7 @@ export default class ExtrinsicV2 extends Struct implements IExtrinsicImpl {
   /**
    * @description Sign the extrinsic with a specific keypair
    */
-  public sign (account: IKeyringPair, options: SignatureOptions): ExtrinsicV2 {
+  public sign(account: IKeyringPair, options: SignatureOptions): ExtrinsicV2 {
     this.signature.sign(this.method, account, options);
 
     return this;
@@ -101,7 +101,7 @@ export default class ExtrinsicV2 extends Struct implements IExtrinsicImpl {
   /**
    * @describe Adds a fake signature to the extrinsic
    */
-  public signFake (signer: Address | Uint8Array | string, options: SignatureOptions): ExtrinsicV2 {
+  public signFake(signer: Address | Uint8Array | string, options: SignatureOptions): ExtrinsicV2 {
     this.signature.signFake(this.method, signer, options);
 
     return this;

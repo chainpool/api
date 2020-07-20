@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/keyring authors & contributors
+// Copyright 2017-2020 @chainx-v2/keyring authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -23,11 +23,11 @@ const SIG_TYPE_ED25519 = new Uint8Array([0]);
 const SIG_TYPE_SR25519 = new Uint8Array([1]);
 const SIG_TYPE_ECDSA = new Uint8Array([2]);
 
-function isEmpty (u8a: Uint8Array): boolean {
+function isEmpty(u8a: Uint8Array): boolean {
   return u8a.reduce((count, u8): number => count + u8, 0) === 0;
 }
 
-function fromSeed (type: KeypairType, seed: Uint8Array): Keypair {
+function fromSeed(type: KeypairType, seed: Uint8Array): Keypair {
   return {
     ecdsa: (): Keypair => secp256k1FromSeed(seed),
     ed25519: (): Keypair => naclFromSeed(seed),
@@ -35,7 +35,7 @@ function fromSeed (type: KeypairType, seed: Uint8Array): Keypair {
   }[type]();
 }
 
-function multiSignaturePrefix (type: KeypairType): Uint8Array {
+function multiSignaturePrefix(type: KeypairType): Uint8Array {
   return {
     ecdsa: SIG_TYPE_ECDSA,
     ed25519: SIG_TYPE_ED25519,
@@ -43,7 +43,7 @@ function multiSignaturePrefix (type: KeypairType): Uint8Array {
   }[type];
 }
 
-function sign (type: KeypairType, message: Uint8Array, pair: Partial<Keypair>, { withType = false }: SignOptions = {}): Uint8Array {
+function sign(type: KeypairType, message: Uint8Array, pair: Partial<Keypair>, { withType = false }: SignOptions = {}): Uint8Array {
   const signature = {
     ecdsa: (): Uint8Array => secp256k1Sign(message, pair),
     ed25519: (): Uint8Array => naclSign(message, pair),
@@ -60,7 +60,7 @@ function sign (type: KeypairType, message: Uint8Array, pair: Partial<Keypair>, {
   );
 }
 
-function verify (type: KeypairType, message: Uint8Array, signature: Uint8Array, publicKey: Uint8Array): boolean {
+function verify(type: KeypairType, message: Uint8Array, signature: Uint8Array, publicKey: Uint8Array): boolean {
   return {
     ecdsa: (): boolean => secp256k1Verify(message, signature, blake2AsU8a(publicKey, 256)),
     ed25519: (): boolean => naclVerify(message, signature, publicKey),
@@ -68,7 +68,7 @@ function verify (type: KeypairType, message: Uint8Array, signature: Uint8Array, 
   }[type]();
 }
 
-function getAddress (type: KeypairType, publicKey: Uint8Array): Uint8Array {
+function getAddress(type: KeypairType, publicKey: Uint8Array): Uint8Array {
   if (type === 'ecdsa' && publicKey.length > 32) {
     return blake2AsU8a(publicKey, 256);
   } else {
@@ -77,7 +77,7 @@ function getAddress (type: KeypairType, publicKey: Uint8Array): Uint8Array {
 }
 
 // Not 100% correct, since it can be a Uint8Array, but an invalid one - just say "undefined" is anything non-valid
-function isLocked (secretKey?: Uint8Array): secretKey is undefined {
+function isLocked(secretKey?: Uint8Array): secretKey is undefined {
   return !secretKey || secretKey.length === 0 || isEmpty(secretKey);
 }
 
@@ -112,21 +112,21 @@ function isLocked (secretKey?: Uint8Array): secretKey is undefined {
  * an `encoded` property that is assigned with the encoded public key in hex format, and an `encoding`
  * property that indicates whether the public key value of the `encoded` property is encoded or not.
  */
-export default function createPair ({ toSS58, type }: Setup, { publicKey, secretKey }: PairInfo, meta: KeyringPair$Meta = {}, encoded: Uint8Array | null = null): KeyringPair {
+export default function createPair({ toSS58, type }: Setup, { publicKey, secretKey }: PairInfo, meta: KeyringPair$Meta = {}, encoded: Uint8Array | null = null): KeyringPair {
   return {
-    get address (): string {
+    get address(): string {
       return toSS58(getAddress(type, publicKey));
     },
-    get isLocked (): boolean {
+    get isLocked(): boolean {
       return isLocked(secretKey);
     },
-    get meta (): KeyringPair$Meta {
+    get meta(): KeyringPair$Meta {
       return meta;
     },
-    get publicKey (): Uint8Array {
+    get publicKey(): Uint8Array {
       return publicKey;
     },
-    get type (): KeypairType {
+    get type(): KeypairType {
       return type;
     },
     // eslint-disable-next-line sort-keys

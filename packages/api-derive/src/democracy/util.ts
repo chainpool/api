@@ -20,19 +20,19 @@ interface ApproxState {
   votedTotal: BN;
 }
 
-function isOldInfo (info: ReferendumInfo | ReferendumInfoTo239): info is ReferendumInfoTo239 {
+function isOldInfo(info: ReferendumInfo | ReferendumInfoTo239): info is ReferendumInfoTo239 {
   return !!(info as ReferendumInfoTo239).proposalHash;
 }
 
-function isCurrentStatus (status: ReferendumStatus | ReferendumInfoTo239): status is ReferendumStatus {
+function isCurrentStatus(status: ReferendumStatus | ReferendumInfoTo239): status is ReferendumStatus {
   return !!(status as ReferendumStatus).tally;
 }
 
-function isCurrentPreimage (api: ApiInterfaceRx, imageOpt: Option<OldPreimage> | Option<PreimageStatus>): imageOpt is Option<PreimageStatus> {
+function isCurrentPreimage(api: ApiInterfaceRx, imageOpt: Option<OldPreimage> | Option<PreimageStatus>): imageOpt is Option<PreimageStatus> {
   return !!imageOpt && !api.query.democracy.dispatchQueue;
 }
 
-export function compareRationals (n1: BN, d1: BN, n2: BN, d2: BN): boolean {
+export function compareRationals(n1: BN, d1: BN, n2: BN, d2: BN): boolean {
   while (true) {
     const q1 = n1.div(d1);
     const q2 = n2.div(d2);
@@ -59,7 +59,7 @@ export function compareRationals (n1: BN, d1: BN, n2: BN, d2: BN): boolean {
   }
 }
 
-export function calcPassing (threshold: VoteThreshold, sqrtElectorate: BN, { votedAye, votedNay, votedTotal }: ApproxState): boolean {
+export function calcPassing(threshold: VoteThreshold, sqrtElectorate: BN, { votedAye, votedNay, votedTotal }: ApproxState): boolean {
   const sqrtVoters = bnSqrt(votedTotal);
 
   return sqrtVoters.isZero()
@@ -71,7 +71,7 @@ export function calcPassing (threshold: VoteThreshold, sqrtElectorate: BN, { vot
         : compareRationals(votedNay, sqrtElectorate, votedAye, sqrtVoters);
 }
 
-function calcVotesPrev (votesFor: DeriveReferendumVote[]): DeriveReferendumVoteState {
+function calcVotesPrev(votesFor: DeriveReferendumVote[]): DeriveReferendumVoteState {
   return votesFor.reduce((state: DeriveReferendumVoteState, derived): DeriveReferendumVoteState => {
     const { balance, vote } = derived;
     const isDefault = vote.conviction.index === 0;
@@ -105,7 +105,7 @@ function calcVotesPrev (votesFor: DeriveReferendumVote[]): DeriveReferendumVoteS
   });
 }
 
-function calcVotesCurrent (tally: Tally, votes: DeriveReferendumVote[]): DeriveReferendumVoteState {
+function calcVotesCurrent(tally: Tally, votes: DeriveReferendumVote[]): DeriveReferendumVoteState {
   const allAye: DeriveReferendumVote[] = [];
   const allNay: DeriveReferendumVote[] = [];
 
@@ -129,7 +129,7 @@ function calcVotesCurrent (tally: Tally, votes: DeriveReferendumVote[]): DeriveR
   };
 }
 
-export function calcVotes (sqrtElectorate: BN, referendum: DeriveReferendum, votes: DeriveReferendumVote[]): DeriveReferendumVotes {
+export function calcVotes(sqrtElectorate: BN, referendum: DeriveReferendum, votes: DeriveReferendumVote[]): DeriveReferendumVotes {
   const state = isCurrentStatus(referendum.status)
     ? calcVotesCurrent(referendum.status.tally, votes)
     : calcVotesPrev(votes);
@@ -141,7 +141,7 @@ export function calcVotes (sqrtElectorate: BN, referendum: DeriveReferendum, vot
   };
 }
 
-export function getStatus (info: Option<ReferendumInfo | ReferendumInfoTo239>): ReferendumStatus | ReferendumInfoTo239 | null {
+export function getStatus(info: Option<ReferendumInfo | ReferendumInfoTo239>): ReferendumStatus | ReferendumInfoTo239 | null {
   if (info.isNone) {
     return null;
   }
@@ -158,7 +158,7 @@ export function getStatus (info: Option<ReferendumInfo | ReferendumInfoTo239>): 
   return null;
 }
 
-function constructProposal (api: ApiInterfaceRx, [bytes, proposer, balance, at]: PreimageInfo): DeriveProposalImage {
+function constructProposal(api: ApiInterfaceRx, [bytes, proposer, balance, at]: PreimageInfo): DeriveProposalImage {
   let proposal: Proposal | undefined;
 
   try {
@@ -170,7 +170,7 @@ function constructProposal (api: ApiInterfaceRx, [bytes, proposer, balance, at]:
   return { at, balance, proposal, proposer };
 }
 
-export function parseImage (api: ApiInterfaceRx, imageOpt: Option<OldPreimage> | Option<PreimageStatus>): DeriveProposalImage | undefined {
+export function parseImage(api: ApiInterfaceRx, imageOpt: Option<OldPreimage> | Option<PreimageStatus>): DeriveProposalImage | undefined {
   if (imageOpt.isNone) {
     return;
   }

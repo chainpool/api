@@ -7,7 +7,7 @@
 const { ApiPromise } = require('@chainx-v2/api');
 
 // Import the test keyring (already has dev keys for Alice, Bob, Charlie, Eve & Ferdie)
-const testKeyring = require('@polkadot/keyring/testing');
+const testKeyring = require('@chainx-v2/keyring/testing');
 
 // Utility function for random values
 const { randomAsU8a } = require('@polkadot/util-crypto');
@@ -16,7 +16,7 @@ const { randomAsU8a } = require('@polkadot/util-crypto');
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 const AMOUNT = 10000;
 
-async function main () {
+async function main() {
   // Create the API and wait until ready
   const api = await ApiPromise.create();
 

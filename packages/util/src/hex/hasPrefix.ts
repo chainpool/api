@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,11 +13,11 @@ import isHex from '../is/hex';
  * <BR>
  *
  * ```javascript
- * import { hexHasPrefix } from '@chainx-v2/util';
+ * import { hexHasPrefix } from '@polkadot/util';
  *
  * console.log('has prefix', hexHasPrefix('0x1234')); // => true
  * ```
  */
-export default function hexHasPrefix (value?: string | null): boolean {
+export default function hexHasPrefix(value?: string | null): boolean {
   return !!(value && isHex(value, -1, true) && value.substr(0, 2) === '0x');
 }

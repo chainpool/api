@@ -17,7 +17,7 @@ import { memo } from '../util';
 const LOCKUPS = [0, 1, 2, 4, 8, 16, 32];
 const ZERO = new BN(0);
 
-function parseLock (api: ApiInterfaceRx, [referendumId, accountVote]: VotingDirectVote, referendum: ReferendumInfo): DeriveDemocracyLock {
+function parseLock(api: ApiInterfaceRx, [referendumId, accountVote]: VotingDirectVote, referendum: ReferendumInfo): DeriveDemocracyLock {
   const { balance, vote } = accountVote.asStandard;
   let unlockAt = ZERO;
 
@@ -32,7 +32,7 @@ function parseLock (api: ApiInterfaceRx, [referendumId, accountVote]: VotingDire
   return { balance, isFinished: referendum.isFinished, referendumId, unlockAt, vote };
 }
 
-function directLocks (api: ApiInterfaceRx, { votes }: VotingDirect): Observable<DeriveDemocracyLock[]> {
+function directLocks(api: ApiInterfaceRx, { votes }: VotingDirect): Observable<DeriveDemocracyLock[]> {
   if (!votes.length) {
     return of([]);
   }
@@ -53,7 +53,7 @@ function directLocks (api: ApiInterfaceRx, { votes }: VotingDirect): Observable<
   );
 }
 
-export function locks (api: ApiInterfaceRx): (accountId: string | AccountId) => Observable<DeriveDemocracyLock[]> {
+export function locks(api: ApiInterfaceRx): (accountId: string | AccountId) => Observable<DeriveDemocracyLock[]> {
   return memo((accountId: string | AccountId): Observable<DeriveDemocracyLock[]> =>
     api.query.democracy.votingOf(accountId).pipe(
       switchMap((voting): Observable<DeriveDemocracyLock[]> =>

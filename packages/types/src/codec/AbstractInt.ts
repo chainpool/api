@@ -19,12 +19,12 @@ const PER_B = new BN(1_000_000_000);
 const PER_M = new BN(1_000_000);
 const MUL_P = new BN(1_00_00);
 
-function toPercentage (value: BN, divisor: BN): string {
+function toPercentage(value: BN, divisor: BN): string {
   return `${(value.mul(MUL_P).div(divisor).toNumber() / 100).toFixed(2)}%`;
 }
 
 /** @internal */
-function decodeAbstracIntU8a (value: Uint8Array, bitLength: UIntBitLength, isNegative: boolean): string {
+function decodeAbstracIntU8a(value: Uint8Array, bitLength: UIntBitLength, isNegative: boolean): string {
   if (!value.length) {
     return '0';
   }
@@ -38,7 +38,7 @@ function decodeAbstracIntU8a (value: Uint8Array, bitLength: UIntBitLength, isNeg
 }
 
 /** @internal */
-function decodeAbstracInt (value: AnyNumber, bitLength: UIntBitLength, isNegative: boolean): string {
+function decodeAbstracInt(value: AnyNumber, bitLength: UIntBitLength, isNegative: boolean): string {
   // This function returns a string, which will be passed in the BN
   // constructor. It would be ideal to actually return a BN, but there's a
   // bug: https://github.com/indutny/bn.js/issues/206.
@@ -69,7 +69,7 @@ export default abstract class AbstractInt extends BN implements Codec {
 
   readonly #isSigned: boolean;
 
-  protected constructor (registry: Registry, isSigned: boolean, value: AnyNumber = 0, bitLength: UIntBitLength = DEFAULT_UINT_BITS, isHexJson = true) {
+  protected constructor(registry: Registry, isSigned: boolean, value: AnyNumber = 0, bitLength: UIntBitLength = DEFAULT_UINT_BITS, isHexJson = true) {
     super(decodeAbstracInt(value, bitLength, isSigned));
 
     this.registry = registry;
@@ -83,35 +83,35 @@ export default abstract class AbstractInt extends BN implements Codec {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return this.#bitLength / 8;
   }
 
   /**
    * @description returns a hash of the contents
    */
-  public get hash (): H256 {
+  public get hash(): H256 {
     return new Raw(this.registry, blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description Checks if the value is a zero value (align elsewhere)
    */
-  public get isEmpty (): boolean {
+  public get isEmpty(): boolean {
     return this.isZero();
   }
 
   /**
    * @description Checks if the value is an unsigned type
    */
-  public get isUnsigned (): boolean {
+  public get isUnsigned(): boolean {
     return !this.#isSigned;
   }
 
   /**
    * @description Returns the number of bits in the value
    */
-  public bitLength (): number {
+  public bitLength(): number {
     return this.#bitLength;
   }
 
@@ -119,7 +119,7 @@ export default abstract class AbstractInt extends BN implements Codec {
    * @description Compares the value of the input to see if there is a match
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     // Here we are actually overriding the built-in .eq to take care of both
     // number and BN inputs (no `.eqn` needed) - numbers will be converted
     return super.eq(
@@ -132,7 +132,7 @@ export default abstract class AbstractInt extends BN implements Codec {
   /**
    * @description True if this value is the max of the type
    */
-  public isMax (): boolean {
+  public isMax(): boolean {
     const u8a = this.toU8a().filter((byte): boolean => byte === 0xff);
 
     return u8a.length === (this.#bitLength / 8);
@@ -141,14 +141,14 @@ export default abstract class AbstractInt extends BN implements Codec {
   /**
    * @description Returns the BN representation of the number. (Compatibility)
    */
-  public toBn (): BN {
+  public toBn(): BN {
     return this;
   }
 
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex (isLe = false): string {
+  public toHex(isLe = false): string {
     // For display/JSON, this is BE, for compare, use isLe
     return bnToHex(this, {
       bitLength: this.bitLength(),
@@ -161,7 +161,7 @@ export default abstract class AbstractInt extends BN implements Codec {
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toHuman (isExpanded?: boolean): any {
+  public toHuman(isExpanded?: boolean): any {
     // FIXME we need proper expansion here
     return this instanceof this.registry.createClass('Balance')
       ? this.isMax()
@@ -177,7 +177,7 @@ export default abstract class AbstractInt extends BN implements Codec {
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON (): any {
+  public toJSON(): any {
     // FIXME this return type should by string | number, but BN's return type
     // is string.
     // Maximum allowed integer for JS is 2^53 - 1, set limit at 52
@@ -189,7 +189,7 @@ export default abstract class AbstractInt extends BN implements Codec {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     // NOTE In the case of balances, which have a special meaning on the UI
     // and can be interpreted differently, return a specific value for it so
     // underlying it always matches (no matter which length it actually is)
@@ -202,7 +202,7 @@ export default abstract class AbstractInt extends BN implements Codec {
    * @description Returns the string representation of the value
    * @param base The base to use for the conversion
    */
-  public toString (base?: number): string {
+  public toString(base?: number): string {
     // only included here since we do not inherit docs
     return super.toString(base);
   }
@@ -212,7 +212,7 @@ export default abstract class AbstractInt extends BN implements Codec {
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     return bnToU8a(this, {
       bitLength: this.bitLength(),
       isLe: true,

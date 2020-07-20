@@ -30,7 +30,7 @@ export interface BlockValue {
  * A block encoded with header and extrinsics
  */
 export default class Block extends Struct {
-  constructor (registry: Registry, value?: BlockValue | Uint8Array) {
+  constructor(registry: Registry, value?: BlockValue | Uint8Array) {
     super(registry, {
       header: 'Header',
       // eslint-disable-next-line sort-keys
@@ -41,28 +41,28 @@ export default class Block extends Struct {
   /**
    * @description Encodes a content [[Hash]] for the block
    */
-  public get contentHash (): H256 {
+  public get contentHash(): H256 {
     return this.registry.createType('H256', blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description The [[Extrinsic]] contained in the block
    */
-  public get extrinsics (): Vec<Extrinsic> {
+  public get extrinsics(): Vec<Extrinsic> {
     return this.get('extrinsics') as Vec<Extrinsic>;
   }
 
   /**
    * @description Block/header [[Hash]]
    */
-  public get hash (): H256 {
+  public get hash(): H256 {
     return this.header.hash;
   }
 
   /**
    * @description The [[Header]] of the block
    */
-  public get header (): Header {
+  public get header(): Header {
     return this.get('header') as Header;
   }
 }

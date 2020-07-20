@@ -27,7 +27,7 @@ import DoNotConstruct from '../primitive/DoNotConstruct';
 
 import { getTypeDef } from './getTypeDef';
 
-export function createClass<T extends Codec = Codec, K extends string = string> (registry: Registry, type: K): Constructor<FromReg<T, K>> {
+export function createClass<T extends Codec = Codec, K extends string = string>(registry: Registry, type: K): Constructor<FromReg<T, K>> {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   return getTypeClass<FromReg<T, K>>(registry, getTypeDef(type));
 }
@@ -35,36 +35,36 @@ export function createClass<T extends Codec = Codec, K extends string = string> 
 // An unsafe version of the `createType` below. It's unsafe because the `type`
 // argument here can be any string, which, if it cannot be parsed, it will yield
 // a runtime error.
-export function ClassOfUnsafe<T extends Codec = Codec, K extends string = string> (registry: Registry, name: K): Constructor<FromReg<T, K>> {
+export function ClassOfUnsafe<T extends Codec = Codec, K extends string = string>(registry: Registry, name: K): Constructor<FromReg<T, K>> {
   return createClass<T, K>(registry, name);
 }
 
 // alias for createClass
-export function ClassOf<K extends keyof InterfaceTypes> (registry: Registry, name: K): Constructor<InterfaceTypes[K]> {
+export function ClassOf<K extends keyof InterfaceTypes>(registry: Registry, name: K): Constructor<InterfaceTypes[K]> {
   // TS2589: Type instantiation is excessively deep and possibly infinite.
   // The above happens with as Constructor<InterfaceTypes[K]>;
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return ClassOfUnsafe<Codec, K>(registry, name) as any;
 }
 
-function getSubDefArray (value: TypeDef): TypeDef[] {
+function getSubDefArray(value: TypeDef): TypeDef[] {
   assert(value.sub && Array.isArray(value.sub), `Expected subtype as TypeDef[] in ${JSON.stringify(value)}`);
 
   return value.sub;
 }
 
-function getSubDef (value: TypeDef): TypeDef {
+function getSubDef(value: TypeDef): TypeDef {
   assert(value.sub && !Array.isArray(value.sub), `Expected subtype as TypeDef in ${JSON.stringify(value)}`);
 
   return value.sub;
 }
 
-function getSubType (value: TypeDef): keyof InterfaceTypes {
+function getSubType(value: TypeDef): keyof InterfaceTypes {
   return getSubDef(value).type as keyof InterfaceTypes;
 }
 
 // create a maps of type string constructors from the input
-function getTypeClassMap (value: TypeDef): Record<string, keyof InterfaceTypes> {
+function getTypeClassMap(value: TypeDef): Record<string, keyof InterfaceTypes> {
   const result: Record<string, keyof InterfaceTypes> = {};
 
   return getSubDefArray(value).reduce((result, sub): Record<string, keyof InterfaceTypes> => {
@@ -75,19 +75,19 @@ function getTypeClassMap (value: TypeDef): Record<string, keyof InterfaceTypes> 
 }
 
 // create an array of type string constructors from the input
-function getTypeClassArray (value: TypeDef): (keyof InterfaceTypes)[] {
+function getTypeClassArray(value: TypeDef): (keyof InterfaceTypes)[] {
   return getSubDefArray(value).map(({ type }): keyof InterfaceTypes =>
     type as keyof InterfaceTypes
   );
 }
 
-function createInt ({ displayName, length }: TypeDef, Clazz: typeof Int | typeof UInt): Constructor {
+function createInt({ displayName, length }: TypeDef, Clazz: typeof Int | typeof UInt): Constructor {
   assert(isNumber(length), `Expected bitLength information for ${displayName || Clazz.constructor.name}<bitLength>`);
 
   return Clazz.with(length as UIntBitLength, displayName);
 }
 
-function createHashMap (value: TypeDef, Clazz: typeof BTreeMap | typeof HashMap): Constructor {
+function createHashMap(value: TypeDef, Clazz: typeof BTreeMap | typeof HashMap): Constructor {
   const [keyType, valueType] = getTypeClassArray(value);
 
   return Clazz.with(keyType, valueType);
@@ -179,7 +179,7 @@ const infoMapping: Record<TypeDefInfo, (registry: Registry, value: TypeDef) => C
 };
 
 // Returns the type Class for construction
-export function getTypeClass<T extends Codec = Codec> (registry: Registry, value: TypeDef): Constructor<T> {
+export function getTypeClass<T extends Codec = Codec>(registry: Registry, value: TypeDef): Constructor<T> {
   const Type = registry.get<T>(value.type);
 
   if (Type) {

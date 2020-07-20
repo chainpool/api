@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @chainx-v2/util authors & contributors
+// Copyright 2017-2020 @polkadot/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -19,12 +19,12 @@ const MAX_U32 = new BN(2).pow(new BN(32 - 2)).subn(1);
  * <BR>
  *
  * ```javascript
- * import { compactToU8a } from '@chainx-v2/util';
+ * import { compactToU8a } from '@polkadot/util';
  *
  * console.log(compactToU8a(511, 32)); // Uint8Array([0b11111101, 0b00000111])
  * ```
  */
-export default function compactToU8a (_value: BN | BigInt | number): Uint8Array {
+export default function compactToU8a(_value: BN | BigInt | number): Uint8Array {
   const value = bnToBn(_value);
 
   if (value.lte(MAX_U8)) {

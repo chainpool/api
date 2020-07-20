@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { Signer, SignerResult } from '@chainx-v2/api/types';
-import { KeyringPair } from '@polkadot/keyring/types';
+import { KeyringPair } from '@chainx-v2/keyring/types';
 import { Registry, SignerPayloadJSON, SignerPayloadRaw } from '@chainx-v2/types/types';
 
 import { hexToU8a, u8aToHex } from '@polkadot/util';
@@ -17,13 +17,13 @@ export class SingleAccountSigner implements Signer {
 
   readonly #signDelay: number;
 
-  constructor (registry: Registry, keyringPair: KeyringPair, signDelay = 0) {
+  constructor(registry: Registry, keyringPair: KeyringPair, signDelay = 0) {
     this.#keyringPair = keyringPair;
     this.#registry = registry;
     this.#signDelay = signDelay;
   }
 
-  public async signPayload (payload: SignerPayloadJSON): Promise<SignerResult> {
+  public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     if (payload.address !== this.#keyringPair.address) {
       throw new Error('does not have the keyringPair');
     }
@@ -40,7 +40,7 @@ export class SingleAccountSigner implements Signer {
     });
   }
 
-  public async signRaw ({ address, data }: SignerPayloadRaw): Promise<SignerResult> {
+  public async signRaw({ address, data }: SignerPayloadRaw): Promise<SignerResult> {
     if (address !== this.#keyringPair.address) {
       throw new Error('does not have the keyringPair');
     }

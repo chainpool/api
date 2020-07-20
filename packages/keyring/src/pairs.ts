@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/keyring authors & contributors
+// Copyright 2017-2020 @chainx-v2/keyring authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -12,17 +12,17 @@ type KeyringPairMap = Record<string, KeyringPair>;
 export default class Pairs implements KeyringPairs {
   readonly #map: KeyringPairMap = {};
 
-  public add (pair: KeyringPair): KeyringPair {
+  public add(pair: KeyringPair): KeyringPair {
     this.#map[decodeAddress(pair.address).toString()] = pair;
 
     return pair;
   }
 
-  public all (): KeyringPair[] {
+  public all(): KeyringPair[] {
     return Object.values(this.#map);
   }
 
-  public get (address: string | Uint8Array): KeyringPair {
+  public get(address: string | Uint8Array): KeyringPair {
     const pair = this.#map[decodeAddress(address).toString()];
 
     assert(pair, (): string => {
@@ -36,7 +36,7 @@ export default class Pairs implements KeyringPairs {
     return pair;
   }
 
-  public remove (address: string | Uint8Array): void {
+  public remove(address: string | Uint8Array): void {
     delete this.#map[decodeAddress(address).toString()];
   }
 }
