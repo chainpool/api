@@ -2,11 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-// import { detectPackage } from '@polkadot/util';
+import { detectPackage } from '@polkadot/util';
 
 // FIXME This really should be `import(...).then(...)`, but need to check rejections
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-// detectPackage(require('./package.json'), typeof __dirname !== 'undefined' && __dirname);
+detectPackage(require('./package.json'), typeof __dirname !== 'undefined' && __dirname);
 
 export { Keyring } from '@polkadot/keyring';
 export { WsProvider } from '@chainx-v2/rpc-provider';

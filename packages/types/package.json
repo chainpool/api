@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/types",
-  "version": "0.0.3-beta.10",
+  "version": "0.0.3-beta.11",
   "description": "Implementation of the Parity codec",
   "main": "index.js",
   "keywords": [
