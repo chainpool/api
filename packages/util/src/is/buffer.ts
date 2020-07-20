@@ -18,6 +18,6 @@ import isInstanceOf from './instanceOf';
  * console.log('isBuffer', isBuffer(Buffer.from([]))); // => true
  * ```
  */
-export default function isBuffer(value: unknown): value is Buffer {
+export default function isBuffer (value: unknown): value is Buffer {
   return isInstanceOf(value, Buffer);
 }

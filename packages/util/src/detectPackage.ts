@@ -25,12 +25,12 @@ interface PjsChecks extends This {
 type PjsGlobal = NodeJS.Global & PjsChecks;
 type PjsWindow = Window & PjsChecks;
 
-function expandPath(path?: string): string {
+function expandPath (path?: string): string {
   return (!path || path.length < 5) ? '<unknown>' : path;
 }
 
 /** @internal */
-function flattenVersions(_all: (VersionPath | string)[]): string {
+function flattenVersions (_all: (VersionPath | string)[]): string {
   const all: VersionPath[] = _all.map((version: VersionPath | string): VersionPath =>
     isString(version)
       ? { version }
@@ -47,7 +47,7 @@ function flattenVersions(_all: (VersionPath | string)[]): string {
  * @name detectPackage
  * @summary Checks that a specific package is only imported once
  */
-export default function detectPackage({ name, version }: PackageJson, path?: string | false): void {
+export default function detectPackage ({ name, version }: PackageJson, path?: string | false): void {
   const _global = typeof window !== 'undefined'
     ? window as PjsWindow
     : global as PjsGlobal;

@@ -25,7 +25,7 @@ interface Encrypted {
  * naclEncrypt([...], [...]); // => [...]
  * ```
  */
-export default function naclEncrypt(message: Uint8Array, secret: Uint8Array, nonce: Uint8Array = randomAsU8a(24)): Encrypted {
+export default function naclEncrypt (message: Uint8Array, secret: Uint8Array, nonce: Uint8Array = randomAsU8a(24)): Encrypted {
   return {
     encrypted: nacl.secretbox(message, nonce, secret),
     nonce

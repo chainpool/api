@@ -19,7 +19,7 @@ import assert from '../assert';
  * bnMin([new BN(1), new BN(3), new BN(2)]).toString(); // => '1'
  * ```
  */
-export default function min(...items: BN[]): BN {
+export default function min (...items: BN[]): BN {
   assert(items && items.length >= 1, 'Must provide one or more BN arguments');
 
   return items.reduce((acc: BN, val: BN) => BN.min(acc, val), items[0]);

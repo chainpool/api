@@ -23,7 +23,7 @@ const BN_53 = new BN(0b11111111111111111111111111111111111111111111111111111);
  * randomAsNumber(); // => <random number>
  * ```
  */
-export default function randomAsNumber(): number {
+export default function randomAsNumber (): number {
   return hexToBn(
     randomAsHex(8)
   ).and(BN_53).toNumber();

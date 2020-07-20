@@ -13,7 +13,7 @@ const FORMAT = [9, 10, 13];
  * @description
  * Checks to see if the input string or Uint8Array is printable ASCII, 32-127 + formatters
  */
-export default function isAscii(value?: number[] | Buffer | Uint8Array | string | null): boolean {
+export default function isAscii (value?: number[] | Buffer | Uint8Array | string | null): boolean {
   if (!value) {
     return isString(value);
   }

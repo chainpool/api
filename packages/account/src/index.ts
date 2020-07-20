@@ -1,14 +1,12 @@
 // eslint-disable-next-line header/header
-import {
-  mnemonicGenerate,
+import { mnemonicGenerate,
   mnemonicToMiniSecret,
   mnemonicValidate,
   randomAsU8a,
   naclKeypairFromSecret,
   naclKeypairFromSeed,
   naclSign,
-  naclVerify
-} from '@polkadot/util-crypto';
+  naclVerify } from '@polkadot/util-crypto';
 import { encodeAddress, decodeAddress, setSS58Format } from '@chainx-v2/keyring';
 import { PKCS8_HEADER } from '@chainx-v2/keyring/pair/defaults';
 import { isHex, u8aToHex, hexToU8a } from '@polkadot/util';
@@ -43,7 +41,7 @@ class Account {
   /**
      * generate a account
     */
-  constructor(keyPair: KeyPair) {
+  constructor (keyPair: KeyPair) {
     this._keyPair = keyPair;
     setSS58Format(NET_PREFIX.testnet);
   }
@@ -54,7 +52,7 @@ class Account {
      * @return void
      *
     */
-  public static setNet(net: number): void {
+  public static setNet (net: number): void {
     if (!net) {
       throw new Error('expect pass in the network type, testnet or mainnet');
     }
@@ -68,7 +66,7 @@ class Account {
      * get private key
      * @return string
     */
-  public privateKey(): string {
+  public privateKey (): string {
     return u8aToHex(this._keyPair.secretKey.subarray(0, 32));
   }
 
@@ -78,7 +76,7 @@ class Account {
     * @description
     * Returns message of 'address', which is string type.
     */
-  public publicKey(): string {
+  public publicKey (): string {
     return u8aToHex(this._keyPair.publicKey);
   }
 
@@ -88,7 +86,7 @@ class Account {
     * @description
     * Returns message of 'address', which is string type.
     */
-  public address(): string {
+  public address (): string {
     return encodeAddress(this.publicKey());
   }
 
@@ -106,7 +104,7 @@ class Account {
     * sign([...], [...]); // => [...]
     * ```
     */
-  public sign(message: string): Uint8Array {
+  public sign (message: string): Uint8Array {
     return naclSign(message, this._keyPair);
   }
 
@@ -116,7 +114,7 @@ class Account {
     * @description
     * Returns result of verify
     */
-  public verify(message: string, signature: string): boolean {
+  public verify (message: string, signature: string): boolean {
     return naclVerify(message, signature, this._keyPair.publicKey);
   }
 
@@ -126,7 +124,7 @@ class Account {
     * @description
     * Returns acount of publicKey and seceretKey.
     */
-  public static from(unknow: string): Account {
+  public static from (unknow: string): Account {
     if (Account.isMnemonicValid(unknow)) {
       return Account.fromMnemonic(unknow);
     }
@@ -161,7 +159,7 @@ class Account {
     * @description
     * Returns acount of publicKey and seceretKey.
     */
-  public static fromMnemonic(mnemonic: string): Account {
+  public static fromMnemonic (mnemonic: string): Account {
     const seed = mnemonicToMiniSecret(mnemonic);
 
     return new Account(naclKeypairFromSeed(seed));
@@ -173,7 +171,7 @@ class Account {
     * @description
     * Returns acount of publicKey and seceretKey.
     */
-  public static fromPrivateKey(privateKey: string): Account {
+  public static fromPrivateKey (privateKey: string): Account {
     return Account.fromSeed(privateKey);
   }
 
@@ -181,7 +179,7 @@ class Account {
      * Generate new public/secret keypair for Alice from the supplied seed
      * @param seedLike string
      */
-  public static fromSeed(seedLike: string): Account {
+  public static fromSeed (seedLike: string): Account {
     const seedU8a = u8aFrom(seedLike, 'hex');
 
     return new Account(naclKeypairFromSeed(seedU8a));
@@ -193,7 +191,7 @@ class Account {
      * @param text string
      *
     */
-  public static fromText(text: string): Account {
+  public static fromText (text: string): Account {
     return Account.fromSeed(text);
   }
 
@@ -203,7 +201,7 @@ class Account {
     * @description
     * Returns acount of publicKey and seceretKey.
     */
-  public static fromSecretKey(secretKey: string): Account {
+  public static fromSecretKey (secretKey: string): Account {
     const secretKeyU8a = u8aFrom(secretKey, 'hex');
 
     return new Account(naclKeypairFromSecret(secretKeyU8a));
@@ -215,7 +213,7 @@ class Account {
     * @description
     * Returns acount of publicKey and seceretKey.
     */
-  public static fromPkcs8(passphrase?: string, encoded?: any): Account {
+  public static fromPkcs8 (passphrase?: string, encoded?: any): Account {
     const decoded = decodePkcs8(passphrase, u8aFrom(encoded));
 
     return new Account(decoded);
@@ -227,7 +225,7 @@ class Account {
     * @description
     * Returns acount of publicKey and seceretKey.
     */
-  public static fromJson(json: any, passphrase: any): Account {
+  public static fromJson (json: any, passphrase: any): Account {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
     const encoded: string = json.encoded;
 
@@ -243,7 +241,7 @@ class Account {
     * @description
     * Returns acount of publicKey and seceretKey.
     */
-  public static generate(): Account {
+  public static generate (): Account {
     const random = randomAsU8a(32);
 
     return new Account(naclKeypairFromSeed(random));
@@ -255,7 +253,7 @@ class Account {
     * @description
     * Returns Mnemonic
     */
-  public static newMnemonic(): string {
+  public static newMnemonic (): string {
     return mnemonicGenerate();
   }
 
@@ -265,7 +263,7 @@ class Account {
     * @description
     * Returns true or false
     */
-  public static isMnemonicValid(mnemonic: string): boolean {
+  public static isMnemonicValid (mnemonic: string): boolean {
     return mnemonicValidate(mnemonic);
   }
 
@@ -275,7 +273,7 @@ class Account {
     * @description
     * Returns true or false
     */
-  public static isAddressValid(address: string): boolean {
+  public static isAddressValid (address: string): boolean {
     try {
       encodeAddress(
         isHex(address)
@@ -295,7 +293,7 @@ class Account {
     * @description
     * Returns the address
     */
-  public static encodeAddress(pulickey: string): string {
+  public static encodeAddress (pulickey: string): string {
     return encodeAddress(pulickey);
   }
 
@@ -305,7 +303,7 @@ class Account {
     * @description
     * Returns the address
     */
-  public static decodeAddress(address: string, ignoreChecksum?: boolean, prefix?: any): string {
+  public static decodeAddress (address: string, ignoreChecksum?: boolean, prefix?: any): string {
     return u8aToHex(decodeAddress(address, ignoreChecksum, prefix));
   }
 
@@ -315,7 +313,7 @@ class Account {
     * @description
     * Returns the address
     */
-  public encodePkcs8(passphrase: string): any {
+  public encodePkcs8 (passphrase: string): any {
     const publicKey = this._keyPair.publicKey;
     const seed = this._keyPair.secretKey.subarray(0, 32);
     const encoded = encodePkcs8({ publicKey, seed }, passphrase);

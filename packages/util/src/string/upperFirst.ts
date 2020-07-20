@@ -16,7 +16,7 @@
  * stringUpperFirst('abc'); // => 'Abc'
  * ```
  */
-export default function stringUpperFirst(value?: string | null): string {
+export default function stringUpperFirst (value?: string | null): string {
   return value
     ? value.charAt(0).toUpperCase() + value.slice(1)
     : '';

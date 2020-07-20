@@ -13,7 +13,7 @@ import isString from './string';
  * @description
  * Checks to see if the input string or Uint8Array is valid Utf8
  */
-export default function isUtf8(value?: number[] | Buffer | Uint8Array | string | null): boolean {
+export default function isUtf8 (value?: number[] | Buffer | Uint8Array | string | null): boolean {
   if (!value) {
     return isString(value);
   }

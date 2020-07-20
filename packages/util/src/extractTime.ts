@@ -12,7 +12,7 @@ const DAY = HRS * 24;
  * @summary Add together two Time arrays
  */
 
-function addTime(a: Time, b: Time): Time {
+function addTime (a: Time, b: Time): Time {
   return {
     days: a.days + b.days,
     hours: a.hours + b.hours,
@@ -36,7 +36,7 @@ const ZERO = { days: 0, hours: 0, milliseconds: 0, minutes: 0, seconds: 0 };
  * const { days, minutes, hours, seconds, milliseconds } = extractTime(6000); // 0, 0, 10, 0, 0
  * ```
  */
-export default function extractTime(milliseconds?: number): Time {
+export default function extractTime (milliseconds?: number): Time {
   if (!milliseconds) {
     return ZERO;
   } else if (milliseconds < 1000) {

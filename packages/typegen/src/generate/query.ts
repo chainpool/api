@@ -19,7 +19,7 @@ import { ModuleTypes } from '../util/imports';
 
 // From a storage entry metadata, we return [args, returnType]
 /** @internal */
-function entrySignature(allDefs: Record<string, ModuleTypes>, registry: Registry, storageEntry: StorageEntryMetadataLatest, imports: TypeImports): [string, string] {
+function entrySignature (allDefs: Record<string, ModuleTypes>, registry: Registry, storageEntry: StorageEntryMetadataLatest, imports: TypeImports): [string, string] {
   const format = (type: string): string => formatType(allDefs, type, imports);
   const outputType = unwrapStorageType(storageEntry.type, storageEntry.modifier.isOptional);
 
@@ -67,7 +67,7 @@ const template = readTemplate('query');
 const generateForMetaTemplate = Handlebars.compile(template);
 
 /** @internal */
-function generateForMeta(registry: Registry, meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
+function generateForMeta (registry: Registry, meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
   writeFile(dest, (): string => {
     const allTypes: Record<string, Record<string, { types: Record<string, any> }>> = { '@chainx-v2/types/interfaces': defaultDefs, ...extraTypes };
     const imports = createImports(allTypes);
@@ -129,7 +129,7 @@ function generateForMeta(registry: Registry, meta: Metadata, dest: string, extra
 
 // Call `generateForMeta()` with current static metadata
 /** @internal */
-export default function generateQuery(dest = 'packages/api/src/augment/query.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
+export default function generateQuery (dest = 'packages/api/src/augment/query.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
   const registry = new TypeRegistry();
 
   registerDefinitions(registry, extraTypes);

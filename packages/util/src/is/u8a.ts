@@ -18,6 +18,6 @@ import isInstanceOf from './instanceOf';
  * console.log('isU8a', isU8a([])); // => false
  * ```
  */
-export default function isU8a(value?: unknown): value is Uint8Array {
+export default function isU8a (value?: unknown): value is Uint8Array {
   return isInstanceOf(value, Uint8Array);
 }

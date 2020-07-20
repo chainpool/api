@@ -15,6 +15,6 @@ import keyMulti from './keyMulti';
  * @description
  * Creates a Substrate multisig address based on the input address and the required threshold.
  */
-export default function encodeMultiAddress(who: (Uint8Array | string)[], threshold: BigInt | BN | number, ss58Format?: Prefix): string {
+export default function encodeMultiAddress (who: (Uint8Array | string)[], threshold: BigInt | BN | number, ss58Format?: Prefix): string {
   return encode(keyMulti(who, threshold), ss58Format);
 }

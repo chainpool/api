@@ -14,14 +14,14 @@ import { compareArray } from './utils';
 
 type SetValues = Record<string, number | BN>;
 
-function encodeSet(setValues: SetValues, value: string[]): BN {
+function encodeSet (setValues: SetValues, value: string[]): BN {
   return value.reduce((result, value): BN => {
     return result.or(bnToBn(setValues[value] || 0));
   }, new BN(0));
 }
 
 /** @internal */
-function decodeSetArray(setValues: SetValues, value: string[]): string[] {
+function decodeSetArray (setValues: SetValues, value: string[]): string[] {
   return value.reduce((result, key): string[] => {
     assert(!isUndefined(setValues[key]), `Set: Invalid key '${key}' passed to Set, allowed ${Object.keys(setValues).join(', ')}`);
 
@@ -32,7 +32,7 @@ function decodeSetArray(setValues: SetValues, value: string[]): string[] {
 }
 
 /** @internal */
-function decodeSetNumber(setValues: SetValues, _value: BN | number): string[] {
+function decodeSetNumber (setValues: SetValues, _value: BN | number): string[] {
   const bn = bnToBn(_value);
   const result = Object.keys(setValues).reduce((result, key): string[] => {
     if (bn.and(bnToBn(setValues[key])).eq(bnToBn(setValues[key]))) {
@@ -50,7 +50,7 @@ function decodeSetNumber(setValues: SetValues, _value: BN | number): string[] {
 }
 
 /** @internal */
-function decodeSet(setValues: SetValues, value: string[] | Set<string> | Uint8Array | BN | number | string = 0, bitLength: number): string[] {
+function decodeSet (setValues: SetValues, value: string[] | Set<string> | Uint8Array | BN | number | string = 0, bitLength: number): string[] {
   assert(bitLength % 8 === 0, `Expected valid bitLength, power of 8, found ${bitLength}`);
 
   const byteLength = bitLength / 8;
@@ -86,7 +86,7 @@ export default class CodecSet extends Set<string> implements Codec {
 
   readonly #byteLength: number;
 
-  constructor(registry: Registry, setValues: SetValues, value?: string[] | Set<string> | Uint8Array | BN | number | string, bitLength = 8) {
+  constructor (registry: Registry, setValues: SetValues, value?: string[] | Set<string> | Uint8Array | BN | number | string, bitLength = 8) {
     super(decodeSet(setValues, value, bitLength));
 
     this.registry = registry;
@@ -94,9 +94,9 @@ export default class CodecSet extends Set<string> implements Codec {
     this.#byteLength = bitLength / 8;
   }
 
-  public static with(values: SetValues, bitLength?: number): Constructor<CodecSet> {
+  public static with (values: SetValues, bitLength?: number): Constructor<CodecSet> {
     return class extends CodecSet {
-      constructor(registry: Registry, value?: unknown) {
+      constructor (registry: Registry, value?: unknown) {
         super(registry, values, value as undefined, bitLength);
 
         Object.keys(values).forEach((_key): void => {
@@ -119,35 +119,35 @@ export default class CodecSet extends Set<string> implements Codec {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     return this.#byteLength;
   }
 
   /**
    * @description returns a hash of the contents
    */
-  public get hash(): H256 {
+  public get hash (): H256 {
     return new Raw(this.registry, blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description true is the Set contains no values
    */
-  public get isEmpty(): boolean {
+  public get isEmpty (): boolean {
     return this.size === 0;
   }
 
   /**
    * @description The actual set values as a string[]
    */
-  public get strings(): string[] {
+  public get strings (): string[] {
     return [...super.values()];
   }
 
   /**
    * @description The encoded value for the set members
    */
-  public get valueEncoded(): BN {
+  public get valueEncoded (): BN {
     return encodeSet(this.#allowed, this.strings);
   }
 
@@ -168,7 +168,7 @@ export default class CodecSet extends Set<string> implements Codec {
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq(other?: unknown): boolean {
+  public eq (other?: unknown): boolean {
     if (Array.isArray(other)) {
       // we don't actually care about the order, sort the values
       return compareArray(this.strings.sort(), other.sort());
@@ -184,42 +184,42 @@ export default class CodecSet extends Set<string> implements Codec {
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex(): string {
+  public toHex (): string {
     return u8aToHex(this.toU8a());
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman(): string[] {
+  public toHuman (): string[] {
     return this.toJSON();
   }
 
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON(): string[] {
+  public toJSON (): string[] {
     return this.strings;
   }
 
   /**
    * @description The encoded value for the set members
    */
-  public toNumber(): number {
+  public toNumber (): number {
     return this.valueEncoded.toNumber();
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType(): string {
+  public toRawType (): string {
     return JSON.stringify({ _set: this.#allowed });
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString(): string {
+  public toString (): string {
     return `[${this.strings.join(', ')}]`;
   }
 
@@ -228,7 +228,7 @@ export default class CodecSet extends Set<string> implements Codec {
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     return bnToU8a(this.valueEncoded, {
       bitLength: this.#byteLength * 8,
       isLe: true

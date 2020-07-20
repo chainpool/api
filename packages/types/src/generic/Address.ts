@@ -17,7 +17,7 @@ type AnyAddress = BN | Address | AccountId | AccountIndex | number[] | Uint8Arra
 export const ACCOUNT_ID_PREFIX = new Uint8Array([0xff]);
 
 /** @internal */
-function decodeString(registry: Registry, value: string): AccountId | AccountIndex {
+function decodeString (registry: Registry, value: string): AccountId | AccountIndex {
   const decoded = decodeAddress(value);
 
   return decoded.length === 32
@@ -26,7 +26,7 @@ function decodeString(registry: Registry, value: string): AccountId | AccountInd
 }
 
 /** @internal */
-function decodeU8a(registry: Registry, value: Uint8Array): AccountId | AccountIndex {
+function decodeU8a (registry: Registry, value: Uint8Array): AccountId | AccountIndex {
   // This allows us to instantiate an address with a raw publicKey. Do this first before
   // we checking the first byte, otherwise we may split an already-existent valid address
   if (value.length === 32) {
@@ -49,12 +49,12 @@ function decodeU8a(registry: Registry, value: Uint8Array): AccountId | AccountIn
  * is encoded as `[ <prefix-byte>, ...publicKey/...bytes ]` as per spec
  */
 export default class Address extends Base<AccountId | AccountIndex> {
-  constructor(registry: Registry, value: AnyAddress = new Uint8Array()) {
+  constructor (registry: Registry, value: AnyAddress = new Uint8Array()) {
     super(registry, Address._decodeAddress(registry, value));
   }
 
   /** @internal */
-  private static _decodeAddress(registry: Registry, value: AnyAddress): AccountId | AccountIndex {
+  private static _decodeAddress (registry: Registry, value: AnyAddress): AccountId | AccountIndex {
     if (value instanceof AccountId || value instanceof AccountIndex) {
       return value;
     } else if (value instanceof Address) {
@@ -71,7 +71,7 @@ export default class Address extends Base<AccountId | AccountIndex> {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     const rawLength = this._rawLength;
 
     return rawLength + (
@@ -85,7 +85,7 @@ export default class Address extends Base<AccountId | AccountIndex> {
   /**
    * @description The length of the raw value, either AccountIndex or AccountId
    */
-  protected get _rawLength(): number {
+  protected get _rawLength (): number {
     return this._raw instanceof AccountIndex
       ? AccountIndex.calcLength(this._raw)
       : this._raw.encodedLength;
@@ -94,14 +94,14 @@ export default class Address extends Base<AccountId | AccountIndex> {
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex(): string {
+  public toHex (): string {
     return u8aToHex(this.toU8a());
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType(): string {
+  public toRawType (): string {
     return 'Address';
   }
 
@@ -109,7 +109,7 @@ export default class Address extends Base<AccountId | AccountIndex> {
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     const encoded = this._raw.toU8a().subarray(0, this._rawLength);
 
     return isBare

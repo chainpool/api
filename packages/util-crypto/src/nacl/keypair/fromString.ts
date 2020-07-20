@@ -23,7 +23,7 @@ import fromSeed from './fromSeed';
  * naclKeypairFromString('test'); // => { secretKey: [...], publicKey: [...] }
  * ```
  */
-export default function naclKeypairFromString(value: string): Keypair {
+export default function naclKeypairFromString (value: string): Keypair {
   return fromSeed(
     blake2AsU8a(
       stringToU8a(value),

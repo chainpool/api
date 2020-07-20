@@ -11,7 +11,7 @@ import U32 from '@chainx-v2/types/primitive/U32';
 export const MAGIC_NUMBER = 0x6174656d; // `meta`, reversed for Little Endian encoding
 
 export default class MagicNumber extends U32 {
-  constructor(registry: Registry, value?: AnyNumber) {
+  constructor (registry: Registry, value?: AnyNumber) {
     super(registry, value);
 
     if (!this.isEmpty) {

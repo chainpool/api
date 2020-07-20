@@ -16,6 +16,6 @@
  * bufferToU8a(Buffer.from([1, 2, 3]));
  * ```
  */
-export default function bufferToU8a(buffer?: Buffer | number[] | null): Uint8Array {
+export default function bufferToU8a (buffer?: Buffer | number[] | null): Uint8Array {
   return new Uint8Array(buffer || []);
 }

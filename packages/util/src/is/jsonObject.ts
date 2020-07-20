@@ -31,7 +31,7 @@ interface ObjectIndexed {
  * isJsonObject('not an object'); // => false
  * ```
  */
-export default function isJsonObject(value: unknown): value is ObjectIndexed {
+export default function isJsonObject (value: unknown): value is ObjectIndexed {
   const str = typeof value !== 'string'
     ? JSON.stringify(value)
     : value;

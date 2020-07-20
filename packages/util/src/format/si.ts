@@ -27,7 +27,7 @@ export const SI: SiDef[] = [
 ];
 
 // Given a SI type (e.g. k, m, Y) find the SI definition
-export function findSi(type: string): SiDef {
+export function findSi (type: string): SiDef {
   // use a loop here, better RN support (which doesn't have [].find)
   for (let i = 0; i < SI.length; i++) {
     if (SI[i].value === type) {
@@ -38,7 +38,7 @@ export function findSi(type: string): SiDef {
   return SI[SI_MID];
 }
 
-export function calcSi(text: string, decimals: number, forceUnit?: string): SiDef {
+export function calcSi (text: string, decimals: number, forceUnit?: string): SiDef {
   if (forceUnit) {
     return findSi(forceUnit);
   }

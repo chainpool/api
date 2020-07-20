@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/types",
-  "version": "0.0.3-beta.14",
+  "version": "0.0.3-beta.15",
   "description": "Implementation of the Parity codec",
   "main": "index.js",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "@chainx-v2/keyring": "^0.0.3-beta.14",
+    "@chainx-v2/keyring": "0.0.3-beta.15",
     "@types/memoizee": "^0.4.4"
   }
 }

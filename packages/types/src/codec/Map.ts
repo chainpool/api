@@ -15,7 +15,7 @@ import decodeU8a from './utils/decodeU8a';
 import typeToConstructor from './utils/typeToConstructor';
 
 /** @internal */
-function decodeMapFromU8a<K extends Codec = Codec, V extends Codec = Codec>(registry: Registry, KeyClass: Constructor<K>, ValClass: Constructor<V>, u8a: Uint8Array): Map<K, V> {
+function decodeMapFromU8a<K extends Codec = Codec, V extends Codec = Codec> (registry: Registry, KeyClass: Constructor<K>, ValClass: Constructor<V>, u8a: Uint8Array): Map<K, V> {
   const output = new Map<K, V>();
   const [offset, length] = Compact.decodeU8a(u8a);
   const types = [];
@@ -34,7 +34,7 @@ function decodeMapFromU8a<K extends Codec = Codec, V extends Codec = Codec>(regi
 }
 
 /** @internal */
-function decodeMapFromMap<K extends Codec = Codec, V extends Codec = Codec>(registry: Registry, KeyClass: Constructor<K>, ValClass: Constructor<V>, value: Map<any, any>): Map<K, V> {
+function decodeMapFromMap<K extends Codec = Codec, V extends Codec = Codec> (registry: Registry, KeyClass: Constructor<K>, ValClass: Constructor<V>, value: Map<any, any>): Map<K, V> {
   const output = new Map<K, V>();
 
   value.forEach((val: any, key: any) => {
@@ -72,7 +72,7 @@ function decodeMapFromMap<K extends Codec = Codec, V extends Codec = Codec>(regi
  * @param jsonMap
  * @internal
  */
-function decodeMap<K extends Codec = Codec, V extends Codec = Codec>(registry: Registry, keyType: Constructor<K> | keyof InterfaceTypes, valType: Constructor<V> | keyof InterfaceTypes, value?: Uint8Array | string | Map<any, any>): Map<K, V> {
+function decodeMap<K extends Codec = Codec, V extends Codec = Codec> (registry: Registry, keyType: Constructor<K> | keyof InterfaceTypes, valType: Constructor<V> | keyof InterfaceTypes, value?: Uint8Array | string | Map<any, any>): Map<K, V> {
   const KeyClass = typeToConstructor(registry, keyType);
   const ValClass = typeToConstructor(registry, valType);
 
@@ -100,7 +100,7 @@ export default class CodecMap<K extends Codec = Codec, V extends Codec = Codec> 
 
   readonly #type: string;
 
-  constructor(registry: Registry, type: 'BTreeMap' | 'HashMap', keyType: Constructor<K> | keyof InterfaceTypes, valType: Constructor<V> | keyof InterfaceTypes, rawValue?: Uint8Array | string | Map<any, any>) {
+  constructor (registry: Registry, type: 'BTreeMap' | 'HashMap', keyType: Constructor<K> | keyof InterfaceTypes, valType: Constructor<V> | keyof InterfaceTypes, rawValue?: Uint8Array | string | Map<any, any>) {
     super(decodeMap(registry, keyType, valType, rawValue));
 
     this.registry = registry;
@@ -112,7 +112,7 @@ export default class CodecMap<K extends Codec = Codec, V extends Codec = Codec> 
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     let len = Compact.encodeU8a(this.size).length;
 
     this.forEach((v: V, k: K) => {
@@ -125,35 +125,35 @@ export default class CodecMap<K extends Codec = Codec, V extends Codec = Codec> 
   /**
    * @description Returns a hash of the value
    */
-  public get hash(): H256 {
+  public get hash (): H256 {
     return new Raw(this.registry, blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description Checks if the value is an empty value
    */
-  public get isEmpty(): boolean {
+  public get isEmpty (): boolean {
     return this.size === 0;
   }
 
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq(other?: unknown): boolean {
+  public eq (other?: unknown): boolean {
     return compareMap(this, other);
   }
 
   /**
    * @description Returns a hex string representation of the value. isLe returns a LE (number-only) representation
    */
-  public toHex(): string {
+  public toHex (): string {
     return u8aToHex(this.toU8a());
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman(isExtended?: boolean): AnyJson {
+  public toHuman (isExtended?: boolean): AnyJson {
     const json: AnyJson = {};
 
     this.forEach((v: V, k: K) => {
@@ -166,7 +166,7 @@ export default class CodecMap<K extends Codec = Codec, V extends Codec = Codec> 
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON(): AnyJson {
+  public toJSON (): AnyJson {
     const json: AnyJson = {};
 
     this.forEach((v: V, k: K) => {
@@ -179,14 +179,14 @@ export default class CodecMap<K extends Codec = Codec, V extends Codec = Codec> 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType(): string {
+  public toRawType (): string {
     return `${this.#type}<${new this.#KeyClass(this.registry).toRawType()},${new this.#ValClass(this.registry).toRawType()}>`;
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString(): string {
+  public toString (): string {
     return JSON.stringify(this.toJSON());
   }
 
@@ -194,7 +194,7 @@ export default class CodecMap<K extends Codec = Codec, V extends Codec = Codec> 
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     const encoded = new Array<Uint8Array>();
 
     if (!isBare) {

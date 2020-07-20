@@ -6,7 +6,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 
 if (!String.prototype.padEnd) {
-  String.prototype.padEnd = function padEnd(length: number, char = ' '): string {
+  String.prototype.padEnd = function padEnd (length: number, char = ' '): string {
     let result = String(this);
 
     while (result.length < length) {

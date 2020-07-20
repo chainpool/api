@@ -7,7 +7,7 @@
 
 if (!Array.prototype.fill) {
   // eslint-disable-next-line no-extend-native,@typescript-eslint/no-explicit-any
-  Array.prototype.fill = function fill(value: any, start = 0, end?: number): any[] {
+  Array.prototype.fill = function fill (value: any, start = 0, end?: number): any[] {
     // Steps 1-2.
     if (!this) {
       throw new TypeError('this is null or not defined');

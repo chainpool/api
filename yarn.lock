@@ -1387,7 +1387,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@chainx-v2/account@workspace:packages/account"
   dependencies:
-    "@chainx-v2/keyring": ^0.0.3-beta.14
+    "@chainx-v2/keyring": 0.0.3-beta.15
     "@types/node": ^14.0.23
     bip32: ^1.0.2
     bs58: ^4.0.1
@@ -1433,7 +1433,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.10.3
     "@chainx-v2/api": 0.0.1-beta.16
-    "@chainx-v2/keyring": ^0.0.3-beta.14
+    "@chainx-v2/keyring": 0.0.3-beta.15
     "@chainx-v2/rpc-core": 0.0.1-beta.16
     "@chainx-v2/rpc-provider": 0.0.1-beta.16
     "@chainx-v2/types": 0.0.1-beta.16
@@ -1486,7 +1486,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/keyring@^0.0.3-beta.14, @chainx-v2/keyring@workspace:packages/keyring":
+"@chainx-v2/keyring@0.0.3-beta.15, @chainx-v2/keyring@^0.0.3-beta.14, @chainx-v2/keyring@workspace:packages/keyring":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/keyring@workspace:packages/keyring"
   dependencies:
@@ -1515,7 +1515,7 @@ __metadata:
   resolution: "@chainx-v2/metadata@workspace:packages/metadata"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/keyring": ^0.0.3-beta.14
+    "@chainx-v2/keyring": 0.0.3-beta.15
     "@chainx-v2/types": 0.0.1-beta.16
     "@chainx-v2/types-known": 0.0.1-beta.16
     "@polkadot/util": ^2.15.1
@@ -1544,7 +1544,7 @@ __metadata:
   resolution: "@chainx-v2/rpc-core@workspace:packages/rpc-core"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/keyring": ^0.0.3-beta.14
+    "@chainx-v2/keyring": 0.0.3-beta.15
     "@chainx-v2/metadata": 0.0.1-beta.16
     "@chainx-v2/rpc-provider": 0.0.1-beta.16
     "@chainx-v2/types": 0.0.1-beta.16
@@ -1576,7 +1576,7 @@ __metadata:
   resolution: "@chainx-v2/rpc-provider@workspace:packages/rpc-provider"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/keyring": ^0.0.3-beta.14
+    "@chainx-v2/keyring": 0.0.3-beta.15
     "@chainx-v2/metadata": 0.0.1-beta.16
     "@chainx-v2/types": 0.0.1-beta.16
     "@polkadot/util": ^2.15.1
@@ -1661,7 +1661,7 @@ __metadata:
   resolution: "@chainx-v2/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/keyring": ^0.0.3-beta.14
+    "@chainx-v2/keyring": 0.0.3-beta.15
     "@chainx-v2/metadata": 0.0.1-beta.16
     "@polkadot/util": ^2.15.1
     "@polkadot/util-crypto": ^2.15.1

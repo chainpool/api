@@ -4,7 +4,7 @@
 
 let decoder: { decode: (value: Uint8Array) => string };
 
-function polyfilledDecode(value: Uint8Array): string {
+function polyfilledDecode (value: Uint8Array): string {
   return value.reduce((str, code): string => {
     return str + String.fromCharCode(code);
   }, '');
@@ -32,7 +32,7 @@ try {
  * u8aToString(new Uint8Array([0x68, 0x65, 0x6c, 0x6c, 0x6f])); // hello
  * ```
  */
-export default function u8aToString(value?: Uint8Array | null): string {
+export default function u8aToString (value?: Uint8Array | null): string {
   return !value?.length
     ? ''
     : decoder.decode(value);

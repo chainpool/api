@@ -9,7 +9,7 @@ import { from, Observable } from 'rxjs';
 
 import ApiBase from '../base';
 
-export function decorateMethod<Method extends DecorateFn<Codec>>(method: Method): Method {
+export function decorateMethod<Method extends DecorateFn<Codec>> (method: Method): Method {
   return method;
 }
 
@@ -136,7 +136,7 @@ export default class ApiRx extends ApiBase<'rxjs'> {
    *   });
    * ```
    */
-  public static create(options?: ApiOptions): Observable<ApiRx> {
+  public static create (options?: ApiOptions): Observable<ApiRx> {
     return new ApiRx(options).isReady;
   }
 
@@ -160,7 +160,7 @@ export default class ApiRx extends ApiBase<'rxjs'> {
    *   });
    * ```
    */
-  constructor(options?: ApiOptions) {
+  constructor (options?: ApiOptions) {
     super(options, 'rxjs', decorateMethod);
 
     this.#isReadyRx = from<Promise<ApiRx>>(
@@ -176,21 +176,21 @@ export default class ApiRx extends ApiBase<'rxjs'> {
   /**
    * @description Observable that carries the connected state for the provider. Results in a boolean flag that is true/false based on the connectivity.
    */
-  public get isConnected(): Observable<boolean> {
+  public get isConnected (): Observable<boolean> {
     return this._isConnected;
   }
 
   /**
    * @description Observable that returns the first time we are connected and loaded
    */
-  public get isReady(): Observable<ApiRx> {
+  public get isReady (): Observable<ApiRx> {
     return this.#isReadyRx;
   }
 
   /**
    * @description Returns a clone of this ApiRx instance (new underlying provider connection)
    */
-  public clone(): ApiRx {
+  public clone (): ApiRx {
     return new ApiRx({
       ...this._options,
       source: this

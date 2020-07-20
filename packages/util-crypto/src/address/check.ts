@@ -14,7 +14,7 @@ import defaults from './defaults';
  * @description
  * From the provided input, validate that the address is a valid input.
  */
-export default function check(address: string, prefix: Prefix): [boolean, string | null] {
+export default function check (address: string, prefix: Prefix): [boolean, string | null] {
   let decoded;
 
   try {

@@ -36,7 +36,7 @@ import('../package.json')
     // ignore
   });
 
-function assertResult<T>(value: T | undefined): T {
+function assertResult<T> (value: T | undefined): T {
   assert(!isUndefined(value), 'Api needs to be initialized before using, listen on \'ready\'');
 
   return value;
@@ -61,7 +61,7 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    * });
    * ```
    */
-  constructor(options: ApiOptions = {}, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
+  constructor (options: ApiOptions = {}, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
     super(options, type, decorateMethod);
   }
 
@@ -77,7 +77,7 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    * console.log(api.consts.democracy.enactmentPeriod.toString())
    * ```
    */
-  public get consts(): Constants {
+  public get consts (): Constants {
     return assertResult(this._consts);
   }
 
@@ -93,35 +93,35 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    * });
    * ```
    */
-  public get derive(): ReturnType<ApiBase<ApiType>['_decorateDerive']> {
+  public get derive (): ReturnType<ApiBase<ApiType>['_decorateDerive']> {
     return assertResult(this._derive);
   }
 
   /**
    * @description  Returns the version of extrinsics in-use on this chain
    */
-  public get extrinsicVersion(): number {
+  public get extrinsicVersion (): number {
     return this._extrinsicType;
   }
 
   /**
    * @description Contains the genesis Hash of the attached chain. Apart from being useful to determine the actual chain, it can also be used to sign immortal transactions.
    */
-  public get genesisHash(): Hash {
+  public get genesisHash (): Hash {
     return assertResult(this._genesisHash);
   }
 
   /**
    * @description `true` when subscriptions are supported
    */
-  public get hasSubscriptions(): boolean {
+  public get hasSubscriptions (): boolean {
     return this._rpcCore.provider.hasSubscriptions;
   }
 
   /**
    * @description The library information name & version (from package.json)
    */
-  public get libraryInfo(): string {
+  public get libraryInfo (): string {
     return `${pkgJson.name} v${pkgJson.version}`;
   }
 
@@ -139,7 +139,7 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    * });
    * ```
    */
-  public get query(): QueryableStorage<ApiType> {
+  public get query (): QueryableStorage<ApiType> {
     return assertResult(this._query);
   }
 
@@ -165,7 +165,7 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    * );
    * ```
    */
-  public get queryMulti(): QueryableStorageMulti<ApiType> {
+  public get queryMulti (): QueryableStorageMulti<ApiType> {
     return assertResult(this._queryMulti);
   }
 
@@ -183,35 +183,35 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    * });
    * ```
    */
-  public get rpc(): DecoratedRpc<ApiType, RpcInterface> {
+  public get rpc (): DecoratedRpc<ApiType, RpcInterface> {
     return assertResult(this._rpc);
   }
 
   /**
    * @description Yields the current attached runtime metadata. Generally this is only used to construct extrinsics & storage, but is useful for current runtime inspection.
    */
-  public get runtimeMetadata(): Metadata {
+  public get runtimeMetadata (): Metadata {
     return assertResult(this._runtimeMetadata);
   }
 
   /**
    * @description Contains the version information for the current runtime.
    */
-  public get runtimeVersion(): RuntimeVersion {
+  public get runtimeVersion (): RuntimeVersion {
     return assertResult(this._runtimeVersion);
   }
 
   /**
    * @description The underlying Rx API interface
    */
-  public get rx(): Pick<ApiInterfaceRx, 'tx' | 'rpc'> {
+  public get rx (): Pick<ApiInterfaceRx, 'tx' | 'rpc'> {
     return assertResult(this._rx as Pick<ApiInterfaceRx, 'tx' | 'rpc'>);
   }
 
   /**
    * @description The type of this API instance, either 'rxjs' or 'promise'
    */
-  public get type(): ApiTypes {
+  public get type (): ApiTypes {
     return this._type;
   }
 
@@ -229,42 +229,42 @@ export default abstract class ApiBase<ApiType extends ApiTypes> extends Init<Api
    *   });
    * ```
    */
-  public get tx(): SubmittableExtrinsics<ApiType> {
+  public get tx (): SubmittableExtrinsics<ApiType> {
     return assertResult(this._extrinsics);
   }
 
   /**
    * @description Disconnect from the underlying provider, halting all network traffic
    */
-  public disconnect(): void {
+  public disconnect (): void {
     this._rpcCore.disconnect();
   }
 
   /**
    * @description Finds the definition for a specific [[CallFunction]] based on the index supplied
    */
-  public findCall(callIndex: Uint8Array | string): CallFunction {
+  public findCall (callIndex: Uint8Array | string): CallFunction {
     return this.registry.findMetaCall(u8aToU8a(callIndex));
   }
 
   /**
    * @description Finds the definition for a specific [[RegistryError]] based on the index supplied
    */
-  public findError(errorIndex: Uint8Array | string): RegistryError {
+  public findError (errorIndex: Uint8Array | string): RegistryError {
     return this.registry.findMetaError(u8aToU8a(errorIndex));
   }
 
   /**
    * @description Set an external signer which will be used to sign extrinsic when account passed in is not KeyringPair
    */
-  public setSigner(signer: Signer): void {
+  public setSigner (signer: Signer): void {
     this._rx.signer = signer;
   }
 
   /**
    * @description Signs a raw signer payload, string or Uint8Array
    */
-  public async sign(address: KeyringSigner | string, data: SignerPayloadRawBase, { signer }: SignerRawOptions = {}): Promise<string> {
+  public async sign (address: KeyringSigner | string, data: SignerPayloadRawBase, { signer }: SignerRawOptions = {}): Promise<string> {
     if (isString(address)) {
       const _signer = signer || this._rx.signer;
 

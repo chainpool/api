@@ -19,7 +19,7 @@ import { isBuffer, isString, u8aToBuffer } from '@polkadot/util';
  * xxhash64AsValue('abcd', 0xabcd)); // => e29f70f8b8c96df7
  * ```
  */
-export default function xxhash64AsValue(data: Buffer | Uint8Array | string, seed: number): number {
+export default function xxhash64AsValue (data: Buffer | Uint8Array | string, seed: number): number {
   if (isBuffer(data) || isString(data)) {
     return xxhashjs.h64(data, seed) as unknown as number;
   }
