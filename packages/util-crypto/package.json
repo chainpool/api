@@ -1,12 +1,12 @@
 {
   "name": "@chainx-v2/util-crypto",
-  "version": "0.0.3-beta.16",
+  "version": "0.0.3-beta.17",
   "description": "A collection of useful crypto utilities for @chainx-v2",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.10.5",
-    "@chainx-v2/util": "0.0.3-beta.16",
+    "@chainx-v2/util": "^0.0.3-beta.16",
     "@polkadot/wasm-crypto": "^1.2.1",
     "base-x": "^3.0.8",
     "bip39": "^3.0.2",
