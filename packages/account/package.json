@@ -1,9 +1,9 @@
 {
   "name": "@chainx-v2/account",
-  "version": "0.0.3-beta.15",
+  "version": "0.0.3-beta.16",
   "main": "index.js",
   "dependencies": {
-    "@chainx-v2/keyring": "0.0.3-beta.15",
+    "@chainx-v2/keyring": "0.0.3-beta.16",
     "@types/node": "^14.0.23",
     "bip32": "^1.0.2",
     "bs58": "^4.0.1",

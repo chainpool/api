@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,7 +14,7 @@ import { isReady, sha512 } from '@polkadot/wasm-crypto';
  * <BR>
  *
  * ```javascript
- * import { sha512AsU8a } from '@polkadot/util-crypto';
+ * import { sha512AsU8a } from '@chainx-v2/util-crypto';
  *
  * sha512AsU8a(Uint8Array.from([...])); // => Uint8Array([...])
  * ```

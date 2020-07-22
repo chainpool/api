@@ -1,12 +1,12 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { hexToU8a, stringToU8a, u8aConcat, u8aToHex } from '@polkadot/util';
+import { hexToU8a, stringToU8a, u8aConcat, u8aToHex } from '@chainx-v2/util';
 import { waitReady } from '@polkadot/wasm-crypto';
 
 import { decodeAddress } from '../address';
-import { signatureVerify } from '.';
+import { signatureVerify } from './index';
 
 const ADDR_ED = 'DxN4uvzwPzJLtn17yew6jEffPhXQfdKHTp2brufb98vGbPN';
 const ADDR_SR = 'EK1bFgKm2FsghcttHT7TB7rNyXApFgs9fCbijMGQNyFGBQm';

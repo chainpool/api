@@ -1,13 +1,13 @@
 {
   "name": "@chainx-v2/api",
-  "version": "0.0.3-beta.15",
+  "version": "0.0.3-beta.16",
   "description": "Promise and RxJS wrappers around the Polkadot JS RPC",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
     "@chainx-v2/api-derive": "0.0.1-beta.16",
-    "@chainx-v2/keyring": "0.0.3-beta.15",
+    "@chainx-v2/keyring": "0.0.3-beta.16",
     "@chainx-v2/metadata": "0.0.1-beta.16",
     "@chainx-v2/rpc-core": "0.0.1-beta.16",
     "@chainx-v2/rpc-provider": "0.0.1-beta.16",

@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { naclBoxKeypairFromSecret, naclKeypairFromString, naclOpen, naclSeal } from '.';
-import fromPath from '@polkadot/util-crypto/key/fromPath';
-import { keyExtractPath } from '@polkadot/util-crypto/key';
+import { naclBoxKeypairFromSecret, naclKeypairFromString, naclOpen, naclSeal } from './index';
+import fromPath from '@chainx-v2/util-crypto/key/fromPath';
+import { keyExtractPath } from '@chainx-v2/util-crypto/key';
 
 describe('naclOpen', (): void => {
   it('opens a sealed message by the sender', (): void => {

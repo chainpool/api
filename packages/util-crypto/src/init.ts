@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -13,7 +13,7 @@ export function cryptoWaitReady (): Promise<boolean> {
     .waitReady()
     .then((): boolean => true)
     .catch((error): boolean => {
-      console.error('Unable to initialize @polkadot/util-crypto', error);
+      console.error('Unable to initialize @chainx-v2/util-crypto', error);
 
       return false;
     });

@@ -1,8 +1,8 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { u8aToHex } from '@polkadot/util';
+import { u8aToHex } from '@chainx-v2/util';
 
 import keccakAsU8a from './asU8a';
 
@@ -15,7 +15,7 @@ import keccakAsU8a from './asU8a';
  * <BR>
  *
  * ```javascript
- * import { keccakAsHex } from '@polkadot/util-crypto';
+ * import { keccakAsHex } from '@chainx-v2/util-crypto';
  *
  * keccakAsHex('123'); // => 0x...
  * ```

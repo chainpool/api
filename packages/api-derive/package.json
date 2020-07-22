@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/api-derive",
-  "version": "0.0.3-beta.15",
+  "version": "0.0.3-beta.16",
   "description": "Common functions used across Polkadot, derived from RPC calls and storage queries.",
   "main": "index.js",
   "dependencies": {
@@ -16,6 +16,6 @@
     "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "@chainx-v2/keyring": "0.0.3-beta.15"
+    "@chainx-v2/keyring": "0.0.3-beta.16"
   }
 }

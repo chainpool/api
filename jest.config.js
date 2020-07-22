@@ -19,9 +19,9 @@ module.exports = Object.assign({}, config, {
     '@chainx-v2/account(.*)$': '<rootDir>/packages/account/src/$1',
     '@chainx-v2/keyring(.*)$': '<rootDir>/packages/keyring/src/$1',
     // eslint-disable-next-line sort-keys
-    '@polkadot/util(.*)$': '<rootDir>/packages/util/src/$1',
+    '@chainx-v2/util(.*)$': '<rootDir>/packages/util/src/$1',
     // eslint-disable-next-line sort-keys
-    '@polkadot/util-crypto(.*)$': '<rootDir>/packages/util-crypto/src/$1'
+    '@chainx-v2/util-(crypto)(.*)$': '<rootDir>/packages/util-$1/src/$2'
   },
   modulePathIgnorePatterns: [
     '<rootDir>/packages/api/build',
@@ -32,8 +32,8 @@ module.exports = Object.assign({}, config, {
     '<rootDir>/packages/rpc-provider/build',
     '<rootDir>/packages/types/build',
     '<rootDir>/packages/types-known/build',
-    '<rootDir>/packages/util/build',
     '<rootDir>/packages/keyring/build',
+    '<rootDir>/packages/util/build',
     '<rootDir>/packages/util-crypto/build'
   ],
   resolver: './jest.resolver.js'

@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { waitReady } from '@polkadot/wasm-crypto';
 
-import { sha512AsU8a } from '.';
+import { sha512AsU8a } from './index';
 
 describe('sha512AsU8a', (): void => {
   beforeEach(async (): Promise<void> => {

@@ -1,11 +1,11 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { stringToU8a } from '@polkadot/util';
+import { stringToU8a } from '@chainx-v2/util';
 import { waitReady } from '@polkadot/wasm-crypto';
 
-import { naclKeypairFromSeed } from '..';
+import { naclKeypairFromSeed } from '../index';
 
 describe('naclKeypairFromSeed', (): void => {
   // NOTE: Aligned with Rust test, b"12345678901234567890123456789012"

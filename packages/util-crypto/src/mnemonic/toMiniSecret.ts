@@ -1,11 +1,11 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import '../polyfill';
 
 import { pbkdf2Sync } from 'pbkdf2';
-import { bufferToU8a, stringToU8a, u8aToBuffer } from '@polkadot/util';
+import { bufferToU8a, stringToU8a, u8aToBuffer } from '@chainx-v2/util';
 import { bip39ToMiniSecret, isReady } from '@polkadot/wasm-crypto';
 
 import toEntropy from './toEntropy';

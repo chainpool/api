@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { Keypair } from '../../types';
 
-import { stringToU8a } from '@polkadot/util';
+import { stringToU8a } from '@chainx-v2/util';
 
 import blake2AsU8a from '../../blake2/asU8a';
 import fromSeed from './fromSeed';
@@ -18,7 +18,7 @@ import fromSeed from './fromSeed';
  * <BR>
  *
  * ```javascript
- * import { naclKeypairFromString } from '@polkadot/util-crypto';
+ * import { naclKeypairFromString } from '@chainx-v2/util-crypto';
  *
  * naclKeypairFromString('test'); // => { secretKey: [...], publicKey: [...] }
  * ```

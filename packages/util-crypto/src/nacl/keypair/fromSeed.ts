@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -16,7 +16,7 @@ import { isReady, ed25519KeypairFromSeed } from '@polkadot/wasm-crypto';
  * <BR>
  *
  * ```javascript
- * import { naclKeypairFromSeed } from '@polkadot/util-crypto';
+ * import { naclKeypairFromSeed } from '@chainx-v2/util-crypto';
  *
  * naclKeypairFromSeed(...); // => { secretKey: [...], publicKey: [...] }
  * ```

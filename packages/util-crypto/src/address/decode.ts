@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -6,7 +6,7 @@ import { Prefix } from './types';
 
 // Original implementation: https://github.com/paritytech/polka-ui/blob/4858c094684769080f5811f32b081dd7780b0880/src/polkadot.js#L6
 
-import { assert, isHex, isU8a, u8aToU8a } from '@polkadot/util';
+import { assert, isHex, isU8a, u8aToU8a } from '@chainx-v2/util';
 
 import base58Decode from '../base58/decode';
 import checkChecksum from './checkChecksum';

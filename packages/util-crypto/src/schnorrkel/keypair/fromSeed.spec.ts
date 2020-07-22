@@ -1,12 +1,12 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { stringToU8a, u8aToHex } from '@polkadot/util';
+import { stringToU8a, u8aToHex } from '@chainx-v2/util';
 import { waitReady } from '@polkadot/wasm-crypto';
 
 import { mnemonicToMiniSecret } from '../../mnemonic';
-import { schnorrkelKeypairFromSeed } from '..';
+import { schnorrkelKeypairFromSeed } from '../index';
 import tests from './testing';
 
 describe('schnorrkelKeypairFromSeed', (): void => {

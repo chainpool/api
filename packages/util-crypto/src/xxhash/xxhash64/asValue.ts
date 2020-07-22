@@ -1,9 +1,9 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import xxhashjs from 'xxhashjs';
-import { isBuffer, isString, u8aToBuffer } from '@polkadot/util';
+import { isBuffer, isString, u8aToBuffer } from '@chainx-v2/util';
 
 /**
  * @name xxhash64AsValue
@@ -14,7 +14,7 @@ import { isBuffer, isString, u8aToBuffer } from '@polkadot/util';
  * <BR>
  *
  * ```javascript
- * import { xxhash64AsValue } from '@polkadot/util-crypto';
+ * import { xxhash64AsValue } from '@chainx-v2/util-crypto';
  *
  * xxhash64AsValue('abcd', 0xabcd)); // => e29f70f8b8c96df7
  * ```

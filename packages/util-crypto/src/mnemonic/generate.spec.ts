@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @polkadot/util-crypto authors & contributors
+// Copyright 2017-2020 @chainx-v2/util-crypto authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import generate, { WordCount } from './generate';
 import validate from './validate';
-import { cryptoWaitReady } from '..';
+import { cryptoWaitReady } from '@chainx-v2/util-crypto';
 
 describe('mnemonicGenerate', (): void => {
   beforeEach(async (): Promise<void> => {
