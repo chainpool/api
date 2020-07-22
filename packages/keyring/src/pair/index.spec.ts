@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { cryptoWaitReady, encodeAddress as toSS58, setSS58Format } from '@polkadot/util-crypto';
+import { cryptoWaitReady, encodeAddress as toSS58, setSS58Format } from '@chainx-v2/crypto';
 
 import { PAIRS } from '../testing';
 import testingPairs from '../testingPairs';

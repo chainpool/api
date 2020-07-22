@@ -6,11 +6,11 @@
   "dependencies": {
     "@babel/runtime": "^7.10.3",
     "@chainx-v2/api": "^0.0.3-beta.16",
+    "@chainx-v2/crypto": "^0.0.3-beta.16",
     "@chainx-v2/rpc-core": "^0.0.3-beta.16",
     "@chainx-v2/rpc-provider": "^0.0.3-beta.16",
     "@chainx-v2/types": "^0.0.3-beta.16",
     "@polkadot/util": "^2.15.1",
-    "@polkadot/util-crypto": "^2.15.1",
     "bn.js": "^5.1.2",
     "memoizee": "^0.4.14",
     "rxjs": "^6.5.5"

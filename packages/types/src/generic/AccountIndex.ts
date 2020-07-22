@@ -6,7 +6,7 @@ import { AnyNumber, Registry } from '../types';
 
 import BN from 'bn.js';
 import { bnToBn, isBn, isBigInt, isNumber, isU8a, isHex } from '@polkadot/util';
-import { decodeAddress, encodeAddress } from '@polkadot/util-crypto';
+import { decodeAddress, encodeAddress } from '@chainx-v2/crypto';
 
 import U32 from '../primitive/U32';
 
@@ -21,7 +21,7 @@ const MAX_2BYTE = new BN(1).shln(16);
 const MAX_4BYTE = new BN(1).shln(32);
 
 /** @internal */
-function decodeAccountIndex (value: AnyNumber): BN | BigInt | Uint8Array | number | string {
+function decodeAccountIndex(value: AnyNumber): BN | BigInt | Uint8Array | number | string {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   if (value instanceof AccountIndex) {
     // `value.toBn()` on AccountIndex returns a pure BN (i.e. not an
@@ -41,11 +41,11 @@ function decodeAccountIndex (value: AnyNumber): BN | BigInt | Uint8Array | numbe
  * for an Account. We extends from [[U32]] to provide the number-like properties.
  */
 export default class AccountIndex extends U32 {
-  constructor (registry: Registry, value: AnyNumber = new BN(0)) {
+  constructor(registry: Registry, value: AnyNumber = new BN(0)) {
     super(registry, decodeAccountIndex(value));
   }
 
-  public static calcLength (_value: BN | number): number {
+  public static calcLength(_value: BN | number): number {
     const value = bnToBn(_value);
 
     if (value.lte(MAX_1BYTE)) {
@@ -59,7 +59,7 @@ export default class AccountIndex extends U32 {
     return 8;
   }
 
-  public static readLength (input: Uint8Array): [number, number] {
+  public static readLength(input: Uint8Array): [number, number] {
     const first = input[0];
 
     if (first === PREFIX_2BYTE) {
@@ -73,7 +73,7 @@ export default class AccountIndex extends U32 {
     return [0, 1];
   }
 
-  public static writeLength (input: Uint8Array): Uint8Array {
+  public static writeLength(input: Uint8Array): Uint8Array {
     switch (input.length) {
       case 2: return new Uint8Array([PREFIX_2BYTE]);
       case 4: return new Uint8Array([PREFIX_4BYTE]);
@@ -85,7 +85,7 @@ export default class AccountIndex extends U32 {
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     // shortcut for BN or Number, don't create an object
     if (isBn(other as string) || isNumber(other)) {
       return super.eq(other);
@@ -98,21 +98,21 @@ export default class AccountIndex extends U32 {
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman (): string {
+  public toHuman(): string {
     return this.toJSON();
   }
 
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON (): string {
+  public toJSON(): string {
     return this.toString();
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString (): string {
+  public toString(): string {
     const length = AccountIndex.calcLength(this);
 
     return encodeAddress(this.toU8a().subarray(0, length), this.registry.chainSS58);
@@ -121,7 +121,7 @@ export default class AccountIndex extends U32 {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'AccountIndex';
   }
 }

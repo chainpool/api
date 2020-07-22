@@ -68,11 +68,11 @@
       "@chainx-v2/util/*": [
         "packages/util/src/*"
       ],
-      "@chainx-v2/util-crypto": [
-        "packages/util-crypto/src"
+      "@chainx-v2/crypto": [
+        "packages/crypto/src"
       ],
-      "@chainx-v2/util-crypto/*": [
-        "packages/util-crypto/src/*"
+      "@chainx-v2/crypto/*": [
+        "packages/crypto/src/*"
       ],
       "@chainx-v2/keyring": [
         "packages/keyring/src"

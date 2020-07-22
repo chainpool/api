@@ -5,10 +5,10 @@
 import { SignOptions } from '@chainx-v2/keyring/types';
 import { IKeyringPair } from '../types';
 
-import { blake2AsU8a } from '@polkadot/util-crypto';
+import { blake2AsU8a } from '@chainx-v2/crypto';
 
 // a helper function for both types of payloads, Raw and metadata-known
-export function sign (signerPair: IKeyringPair, u8a: Uint8Array, options?: SignOptions): Uint8Array {
+export function sign(signerPair: IKeyringPair, u8a: Uint8Array, options?: SignOptions): Uint8Array {
   const encoded = u8a.length > 256
     ? blake2AsU8a(u8a)
     : u8a;

@@ -5,11 +5,11 @@
 import { PairInfo } from './types';
 
 import { stringToU8a, u8aConcat, u8aFixLength, assert } from '@polkadot/util';
-import { naclEncrypt } from '@polkadot/util-crypto';
+import { naclEncrypt } from '@chainx-v2/crypto';
 
 import { PKCS8_DIVIDER, PKCS8_HEADER } from './defaults';
 
-export default function encode ({ publicKey, secretKey }: PairInfo, passphrase?: string): Uint8Array {
+export default function encode({ publicKey, secretKey }: PairInfo, passphrase?: string): Uint8Array {
   assert(secretKey, 'Expected a valid secretKey to be passed to encode');
 
   const encoded = u8aConcat(

@@ -4,7 +4,7 @@
 
 import { TypeRegistry } from '@chainx-v2/types';
 import { stringToU8a } from '@polkadot/util';
-import { xxhashAsU8a } from '@polkadot/util-crypto';
+import { xxhashAsU8a } from '@chainx-v2/crypto';
 
 import getHasher from './getHasher';
 

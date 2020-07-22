@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { assert, stringToU8a, u8aFixLength } from '@polkadot/util';
-import { naclDecrypt } from '@polkadot/util-crypto';
+import { naclDecrypt } from '@chainx-v2/crypto';
 import { PairInfo } from './types';
 
 import { NONCE_LENGTH, PKCS8_DIVIDER, PKCS8_HEADER, PUB_LENGTH, SEC_LENGTH, SEED_LENGTH } from './defaults';
@@ -14,7 +14,7 @@ type DecodeResult = PairInfo & {
   secretKey: Uint8Array;
 };
 
-function decodePkcs8 (encoded: Uint8Array): DecodeResult {
+function decodePkcs8(encoded: Uint8Array): DecodeResult {
   const header = encoded.subarray(0, PKCS8_HEADER.length);
 
   assert(header.toString() === PKCS8_HEADER.toString(), 'Invalid Pkcs8 header found in body');
@@ -41,7 +41,7 @@ function decodePkcs8 (encoded: Uint8Array): DecodeResult {
   };
 }
 
-export default function decode (passphrase?: string, encrypted?: Uint8Array | null): DecodeResult {
+export default function decode(passphrase?: string, encrypted?: Uint8Array | null): DecodeResult {
   assert(encrypted, 'No encrypted data available to decode');
 
   const encoded = passphrase

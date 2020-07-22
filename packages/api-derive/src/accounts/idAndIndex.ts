@@ -9,11 +9,11 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import { isU8a } from '@polkadot/util';
-import { decodeAddress } from '@polkadot/util-crypto';
+import { decodeAddress } from '@chainx-v2/crypto';
 
 import { memo } from '../util';
 
-function retrieve (api: ApiInterfaceRx, address: Address | AccountId | AccountIndex | string | null | undefined): Observable<AccountIdAndIndex> {
+function retrieve(api: ApiInterfaceRx, address: Address | AccountId | AccountIndex | string | null | undefined): Observable<AccountIdAndIndex> {
   try {
     // yes, this can fail, don't care too much, catch will catch it
     const decoded = isU8a(address)
@@ -51,7 +51,7 @@ function retrieve (api: ApiInterfaceRx, address: Address | AccountId | AccountIn
  * });
  * ```
  */
-export function idAndIndex (api: ApiInterfaceRx): (address?: Address | AccountId | AccountIndex | string | null) => Observable<AccountIdAndIndex> {
+export function idAndIndex(api: ApiInterfaceRx): (address?: Address | AccountId | AccountIndex | string | null) => Observable<AccountIdAndIndex> {
   return memo((address?: Address | AccountId | AccountIndex | string | null): Observable<AccountIdAndIndex> =>
     retrieve(api, address));
 }

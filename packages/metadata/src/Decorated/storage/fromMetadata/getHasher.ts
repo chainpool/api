@@ -5,7 +5,7 @@
 import { AllHashers } from '@chainx-v2/types/interfaces/metadata/definitions';
 import { StorageHasher } from '@chainx-v2/types/interfaces';
 import { u8aConcat, u8aToU8a } from '@polkadot/util';
-import { blake2AsU8a, xxhashAsU8a } from '@polkadot/util-crypto';
+import { blake2AsU8a, xxhashAsU8a } from '@chainx-v2/crypto';
 
 export type HasherInput = string | Buffer | Uint8Array;
 
@@ -31,6 +31,6 @@ const HASHERS: Record<keyof typeof AllHashers, HasherFunction> = {
 };
 
 /** @internal */
-export default function getHasher (hasher?: StorageHasher): HasherFunction {
+export default function getHasher(hasher?: StorageHasher): HasherFunction {
   return HASHERS[hasher?.type as 'Identity'] || DEFAULT_FN;
 }

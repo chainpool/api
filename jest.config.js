@@ -21,7 +21,7 @@ module.exports = Object.assign({}, config, {
     // eslint-disable-next-line sort-keys
     '@chainx-v2/util(.*)$': '<rootDir>/packages/util/src/$1',
     // eslint-disable-next-line sort-keys
-    '@chainx-v2/util-crypto(.*)$': '<rootDir>/packages/util-crypto/src/$2'
+    '@chainx-v2/crypto(.*)$': '<rootDir>/packages/crypto/src/$2'
   },
   modulePathIgnorePatterns: [
     '<rootDir>/packages/api/build',
@@ -34,7 +34,7 @@ module.exports = Object.assign({}, config, {
     '<rootDir>/packages/types-known/build',
     '<rootDir>/packages/keyring/build',
     '<rootDir>/packages/util/build',
-    '<rootDir>/packages/util-crypto/build'
+    '<rootDir>/packages/crypto/build'
   ],
   resolver: './jest.resolver.js'
 });

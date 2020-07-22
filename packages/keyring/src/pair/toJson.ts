@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { KeypairType } from '@polkadot/util-crypto/types';
+import { KeypairType } from '@chainx-v2/crypto/types';
 import { KeyringPair$Json, KeyringPair$Meta } from '../types';
 
 import { u8aToHex } from '@polkadot/util';
@@ -12,7 +12,7 @@ interface PairStateJson {
   meta: KeyringPair$Meta;
 }
 
-export default function toJson (type: KeypairType, { address, meta }: PairStateJson, encoded: Uint8Array, isEncrypted: boolean): KeyringPair$Json {
+export default function toJson(type: KeypairType, { address, meta }: PairStateJson, encoded: Uint8Array, isEncrypted: boolean): KeyringPair$Json {
   return {
     address,
     encoded: u8aToHex(encoded),

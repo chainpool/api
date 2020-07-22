@@ -6,7 +6,7 @@ This section will give a quick introduction into the Keyring, including the addi
 
 They [@chainx-v2/keyring](https://github.com/polkadot-js/common/tree/master/packages/keyring) keyring is included directly with the API as a dependency, so it is directly importable (since the 0.92 version) alongside the API.
 
-If you do opt to install it separately, ensure that the version of `@polkadot/util-crypto` that is included with the API matches with the version of `@chainx-v2/keyring` installed. So if the API depends on `util-crypto 1.4.1`, it would make sense to include `keyring 1.4.1` as the installed version. (This helps in making sure extra versions of the libraries are not included as duplicates, especially in the case where bundles are created. Additionally, this makes sure that weird side-effects in the WASM initialization is avoided.)
+If you do opt to install it separately, ensure that the version of `@chainx-v2/crypto` that is included with the API matches with the version of `@chainx-v2/keyring` installed. So if the API depends on `util-crypto 1.4.1`, it would make sense to include `keyring 1.4.1` as the installed version. (This helps in making sure extra versions of the libraries are not included as duplicates, especially in the case where bundles are created. Additionally, this makes sure that weird side-effects in the WASM initialization is avoided.)
 
 ## Creating a keyring instance
 
@@ -33,7 +33,7 @@ However, this initialization can also be done explicitly, mostly for more advanc
 
 ```js
 // Crypto promise, package used by keyring internally
-import { cryptoWaitReady } from '@polkadot/util-crypto';
+import { cryptoWaitReady } from '@chainx-v2/crypto';
 
 // Wait for the promise to resolve, async WASM or `cryptoWaitReady().then(() => { ... })`
 await cryptoWaitReady();

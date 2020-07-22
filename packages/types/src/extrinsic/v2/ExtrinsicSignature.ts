@@ -7,7 +7,7 @@ import { Address, Balance, Call, Index } from '../../interfaces/runtime';
 import { ExtrinsicPayloadValue, IExtrinsicSignature, IKeyringPair, Registry, SignatureOptions } from '../../types';
 import { ExtrinsicSignatureOptions } from '../types';
 
-import { blake2AsU8a } from '@polkadot/util-crypto';
+import { blake2AsU8a } from '@chainx-v2/crypto';
 
 import Compact from '../../codec/Compact';
 import Struct from '../../codec/Struct';
@@ -20,7 +20,7 @@ import ExtrinsicPayloadV2 from './ExtrinsicPayload';
  * A container for the [[Signature]] associated with a specific [[Extrinsic]]
  */
 export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSignature {
-  constructor (registry: Registry, value: ExtrinsicSignatureV2 | Uint8Array | undefined, { isSigned }: ExtrinsicSignatureOptions = {}) {
+  constructor(registry: Registry, value: ExtrinsicSignatureV2 | Uint8Array | undefined, { isSigned }: ExtrinsicSignatureOptions = {}) {
     super(registry, {
       signer: 'Address',
       // eslint-disable-next-line sort-keys
@@ -33,7 +33,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   }
 
   /** @internal */
-  public static decodeExtrinsicSignature (value: ExtrinsicSignatureV2 | Uint8Array | undefined, isSigned = false): ExtrinsicSignatureV2 | Uint8Array {
+  public static decodeExtrinsicSignature(value: ExtrinsicSignatureV2 | Uint8Array | undefined, isSigned = false): ExtrinsicSignatureV2 | Uint8Array {
     if (!value) {
       return EMPTY_U8A;
     } else if (value instanceof ExtrinsicSignatureV2) {
@@ -48,7 +48,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return this.isSigned
       ? super.encodedLength
       : 0;
@@ -57,46 +57,46 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   /**
    * @description `true` if the signature is valid
    */
-  public get isSigned (): boolean {
+  public get isSigned(): boolean {
     return !this.signature.isEmpty;
   }
 
   /**
    * @description The [[ExtrinsicEra]] (mortal or immortal) this signature applies to
    */
-  public get era (): ExtrinsicEra {
+  public get era(): ExtrinsicEra {
     return this.get('era') as ExtrinsicEra;
   }
 
   /**
    * @description The [[Index]] for the signature
    */
-  public get nonce (): Compact<Index> {
+  public get nonce(): Compact<Index> {
     return this.get('nonce') as Compact<Index>;
   }
 
   /**
    * @description The actual [[Signature]] hash
    */
-  public get signature (): Signature {
+  public get signature(): Signature {
     return this.get('signature') as Signature;
   }
 
   /**
    * @description The [[Address]] that signed
    */
-  public get signer (): Address {
+  public get signer(): Address {
     return this.get('signer') as Address;
   }
 
   /**
    * @description The [[Balance]] tip
    */
-  public get tip (): Compact<Balance> {
+  public get tip(): Compact<Balance> {
     return this.get('tip') as Compact<Balance>;
   }
 
-  protected _injectSignature (signer: Address, signature: Signature, { era, nonce, tip }: ExtrinsicPayloadV2): IExtrinsicSignature {
+  protected _injectSignature(signer: Address, signature: Signature, { era, nonce, tip }: ExtrinsicPayloadV2): IExtrinsicSignature {
     this.set('era', era);
     this.set('nonce', nonce);
     this.set('signer', signer);
@@ -109,7 +109,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   /**
    * @description Adds a raw signature
    */
-  public addSignature (signer: Address | Uint8Array | string, signature: Uint8Array | string, payload: ExtrinsicPayloadValue | Uint8Array | string): IExtrinsicSignature {
+  public addSignature(signer: Address | Uint8Array | string, signature: Uint8Array | string, payload: ExtrinsicPayloadValue | Uint8Array | string): IExtrinsicSignature {
     return this._injectSignature(
       this.registry.createType('Address', signer),
       this.registry.createType('Signature', signature),
@@ -120,7 +120,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   /**
    * @description Creates a payload from the supplied options
    */
-  public createPayload (method: Call, { blockHash, era, genesisHash, nonce, tip }: SignatureOptions): ExtrinsicPayloadV2 {
+  public createPayload(method: Call, { blockHash, era, genesisHash, nonce, tip }: SignatureOptions): ExtrinsicPayloadV2 {
     return new ExtrinsicPayloadV2(this.registry, {
       blockHash,
       era: era || IMMORTAL_ERA,
@@ -137,7 +137,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   /**
    * @description Generate a payload and applies the signature from a keypair
    */
-  public sign (method: Call, account: IKeyringPair, options: SignatureOptions): IExtrinsicSignature {
+  public sign(method: Call, account: IKeyringPair, options: SignatureOptions): IExtrinsicSignature {
     const address = account.publicKey.length > 32
       ? blake2AsU8a(account.publicKey, 256)
       : account.publicKey;
@@ -151,7 +151,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   /**
    * @description Generate a payload and applies a fake signature
    */
-  public signFake (method: Call, address: Address | Uint8Array | string, options: SignatureOptions): IExtrinsicSignature {
+  public signFake(method: Call, address: Address | Uint8Array | string, options: SignatureOptions): IExtrinsicSignature {
     const signer = this.registry.createType('Address', address);
     const payload = this.createPayload(method, options);
     const signature = this.registry.createType('Signature', new Uint8Array(64).fill(0x42));
@@ -163,7 +163,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     return this.isSigned
       ? super.toU8a(isBare)
       : EMPTY_U8A;

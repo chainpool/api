@@ -4,7 +4,7 @@
 
 import { KeyringPair, KeyringPair$Json, KeyringPair$Meta } from '../types';
 
-import { encodeAddress } from '@polkadot/util-crypto';
+import { encodeAddress } from '@chainx-v2/crypto';
 
 const publicKey = new Uint8Array(32);
 const address = encodeAddress(publicKey);
@@ -23,7 +23,7 @@ const json: KeyringPair$Json = {
   meta
 };
 
-export default function everybody (): KeyringPair {
+export default function everybody(): KeyringPair {
   const pair: KeyringPair = {
     address,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

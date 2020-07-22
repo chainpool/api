@@ -26,7 +26,7 @@ try {
           '^@chainx-v2/util(.*)': './packages/util/src\\1',
           // eslint-disable-next-line sort-keys
           '^@chainx-v2/keyring(.*)': './packages/keyring/src\\1',
-          '^@chainx-v2/util-crypto(.*)': './packages/util-crypto/src\\1'
+          '^@chainx-v2/crypto(.*)': './packages/util-crypto/src\\1'
         }
       }]
     ]

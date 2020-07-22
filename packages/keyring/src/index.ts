@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { detectPackage } from '@polkadot/util';
-import { decodeAddress, encodeAddress, setSS58Format } from '@polkadot/util-crypto';
+import { decodeAddress, encodeAddress, setSS58Format } from '@chainx-v2/crypto';
 
 import Keyring from './keyring';
 

@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Prefix } from '@polkadot/util-crypto/address/types';
-import { KeypairType } from '@polkadot/util-crypto/types';
+import { Prefix } from '@chainx-v2/crypto/address/types';
+import { KeypairType } from '@chainx-v2/crypto/types';
 
 export interface KeyringOptions {
   ss58Format?: Prefix;
