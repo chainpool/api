@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import assert from './assert';
+// import assert from './assert';
 import isString from './is/string';
 
 // eslint-disable-next-line no-undef
@@ -56,7 +56,7 @@ export default function detectPackage ({ name, version }: PackageJson, path?: st
     _global.__polkadotjs = {};
   }
 
-  assert(name.startsWith('@chainx-v2'), `Invalid package descriptor ${name}`);
+  // assert(name.startsWith('@chainx-v2'), `Invalid package descriptor ${name}`);
 
   _global.__polkadotjs[name] = [...(_global.__polkadotjs[name] || []), { path: path || '', version }];
 

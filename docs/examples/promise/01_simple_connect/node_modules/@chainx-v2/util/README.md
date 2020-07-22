@@ -1,4 +1,4 @@
-# @chainx-v2/util
+# @polkadot/util
 
 Various useful utility functions that are used across all projects in the [@polkadot](https://polkadot.js.org) namespace. It provides utility functions with additional safety checks, allowing not only for consistent coding, but also reducing the general boilerplate.
 
@@ -7,13 +7,13 @@ Various useful utility functions that are used across all projects in the [@polk
 Installation -
 
 ```
-yarn add @chainx-v2/util
+yarn add @polkadot/util
 ```
 
 Functions can be imported directly from the package, e.g.
 
 ```js
-import { isHex } from '@chainx-v2/util';
+import { isHex } from '@polkadot/util';
 ```
 
 ## Utilities
