@@ -1387,7 +1387,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@chainx-v2/account@workspace:packages/account"
   dependencies:
-    "@chainx-v2/keyring": 0.0.3-beta.22
+    "@chainx-v2/keyring": 0.0.3-beta.24
     "@types/node": ^14.0.23
     bip32: ^1.0.2
     bs58: ^4.0.1
@@ -1400,98 +1400,60 @@ __metadata:
   resolution: "@chainx-v2/api-contract@workspace:packages/api-contract"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api": 0.0.3-beta.22
-    "@chainx-v2/rpc-core": 0.0.3-beta.22
-    "@chainx-v2/types": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/api": 0.0.3-beta.24
+    "@chainx-v2/rpc-core": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     bn.js: ^5.1.2
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/api-derive@npm:0.0.1-beta.16":
-  version: 0.0.1-beta.16
-  resolution: "@chainx-v2/api-derive@npm:0.0.1-beta.16"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/api": 0.0.1-beta.16
-    "@chainx-v2/rpc-core": 0.0.1-beta.16
-    "@chainx-v2/rpc-provider": 0.0.1-beta.16
-    "@chainx-v2/types": 0.0.1-beta.16
-    "@polkadot/util": ^2.15.1
-    "@polkadot/util-crypto": ^2.15.1
-    bn.js: ^5.1.2
-    memoizee: ^0.4.14
-    rxjs: ^6.5.5
-  checksum: 3/050573d31baefe09a033aceae06d029da00558f19366a293e2a62f5a761683f77cdfbd3a133e62428c1ba05622a828fa3a09b61bc2fb64d61554cefe4193f5b4
-  languageName: node
-  linkType: hard
-
-"@chainx-v2/api-derive@workspace:packages/api-derive":
+"@chainx-v2/api-derive@0.0.3-beta.24, @chainx-v2/api-derive@workspace:packages/api-derive":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/api-derive@workspace:packages/api-derive"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api": 0.0.3-beta.22
-    "@chainx-v2/crypto": 0.0.3-beta.22
-    "@chainx-v2/keyring": 0.0.3-beta.22
-    "@chainx-v2/rpc-core": 0.0.3-beta.22
-    "@chainx-v2/rpc-provider": 0.0.3-beta.22
-    "@chainx-v2/types": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/api": 0.0.3-beta.24
+    "@chainx-v2/crypto": 0.0.3-beta.24
+    "@chainx-v2/keyring": 0.0.3-beta.24
+    "@chainx-v2/rpc-core": 0.0.3-beta.24
+    "@chainx-v2/rpc-provider": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     bn.js: ^5.1.2
     memoizee: ^0.4.14
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/api@0.0.3-beta.22, @chainx-v2/api@workspace:packages/api":
+"@chainx-v2/api@0.0.3-beta.24, @chainx-v2/api@workspace:packages/api":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/api@workspace:packages/api"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api-derive": 0.0.1-beta.16
-    "@chainx-v2/crypto": 0.0.3-beta.22
-    "@chainx-v2/keyring": ^0.0.3-beta.14
-    "@chainx-v2/metadata": 0.0.1-beta.16
-    "@chainx-v2/rpc-core": 0.0.1-beta.16
-    "@chainx-v2/rpc-provider": 0.0.1-beta.16
-    "@chainx-v2/types": 0.0.1-beta.16
-    "@chainx-v2/types-known": 0.0.1-beta.16
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/api-derive": 0.0.3-beta.24
+    "@chainx-v2/crypto": 0.0.3-beta.24
+    "@chainx-v2/keyring": ^0.0.3-beta.22
+    "@chainx-v2/metadata": 0.0.3-beta.24
+    "@chainx-v2/rpc-core": 0.0.3-beta.24
+    "@chainx-v2/rpc-provider": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/types-known": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     bn.js: ^5.1.2
     eventemitter3: ^4.0.4
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/api@npm:0.0.1-beta.16":
-  version: 0.0.1-beta.16
-  resolution: "@chainx-v2/api@npm:0.0.1-beta.16"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/api-derive": 0.0.1-beta.16
-    "@chainx-v2/metadata": 0.0.1-beta.16
-    "@chainx-v2/rpc-core": 0.0.1-beta.16
-    "@chainx-v2/rpc-provider": 0.0.1-beta.16
-    "@chainx-v2/types": 0.0.1-beta.16
-    "@chainx-v2/types-known": 0.0.1-beta.16
-    "@polkadot/keyring": ^2.15.1
-    "@polkadot/util": ^2.15.1
-    "@polkadot/util-crypto": ^2.15.1
-    bn.js: ^5.1.2
-    eventemitter3: ^4.0.4
-    rxjs: ^6.5.5
-  checksum: 3/3b96553855f865c6205d3409463427eb897591f6883969e49c7d273cb55fdd696c9358defc5e2519a013fc9f1dfad09ed4f3ad38519ee2bd1e050f1cfd7344a3
-  languageName: node
-  linkType: hard
-
-"@chainx-v2/crypto@0.0.3-beta.22, @chainx-v2/crypto@workspace:packages/crypto":
+"@chainx-v2/crypto@0.0.3-beta.24, @chainx-v2/crypto@workspace:packages/crypto":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/crypto@workspace:packages/crypto"
   dependencies:
     "@babel/runtime": ^7.10.5
     "@chainx-v2/util": 0.0.3-beta.22
+    "@polkadot/util": ^2.18.1
     "@polkadot/wasm-crypto": ^1.2.1
     "@types/bn.js": ^4.11.6
     "@types/elliptic": ^6.4.12
@@ -1509,84 +1471,55 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/keyring@0.0.3-beta.22, @chainx-v2/keyring@^0.0.3-beta.14, @chainx-v2/keyring@workspace:packages/keyring":
+"@chainx-v2/keyring@0.0.3-beta.24, @chainx-v2/keyring@^0.0.3-beta.22, @chainx-v2/keyring@workspace:packages/keyring":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/keyring@workspace:packages/keyring"
   dependencies:
     "@babel/runtime": ^7.10.5
-    "@chainx-v2/crypto": 0.0.3-beta.22
+    "@chainx-v2/crypto": 0.0.3-beta.24
     "@chainx-v2/util": 0.0.3-beta.16
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/metadata@0.0.3-beta.22, @chainx-v2/metadata@workspace:packages/metadata":
+"@chainx-v2/metadata@0.0.3-beta.24, @chainx-v2/metadata@workspace:packages/metadata":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/metadata@workspace:packages/metadata"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/crypto": 0.0.3-beta.22
-    "@chainx-v2/keyring": 0.0.3-beta.22
-    "@chainx-v2/types": 0.0.3-beta.22
-    "@chainx-v2/types-known": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/crypto": 0.0.3-beta.24
+    "@chainx-v2/keyring": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/types-known": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     bn.js: ^5.1.2
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/metadata@npm:0.0.1-beta.16":
-  version: 0.0.1-beta.16
-  resolution: "@chainx-v2/metadata@npm:0.0.1-beta.16"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/types": 0.0.1-beta.16
-    "@chainx-v2/types-known": 0.0.1-beta.16
-    "@polkadot/util": ^2.15.1
-    "@polkadot/util-crypto": ^2.15.1
-    bn.js: ^5.1.2
-  checksum: 3/336ebb2c81d9665f814aafb7d5e5356d580e382337454c12b0bc4f21cfffa044f085a39cbca564b8f9c5c679bebc1413523a3f05ff19f8ef311ff92f333c9c8b
-  languageName: node
-  linkType: hard
-
-"@chainx-v2/rpc-core@0.0.3-beta.22, @chainx-v2/rpc-core@workspace:packages/rpc-core":
+"@chainx-v2/rpc-core@0.0.3-beta.24, @chainx-v2/rpc-core@workspace:packages/rpc-core":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/rpc-core@workspace:packages/rpc-core"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/keyring": 0.0.3-beta.22
-    "@chainx-v2/metadata": 0.0.3-beta.22
-    "@chainx-v2/rpc-provider": 0.0.3-beta.22
-    "@chainx-v2/types": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/keyring": 0.0.3-beta.24
+    "@chainx-v2/metadata": 0.0.3-beta.24
+    "@chainx-v2/rpc-provider": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     memoizee: ^0.4.14
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/rpc-core@npm:0.0.1-beta.16":
-  version: 0.0.1-beta.16
-  resolution: "@chainx-v2/rpc-core@npm:0.0.1-beta.16"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/metadata": 0.0.1-beta.16
-    "@chainx-v2/rpc-provider": 0.0.1-beta.16
-    "@chainx-v2/types": 0.0.1-beta.16
-    "@polkadot/util": ^2.15.1
-    memoizee: ^0.4.14
-    rxjs: ^6.5.5
-  checksum: 3/8faeede53500c59426b2a17625bd032d91cb9b30b65e2e082243b446c50ba5c4baba48c09c90d604e43bfefb2ae2668ef2f36432e7d401d36e03a93d83f77eba
-  languageName: node
-  linkType: hard
-
-"@chainx-v2/rpc-provider@0.0.3-beta.22, @chainx-v2/rpc-provider@workspace:packages/rpc-provider":
+"@chainx-v2/rpc-provider@0.0.3-beta.24, @chainx-v2/rpc-provider@workspace:packages/rpc-provider":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/rpc-provider@workspace:packages/rpc-provider"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/crypto": 0.0.3-beta.22
-    "@chainx-v2/keyring": 0.0.3-beta.22
-    "@chainx-v2/metadata": 0.0.3-beta.22
-    "@chainx-v2/types": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/crypto": 0.0.3-beta.24
+    "@chainx-v2/keyring": 0.0.3-beta.24
+    "@chainx-v2/metadata": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     bn.js: ^5.1.2
     eventemitter3: ^4.0.4
     isomorphic-fetch: ^2.2.1
@@ -1596,23 +1529,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/rpc-provider@npm:0.0.1-beta.16":
-  version: 0.0.1-beta.16
-  resolution: "@chainx-v2/rpc-provider@npm:0.0.1-beta.16"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/metadata": 0.0.1-beta.16
-    "@chainx-v2/types": 0.0.1-beta.16
-    "@polkadot/util": ^2.15.1
-    "@polkadot/util-crypto": ^2.15.1
-    bn.js: ^5.1.2
-    eventemitter3: ^4.0.4
-    isomorphic-fetch: ^2.2.1
-    websocket: ^1.0.31
-  checksum: 3/5f9a8a4253159c30e973c6a2a690c072e4a02f586a90945e70fb8635c45e6be938aad6fd2b731bd7d6e7cd3b31fe00a2796f0068168d23b77b86b75d3ea3f0b4
-  languageName: node
-  linkType: hard
-
 "@chainx-v2/typegen@workspace:packages/typegen":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/typegen@workspace:packages/typegen"
@@ -1620,11 +1536,11 @@ __metadata:
     "@babel/core": ^7.10.3
     "@babel/register": ^7.10.3
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api": 0.0.3-beta.22
-    "@chainx-v2/metadata": 0.0.3-beta.22
-    "@chainx-v2/rpc-provider": 0.0.3-beta.22
-    "@chainx-v2/types": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/api": 0.0.3-beta.24
+    "@chainx-v2/metadata": 0.0.3-beta.24
+    "@chainx-v2/rpc-provider": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     "@types/websocket": ^1.0.0
     "@types/yargs": ^15.0.5
     handlebars: ^4.7.6
@@ -1639,39 +1555,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/types-known@0.0.3-beta.22, @chainx-v2/types-known@workspace:packages/types-known":
+"@chainx-v2/types-known@0.0.3-beta.24, @chainx-v2/types-known@workspace:packages/types-known":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/types-known@workspace:packages/types-known"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/types": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/types": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     "@types/bn.js": ^4.11.6
     bn.js: ^5.1.2
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/types-known@npm:0.0.1-beta.16":
-  version: 0.0.1-beta.16
-  resolution: "@chainx-v2/types-known@npm:0.0.1-beta.16"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/types": 0.0.1-beta.16
-    "@polkadot/util": ^2.15.1
-    bn.js: ^5.1.2
-  checksum: 3/f6dcf6ef7b7d966d601d2db44e04cf6b60a8e68485355e3a19fb172b8e906e3d9a438321e908d84a4db5ed7554b4e64233ceaa90275ba7023db998bdc845a795
-  languageName: node
-  linkType: hard
-
-"@chainx-v2/types@0.0.3-beta.22, @chainx-v2/types@workspace:packages/types":
+"@chainx-v2/types@0.0.3-beta.24, @chainx-v2/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/crypto": 0.0.3-beta.22
-    "@chainx-v2/keyring": 0.0.3-beta.22
-    "@chainx-v2/metadata": 0.0.3-beta.22
-    "@chainx-v2/util": 0.0.3-beta.22
+    "@chainx-v2/crypto": 0.0.3-beta.24
+    "@chainx-v2/keyring": 0.0.3-beta.24
+    "@chainx-v2/metadata": 0.0.3-beta.24
+    "@chainx-v2/util": 0.0.3-beta.24
     "@types/bn.js": ^4.11.6
     "@types/memoizee": ^0.4.4
     bn.js: ^5.1.2
@@ -1680,23 +1584,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/types@npm:0.0.1-beta.16":
-  version: 0.0.1-beta.16
-  resolution: "@chainx-v2/types@npm:0.0.1-beta.16"
-  dependencies:
-    "@babel/runtime": ^7.10.3
-    "@chainx-v2/metadata": 0.0.1-beta.16
-    "@polkadot/util": ^2.15.1
-    "@polkadot/util-crypto": ^2.15.1
-    "@types/bn.js": ^4.11.6
-    bn.js: ^5.1.2
-    memoizee: ^0.4.14
-    rxjs: ^6.5.5
-  checksum: 3/b8230df76e67a1fb616d577629b0a622c6dfeb119344deba76ae6933abf5cb0bbef13c913761bc016e824d2b115921a1e16c85c73b081a381731e4b9dceada48
-  languageName: node
-  linkType: hard
-
-"@chainx-v2/util@0.0.3-beta.22, @chainx-v2/util@workspace:packages/util":
+"@chainx-v2/util@0.0.3-beta.24, @chainx-v2/util@workspace:packages/util":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/util@workspace:packages/util"
   dependencies:
@@ -1720,6 +1608,20 @@ __metadata:
     chalk: ^4.1.0
     ip-regex: ^4.1.0
   checksum: 3/12fd90c4ef25eea8de40e10ef8c7aae80c43e1dfc84c07a5786b7282008baf91578dda4e8237962014e4726216d2974f7c65b5426d2c39b9d4192f2856fb60bd
+  languageName: node
+  linkType: hard
+
+"@chainx-v2/util@npm:0.0.3-beta.22":
+  version: 0.0.3-beta.22
+  resolution: "@chainx-v2/util@npm:0.0.3-beta.22"
+  dependencies:
+    "@babel/runtime": ^7.10.5
+    "@types/bn.js": ^4.11.6
+    bn.js: ^5.1.2
+    camelcase: ^5.3.1
+    chalk: ^4.1.0
+    ip-regex: ^4.1.0
+  checksum: 3/b3e1c4a68808d31d393e02c1e71e062bd88e3309963790f0204f7aa961899039ea4c18e588f53aed4c11483e7508850f2995f8bb757131877079451bcc24b68a
   languageName: node
   linkType: hard
 
@@ -3081,17 +2983,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/keyring@npm:^2.15.1":
-  version: 2.18.1
-  resolution: "@polkadot/keyring@npm:2.18.1"
-  dependencies:
-    "@babel/runtime": ^7.10.4
-    "@polkadot/util": 2.18.1
-    "@polkadot/util-crypto": 2.18.1
-  checksum: 3/293c9a25c33234a85710b10a6a253b76930ba0be7b42825af6bfc19d47579c185133d7b793c3e34ac0de9189563f65949cf08bf8dabf04c02661c675ee87e41d
-  languageName: node
-  linkType: hard
-
 "@polkadot/ts@npm:^0.3.26":
   version: 0.3.29
   resolution: "@polkadot/ts@npm:0.3.29"
@@ -3101,27 +2992,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/util-crypto@npm:2.18.1, @polkadot/util-crypto@npm:^2.15.1":
-  version: 2.18.1
-  resolution: "@polkadot/util-crypto@npm:2.18.1"
-  dependencies:
-    "@babel/runtime": ^7.10.4
-    "@polkadot/util": 2.18.1
-    "@polkadot/wasm-crypto": ^1.2.1
-    base-x: ^3.0.8
-    bip39: ^3.0.2
-    blakejs: ^1.1.0
-    bn.js: ^5.1.2
-    elliptic: ^6.5.3
-    js-sha3: ^0.8.0
-    pbkdf2: ^3.1.1
-    tweetnacl: ^1.0.3
-    xxhashjs: ^0.2.2
-  checksum: 3/412d3f1c0d0c318130808cdb6d0097fc0be915412e505d86e38ea7f2e131f0a7277b371bd4a9f41608d5220fc04f71de29409781f75f2a40399490827603f6fd
-  languageName: node
-  linkType: hard
-
-"@polkadot/util@npm:2.18.1, @polkadot/util@npm:^2.15.1":
+"@polkadot/util@npm:^2.18.1":
   version: 2.18.1
   resolution: "@polkadot/util@npm:2.18.1"
   dependencies:

@@ -1,15 +1,15 @@
 {
   "name": "@chainx-v2/api-contract",
-  "version": "0.0.3-beta.22",
+  "version": "0.0.3-beta.24",
   "description": "Interfaces for interacting with contracts and contract ABIs",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
-    "@chainx-v2/api": "0.0.3-beta.22",
-    "@chainx-v2/rpc-core": "0.0.3-beta.22",
-    "@chainx-v2/types": "0.0.3-beta.22",
-    "@chainx-v2/util": "0.0.3-beta.22",
+    "@chainx-v2/api": "0.0.3-beta.24",
+    "@chainx-v2/rpc-core": "0.0.3-beta.24",
+    "@chainx-v2/types": "0.0.3-beta.24",
+    "@chainx-v2/util": "0.0.3-beta.24",
     "bn.js": "^5.1.2",
     "rxjs": "^6.5.5"
   }
