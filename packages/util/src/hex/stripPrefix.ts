@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,12 +15,12 @@ const UNPREFIX_HEX_REGEX = /^[a-fA-F0-9]+$/;
  * <BR>
  *
  * ```javascript
- * import { hexStripPrefix } from '@polkadot/util';
+ * import { hexStripPrefix } from '@chainx-v2/util';
  *
  * console.log('stripped', hexStripPrefix('0x1234')); // => 1234
  * ```
  */
-export default function hexStripPrefix (value?: string | null): string {
+export default function hexStripPrefix(value?: string | null): string {
   if (!value) {
     return '';
   }

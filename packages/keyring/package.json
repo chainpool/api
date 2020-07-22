@@ -7,6 +7,6 @@
   "dependencies": {
     "@babel/runtime": "^7.10.5",
     "@chainx-v2/crypto": "^0.0.3-beta.16",
-    "@polkadot/util": "2.19.0-beta.2"
+    "@chainx-v2/util": "0.0.3-beta.16"
   }
 }

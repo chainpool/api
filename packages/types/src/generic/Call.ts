@@ -5,7 +5,7 @@
 import { FunctionArgumentMetadataLatest, FunctionMetadataLatest } from '../interfaces/metadata';
 import { AnyJson, AnyU8a, ArgsDef, CallFunction, Codec, IMethod, Registry } from '../types';
 
-import { isHex, isObject, isU8a, u8aToHex, u8aToU8a } from '@polkadot/util';
+import { isHex, isObject, isU8a, u8aToHex, u8aToU8a } from '@chainx-v2/util';
 
 import { getTypeDef, getTypeClass } from '../create';
 import Struct from '../codec/Struct';
@@ -28,7 +28,7 @@ interface DecodedMethod extends DecodeMethodInput {
  * @param meta - The function metadata used to get the definition.
  * @internal
  */
-function getArgsDef (registry: Registry, meta: FunctionMetadataLatest): ArgsDef {
+function getArgsDef(registry: Registry, meta: FunctionMetadataLatest): ArgsDef {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   return Call.filterOrigin(meta).reduce((result, { name, type }): ArgsDef => {
     const Type = getTypeClass(registry, getTypeDef(type.toString()));
@@ -40,7 +40,7 @@ function getArgsDef (registry: Registry, meta: FunctionMetadataLatest): ArgsDef 
 }
 
 /** @internal */
-function decodeCallViaObject (registry: Registry, value: DecodedMethod, _meta?: FunctionMetadataLatest): DecodedMethod {
+function decodeCallViaObject(registry: Registry, value: DecodedMethod, _meta?: FunctionMetadataLatest): DecodedMethod {
   // we only pass args/methodsIndex out
   const { args, callIndex } = value;
 
@@ -62,7 +62,7 @@ function decodeCallViaObject (registry: Registry, value: DecodedMethod, _meta?: 
 }
 
 /** @internal */
-function decodeCallViaU8a (registry: Registry, value: Uint8Array, _meta?: FunctionMetadataLatest): DecodedMethod {
+function decodeCallViaU8a(registry: Registry, value: Uint8Array, _meta?: FunctionMetadataLatest): DecodedMethod {
   // We need 2 bytes for the callIndex
   const callIndex = new Uint8Array(2);
 
@@ -90,7 +90,7 @@ function decodeCallViaU8a (registry: Registry, value: Uint8Array, _meta?: Functi
  * necessary.
  * @internal
  */
-function decodeCall (registry: Registry, value: unknown | DecodedMethod | Uint8Array | string = new Uint8Array(), _meta?: FunctionMetadataLatest): DecodedMethod {
+function decodeCall(registry: Registry, value: unknown | DecodedMethod | Uint8Array | string = new Uint8Array(), _meta?: FunctionMetadataLatest): DecodedMethod {
   if (isHex(value) || isU8a(value)) {
     return decodeCallViaU8a(registry, u8aToU8a(value as string), _meta);
   } else if (isObject(value) && value.callIndex && value.args) {
@@ -106,7 +106,7 @@ function decodeCall (registry: Registry, value: unknown | DecodedMethod | Uint8A
  * A wrapper around the `[sectionIndex, methodIndex]` value that uniquely identifies a method
  */
 export class CallIndex extends U8aFixed {
-  constructor (registry: Registry, value?: AnyU8a) {
+  constructor(registry: Registry, value?: AnyU8a) {
     super(registry, value, 16);
   }
 }
@@ -120,7 +120,7 @@ export class CallIndex extends U8aFixed {
 export default class Call extends Struct implements IMethod {
   protected _meta: FunctionMetadataLatest;
 
-  constructor (registry: Registry, value: unknown, meta?: FunctionMetadataLatest) {
+  constructor(registry: Registry, value: unknown, meta?: FunctionMetadataLatest) {
     const decoded = decodeCall(registry, value, meta);
 
     super(registry, {
@@ -133,7 +133,7 @@ export default class Call extends Struct implements IMethod {
   }
 
   // If the extrinsic function has an argument of type `Origin`, we ignore it
-  public static filterOrigin (meta?: FunctionMetadataLatest): FunctionArgumentMetadataLatest[] {
+  public static filterOrigin(meta?: FunctionMetadataLatest): FunctionArgumentMetadataLatest[] {
     // FIXME should be `arg.type !== Origin`, but doesn't work...
     return meta
       ? meta.args.filter(({ type }): boolean =>
@@ -145,7 +145,7 @@ export default class Call extends Struct implements IMethod {
   /**
    * @description The arguments for the function call
    */
-  public get args (): Codec[] {
+  public get args(): Codec[] {
     // FIXME This should return a Struct instead of an Array
     return [...(this.get('args') as Struct).values()];
   }
@@ -153,28 +153,28 @@ export default class Call extends Struct implements IMethod {
   /**
    * @description The argument definitions
    */
-  public get argsDef (): ArgsDef {
+  public get argsDef(): ArgsDef {
     return getArgsDef(this.registry, this.meta);
   }
 
   /**
    * @description The encoded `[sectionIndex, methodIndex]` identifier
    */
-  public get callIndex (): Uint8Array {
+  public get callIndex(): Uint8Array {
     return (this.get('callIndex') as CallIndex).toU8a();
   }
 
   /**
    * @description The encoded data
    */
-  public get data (): Uint8Array {
+  public get data(): Uint8Array {
     return (this.get('args') as Struct).toU8a();
   }
 
   /**
    * @description `true` if the `Origin` type is on the method (extrinsic method)
    */
-  public get hasOrigin (): boolean {
+  public get hasOrigin(): boolean {
     const firstArg = this.meta.args[0];
 
     return !!firstArg && firstArg.type.toString() === 'Origin';
@@ -183,42 +183,42 @@ export default class Call extends Struct implements IMethod {
   /**
    * @description The [[FunctionMetadata]]
    */
-  public get meta (): FunctionMetadataLatest {
+  public get meta(): FunctionMetadataLatest {
     return this._meta;
   }
 
   /**
    * @description Returns the name of the method
    */
-  public get methodName (): string {
+  public get methodName(): string {
     return this.registry.findMetaCall(this.callIndex).method;
   }
 
   /**
    * @description Returns the name of the method
    */
-  public get method (): string {
+  public get method(): string {
     return this.methodName;
   }
 
   /**
    * @description Returns the module containing the method
    */
-  public get sectionName (): string {
+  public get sectionName(): string {
     return this.registry.findMetaCall(this.callIndex).section;
   }
 
   /**
    * @description Returns the module containing the method
    */
-  public get section (): string {
+  public get section(): string {
     return this.sectionName;
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman (isExpanded?: boolean): AnyJson {
+  public toHuman(isExpanded?: boolean): AnyJson {
     let call: CallFunction | undefined;
 
     try {
@@ -242,7 +242,7 @@ export default class Call extends Struct implements IMethod {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'Call';
   }
 }

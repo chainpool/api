@@ -4,7 +4,7 @@
 
 import { AllHashers } from '@chainx-v2/types/interfaces/metadata/definitions';
 import { StorageHasher } from '@chainx-v2/types/interfaces';
-import { u8aConcat, u8aToU8a } from '@polkadot/util';
+import { u8aConcat, u8aToU8a } from '@chainx-v2/util';
 import { blake2AsU8a, xxhashAsU8a } from '@chainx-v2/crypto';
 
 export type HasherInput = string | Buffer | Uint8Array;

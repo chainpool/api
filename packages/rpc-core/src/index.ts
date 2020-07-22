@@ -12,7 +12,7 @@ import { combineLatest, from, Observable, Observer, of, throwError } from 'rxjs'
 import { catchError, map, publishReplay, refCount, switchMap } from 'rxjs/operators';
 import jsonrpc from '@chainx-v2/types/interfaces/jsonrpc';
 import { Option, StorageKey, Vec, createClass, createTypeUnsafe } from '@chainx-v2/types';
-import { assert, hexToU8a, isFunction, isNull, isUndefined, logger, u8aToU8a } from '@polkadot/util';
+import { assert, hexToU8a, isFunction, isNull, isUndefined, logger, u8aToU8a } from '@chainx-v2/util';
 
 import { drr } from './rxjs';
 
@@ -34,7 +34,7 @@ const EMPTY_META = {
 
 // utility method to create a nicely-formatted error
 /** @internal */
-function logErrorMessage (method: string, { params, type }: DefinitionRpc, error: Error): void {
+function logErrorMessage(method: string, { params, type }: DefinitionRpc, error: Error): void {
   const inputs = params.map(({ isOptional, name, type }): string =>
     `${name}${isOptional ? '?' : ''}: ${type}`
   ).join(', ');
@@ -109,7 +109,7 @@ export default class Rpc implements RpcInterface {
    * Default constructor for the Api Object
    * @param  {ProviderInterface} provider An API provider using HTTP or WebSocket
    */
-  constructor (registry: Registry, provider: ProviderInterface, userRpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>> = {}) {
+  constructor(registry: Registry, provider: ProviderInterface, userRpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>> = {}) {
     // eslint-disable-next-line @typescript-eslint/unbound-method
     assert(provider && isFunction(provider.send), 'Expected Provider to API create');
 
@@ -122,11 +122,11 @@ export default class Rpc implements RpcInterface {
   /**
    * @description Manually disconnect from the attached provider
    */
-  public disconnect (): void {
+  public disconnect(): void {
     this.provider.disconnect();
   }
 
-  private _createInterfaces<Section extends keyof RpcInterface> (userRpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>>): void {
+  private _createInterfaces<Section extends keyof RpcInterface>(userRpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>>): void {
     const sectionNames = Object.keys(jsonrpc);
 
     // these are the base keys (i.e. part of jsonrpc)
@@ -144,7 +144,7 @@ export default class Rpc implements RpcInterface {
     });
   }
 
-  private _createInterface<Section extends keyof RpcInterface> (section: string, methods: Record<string, DefinitionRpc | DefinitionRpcSub>): RpcInterface[Section] {
+  private _createInterface<Section extends keyof RpcInterface>(section: string, methods: Record<string, DefinitionRpc | DefinitionRpcSub>): RpcInterface[Section] {
     return Object
       .keys(methods)
       .reduce((exposed, method): RpcInterface[Section] => {
@@ -167,7 +167,7 @@ export default class Rpc implements RpcInterface {
       }, {} as RpcInterface[Section]);
   }
 
-  private _createMethodWithRaw (creator: (isRaw: boolean) => (...values: any[]) => Observable<any>): RpcInterfaceMethod {
+  private _createMethodWithRaw(creator: (isRaw: boolean) => (...values: any[]) => Observable<any>): RpcInterfaceMethod {
     const call = creator(false) as Partial<RpcInterfaceMethod>;
 
     call.raw = creator(true);
@@ -175,7 +175,7 @@ export default class Rpc implements RpcInterface {
     return call as RpcInterfaceMethod;
   }
 
-  private _createMethodSend (section: string, method: string, def: DefinitionRpc): RpcInterfaceMethod {
+  private _createMethodSend(section: string, method: string, def: DefinitionRpc): RpcInterfaceMethod {
     const rpcName = `${section}_${method}`;
 
     const creator = (isRaw: boolean) => (...values: any[]): Observable<any> => {
@@ -215,7 +215,7 @@ export default class Rpc implements RpcInterface {
   }
 
   // create a subscriptor, it subscribes once and resolves with the id as subscribe
-  private _createSubscriber ({ paramsJson, subName, subType, update }: { subType: string; subName: string; paramsJson: AnyJson[]; update: ProviderInterfaceCallback }, errorHandler: (error: Error) => void): Promise<number | string> {
+  private _createSubscriber({ paramsJson, subName, subType, update }: { subType: string; subName: string; paramsJson: AnyJson[]; update: ProviderInterfaceCallback }, errorHandler: (error: Error) => void): Promise<number | string> {
     return new Promise((resolve, reject): void => {
       this.provider
         .subscribe(subType, subName, paramsJson, update)
@@ -227,7 +227,7 @@ export default class Rpc implements RpcInterface {
     });
   }
 
-  private _createMethodSubscribe (section: string, method: string, def: DefinitionRpcSub): RpcInterfaceMethod {
+  private _createMethodSubscribe(section: string, method: string, def: DefinitionRpcSub): RpcInterfaceMethod {
     const [updateType, subMethod, unsubMethod] = def.pubsub;
     const subName = `${section}_${subMethod}`;
     const unsubName = `${section}_${unsubMethod}`;
@@ -310,7 +310,7 @@ export default class Rpc implements RpcInterface {
     return memoized;
   }
 
-  private _formatInputs (def: DefinitionRpc, inputs: any[]): Codec[] {
+  private _formatInputs(def: DefinitionRpc, inputs: any[]): Codec[] {
     const reqArgCount = def.params.filter(({ isOptional }): boolean => !isOptional).length;
     const optText = reqArgCount === def.params.length
       ? ''
@@ -323,13 +323,13 @@ export default class Rpc implements RpcInterface {
     );
   }
 
-  private _treatAsHex (key: StorageKey): boolean {
+  private _treatAsHex(key: StorageKey): boolean {
     // :code is problematic - it does not have the length attached, which is
     // unlike all other storage entries where it is indeed properly encoded
     return ['0x3a636f6465'].includes(key.toHex());
   }
 
-  private _formatOutput (method: string, rpc: DefinitionRpc, params: Codec[], result?: any): Codec | Codec[] {
+  private _formatOutput(method: string, rpc: DefinitionRpc, params: Codec[], result?: any): Codec | Codec[] {
     if (rpc.type === 'StorageData') {
       const key = params[0] as StorageKey;
 
@@ -361,7 +361,7 @@ export default class Rpc implements RpcInterface {
     return createTypeUnsafe(this.registry, rpc.type, [result]);
   }
 
-  private _formatStorageData (key: StorageKey, value: string | null): Codec {
+  private _formatStorageData(key: StorageKey, value: string | null): Codec {
     // single return value (via state.getStorage), decode the value based on the
     // outputType that we have specified. Fallback to Raw on nothing
     const type = key.outputType || 'Raw';
@@ -395,7 +395,7 @@ export default class Rpc implements RpcInterface {
     ], true);
   }
 
-  private _formatStorageSet (keys: Vec<StorageKey>, changes: [string, string | null][]): Codec[] {
+  private _formatStorageSet(keys: Vec<StorageKey>, changes: [string, string | null][]): Codec[] {
     // For StorageChangeSet, the changes has the [key, value] mappings
     const withCache = keys.length !== 1;
 
@@ -416,7 +416,7 @@ export default class Rpc implements RpcInterface {
     }, []);
   }
 
-  private _formatStorageSetEntry (key: StorageKey, changes: [string, string | null][], witCache: boolean): Codec {
+  private _formatStorageSetEntry(key: StorageKey, changes: [string, string | null][], witCache: boolean): Codec {
     // Fallback to Raw (i.e. just the encoding) if we don't have a specific type
     const type = key.outputType || 'Raw';
     const hexKey = key.toHex();

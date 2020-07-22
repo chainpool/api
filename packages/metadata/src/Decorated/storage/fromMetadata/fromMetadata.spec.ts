@@ -4,7 +4,7 @@
 
 import testingPairs from '@chainx-v2/keyring/testingPairs';
 import { TypeRegistry } from '@chainx-v2/types';
-import { u8aToHex } from '@polkadot/util';
+import { u8aToHex } from '@chainx-v2/util';
 
 import rpcMetadata from '../../../Metadata/static';
 import rpcMetadataV8 from '../../../Metadata/v8/static';

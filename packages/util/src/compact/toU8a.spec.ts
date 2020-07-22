@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the ISC license. See the LICENSE file for details.
 
@@ -92,7 +92,7 @@ describe('encode', (): void => {
       { expected: '13 ff ff ff ff ff ff ff ff', value: new BN(`${1}${'0'.repeat(64)}`, 2).subn(1) }
     ];
 
-    function testEncode (value: BN, expected: string): void {
+    function testEncode(value: BN, expected: string): void {
       it(`encodes ${value.toString()}`, (): void => {
         expect(
           compactToU8a(value)

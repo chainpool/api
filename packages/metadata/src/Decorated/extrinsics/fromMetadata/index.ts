@@ -4,13 +4,13 @@
 
 import { Calls, ModulesWithCalls, Registry, RegistryMetadata, RegistryMetadataModule } from '@chainx-v2/types/types';
 
-import { stringCamelCase } from '@polkadot/util';
+import { stringCamelCase } from '@chainx-v2/util';
 
 import extrinsics from '../';
 import createUnchecked from './createUnchecked';
 
 /** @internal */
-export default function fromMetadata (registry: Registry, metadata: RegistryMetadata): ModulesWithCalls {
+export default function fromMetadata(registry: Registry, metadata: RegistryMetadata): ModulesWithCalls {
   return metadata.asLatest.modules
     .filter(({ calls }): boolean => calls.isSome)
     .reduce((result, { calls, name }: RegistryMetadataModule, sectionIndex): ModulesWithCalls => {

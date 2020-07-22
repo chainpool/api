@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,12 +14,12 @@ import compactFromU8a from './fromU8a';
  * <BR>
  *
  * ```javascript
- * import { compactStripLength } from '@polkadot/util';
+ * import { compactStripLength } from '@chainx-v2/util';
  *
  * console.log(compactStripLength(new Uint8Array([2 << 2, 0xde, 0xad]))); // [2, Uint8Array[0xde, 0xad]]
  * ```
  */
-export default function compactStripLength (input: Uint8Array, bitLength: BitLength = DEFAULT_BITLENGTH): [number, Uint8Array] {
+export default function compactStripLength(input: Uint8Array, bitLength: BitLength = DEFAULT_BITLENGTH): [number, Uint8Array] {
   const [offset, length] = compactFromU8a(input, bitLength);
   const total = offset + length.toNumber();
 

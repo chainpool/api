@@ -4,7 +4,7 @@
 
 import { PairInfo } from './types';
 
-import { stringToU8a, u8aConcat, u8aFixLength, assert } from '@polkadot/util';
+import { stringToU8a, u8aConcat, u8aFixLength, assert } from '@chainx-v2/util';
 import { naclEncrypt } from '@chainx-v2/crypto';
 
 import { PKCS8_DIVIDER, PKCS8_HEADER } from './defaults';

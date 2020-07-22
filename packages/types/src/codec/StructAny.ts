@@ -5,7 +5,7 @@
 import { H256 } from '../interfaces/runtime';
 import { AnyJson, Codec, Registry } from '../types';
 
-import { isUndefined } from '@polkadot/util';
+import { isUndefined } from '@chainx-v2/util';
 import { blake2AsU8a } from '@chainx-v2/crypto';
 
 import Raw from './Raw';

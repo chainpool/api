@@ -5,7 +5,7 @@
 import { Registry } from '../types';
 
 import BN from 'bn.js';
-import { isBn, isHex, isNumber, isU8a, u8aConcat, u8aToHex, u8aToU8a, u8aToBn } from '@polkadot/util';
+import { isBn, isHex, isNumber, isU8a, u8aConcat, u8aToHex, u8aToU8a, u8aToBn } from '@chainx-v2/util';
 import { decodeAddress } from '@chainx-v2/crypto';
 
 import Base from '../codec/Base';

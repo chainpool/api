@@ -5,7 +5,7 @@
 import { Address, Balance, BlockNumber, Call, ExtrinsicEra, Hash, Index, RuntimeVersion } from '../interfaces';
 import { Codec, Constructor, ISignerPayload, SignerPayloadJSON, SignerPayloadRaw } from '../types';
 
-import { u8aToHex } from '@polkadot/util';
+import { u8aToHex } from '@chainx-v2/util';
 
 import Compact from '../codec/Compact';
 import Struct from '../codec/Struct';
@@ -52,7 +52,7 @@ export default class SignerPayload extends _Payload implements ISignerPayload {
   /**
    * @description Creates an representation of the structure as an ISignerPayload JSON
    */
-  public toPayload (): SignerPayloadJSON {
+  public toPayload(): SignerPayloadJSON {
     const { address, blockHash, blockNumber, era, genesisHash, method, nonce, runtimeVersion: { specVersion, transactionVersion }, signedExtensions, tip, version } = this;
 
     return {
@@ -74,7 +74,7 @@ export default class SignerPayload extends _Payload implements ISignerPayload {
   /**
    * @description Creates a representation of the payload in raw Exrinsic form
    */
-  public toRaw (): SignerPayloadRaw {
+  public toRaw(): SignerPayloadRaw {
     const payload = this.toPayload();
     // NOTE Explicitly pass the bare flag so the method is encoded un-prefixed (non-decodable, for signing only)
     const data = u8aToHex(this.registry.createType('ExtrinsicPayload', payload, { version: payload.version }).toU8a({ method: true }));

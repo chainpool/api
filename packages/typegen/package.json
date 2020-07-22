@@ -18,7 +18,7 @@
     "@chainx-v2/metadata": "^0.0.3-beta.16",
     "@chainx-v2/rpc-provider": "^0.0.3-beta.16",
     "@chainx-v2/types": "^0.0.3-beta.16",
-    "@polkadot/util": "^2.15.1",
+    "@chainx-v2/util": "^0.0.3-beta.16",
     "handlebars": "^4.7.6",
     "websocket": "^1.0.31",
     "yargs": "^15.3.1"

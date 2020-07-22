@@ -4,7 +4,7 @@
 
 import Metadata from '@chainx-v2/metadata/Metadata';
 import rpcMetadata from '@chainx-v2/metadata/Metadata/static';
-import { hexToU8a } from '@polkadot/util';
+import { hexToU8a } from '@chainx-v2/util';
 
 import { TypeRegistry } from '../create';
 import Extrinsic from './Extrinsic';

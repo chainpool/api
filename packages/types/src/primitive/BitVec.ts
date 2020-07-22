@@ -4,13 +4,13 @@
 
 import { AnyU8a, Registry } from '../types';
 
-import { assert, isString, u8aConcat, u8aToU8a } from '@polkadot/util';
+import { assert, isString, u8aConcat, u8aToU8a } from '@chainx-v2/util';
 
 import Compact from '../codec/Compact';
 import Raw from '../codec/Raw';
 
 /** @internal */
-function decodeBitVecU8a (value?: Uint8Array): Uint8Array {
+function decodeBitVecU8a(value?: Uint8Array): Uint8Array {
   if (!value || !value.length) {
     return new Uint8Array();
   }
@@ -25,7 +25,7 @@ function decodeBitVecU8a (value?: Uint8Array): Uint8Array {
 }
 
 /** @internal */
-function decodeBitVec (value?: AnyU8a): Uint8Array | undefined {
+function decodeBitVec(value?: AnyU8a): Uint8Array | undefined {
   if (Array.isArray(value) || isString(value)) {
     return u8aToU8a(value);
   }
@@ -40,21 +40,21 @@ function decodeBitVec (value?: AnyU8a): Uint8Array | undefined {
  * and a normal Bytes would be that the length prefix indicates the number of bits encoded, not the bytes
  */
 export default class BitVec extends Raw {
-  constructor (registry: Registry, value?: AnyU8a) {
+  constructor(registry: Registry, value?: AnyU8a) {
     super(registry, decodeBitVec(value));
   }
 
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return this.length + Compact.encodeU8a(this.bitLength()).length;
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return 'BitVec';
   }
 
@@ -62,7 +62,7 @@ export default class BitVec extends Raw {
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     const bitVec = super.toU8a();
 
     return isBare

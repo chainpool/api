@@ -4,13 +4,13 @@
 
 import { TypeDef, TypeDefInfo } from '../../create/types';
 
-import { assert, isNumber, isUndefined } from '@polkadot/util';
+import { assert, isNumber, isUndefined } from '@chainx-v2/util';
 
 export const SPECIAL_TYPES = ['AccountId', 'AccountIndex', 'Address', 'Balance'];
 
 const identity = (value: string): string => value;
 
-export function paramsNotation (outer: string, inner?: string | any[], transform: (_: any) => string = identity): string {
+export function paramsNotation(outer: string, inner?: string | any[], transform: (_: any) => string = identity): string {
   let arrayStr = '';
 
   if (inner) {
@@ -21,7 +21,7 @@ export function paramsNotation (outer: string, inner?: string | any[], transform
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-function encodeWithParams (typeDef: Pick<TypeDef, any>, outer = typeDef.displayName || typeDef.type): string {
+function encodeWithParams(typeDef: Pick<TypeDef, any>, outer = typeDef.displayName || typeDef.type): string {
   const { info, params, sub } = typeDef;
 
   switch (info) {
@@ -45,12 +45,12 @@ function encodeWithParams (typeDef: Pick<TypeDef, any>, outer = typeDef.displayN
   }
 }
 
-function encodeDoNotConstruct ({ displayName }: TypeDef): string {
+function encodeDoNotConstruct({ displayName }: TypeDef): string {
   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   return `DoNotEncode<${displayName}>`;
 }
 
-function encodeSubTypes (sub: TypeDef[], asEnum?: boolean): string {
+function encodeSubTypes(sub: TypeDef[], asEnum?: boolean): string {
   const inner = sub.reduce(
     (result: Record<string, string>, type: TypeDef): Record<string, string> => {
       return {
@@ -69,7 +69,7 @@ function encodeSubTypes (sub: TypeDef[], asEnum?: boolean): string {
   );
 }
 
-function encodeEnum (typeDef: Pick<TypeDef, any>): string {
+function encodeEnum(typeDef: Pick<TypeDef, any>): string {
   assert(typeDef.sub && Array.isArray(typeDef.sub), 'Unable to encode Enum type');
 
   const sub = typeDef.sub as TypeDef[];
@@ -85,13 +85,13 @@ function encodeEnum (typeDef: Pick<TypeDef, any>): string {
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         .map(({ name }: TypeDef): string => `"${name}"`)
         .join(', ')
-    }]`;
+      }]`;
   }
 
   return encodeSubTypes(sub, true);
 }
 
-function encodeStruct (typeDef: Pick<TypeDef, any>): string {
+function encodeStruct(typeDef: Pick<TypeDef, any>): string {
   assert(typeDef.sub && Array.isArray(typeDef.sub), 'Unable to encode Struct type');
 
   const sub = typeDef.sub as TypeDef[];
@@ -99,7 +99,7 @@ function encodeStruct (typeDef: Pick<TypeDef, any>): string {
   return encodeSubTypes(sub);
 }
 
-function encodeTuple (typeDef: Pick<TypeDef, any>): string {
+function encodeTuple(typeDef: Pick<TypeDef, any>): string {
   assert(typeDef.sub && Array.isArray(typeDef.sub), 'Unable to encode Tuple type');
 
   const sub = typeDef.sub as TypeDef[];
@@ -109,16 +109,16 @@ function encodeTuple (typeDef: Pick<TypeDef, any>): string {
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
       .map((type: TypeDef): string => encodeType(type))
       .join(', ')
-  })`;
+    })`;
 }
 
-function encodeUInt ({ length }: Pick<TypeDef, any>, type: 'Int' | 'UInt'): string {
+function encodeUInt({ length }: Pick<TypeDef, any>, type: 'Int' | 'UInt'): string {
   assert(isNumber(length), 'Unable to encode VecFixed type');
 
   return `${type}<${length}>`;
 }
 
-function encodeVecFixed ({ length, sub }: Pick<TypeDef, any>): string {
+function encodeVecFixed({ length, sub }: Pick<TypeDef, any>): string {
   assert(isNumber(length) && !isUndefined(sub), 'Unable to encode VecFixed type');
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions
@@ -149,7 +149,7 @@ const encoders: Record<TypeDefInfo, (typeDef: TypeDef) => string> = {
   [TypeDefInfo.VecFixed]: (typeDef: TypeDef): string => encodeVecFixed(typeDef)
 };
 
-export function encodeType (typeDef: Pick<TypeDef, any>): string {
+export function encodeType(typeDef: Pick<TypeDef, any>): string {
   const encoder = encoders[(typeDef as TypeDef).info];
 
   assert(encoder, `Cannot encode type: ${typeDef.toString()}`);
@@ -157,7 +157,7 @@ export function encodeType (typeDef: Pick<TypeDef, any>): string {
   return encoder(typeDef as TypeDef);
 }
 
-export function displayType (typeDef: Pick<TypeDef, any>): string {
+export function displayType(typeDef: Pick<TypeDef, any>): string {
   if (typeDef.displayName) {
     return encodeWithParams(typeDef);
   }
@@ -172,7 +172,7 @@ export function displayType (typeDef: Pick<TypeDef, any>): string {
   }
 }
 
-export function withTypeString (typeDef: Pick<TypeDef, any>): Pick<TypeDef, any> {
+export function withTypeString(typeDef: Pick<TypeDef, any>): Pick<TypeDef, any> {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const type = SPECIAL_TYPES.includes(typeDef.displayName)
     ? typeDef.displayName

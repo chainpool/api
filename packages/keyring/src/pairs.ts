@@ -4,7 +4,7 @@
 
 import { KeyringPairs, KeyringPair } from './types';
 
-import { assert, isHex, isU8a, u8aToHex, u8aToU8a } from '@polkadot/util';
+import { assert, isHex, isU8a, u8aToHex, u8aToU8a } from '@chainx-v2/util';
 import { decodeAddress } from '@chainx-v2/crypto';
 
 type KeyringPairMap = Record<string, KeyringPair>;

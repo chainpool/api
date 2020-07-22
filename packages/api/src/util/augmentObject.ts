@@ -2,40 +2,40 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { logger } from '@polkadot/util';
+import { logger } from '@chainx-v2/util';
 
 type StringsStrings = [string[], string[]];
 
 const l = logger('api/augment');
 
-function logLength (type: 'added' | 'removed', values: string[], and: string[] = []): string {
+function logLength(type: 'added' | 'removed', values: string[], and: string[] = []): string {
   return values.length
     ? ` ${values.length} ${type}${and.length ? ' and' : ''}`
     : '';
 }
 
-function logValues (type: 'added' | 'removed', values: string[]): string {
+function logValues(type: 'added' | 'removed', values: string[]): string {
   return values.length
     ? `\n\t${type.padStart(7)}: ${values.sort().join(', ')}`
     : '';
 }
 
 // log details to console
-function warn (prefix: string, type: 'calls' | 'modules', [added, removed]: StringsStrings): void {
+function warn(prefix: string, type: 'calls' | 'modules', [added, removed]: StringsStrings): void {
   if (added.length || removed.length) {
     l.warn(`api.${prefix}: Found${logLength('added', added, removed)}${logLength('removed', removed)} ${type}:${logValues('added', added)}${logValues('removed', removed)}`);
   }
 }
 
-function extractKeys (src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): StringsStrings {
+function extractKeys(src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): StringsStrings {
   return [Object.keys(src), Object.keys(dst)];
 }
 
-function findSectionExcludes (a: string[], b: string[]): string[] {
+function findSectionExcludes(a: string[], b: string[]): string[] {
   return a.filter((section) => !b.includes(section));
 }
 
-function extractSections (src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): StringsStrings {
+function extractSections(src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): StringsStrings {
   const [srcSections, dstSections] = extractKeys(src, dst);
 
   return [
@@ -44,7 +44,7 @@ function extractSections (src: Record<string, Record<string, any>>, dst: Record<
   ];
 }
 
-function findMethodExcludes (src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): string[] {
+function findMethodExcludes(src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): string[] {
   const srcSections = Object.keys(src);
   const dstSections = Object.keys(dst);
 
@@ -62,7 +62,7 @@ function findMethodExcludes (src: Record<string, Record<string, any>>, dst: Reco
     }, []);
 }
 
-function extractMethods (src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): StringsStrings {
+function extractMethods(src: Record<string, Record<string, any>>, dst: Record<string, Record<string, any>>): StringsStrings {
   return [
     findMethodExcludes(dst, src),
     findMethodExcludes(src, dst)
@@ -74,7 +74,7 @@ function extractMethods (src: Record<string, Record<string, any>>, dst: Record<s
  * already available, but rather just adds new missing ites into the result object.
  * @internal
  */
-export default function augmentObject (prefix: string, src: Record<string, Record<string, unknown>>, dst: Record<string, Record<string, unknown>>, fromEmpty = false): Record<string, Record<string, any>> {
+export default function augmentObject(prefix: string, src: Record<string, Record<string, unknown>>, dst: Record<string, Record<string, unknown>>, fromEmpty = false): Record<string, Record<string, any>> {
   if (fromEmpty) {
     Object.keys(dst).forEach((key): void => {
       delete dst[key];

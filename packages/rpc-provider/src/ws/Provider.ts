@@ -7,7 +7,7 @@
 import { JsonRpcResponse, ProviderInterface, ProviderInterfaceCallback, ProviderInterfaceEmitted, ProviderInterfaceEmitCb } from '../types';
 
 import EventEmitter from 'eventemitter3';
-import { assert, isNull, isUndefined, logger } from '@polkadot/util';
+import { assert, isNull, isUndefined, logger } from '@chainx-v2/util';
 
 import Coder from '../coder';
 import defaults from '../defaults';
@@ -89,7 +89,7 @@ export default class WsProvider implements WSProviderInterface {
    * @param {string | string[]}  endpoint    The endpoint url. Usually `ws://ip:9944` or `wss://ip:9944`, may provide an array of endpoint strings.
    * @param {boolean} autoConnect Whether to connect automatically or not.
    */
-  constructor (endpoint: string | string[] = defaults.WS_URL, autoConnectMs: number | false = 1000) {
+  constructor(endpoint: string | string[] = defaults.WS_URL, autoConnectMs: number | false = 1000) {
     const endpoints = Array.isArray(endpoint)
       ? endpoint
       : [endpoint];
@@ -116,14 +116,14 @@ export default class WsProvider implements WSProviderInterface {
   /**
    * @summary `true` when this provider supports subscriptions
    */
-  public get hasSubscriptions (): boolean {
+  public get hasSubscriptions(): boolean {
     return true;
   }
 
   /**
    * @description Returns a clone of the object
    */
-  public clone (): WsProvider {
+  public clone(): WsProvider {
     return new WsProvider(this.#endpoints);
   }
 
@@ -132,7 +132,7 @@ export default class WsProvider implements WSProviderInterface {
    * @description The [[WsProvider]] connects automatically by default, however if you decided otherwise, you may
    * connect manually using this method.
    */
-  public async connect (): Promise<void> {
+  public async connect(): Promise<void> {
     try {
       this.#endpointIndex = (this.#endpointIndex + 1) % this.#endpoints.length;
 
@@ -151,7 +151,7 @@ export default class WsProvider implements WSProviderInterface {
   /**
    * @description Manually disconnect from the connection, clearing autoconnect logic
    */
-  public disconnect (): void {
+  public disconnect(): void {
     if (isNull(this.#websocket)) {
       throw new Error('Cannot disconnect on a non-open websocket');
     }
@@ -168,7 +168,7 @@ export default class WsProvider implements WSProviderInterface {
    * @summary Whether the node is connected or not.
    * @return {boolean} true if connected
    */
-  public isConnected (): boolean {
+  public isConnected(): boolean {
     return this.#isConnected;
   }
 
@@ -178,7 +178,7 @@ export default class WsProvider implements WSProviderInterface {
    * @param  {ProviderInterfaceEmitCb}  sub  Callback
    * @return unsubscribe function
    */
-  public on (type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
+  public on(type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
     this.#eventemitter.on(type, sub);
 
     return (): void => {
@@ -192,7 +192,7 @@ export default class WsProvider implements WSProviderInterface {
    * @param params Encoded paramaters as appliucable for the method
    * @param subscription Subscription details (internally used)
    */
-  public send (method: string, params: any[], subscription?: SubscriptionHandler): Promise<any> {
+  public send(method: string, params: any[], subscription?: SubscriptionHandler): Promise<any> {
     return new Promise((resolve, reject): void => {
       try {
         const json = this.#coder.encodeJson(method, params);
@@ -247,7 +247,7 @@ export default class WsProvider implements WSProviderInterface {
    * })
    * ```
    */
-  public async subscribe (type: string, method: string, params: any[], callback: ProviderInterfaceCallback): Promise<number | string> {
+  public async subscribe(type: string, method: string, params: any[], callback: ProviderInterfaceCallback): Promise<number | string> {
     const id = await this.send(method, params, { callback, type }) as Promise<number | string>;
 
     return id;
@@ -256,7 +256,7 @@ export default class WsProvider implements WSProviderInterface {
   /**
    * @summary Allows unsubscribing to subscriptions made with [[subscribe]].
    */
-  public async unsubscribe (type: string, method: string, id: number | string): Promise<boolean> {
+  public async unsubscribe(type: string, method: string, id: number | string): Promise<boolean> {
     const subscription = `${type}::${id}`;
 
     // FIXME This now could happen with re-subscriptions. The issue is that with a re-sub

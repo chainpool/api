@@ -5,7 +5,7 @@
 import { KeypairType, Keypair } from '@chainx-v2/crypto/types';
 import { KeyringInstance, KeyringPair, KeyringPair$Json, KeyringPair$Meta, KeyringOptions } from './types';
 
-import { assert, hexToU8a, isHex, isUndefined, stringToU8a } from '@polkadot/util';
+import { assert, hexToU8a, isHex, isUndefined, stringToU8a } from '@chainx-v2/util';
 import { decodeAddress, encodeAddress, keyExtractSuri, keyFromPath, naclKeypairFromSeed as naclFromSeed, schnorrkelKeypairFromSeed as schnorrkelFromSeed, secp256k1KeypairFromSeed as secp256k1FromSeed, mnemonicToMiniSecret } from '@chainx-v2/crypto';
 
 import { DEV_PHRASE } from './defaults';

@@ -17,7 +17,7 @@ import jsonrpc from '@chainx-v2/types/interfaces/jsonrpc';
 import testKeyring from '@chainx-v2/keyring/testing';
 import rpcHeader from '@chainx-v2/types/json/Header.004.json';
 import rpcSignedBlock from '@chainx-v2/types/json/SignedBlock.004.immortal.json';
-import { bnToU8a, logger, u8aToHex } from '@polkadot/util';
+import { bnToU8a, logger, u8aToHex } from '@chainx-v2/util';
 import { randomAsU8a } from '@chainx-v2/crypto';
 
 const INTERVAL = 1000;

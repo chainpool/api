@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,14 +15,14 @@ const HEX_REGEX = /^0x[a-fA-F0-9]+$/;
  * <BR>
  *
  * ```javascript
- * import { isHex } from '@polkadot/util';
+ * import { isHex } from '@chainx-v2/util';
  *
  * isHex('0x1234'); // => true
  * isHex('0x1234', 8); // => false
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export default function isHex (value: unknown, bitLength = -1, ignoreLength = false): value is string | String {
+export default function isHex(value: unknown, bitLength = -1, ignoreLength = false): value is string | String {
   const isValidHex = value === '0x' || (isString(value) && HEX_REGEX.test(value.toString()));
 
   if (isValidHex && bitLength !== -1) {

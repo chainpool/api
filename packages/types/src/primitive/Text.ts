@@ -5,7 +5,7 @@
 import { H256 } from '../interfaces/runtime';
 import { AnyU8a, Codec, Registry } from '../types';
 
-import { assert, hexToU8a, isHex, isString, stringToU8a, u8aToString, u8aToHex } from '@polkadot/util';
+import { assert, hexToU8a, isHex, isString, stringToU8a, u8aToString, u8aToHex } from '@chainx-v2/util';
 import { blake2AsU8a } from '@chainx-v2/crypto';
 
 import Compact from '../codec/Compact';

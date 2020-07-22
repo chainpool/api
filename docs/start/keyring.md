@@ -99,7 +99,7 @@ Additionally you can sign and verify using the pairs. This is the same internall
 
 ```js
 // Some helper functions used here
-import { stringToU8a, u8aToHex } from '@polkadot/util';
+import { stringToU8a, u8aToHex } from '@chainx-v2/util';
 
 ...
 

@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { TypeRegistry } from '@chainx-v2/types/create';
-import { u8aToHex } from '@polkadot/util';
+import { u8aToHex } from '@chainx-v2/util';
 
 import Decorated from './Decorated';
 import json from '../Metadata/static';

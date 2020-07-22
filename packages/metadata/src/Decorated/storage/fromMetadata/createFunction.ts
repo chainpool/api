@@ -9,7 +9,7 @@ import BN from 'bn.js';
 import { Compact, Raw } from '@chainx-v2/types/codec';
 import { createTypeUnsafe } from '@chainx-v2/types/create';
 import StorageKey, { StorageEntry } from '@chainx-v2/types/primitive/StorageKey';
-import { assert, compactStripLength, isNull, isUndefined, stringLowerFirst, stringToU8a, u8aConcat } from '@polkadot/util';
+import { assert, compactStripLength, isNull, isUndefined, stringLowerFirst, stringToU8a, u8aConcat } from '@chainx-v2/util';
 import { xxhashAsU8a } from '@chainx-v2/crypto';
 
 import getHasher, { HasherFunction } from './getHasher';

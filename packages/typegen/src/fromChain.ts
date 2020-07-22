@@ -5,7 +5,7 @@
 import path from 'path';
 import yargs from 'yargs';
 import getWSClass from '@chainx-v2/rpc-provider/ws/getWSClass';
-import { formatNumber } from '@polkadot/util';
+import { formatNumber } from '@chainx-v2/util';
 
 import generateConst from './generate/consts';
 import generateQuery from './generate/query';
@@ -14,7 +14,7 @@ import { HEADER, writeFile } from './util';
 
 let websocket: WebSocket;
 
-function generate (metaHex: string, pkg: string | undefined, output: string, isStrict?: boolean): void {
+function generate(metaHex: string, pkg: string | undefined, output: string, isStrict?: boolean): void {
   console.log(`Generating from metadata, ${formatNumber((metaHex.length - 2) / 2)} bytes`);
 
   const extraTypes = pkg
@@ -39,19 +39,19 @@ function generate (metaHex: string, pkg: string | undefined, output: string, isS
   process.exit(0);
 }
 
-function onSocketClose (event: { code: number; reason: string }): void {
+function onSocketClose(event: { code: number; reason: string }): void {
   console.error(`disconnected, code: '${event.code}' reason: '${event.reason}'`);
 
   process.exit(1);
 }
 
-function onSocketError (event: any): void {
+function onSocketError(event: any): void {
   console.error(event);
 
   process.exit(1);
 }
 
-function onSocketOpen (): boolean {
+function onSocketOpen(): boolean {
   console.log('connected');
 
   websocket.send('{"id":"1","jsonrpc":"2.0","method":"state_getMetadata","params":[]}');
@@ -59,7 +59,7 @@ function onSocketOpen (): boolean {
   return true;
 }
 
-export default function main (): void {
+export default function main(): void {
   const { endpoint, output, package: pkg, strict: isStrict } = yargs.strict().options({
     endpoint: {
       description: 'The endpoint to connect to (e.g. wss://kusama-rpc.polkadot.io) or relative path to a file containing the JSON output of an RPC state_getMetadata call',

@@ -4,9 +4,9 @@
 
 import { Codec, Constructor, InterfaceTypes, Registry } from '../../types';
 
-import { isString } from '@polkadot/util';
+import { isString } from '@chainx-v2/util';
 
-export default function typeToConstructor<T = Codec> (registry: Registry, type: keyof InterfaceTypes | Constructor<T>): Constructor<T> {
+export default function typeToConstructor<T = Codec>(registry: Registry, type: keyof InterfaceTypes | Constructor<T>): Constructor<T> {
   return (
     isString(type)
       ? registry.createClass(type)

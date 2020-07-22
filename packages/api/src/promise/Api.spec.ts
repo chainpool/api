@@ -8,7 +8,7 @@ import createPair from '@chainx-v2/keyring/pair';
 import testKeyring from '@chainx-v2/keyring/testing';
 import Mock from '@chainx-v2/rpc-provider/mock/index';
 import { TypeRegistry } from '@chainx-v2/types';
-import { hexToU8a } from '@polkadot/util';
+import { hexToU8a } from '@chainx-v2/util';
 
 import { SingleAccountSigner } from '../../test/util';
 import ApiPromise from './Api';
@@ -27,7 +27,7 @@ describe('ApiPromise', (): void => {
   );
   let provider: Mock;
 
-  async function createTransfer (): Promise<{ api: ApiPromise; transfer: SubmittableExtrinsic<'promise'> }> {
+  async function createTransfer(): Promise<{ api: ApiPromise; transfer: SubmittableExtrinsic<'promise'> }> {
     provider.subscriptions.state_subscribeStorage.lastValue = {
       changes: [
         [
@@ -87,11 +87,11 @@ describe('ApiPromise', (): void => {
 
     it('Create API instance will error on failure to await ready', async (): Promise<void> => {
       class ErrorApiPromise extends ApiPromise {
-        constructor () {
+        constructor() {
           super({ provider });
         }
 
-        protected _loadMeta (): Promise<boolean> {
+        protected _loadMeta(): Promise<boolean> {
           throw new Error('Simulate failure to load meta');
         }
       }

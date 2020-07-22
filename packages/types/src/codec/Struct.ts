@@ -5,7 +5,7 @@
 import { H256 } from '../interfaces/runtime';
 import { AnyJson, BareOpts, Codec, Constructor, ConstructorDef, InterfaceTypes, Registry } from '../types';
 
-import { hexToU8a, isBoolean, isFunction, isHex, isObject, isU8a, isUndefined, u8aConcat, u8aToHex } from '@polkadot/util';
+import { hexToU8a, isBoolean, isFunction, isHex, isObject, isU8a, isUndefined, u8aConcat, u8aToHex } from '@chainx-v2/util';
 import { blake2AsU8a } from '@chainx-v2/crypto';
 
 import Raw from './Raw';

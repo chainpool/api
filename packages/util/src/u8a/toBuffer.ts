@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,12 +11,12 @@
  * <BR>
  *
  * ```javascript
- * import { u8aToBuffer } from '@polkadot/util';
+ * import { u8aToBuffer } from '@chainx-v2/util';
  *
  * console.log('Buffer', u8aToBuffer('0x123480001f'));
  * ```
  */
-export default function u8aToBuffer (value?: Uint8Array | null): Buffer {
+export default function u8aToBuffer(value?: Uint8Array | null): Buffer {
   return !value
     ? Buffer.from([])
     : Buffer.from(value);

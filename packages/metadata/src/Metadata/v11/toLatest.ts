@@ -7,7 +7,7 @@ import { Registry, OverrideModuleType } from '@chainx-v2/types/types';
 
 import { getModuleTypes } from '@chainx-v2/types-known';
 import { Type } from '@chainx-v2/types/primitive';
-import { stringCamelCase } from '@polkadot/util';
+import { stringCamelCase } from '@chainx-v2/util';
 
 // TODO Handle consts as well
 
@@ -15,7 +15,7 @@ import { stringCamelCase } from '@polkadot/util';
  * Find and apply the correct type override
  * @internal
  **/
-function setTypeOverride (sectionTypes: OverrideModuleType, type: Type): void {
+function setTypeOverride(sectionTypes: OverrideModuleType, type: Type): void {
   const override = Object.keys(sectionTypes).find((aliased): boolean => type.eq(aliased));
 
   if (override) {
@@ -27,7 +27,7 @@ function setTypeOverride (sectionTypes: OverrideModuleType, type: Type): void {
  * Apply module-specific type overrides (always be done as part of toLatest)
  * @internal
  **/
-function convertCalls (registry: Registry, calls: FunctionMetadataV11[], sectionTypes: OverrideModuleType): FunctionMetadataLatest[] {
+function convertCalls(registry: Registry, calls: FunctionMetadataV11[], sectionTypes: OverrideModuleType): FunctionMetadataLatest[] {
   return calls.map(({ args, documentation, name }): FunctionMetadataLatest => {
     args.forEach(({ type }): void => setTypeOverride(sectionTypes, type));
 
@@ -39,7 +39,7 @@ function convertCalls (registry: Registry, calls: FunctionMetadataV11[], section
  * Apply module-specific type overrides (always be done as part of toLatest)
  * @internal
  **/
-function convertEvents (registry: Registry, events: EventMetadataV11[], sectionTypes: OverrideModuleType): EventMetadataLatest[] {
+function convertEvents(registry: Registry, events: EventMetadataV11[], sectionTypes: OverrideModuleType): EventMetadataLatest[] {
   return events.map(({ args, documentation, name }): EventMetadataLatest => {
     args.forEach((type): void => setTypeOverride(sectionTypes, type));
 
@@ -51,7 +51,7 @@ function convertEvents (registry: Registry, events: EventMetadataV11[], sectionT
  * Apply module-specific storage type overrides (always part of toLatest)
  * @internal
  **/
-function convertStorage (registry: Registry, { items, prefix }: StorageMetadataV11, sectionTypes: OverrideModuleType): StorageMetadataLatest {
+function convertStorage(registry: Registry, { items, prefix }: StorageMetadataV11, sectionTypes: OverrideModuleType): StorageMetadataLatest {
   return registry.createType('StorageMetadataLatest', {
     items: items.map(({ documentation, fallback, modifier, name, type }): StorageEntryMetadataLatest => {
       let resultType: Type;
@@ -77,7 +77,7 @@ function convertStorage (registry: Registry, { items, prefix }: StorageMetadataV
  * most-recent metadata, since it allows us a chance to actually apply call and storage specific type aliasses
  * @internal
  **/
-export default function toLatest (registry: Registry, { extrinsic, modules }: MetadataV11): MetadataLatest {
+export default function toLatest(registry: Registry, { extrinsic, modules }: MetadataV11): MetadataLatest {
   return registry.createType('MetadataLatest', {
     extrinsic,
     modules: modules.map((mod): ModuleMetadataLatest => {

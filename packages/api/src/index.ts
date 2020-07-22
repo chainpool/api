@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { detectPackage } from '@polkadot/util';
+import { detectPackage } from '@chainx-v2/util';
 
 // FIXME This really should be `import(...).then(...)`, but need to check rejections
 // eslint-disable-next-line @typescript-eslint/no-var-requires

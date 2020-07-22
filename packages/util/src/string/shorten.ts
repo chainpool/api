@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,13 +11,13 @@
  * <BR>
  *
  * ```javascript
- * import { stringShorten } from '@polkadot/util';
+ * import { stringShorten } from '@chainx-v2/util';
  *
  * stringShorten('1234567890', 2); // => 12..90
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function stringShorten (value: string, prefixLength = 6): string {
+export default function stringShorten(value: string, prefixLength = 6): string {
   if (value.length <= 2 + 2 * prefixLength) {
     return value;
   }

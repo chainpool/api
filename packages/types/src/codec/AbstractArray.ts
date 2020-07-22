@@ -5,7 +5,7 @@
 import { H256 } from '../interfaces/runtime';
 import { AnyJson, Codec, Registry } from '../types';
 
-import { u8aConcat, u8aToHex } from '@polkadot/util';
+import { u8aConcat, u8aToHex } from '@chainx-v2/util';
 import { blake2AsU8a } from '@chainx-v2/crypto';
 
 import Compact from './Compact';

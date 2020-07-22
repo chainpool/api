@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -22,14 +22,14 @@ interface Options extends ToBnOptions {
  * <BR>
  *
  * ```javascript
- * import { bnToU8a } from '@polkadot/util';
+ * import { bnToU8a } from '@chainx-v2/util';
  *
  * bnToU8a(new BN(0x1234)); // => [0x12, 0x34]
  * ```
  */
 function bnToU8a<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, options?: Options): Uint8Array;
 function bnToU8a<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, bitLength?: number, isLe?: boolean): Uint8Array;
-function bnToU8a<ExtToBn extends ToBn> (value?: ExtToBn | BN | BigInt | number | null, arg1: number | Options = { bitLength: -1, isLe: true, isNegative: false }, arg2?: boolean): Uint8Array {
+function bnToU8a<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, arg1: number | Options = { bitLength: -1, isLe: true, isNegative: false }, arg2?: boolean): Uint8Array {
   const _options: Options = {
     bitLength: -1,
     isLe: true,

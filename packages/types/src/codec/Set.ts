@@ -6,7 +6,7 @@ import { H256 } from '../interfaces/runtime';
 import { Codec, Constructor, Registry } from '../types';
 
 import BN from 'bn.js';
-import { assert, bnToBn, bnToU8a, isBn, isU8a, isNumber, isString, isUndefined, stringCamelCase, stringUpperFirst, u8aToHex, u8aToBn, u8aToU8a } from '@polkadot/util';
+import { assert, bnToBn, bnToU8a, isBn, isU8a, isNumber, isString, isUndefined, stringCamelCase, stringUpperFirst, u8aToHex, u8aToBn, u8aToU8a } from '@chainx-v2/util';
 import { blake2AsU8a } from '@chainx-v2/crypto';
 
 import Raw from './Raw';

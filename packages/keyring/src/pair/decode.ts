@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { assert, stringToU8a, u8aFixLength } from '@polkadot/util';
+import { assert, stringToU8a, u8aFixLength } from '@chainx-v2/util';
 import { naclDecrypt } from '@chainx-v2/crypto';
 import { PairInfo } from './types';
 

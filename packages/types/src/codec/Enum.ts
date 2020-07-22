@@ -4,7 +4,7 @@
 
 import { AnyJson, Codec, Constructor, InterfaceTypes, Registry } from '../types';
 
-import { assert, hexToU8a, isHex, isNumber, isObject, isString, isU8a, isUndefined, stringCamelCase, stringUpperFirst, u8aConcat, u8aToHex } from '@polkadot/util';
+import { assert, hexToU8a, isHex, isNumber, isObject, isString, isU8a, isUndefined, stringCamelCase, stringUpperFirst, u8aConcat, u8aToHex } from '@chainx-v2/util';
 
 import Null from '../primitive/Null';
 import { mapToTypeMap } from './utils';
@@ -23,7 +23,7 @@ interface Decoded {
   value: Codec;
 }
 
-function extractDef (registry: Registry, _def: Record<string, keyof InterfaceTypes | Constructor> | string[]): { def: TypesDef; isBasic: boolean } {
+function extractDef(registry: Registry, _def: Record<string, keyof InterfaceTypes | Constructor> | string[]): { def: TypesDef; isBasic: boolean } {
   if (!Array.isArray(_def)) {
     const def = mapToTypeMap(registry, _def);
     const isBasic = !Object.values(def).some((type): boolean => type !== Null);
@@ -44,7 +44,7 @@ function extractDef (registry: Registry, _def: Record<string, keyof InterfaceTyp
   };
 }
 
-function createFromValue (registry: Registry, def: TypesDef, index = 0, value?: any): Decoded {
+function createFromValue(registry: Registry, def: TypesDef, index = 0, value?: any): Decoded {
   const Clazz = Object.values(def)[index];
 
   assert(!isUndefined(Clazz), `Unable to create Enum via index ${index}, in ${Object.keys(def).join(', ')}`);
@@ -55,7 +55,7 @@ function createFromValue (registry: Registry, def: TypesDef, index = 0, value?: 
   };
 }
 
-function decodeFromJSON (registry: Registry, def: TypesDef, key: string, value?: any): Decoded {
+function decodeFromJSON(registry: Registry, def: TypesDef, key: string, value?: any): Decoded {
   // JSON comes in the form of { "<type (lowercased)>": "<value for type>" }, here we
   // additionally force to lower to ensure forward compat
   const keys = Object.keys(def).map((k): string => k.toLowerCase());
@@ -67,14 +67,14 @@ function decodeFromJSON (registry: Registry, def: TypesDef, key: string, value?:
   return createFromValue(registry, def, index, value);
 }
 
-function decodeFromString (registry: Registry, def: TypesDef, value: string): Decoded {
+function decodeFromString(registry: Registry, def: TypesDef, value: string): Decoded {
   return isHex(value)
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     ? decodeFromValue(registry, def, hexToU8a(value))
     : decodeFromJSON(registry, def, value);
 }
 
-function decodeFromValue (registry: Registry, def: TypesDef, value?: any): Decoded {
+function decodeFromValue(registry: Registry, def: TypesDef, value?: any): Decoded {
   if (isU8a(value)) {
     return createFromValue(registry, def, value[0], value.subarray(1));
   } else if (isNumber(value)) {
@@ -91,7 +91,7 @@ function decodeFromValue (registry: Registry, def: TypesDef, value?: any): Decod
   return createFromValue(registry, def, 0);
 }
 
-function decodeEnum (registry: Registry, def: TypesDef, value?: any, index?: number): Decoded {
+function decodeEnum(registry: Registry, def: TypesDef, value?: any, index?: number): Decoded {
   // NOTE We check the index path first, before looking at values - this allows treating
   // the optional indexes before anything else, more-specific > less-specific
   if (isNumber(index)) {
@@ -123,7 +123,7 @@ export default class Enum extends Base<Codec> {
 
   private _isBasic: boolean;
 
-  constructor (registry: Registry, def: Record<string, keyof InterfaceTypes | Constructor> | string[], value?: unknown, index?: number) {
+  constructor(registry: Registry, def: Record<string, keyof InterfaceTypes | Constructor> | string[], value?: unknown, index?: number) {
     const defInfo = extractDef(registry, def);
     const decoded = decodeEnum(registry, defInfo.def, value, index);
 
@@ -135,9 +135,9 @@ export default class Enum extends Base<Codec> {
     this._index = this._indexes.indexOf(decoded.index) || 0;
   }
 
-  public static with (Types: Record<string, keyof InterfaceTypes | Constructor> | string[]): EnumConstructor<Enum> {
+  public static with(Types: Record<string, keyof InterfaceTypes | Constructor> | string[]): EnumConstructor<Enum> {
     return class extends Enum {
-      constructor (registry: Registry, value?: unknown, index?: number) {
+      constructor(registry: Registry, value?: unknown, index?: number) {
         super(registry, Types, value, index);
 
         Object.keys(this._def).forEach((_key): void => {
@@ -174,70 +174,70 @@ export default class Enum extends Base<Codec> {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     return 1 + this._raw.encodedLength;
   }
 
   /**
    * @description The index of the metadata value
    */
-  public get index (): number {
+  public get index(): number {
     return this._index;
   }
 
   /**
    * @description true if this is a basic enum (no values)
    */
-  public get isBasic (): boolean {
+  public get isBasic(): boolean {
     return this._isBasic;
   }
 
   /**
    * @description Checks if the Enum points to a [[Null]] type
    */
-  public get isNone (): boolean {
+  public get isNone(): boolean {
     return this.isNull;
   }
 
   /**
    * @description Checks if the Enum points to a [[Null]] type (deprecated, use isNone)
    */
-  public get isNull (): boolean {
+  public get isNull(): boolean {
     return this._raw instanceof Null;
   }
 
   /**
    * @description The available keys for this enum
    */
-  public get defEntries (): string[] {
+  public get defEntries(): string[] {
     return Object.keys(this._def);
   }
 
   /**
    * @description The available keys for this enum
    */
-  public get defKeys (): string[] {
+  public get defKeys(): string[] {
     return Object.keys(this._def);
   }
 
   /**
    * @description The name of the type this enum value represents
    */
-  public get type (): string {
+  public get type(): string {
     return this.defKeys[this._index];
   }
 
   /**
    * @description The value of the enum
    */
-  public get value (): Codec {
+  public get value(): Codec {
     return this._raw;
   }
 
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     // cater for the case where we only pass the enum index
     if (isNumber(other)) {
       return this.toNumber() === other;
@@ -260,14 +260,14 @@ export default class Enum extends Base<Codec> {
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex (): string {
+  public toHex(): string {
     return u8aToHex(this.toU8a());
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman (isExtended?: boolean): AnyJson {
+  public toHuman(isExtended?: boolean): AnyJson {
     return this._isBasic
       ? this.type
       : { [this.type]: this._raw.toHuman(isExtended) };
@@ -276,7 +276,7 @@ export default class Enum extends Base<Codec> {
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON (): AnyJson {
+  public toJSON(): AnyJson {
     return this._isBasic
       ? this.type
       : { [this.type]: this._raw.toJSON() };
@@ -285,14 +285,14 @@ export default class Enum extends Base<Codec> {
   /**
    * @description Returns the number representation for the value
    */
-  public toNumber (): number {
+  public toNumber(): number {
     return this._index;
   }
 
   /**
    * @description Returns a raw struct representation of the enum types
    */
-  protected _toRawStruct (): string[] | Record<string, string> {
+  protected _toRawStruct(): string[] | Record<string, string> {
     return this._isBasic
       ? this.defKeys
       : Struct.typesToMap(this.registry, this._def);
@@ -301,14 +301,14 @@ export default class Enum extends Base<Codec> {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return JSON.stringify({ _enum: this._toRawStruct() });
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString (): string {
+  public toString(): string {
     return this.isNull
       ? this.type
       : JSON.stringify(this.toJSON());
@@ -318,7 +318,7 @@ export default class Enum extends Base<Codec> {
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     const index = this._indexes[this._index];
 
     return u8aConcat(

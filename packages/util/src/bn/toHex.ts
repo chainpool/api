@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -26,14 +26,14 @@ interface Options extends ToBnOptions {
  *
  * ```javascript
  * import BN from 'bn.js';
- * import { bnToHex } from '@polkadot/util';
+ * import { bnToHex } from '@chainx-v2/util';
  *
  * bnToHex(new BN(0x123456)); // => '0x123456'
  * ```
  */
 function bnToHex<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, options?: Options): string;
 function bnToHex<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, bitLength?: number, isLe?: boolean): string;
-function bnToHex<ExtToBn extends ToBn> (value?: ExtToBn | BN | BigInt | number | null, arg1: number | Options = { bitLength: -1, isLe: false, isNegative: false }, arg2?: boolean): string {
+function bnToHex<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, arg1: number | Options = { bitLength: -1, isLe: false, isNegative: false }, arg2?: boolean): string {
   if (!value) {
     return ZERO_STR;
   }

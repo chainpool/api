@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
 import { map, startWith, switchMap } from 'rxjs/operators';
 import { ENUMSET_SIZE } from '@chainx-v2/types/generic/AccountIndex';
 import { Vec } from '@chainx-v2/types';
-import { isFunction } from '@polkadot/util';
+import { isFunction } from '@chainx-v2/util';
 
 import { memo } from '../util';
 
@@ -18,7 +18,7 @@ const enumsetSize = ENUMSET_SIZE.toNumber();
 
 let indicesCache: AccountIndexes | null = null;
 
-function queryEnumSet (api: ApiInterfaceRx): Observable<AccountIndexes> {
+function queryEnumSet(api: ApiInterfaceRx): Observable<AccountIndexes> {
   return api.query.indices.nextEnumSet<AccountIndex>().pipe(
     // use the nextEnumSet (which is a counter of the number of sets) to construct
     // a range of values to query [0, 1, 2, ...]. Retrieve the full enum set for the
@@ -43,7 +43,7 @@ function queryEnumSet (api: ApiInterfaceRx): Observable<AccountIndexes> {
   );
 }
 
-function queryAccounts (api: ApiInterfaceRx): Observable<AccountIndexes> {
+function queryAccounts(api: ApiInterfaceRx): Observable<AccountIndexes> {
   return api.query.indices.accounts.entries().pipe(
     map((entries): AccountIndexes =>
       entries.reduce((indexes: AccountIndexes, [key, idOpt]): AccountIndexes => {
@@ -72,7 +72,7 @@ function queryAccounts (api: ApiInterfaceRx): Observable<AccountIndexes> {
  * });
  * ```
  */
-export function indexes (api: ApiInterfaceRx): () => Observable<AccountIndexes> {
+export function indexes(api: ApiInterfaceRx): () => Observable<AccountIndexes> {
   return memo((): Observable<AccountIndexes> =>
     indicesCache
       ? of(indicesCache)

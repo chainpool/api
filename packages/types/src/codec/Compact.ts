@@ -5,8 +5,8 @@
 import { AnyNumber, Codec, Constructor, ICompact, InterfaceTypes, Registry } from '../types';
 
 import BN from 'bn.js';
-import { compactAddLength, compactFromU8a, compactStripLength, compactToU8a, isBigInt, isBn, isNumber, isString } from '@polkadot/util';
-import { DEFAULT_BITLENGTH } from '@polkadot/util/compact/defaults';
+import { compactAddLength, compactFromU8a, compactStripLength, compactToU8a, isBigInt, isBn, isNumber, isString } from '@chainx-v2/util';
+import { DEFAULT_BITLENGTH } from '@chainx-v2/util/compact/defaults';
 
 import typeToConstructor from './utils/typeToConstructor';
 import { UIntBitLength } from './AbstractInt';
@@ -27,15 +27,15 @@ export interface CompactEncodable extends Codec {
  * a number and making the compact representation thereof
  */
 export default class Compact<T extends CompactEncodable> extends Base<T> implements ICompact<T> {
-  constructor (registry: Registry, Type: Constructor<T> | keyof InterfaceTypes, value: Compact<T> | AnyNumber = 0) {
+  constructor(registry: Registry, Type: Constructor<T> | keyof InterfaceTypes, value: Compact<T> | AnyNumber = 0) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     super(registry, Compact.decodeCompact<T>(registry, typeToConstructor(registry, Type), value));
   }
 
-  public static with<T extends CompactEncodable> (Type: Constructor<T> | keyof InterfaceTypes): Constructor<Compact<T>> {
+  public static with<T extends CompactEncodable>(Type: Constructor<T> | keyof InterfaceTypes): Constructor<Compact<T>> {
     return class extends Compact<T> {
-      constructor (registry: Registry, value?: Compact<T> | AnyNumber) {
+      constructor(registry: Registry, value?: Compact<T> | AnyNumber) {
         super(registry, Type, value);
       }
     };
@@ -52,14 +52,14 @@ export default class Compact<T extends CompactEncodable> extends Base<T> impleme
 
   public static encodeU8a = compactToU8a;
 
-  public static stripLengthPrefix (u8a: Uint8Array, bitLength: UIntBitLength = DEFAULT_BITLENGTH): Uint8Array {
+  public static stripLengthPrefix(u8a: Uint8Array, bitLength: UIntBitLength = DEFAULT_BITLENGTH): Uint8Array {
     const [, value] = compactStripLength(u8a, bitLength);
 
     return value;
   }
 
   /** @internal */
-  public static decodeCompact<T extends CompactEncodable> (registry: Registry, Type: Constructor<T>, value: Compact<T> | AnyNumber): CompactEncodable {
+  public static decodeCompact<T extends CompactEncodable>(registry: Registry, Type: Constructor<T>, value: Compact<T> | AnyNumber): CompactEncodable {
     if (value instanceof Compact) {
       return new Type(registry, value._raw);
     } else if (isString(value) || isNumber(value) || isBn(value) || isBigInt(value)) {
@@ -74,14 +74,14 @@ export default class Compact<T extends CompactEncodable> extends Base<T> impleme
   /**
    * @description Returns the number of bits in the value
    */
-  public bitLength (): number {
+  public bitLength(): number {
     return this._raw.bitLength();
   }
 
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     return this._raw.eq(
       other instanceof Compact
         ? other._raw
@@ -92,21 +92,21 @@ export default class Compact<T extends CompactEncodable> extends Base<T> impleme
   /**
    * @description Returns the BN representation of the number
    */
-  public toBn (): BN {
+  public toBn(): BN {
     return this._raw.toBn();
   }
 
   /**
    * @description Returns the number representation for the value
    */
-  public toNumber (): number {
+  public toNumber(): number {
     return this._raw.toNumber();
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return `Compact<${this._raw.toRawType()}>`;
   }
 
@@ -115,14 +115,14 @@ export default class Compact<T extends CompactEncodable> extends Base<T> impleme
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     return Compact.encodeU8a(this._raw.toBn());
   }
 
   /**
    * @description Returns the embedded [[UInt]] or [[Moment]] value
    */
-  public unwrap (): T {
+  public unwrap(): T {
     return this._raw;
   }
 }

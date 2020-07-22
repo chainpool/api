@@ -4,7 +4,7 @@
 
 import { Text, TypeRegistry } from '@chainx-v2/types';
 import { StorageEntry } from '@chainx-v2/types/primitive/StorageKey';
-import { assert, stringToU8a, u8aConcat, u8aToHex } from '@polkadot/util';
+import { assert, stringToU8a, u8aConcat, u8aToHex } from '@chainx-v2/util';
 
 import createFunction from './createFunction';
 

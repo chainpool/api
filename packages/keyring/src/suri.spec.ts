@@ -4,7 +4,7 @@
 
 // From https://github.com/paritytech/substrate/wiki/Secret-URI-Test-Vectors
 
-import { u8aToHex } from '@polkadot/util';
+import { u8aToHex } from '@chainx-v2/util';
 import { cryptoWaitReady } from '@chainx-v2/crypto';
 
 import Keyring from '.';

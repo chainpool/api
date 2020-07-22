@@ -9,13 +9,13 @@ import { DeriveCollectiveProposal } from '../types';
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Option } from '@chainx-v2/types';
-import { isFunction } from '@polkadot/util';
+import { isFunction } from '@chainx-v2/util';
 
 import { memo } from '../util';
 
 type Result = [Hash[], Option<Proposal>[], Option<Votes>[]];
 
-function parse ([hashes, proposals, votes]: Result): DeriveCollectiveProposal[] {
+function parse([hashes, proposals, votes]: Result): DeriveCollectiveProposal[] {
   return proposals
     .map((proposalOpt, index): DeriveCollectiveProposal | null =>
       proposalOpt.isSome
@@ -29,7 +29,7 @@ function parse ([hashes, proposals, votes]: Result): DeriveCollectiveProposal[] 
     .filter((proposal): proposal is DeriveCollectiveProposal => !!proposal);
 }
 
-export function proposals (api: ApiInterfaceRx, section: 'council' | 'technicalCommittee'): () => Observable<DeriveCollectiveProposal[]> {
+export function proposals(api: ApiInterfaceRx, section: 'council' | 'technicalCommittee'): () => Observable<DeriveCollectiveProposal[]> {
   return memo((): Observable<DeriveCollectiveProposal[]> =>
     isFunction(api.query[section]?.proposals)
       ? api.query[section].proposals().pipe(

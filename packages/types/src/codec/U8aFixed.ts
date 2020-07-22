@@ -4,7 +4,7 @@
 
 import { AnyU8a, Constructor, Registry } from '../types';
 
-import { isString, u8aToU8a } from '@polkadot/util';
+import { isString, u8aToU8a } from '@chainx-v2/util';
 
 import Raw from './Raw';
 
@@ -15,7 +15,7 @@ import Raw from './Raw';
 export type BitLength = 8 | 16 | 32 | 64 | 128 | 160 | 256 | 264 | 512 | 520 | 1024 | 2048;
 
 /** @internal */
-function decodeU8aFixed (value: AnyU8a, bitLength: BitLength): AnyU8a {
+function decodeU8aFixed(value: AnyU8a, bitLength: BitLength): AnyU8a {
   if (Array.isArray(value) || isString(value)) {
     return decodeU8aFixed(u8aToU8a(value), bitLength);
   }
@@ -43,17 +43,17 @@ function decodeU8aFixed (value: AnyU8a, bitLength: BitLength): AnyU8a {
  * to be used directly, rather is should be subclassed with the specific lengths.
  */
 export default class U8aFixed extends Raw {
-  constructor (registry: Registry, value: AnyU8a = new Uint8Array(), bitLength: BitLength = 256) {
+  constructor(registry: Registry, value: AnyU8a = new Uint8Array(), bitLength: BitLength = 256) {
     super(registry, decodeU8aFixed(value, bitLength));
   }
 
-  public static with (bitLength: BitLength, typeName?: string): Constructor<U8aFixed> {
+  public static with(bitLength: BitLength, typeName?: string): Constructor<U8aFixed> {
     return class extends U8aFixed {
-      constructor (registry: Registry, value?: AnyU8a) {
+      constructor(registry: Registry, value?: AnyU8a) {
         super(registry, value, bitLength);
       }
 
-      public toRawType (): string {
+      public toRawType(): string {
         return typeName || super.toRawType();
       }
     };
@@ -62,7 +62,7 @@ export default class U8aFixed extends Raw {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (): string {
+  public toRawType(): string {
     return `[u8;${this.length}]`;
   }
 }

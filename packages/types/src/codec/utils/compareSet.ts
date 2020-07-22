@@ -2,16 +2,16 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { isObject } from '@polkadot/util';
+import { isObject } from '@chainx-v2/util';
 
-function compareSetArray (a: Set<unknown>, b: any[]): boolean {
+function compareSetArray(a: Set<unknown>, b: any[]): boolean {
   // equal number of entries and each entry in the array should match
   return (a.size === b.length) && !b.some((entry): boolean => !a.has(entry));
 }
 
 // NOTE These are used internally and when comparing objects, expects that
 // when the second is an Set<string, Codec> that the first has to be as well
-export default function compareSet (a: Set<unknown>, b?: unknown): boolean {
+export default function compareSet(a: Set<unknown>, b?: unknown): boolean {
   if (Array.isArray(b)) {
     return compareSetArray(a, b);
   } else if (b instanceof Set) {

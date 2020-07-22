@@ -4,7 +4,7 @@
 
 import MockProvider from '@chainx-v2/rpc-provider/mock';
 import { TypeRegistry } from '@chainx-v2/types';
-import { isFunction } from '@polkadot/util';
+import { isFunction } from '@chainx-v2/util';
 
 import Rpc from '.';
 

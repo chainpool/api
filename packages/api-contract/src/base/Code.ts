@@ -11,7 +11,7 @@ import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SubmittableResult } from '@chainx-v2/api';
-import { compactAddLength, u8aToU8a } from '@polkadot/util';
+import { compactAddLength, u8aToU8a } from '@chainx-v2/util';
 
 import Abi from '../Abi';
 import Blueprint from './Blueprint';
@@ -26,7 +26,7 @@ export interface CodePutCode<ApiType extends ApiTypes> {
 class CodePutCodeResult<ApiType extends ApiTypes> extends SubmittableResult {
   public readonly blueprint?: Blueprint<ApiType>;
 
-  constructor (result: ISubmittableResult, blueprint?: Blueprint<ApiType>) {
+  constructor(result: ISubmittableResult, blueprint?: Blueprint<ApiType>) {
     super(result);
 
     this.blueprint = blueprint;
@@ -37,7 +37,7 @@ class CodePutCodeResult<ApiType extends ApiTypes> extends SubmittableResult {
 export default class Code<ApiType extends ApiTypes> extends BaseWithTx<ApiType> {
   public readonly code: Uint8Array;
 
-  constructor (api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, wasm: string | Uint8Array) {
+  constructor(api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, wasm: string | Uint8Array) {
     super(api, abi, decorateMethod);
 
     this.code = u8aToU8a(wasm);

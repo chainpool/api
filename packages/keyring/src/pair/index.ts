@@ -6,7 +6,7 @@ import { Keypair, KeypairType } from '@chainx-v2/crypto/types';
 import { KeyringPair, KeyringPair$Json, KeyringPair$Meta, SignOptions } from '../types';
 import { PairInfo } from './types';
 
-import { assert, u8aConcat } from '@polkadot/util';
+import { assert, u8aConcat } from '@chainx-v2/util';
 import { keyExtractPath, keyFromPath, naclKeypairFromSeed as naclFromSeed, naclSign, naclVerify, schnorrkelKeypairFromSeed as schnorrkelFromSeed, schnorrkelSign, schnorrkelVerify, secp256k1KeypairFromSeed as secp256k1FromSeed, secp256k1Sign, secp256k1Verify, blake2AsU8a } from '@chainx-v2/crypto';
 
 import decode from './decode';

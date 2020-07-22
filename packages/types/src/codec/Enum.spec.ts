@@ -4,7 +4,7 @@
 
 import { Registry } from '../types';
 
-import { u8aToHex } from '@polkadot/util';
+import { u8aToHex } from '@chainx-v2/util';
 
 import { TypeRegistry } from '../create';
 import Null from '../primitive/Null';
@@ -129,7 +129,7 @@ describe('Enum', (): void => {
       class B extends Null { }
       class C extends Null { }
       class Test extends Enum {
-        constructor (registry: Registry, value?: string, index?: number) {
+        constructor(registry: Registry, value?: string, index?: number) {
           super(registry, {
             a: A,
             b: B,

@@ -5,14 +5,14 @@
 import { Registry } from '@chainx-v2/types/types';
 import { ModuleStorage, Storage } from '../../types';
 
-import { stringCamelCase, stringLowerFirst } from '@polkadot/util';
+import { stringCamelCase, stringLowerFirst } from '@chainx-v2/util';
 
 import Metadata from '../../../Metadata';
 import createFunction from './createFunction';
 import getStorage from './storage';
 
 /** @internal */
-export default function fromMetadata (registry: Registry, metadata: Metadata): Storage {
+export default function fromMetadata(registry: Registry, metadata: Metadata): Storage {
   return metadata.asLatest.modules.reduce((result, moduleMetadata): Storage => {
     if (moduleMetadata.storage.isNone) {
       return result;

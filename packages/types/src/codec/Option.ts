@@ -4,21 +4,21 @@
 
 import { Codec, Constructor, InterfaceTypes, Registry } from '../types';
 
-import { isNull, isU8a, isUndefined, u8aToHex } from '@polkadot/util';
+import { isNull, isU8a, isUndefined, u8aToHex } from '@chainx-v2/util';
 
 import Null from '../primitive/Null';
 import { typeToConstructor } from './utils';
 import Base from './Base';
 
 /** @internal */
-function decodeOptionU8a (registry: Registry, Type: Constructor, value: Uint8Array): Codec {
+function decodeOptionU8a(registry: Registry, Type: Constructor, value: Uint8Array): Codec {
   return !value.length || value[0] === 0
     ? new Null(registry)
     : new Type(registry, value.subarray(1));
 }
 
 /** @internal */
-function decodeOption (registry: Registry, typeName: Constructor | keyof InterfaceTypes, value?: unknown): Codec {
+function decodeOption(registry: Registry, typeName: Constructor | keyof InterfaceTypes, value?: unknown): Codec {
   if (isNull(value) || isUndefined(value) || value instanceof Null) {
     return new Null(registry);
   }
@@ -51,7 +51,7 @@ function decodeOption (registry: Registry, typeName: Constructor | keyof Interfa
 export default class Option<T extends Codec> extends Base<T> {
   readonly #Type: Constructor<T>;
 
-  constructor (registry: Registry, typeName: Constructor<T> | keyof InterfaceTypes, value?: unknown) {
+  constructor(registry: Registry, typeName: Constructor<T> | keyof InterfaceTypes, value?: unknown) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     super(registry, decodeOption(registry, typeName, value));
@@ -59,9 +59,9 @@ export default class Option<T extends Codec> extends Base<T> {
     this.#Type = typeToConstructor(registry, typeName);
   }
 
-  public static with<O extends Codec> (Type: Constructor<O> | keyof InterfaceTypes): Constructor<Option<O>> {
+  public static with<O extends Codec>(Type: Constructor<O> | keyof InterfaceTypes): Constructor<Option<O>> {
     return class extends Option<O> {
-      constructor (registry: Registry, value?: unknown) {
+      constructor(registry: Registry, value?: unknown) {
         super(registry, Type, value);
       }
     };
@@ -70,7 +70,7 @@ export default class Option<T extends Codec> extends Base<T> {
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength (): number {
+  public get encodedLength(): number {
     // boolean byte (has value, doesn't have) along with wrapped length
     return 1 + this._raw.encodedLength;
   }
@@ -78,35 +78,35 @@ export default class Option<T extends Codec> extends Base<T> {
   /**
    * @description Checks if the Option has no value
    */
-  public get isEmpty (): boolean {
+  public get isEmpty(): boolean {
     return this.isNone;
   }
 
   /**
    * @description Checks if the Option has no value
    */
-  public get isNone (): boolean {
+  public get isNone(): boolean {
     return this._raw instanceof Null;
   }
 
   /**
    * @description Checks if the Option has a value
    */
-  public get isSome (): boolean {
+  public get isSome(): boolean {
     return !this.isNone;
   }
 
   /**
    * @description The actual value for the Option
    */
-  public get value (): Codec {
+  public get value(): Codec {
     return this._raw;
   }
 
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq (other?: unknown): boolean {
+  public eq(other?: unknown): boolean {
     if (other instanceof Option) {
       return (this.isSome === other.isSome) && this.value.eq(other.value);
     }
@@ -117,7 +117,7 @@ export default class Option<T extends Codec> extends Base<T> {
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex (): string {
+  public toHex(): string {
     // This attempts to align with the JSON encoding - actually in this case
     // the isSome value is correct, however the `isNone` may be problematic
     return this.isNone
@@ -128,7 +128,7 @@ export default class Option<T extends Codec> extends Base<T> {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType (isBare?: boolean): string {
+  public toRawType(isBare?: boolean): string {
     const wrapped = new this.#Type(this.registry).toRawType();
 
     return isBare
@@ -140,7 +140,7 @@ export default class Option<T extends Codec> extends Base<T> {
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a (isBare?: boolean): Uint8Array {
+  public toU8a(isBare?: boolean): Uint8Array {
     if (isBare) {
       return this._raw.toU8a(true);
     }
@@ -158,7 +158,7 @@ export default class Option<T extends Codec> extends Base<T> {
   /**
    * @description Returns the value that the Option represents (if available), throws if null
    */
-  public unwrap (): T {
+  public unwrap(): T {
     if (this.isNone) {
       throw new Error('Option: unwrapping a None value');
     }
@@ -170,7 +170,7 @@ export default class Option<T extends Codec> extends Base<T> {
    * @description Returns the value that the Option represents (if available) or defaultValue if none
    * @param defaultValue The value to return if the option isNone
    */
-  public unwrapOr<O> (defaultValue: O): T | O {
+  public unwrapOr<O>(defaultValue: O): T | O {
     return this.isSome
       ? this.unwrap()
       : defaultValue;
@@ -180,7 +180,7 @@ export default class Option<T extends Codec> extends Base<T> {
    * @description Returns the value that the Option represents (if available) or defaultValue if none
    * @param defaultValue The value to return if the option isNone
    */
-  public unwrapOrDefault (): T {
+  public unwrapOrDefault(): T {
     return this.isSome
       ? this.unwrap()
       : new this.#Type(this.registry);

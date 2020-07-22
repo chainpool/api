@@ -14,7 +14,7 @@ import { TypeRegistry } from '@chainx-v2/types/create';
 import { Vec } from '@chainx-v2/types/codec';
 import * as definitions from '@chainx-v2/types/interfaces/definitions';
 import { Text } from '@chainx-v2/types/primitive';
-import { stringCamelCase, stringLowerFirst } from '@polkadot/util';
+import { stringCamelCase, stringLowerFirst } from '@chainx-v2/util';
 
 interface Page {
   title: string;
@@ -39,7 +39,7 @@ const DESC_RPC = 'The following sections contain RPC methods that are Remote Cal
 const DESC_STORAGE = `The following sections contain Storage methods are part of the default Substrate runtime. On the api, these are exposed via \`api.query.<module>.<method>\`. ${STATIC_TEXT}`;
 
 /** @internal */
-function documentationVecToMarkdown (docLines: Vec<Text>, indent = 0): string {
+function documentationVecToMarkdown(docLines: Vec<Text>, indent = 0): string {
   const md = docLines
     .map((docLine) => docLine && docLine.substring(1)) // trim the leading space
     .reduce((md, docLine): string => // generate paragraphs
@@ -51,13 +51,13 @@ function documentationVecToMarkdown (docLines: Vec<Text>, indent = 0): string {
             .replace(/^# <weight>$/g, '\\# \\<weight>\n\n')
             .replace(/^# <\/weight>$/g, '\n\n\\# \\</weight>')
             .replace(/^#{1,3} /, '#### ')} `
-    , '');
+      , '');
 
   // prefix each line with indentation
   return md && md.split('\n\n').map((line) => `${' '.repeat(indent)}${line}`).join('\n\n');
 }
 
-function renderPage (page: Page): string {
+function renderPage(page: Page): string {
   let md = `## ${page.title}\n\n`;
 
   if (page.description) {
@@ -86,7 +86,7 @@ function renderPage (page: Page): string {
           item[bullet] instanceof Vec
             ? documentationVecToMarkdown(item[bullet] as Vec<Text>, 2).toString()
             : item[bullet]
-        }`;
+          }`;
       });
 
       md += '\n';
@@ -96,14 +96,14 @@ function renderPage (page: Page): string {
   return md;
 }
 
-function sortByName<T extends { name: Codec | string }> (a: T, b: T): number {
+function sortByName<T extends { name: Codec | string }>(a: T, b: T): number {
   // case insensitive (all-uppercase) sorting
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
   return a.name.toString().toUpperCase().localeCompare(b.name.toString().toUpperCase());
 }
 
 /** @internal */
-function addRpc (): string {
+function addRpc(): string {
   const sections = Object
     .keys(definitions)
     .filter((key) => Object.keys(definitions[key as 'babe'].rpc || {}).length !== 0);
@@ -142,7 +142,7 @@ function addRpc (): string {
 }
 
 /** @internal */
-function addConstants (metadata: MetadataLatest): string {
+function addConstants(metadata: MetadataLatest): string {
   return renderPage({
     description: DESC_CONSTANTS,
     sections: metadata.modules
@@ -171,7 +171,7 @@ function addConstants (metadata: MetadataLatest): string {
 }
 
 /** @internal */
-function addStorage (metadata: MetadataLatest): string {
+function addStorage(metadata: MetadataLatest): string {
   const moduleSections = metadata.modules
     .sort(sortByName)
     .filter((moduleMetadata) => !moduleMetadata.storage.isNone)
@@ -211,7 +211,7 @@ function addStorage (metadata: MetadataLatest): string {
 }
 
 /** @internal */
-function addExtrinsics (metadata: MetadataLatest): string {
+function addExtrinsics(metadata: MetadataLatest): string {
   return renderPage({
     description: DESC_EXTRINSICS,
     sections: metadata.modules
@@ -241,7 +241,7 @@ function addExtrinsics (metadata: MetadataLatest): string {
 }
 
 /** @internal */
-function addEvents (metadata: MetadataLatest): string {
+function addEvents(metadata: MetadataLatest): string {
   return renderPage({
     description: DESC_EVENTS,
     sections: metadata.modules
@@ -266,7 +266,7 @@ function addEvents (metadata: MetadataLatest): string {
 }
 
 /** @internal */
-function addErrors (metadata: MetadataLatest): string {
+function addErrors(metadata: MetadataLatest): string {
   return renderPage({
     description: DESC_ERRORS,
     sections: metadata.modules
@@ -286,7 +286,7 @@ function addErrors (metadata: MetadataLatest): string {
 }
 
 /** @internal */
-function writeFile (name: string, ...chunks: any[]): void {
+function writeFile(name: string, ...chunks: any[]): void {
   const writeStream = fs.createWriteStream(name, { encoding: 'utf8', flags: 'w' });
 
   writeStream.on('finish', (): void => {
@@ -300,7 +300,7 @@ function writeFile (name: string, ...chunks: any[]): void {
   writeStream.end();
 }
 
-export default function main (): void {
+export default function main(): void {
   const registry = new TypeRegistry();
   const metadata = new Decorated(registry, rpcdata).metadata.asLatest;
 

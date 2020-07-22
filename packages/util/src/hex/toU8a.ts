@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -15,13 +15,13 @@ import hexStripPrefix from './stripPrefix';
  * <BR>
  *
  * ```javascript
- * import { hexToU8a } from '@polkadot/util';
+ * import { hexToU8a } from '@chainx-v2/util';
  *
  * hexToU8a('0x80001f'); // Uint8Array([0x80, 0x00, 0x1f])
  * hexToU8a('0x80001f', 32); // Uint8Array([0x00, 0x80, 0x00, 0x1f])
  * ```
  */
-export default function hexToU8a (_value?: string | null, bitLength = -1): Uint8Array {
+export default function hexToU8a(_value?: string | null, bitLength = -1): Uint8Array {
   if (!_value) {
     return new Uint8Array();
   }

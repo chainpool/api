@@ -5,7 +5,7 @@
 import { Observable } from 'rxjs';
 
 import { catchError, distinctUntilChanged, publishReplay, tap, refCount } from 'rxjs/operators';
-import { logger } from '@polkadot/util';
+import { logger } from '@chainx-v2/util';
 
 import { refCountDelay } from './refCountDelay';
 

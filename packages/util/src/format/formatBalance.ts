@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -41,7 +41,7 @@ let defaultDecimals = DEFAULT_DECIMALS;
 let defaultUnit = DEFAULT_UNIT;
 
 // Formats a string/number with <prefix>.<postfix><type> notation
-function _formatBalance<ExtToBn extends ToBn> (input?: number | string | BN | BigInt | ExtToBn, options: Options | boolean = true, optDecimals: number = defaultDecimals): string {
+function _formatBalance<ExtToBn extends ToBn>(input?: number | string | BN | BigInt | ExtToBn, options: Options | boolean = true, optDecimals: number = defaultDecimals): string {
   let text = bnToBn(input).toString();
 
   if (text.length === 0 || text === '0') {

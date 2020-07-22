@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -14,11 +14,11 @@ type FnType = Function;
  * <BR>
  *
  * ```javascript
- * import { isFunction } from '@polkadot/util';
+ * import { isFunction } from '@chainx-v2/util';
  *
  * isFunction(() => false); // => true
  * ```
  */
-export default function isFunction (value: unknown): value is FnType {
+export default function isFunction(value: unknown): value is FnType {
   return typeof value === 'function';
 }

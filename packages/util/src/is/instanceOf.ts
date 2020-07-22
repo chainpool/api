@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -11,12 +11,12 @@
  * <BR>
  *
  * ```javascript
- * import { isInstanceOf } from '@polkadot/util';
+ * import { isInstanceOf } from '@chainx-v2/util';
  *
  * console.log('isInstanceOf', isInstanceOf(new Array(0), Array)); // => true
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export default function isInstanceOf (value: unknown, clazz: Function): boolean {
+export default function isInstanceOf(value: unknown, clazz: Function): boolean {
   return value instanceof clazz;
 }

@@ -1,10 +1,10 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 let encoder: { encode: (value: string) => Uint8Array };
 
-function polyfilledEncode (value: string): Uint8Array {
+function polyfilledEncode(value: string): Uint8Array {
   const u8a = new Uint8Array(value.length);
 
   for (let i = 0; i < value.length; i++) {
@@ -31,12 +31,12 @@ try {
  * <BR>
  *
  * ```javascript
- * import { stringToU8a } from '@polkadot/util';
+ * import { stringToU8a } from '@chainx-v2/util';
  *
  * stringToU8a('hello'); // [0x68, 0x65, 0x6c, 0x6c, 0x6f]
  * ```
  */
-export default function stringToU8a (value?: string): Uint8Array {
+export default function stringToU8a(value?: string): Uint8Array {
   return value
     ? encoder.encode(value)
     : new Uint8Array();

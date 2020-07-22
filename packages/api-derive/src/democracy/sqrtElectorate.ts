@@ -7,11 +7,11 @@ import { ApiInterfaceRx } from '@chainx-v2/api/types';
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { bnSqrt } from '@polkadot/util';
+import { bnSqrt } from '@chainx-v2/util';
 
 import { memo } from '../util';
 
-export function sqrtElectorate (api: ApiInterfaceRx): () => Observable<BN> {
+export function sqrtElectorate(api: ApiInterfaceRx): () => Observable<BN> {
   return memo((): Observable<BN> =>
     api.query.balances.totalIssuance().pipe(
       map((totalIssuance) =>

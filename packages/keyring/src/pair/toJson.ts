@@ -5,7 +5,7 @@
 import { KeypairType } from '@chainx-v2/crypto/types';
 import { KeyringPair$Json, KeyringPair$Meta } from '../types';
 
-import { u8aToHex } from '@polkadot/util';
+import { u8aToHex } from '@chainx-v2/util';
 
 interface PairStateJson {
   address: string;

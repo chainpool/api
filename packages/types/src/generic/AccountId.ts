@@ -4,7 +4,7 @@
 
 import { AnyString, AnyU8a, Registry } from '../types';
 
-import { hexToU8a, isHex, isString, isU8a, u8aToU8a } from '@polkadot/util';
+import { hexToU8a, isHex, isString, isU8a, u8aToU8a } from '@chainx-v2/util';
 import { decodeAddress, encodeAddress } from '@chainx-v2/crypto';
 
 import U8aFixed from '../codec/U8aFixed';

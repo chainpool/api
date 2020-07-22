@@ -1403,7 +1403,7 @@ __metadata:
     "@chainx-v2/api": ^0.0.3-beta.16
     "@chainx-v2/rpc-core": ^0.0.3-beta.16
     "@chainx-v2/types": ^0.0.3-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     bn.js: ^5.1.2
     rxjs: ^6.5.5
   languageName: unknown
@@ -1438,7 +1438,7 @@ __metadata:
     "@chainx-v2/rpc-core": ^0.0.3-beta.16
     "@chainx-v2/rpc-provider": ^0.0.3-beta.16
     "@chainx-v2/types": ^0.0.3-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     bn.js: ^5.1.2
     memoizee: ^0.4.14
     rxjs: ^6.5.5
@@ -1458,7 +1458,7 @@ __metadata:
     "@chainx-v2/rpc-provider": 0.0.1-beta.16
     "@chainx-v2/types": 0.0.1-beta.16
     "@chainx-v2/types-known": 0.0.1-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     bn.js: ^5.1.2
     eventemitter3: ^4.0.4
     rxjs: ^6.5.5
@@ -1515,7 +1515,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.10.5
     "@chainx-v2/crypto": ^0.0.3-beta.16
-    "@polkadot/util": 2.19.0-beta.2
+    "@chainx-v2/util": 0.0.3-beta.16
   languageName: unknown
   linkType: soft
 
@@ -1528,7 +1528,7 @@ __metadata:
     "@chainx-v2/keyring": 0.0.3-beta.17
     "@chainx-v2/types": ^0.0.3-beta.16
     "@chainx-v2/types-known": ^0.0.3-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     bn.js: ^5.1.2
   languageName: unknown
   linkType: soft
@@ -1556,7 +1556,7 @@ __metadata:
     "@chainx-v2/metadata": ^0.0.3-beta.16
     "@chainx-v2/rpc-provider": ^0.0.3-beta.16
     "@chainx-v2/types": ^0.0.3-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     memoizee: ^0.4.14
     rxjs: ^6.5.5
   languageName: unknown
@@ -1586,7 +1586,7 @@ __metadata:
     "@chainx-v2/keyring": 0.0.3-beta.17
     "@chainx-v2/metadata": ^0.0.3-beta.16
     "@chainx-v2/types": ^0.0.3-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     bn.js: ^5.1.2
     eventemitter3: ^4.0.4
     isomorphic-fetch: ^2.2.1
@@ -1624,7 +1624,7 @@ __metadata:
     "@chainx-v2/metadata": ^0.0.3-beta.16
     "@chainx-v2/rpc-provider": ^0.0.3-beta.16
     "@chainx-v2/types": ^0.0.3-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     "@types/websocket": ^1.0.0
     "@types/yargs": ^15.0.5
     handlebars: ^4.7.6
@@ -1671,7 +1671,7 @@ __metadata:
     "@chainx-v2/crypto": ^0.0.3-beta.16
     "@chainx-v2/keyring": 0.0.3-beta.17
     "@chainx-v2/metadata": ^0.0.3-beta.16
-    "@polkadot/util": ^2.15.1
+    "@chainx-v2/util": ^0.0.3-beta.16
     "@types/bn.js": ^4.11.6
     "@types/memoizee": ^0.4.4
     bn.js: ^5.1.2
@@ -1708,6 +1708,20 @@ __metadata:
     ip-regex: ^4.1.0
   languageName: unknown
   linkType: soft
+
+"@chainx-v2/util@npm:0.0.3-beta.16":
+  version: 0.0.3-beta.16
+  resolution: "@chainx-v2/util@npm:0.0.3-beta.16"
+  dependencies:
+    "@babel/runtime": ^7.10.5
+    "@types/bn.js": ^4.11.6
+    bn.js: ^5.1.2
+    camelcase: ^5.3.1
+    chalk: ^4.1.0
+    ip-regex: ^4.1.0
+  checksum: 3/12fd90c4ef25eea8de40e10ef8c7aae80c43e1dfc84c07a5786b7282008baf91578dda4e8237962014e4726216d2974f7c65b5426d2c39b9d4192f2856fb60bd
+  languageName: node
+  linkType: hard
 
 "@cnakazawa/watch@npm:^1.0.3":
   version: 1.0.4
@@ -3118,20 +3132,6 @@ __metadata:
     chalk: ^4.1.0
     ip-regex: ^4.1.0
   checksum: 3/df6cb63e7d5cff1f0075e7807b76c6ea26c1a52f887dc20558d8717cde81713fa391cfd17dd82792f4c6271be30f143d3a11c816b7c00eaeea1d411fe5208e71
-  languageName: node
-  linkType: hard
-
-"@polkadot/util@npm:2.19.0-beta.2":
-  version: 2.19.0-beta.2
-  resolution: "@polkadot/util@npm:2.19.0-beta.2"
-  dependencies:
-    "@babel/runtime": ^7.10.5
-    "@types/bn.js": ^4.11.6
-    bn.js: ^5.1.2
-    camelcase: ^5.3.1
-    chalk: ^4.1.0
-    ip-regex: ^4.1.0
-  checksum: 3/3409f101b0c407f79487630d13733247c1ad7bb950a5ce661286137652c67c821c3ef32a79bbd3a6c37d2ad2b6ff1e9facf21a20b6f9918eac4cd058e886cd65
   languageName: node
   linkType: hard
 

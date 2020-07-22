@@ -7,7 +7,7 @@ import { Address, Balance, Call, Index } from '../../interfaces/runtime';
 import { ExtrinsicPayloadValue, IExtrinsicSignature, IKeyringPair, Registry, SignatureOptions } from '../../types';
 import { ExtrinsicSignatureOptions } from '../types';
 
-import { u8aConcat } from '@polkadot/util';
+import { u8aConcat } from '@chainx-v2/util';
 import { blake2AsU8a } from '@chainx-v2/crypto';
 
 import Compact from '../../codec/Compact';

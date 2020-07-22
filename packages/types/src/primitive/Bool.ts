@@ -5,7 +5,7 @@
 import { H256 } from '../interfaces/runtime';
 import { Codec, Registry } from '../types';
 
-import { isU8a, u8aToHex } from '@polkadot/util';
+import { isU8a, u8aToHex } from '@chainx-v2/util';
 import { blake2AsU8a } from '@chainx-v2/crypto';
 
 /** @internal */

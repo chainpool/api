@@ -8,7 +8,7 @@ import staticData from '@chainx-v2/metadata/Metadata/static';
 import Metadata from '@chainx-v2/metadata/Metadata';
 import { TypeRegistry } from '@chainx-v2/types/create';
 import * as defaultDefs from '@chainx-v2/types/interfaces/definitions';
-import { stringCamelCase } from '@polkadot/util';
+import { stringCamelCase } from '@chainx-v2/util';
 
 import { createImports, compareName, readTemplate, registerDefinitions, setImports, writeFile } from '../util';
 
@@ -16,7 +16,7 @@ const template = readTemplate('consts');
 const generateForMetaTemplate = Handlebars.compile(template);
 
 /** @internal */
-function generateForMeta (meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
+function generateForMeta(meta: Metadata, dest: string, extraTypes: Record<string, Record<string, { types: Record<string, any> }>>, isStrict: boolean): void {
   writeFile(dest, (): string => {
     const allTypes: Record<string, Record<string, { types: Record<string, unknown> }>> = { '@chainx-v2/types/interfaces': defaultDefs, ...extraTypes };
     const imports = createImports(allTypes);
@@ -69,7 +69,7 @@ function generateForMeta (meta: Metadata, dest: string, extraTypes: Record<strin
 
 // Call `generateForMeta()` with current static metadata
 /** @internal */
-export default function generateConsts (dest = 'packages/api/src/augment/consts.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
+export default function generateConsts(dest = 'packages/api/src/augment/consts.ts', data = staticData, extraTypes: Record<string, Record<string, { types: Record<string, any> }>> = {}, isStrict = false): void {
   const registry = new TypeRegistry();
 
   registerDefinitions(registry, extraTypes);

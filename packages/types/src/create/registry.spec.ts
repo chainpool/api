@@ -6,7 +6,7 @@
 
 import { Codec, Constructor } from '../types';
 
-import { isChildClass } from '@polkadot/util';
+import { isChildClass } from '@chainx-v2/util';
 
 import Struct from '../codec/Struct';
 import DoNotConstruct from '../primitive/DoNotConstruct';

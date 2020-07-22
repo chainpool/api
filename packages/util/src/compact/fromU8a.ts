@@ -1,4 +1,4 @@
-// Copyright 2017-2020 @polkadot/util authors & contributors
+// Copyright 2017-2020 @chainx-v2/util authors & contributors
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
@@ -16,7 +16,7 @@ import { DEFAULT_BITLENGTH } from './defaults';
  * <BR>
  *
  * ```javascript
- * import { compactFromU8a } from '@polkadot/util';
+ * import { compactFromU8a } from '@chainx-v2/util';
  *
  * const [offset, length] = compactFromU8a(new Uint8Array([254, 255, 3, 0]), 32));
  *
@@ -24,7 +24,7 @@ import { DEFAULT_BITLENGTH } from './defaults';
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function compactFromU8a (_input: Uint8Array | string, bitLength: BitLength = DEFAULT_BITLENGTH): [number, BN] {
+export default function compactFromU8a(_input: Uint8Array | string, bitLength: BitLength = DEFAULT_BITLENGTH): [number, BN] {
   const input = u8aToU8a(_input);
   const flag = input[0] & 0b11;
 

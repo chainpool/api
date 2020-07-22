@@ -10,7 +10,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { Metadata, Text } from '@chainx-v2/types';
 import { LATEST_EXTRINSIC_VERSION } from '@chainx-v2/types/extrinsic/Extrinsic';
 import { getMetadataTypes, getSpecTypes } from '@chainx-v2/types-known';
-import { logger } from '@polkadot/util';
+import { logger } from '@chainx-v2/util';
 import { cryptoWaitReady } from '@chainx-v2/crypto';
 
 import chainxTypes from './chainx/chainx-types';

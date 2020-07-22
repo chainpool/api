@@ -10,7 +10,7 @@ import rpcDataV6 from '@chainx-v2/metadata/Metadata/v6/static';
 import rpcDataV7 from '@chainx-v2/metadata/Metadata/v7/static';
 import rpcDataV8 from '@chainx-v2/metadata/Metadata/v8/static';
 import rpcDataV11 from '@chainx-v2/metadata/Metadata/v11/static';
-import { hexToU8a } from '@polkadot/util';
+import { hexToU8a } from '@chainx-v2/util';
 
 import { TypeRegistry } from '../create';
 import StorageKey from './StorageKey';
