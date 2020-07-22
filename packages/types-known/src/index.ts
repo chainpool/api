@@ -5,7 +5,7 @@
 import type BN from 'bn.js';
 import { Registry, RegistryTypes, OverrideModuleType, OverrideVersionedType } from '@chainx-v2/types/types';
 import { Text } from '@chainx-v2/types';
-import { bnToBn, isUndefined } from '@polkadot/util';
+import { bnToBn, isUndefined } from '@chainx-v2/util';
 
 import typesChain from './chain';
 import typesMeta from './metadata';

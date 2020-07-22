@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "yarn build:interfaces && node ./scripts/dev-build-ts.js && (cd packages/typegen && copyfiles scripts/* build)",
-    "build:interfaces": "polkadot-types-internal-interfaces",
+    "build:interfaces": "node ./scripts/chains-dev-build-interfaces.js",
     "build:release": " node ./scripts/chainx-build-release.js",
     "docs": "polkadot-types-internal-metadata && polkadot-dev-build-docs",
     "docs:release": "polkadot-ci-ghact-docs",

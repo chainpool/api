@@ -18,16 +18,16 @@ try {
           '^@chainx-v2/types-known(.*)': './packages/types-known/src\\1',
           // eslint-disable-next-line sort-keys
           '^@chainx-v2/types(.*)': './packages/types/src\\1',
-          '^@chainx-v2/util(.*)': './packages/util/src\\1'
-          '^@chainx-v2/util-crypto(.*)': './packages/util-crypto/src\\1',
-          '^@chainx-v2/keyring(.*)': './packages/util-crypto/src\\1',
-
+          '^@chainx-v2/util(.*)': './packages/util/src\\1',
+          '^@chainx-v2/util-(crypto)(.*)$': './packages/util-crypto/src\\1',
+          // eslint-disable-next-line sort-keys
+          '^@chainx-v2/keyring(.*)': './packages/keyring/src\\1'
         }
       }]
     ]
   });
 
-  main = require('../src/interfacesTs.ts').default;
+  main = require('../packages/typegen/src/interfacesTs.ts').default;
 }
 
 main();
