@@ -3,11 +3,11 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 /** @internal */
-function zeroPad(value: number): string {
+function zeroPad (value: number): string {
   return value.toString().padStart(2, '0');
 }
 
-export default function formatDate(date: Date): string {
+export default function formatDate (date: Date): string {
   const year = date.getFullYear().toString();
   const month = zeroPad((date.getMonth() + 1));
   const day = zeroPad(date.getDate());

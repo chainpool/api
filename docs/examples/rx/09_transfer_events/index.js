@@ -15,7 +15,7 @@ const { randomAsU8a } = require('@chainx-v2/crypto');
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 const AMOUNT = 10000;
 
-async function main() {
+async function main () {
   // Create our API with a connection to the node
   const api = await ApiRx.create().toPromise();
 

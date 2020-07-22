@@ -4,7 +4,7 @@
 
 let encoder: { encode: (value: string) => Uint8Array };
 
-function polyfilledEncode(value: string): Uint8Array {
+function polyfilledEncode (value: string): Uint8Array {
   const u8a = new Uint8Array(value.length);
 
   for (let i = 0; i < value.length; i++) {
@@ -36,7 +36,7 @@ try {
  * stringToU8a('hello'); // [0x68, 0x65, 0x6c, 0x6c, 0x6f]
  * ```
  */
-export default function stringToU8a(value?: string): Uint8Array {
+export default function stringToU8a (value?: string): Uint8Array {
   return value
     ? encoder.encode(value)
     : new Uint8Array();

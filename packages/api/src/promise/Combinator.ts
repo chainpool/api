@@ -28,7 +28,7 @@ export default class Combinator<T extends any[] = any[]> {
 
   #subscriptions: UnsubscribePromise[] = [];
 
-  constructor(fns: (CombinatorFunction | [CombinatorFunction, ...any[]])[], callback: CombinatorCallback<T>) {
+  constructor (fns: (CombinatorFunction | [CombinatorFunction, ...any[]])[], callback: CombinatorCallback<T>) {
     this.#callback = callback;
 
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -46,7 +46,7 @@ export default class Combinator<T extends any[] = any[]> {
     });
   }
 
-  protected _allHasFired(): boolean {
+  protected _allHasFired (): boolean {
     if (!this.#allHasFired) {
       this.#allHasFired = this.#fired.filter((hasFired): boolean => !hasFired).length === 0;
     }
@@ -54,7 +54,7 @@ export default class Combinator<T extends any[] = any[]> {
     return this.#allHasFired;
   }
 
-  protected _createCallback(index: number): (value: any) => void {
+  protected _createCallback (index: number): (value: any) => void {
     return (value: unknown): void => {
       this.#fired[index] = true;
       this.#results[index] = value;
@@ -63,7 +63,7 @@ export default class Combinator<T extends any[] = any[]> {
     };
   }
 
-  protected _triggerUpdate(): void {
+  protected _triggerUpdate (): void {
     if (!this.#isActive || !isFunction(this.#callback) || !this._allHasFired()) {
       return;
     }
@@ -76,7 +76,7 @@ export default class Combinator<T extends any[] = any[]> {
     }
   }
 
-  public unsubscribe(): void {
+  public unsubscribe (): void {
     if (!this.#isActive) {
       return;
     }

@@ -19,7 +19,7 @@ import hexToU8a from './toU8a';
  * hexToU8a('0x68656c6c6f'); // hello
  * ```
  */
-export default function hexToString(_value?: string | null): string {
+export default function hexToString (_value?: string | null): string {
   return u8aToString(
     hexToU8a(_value)
   );

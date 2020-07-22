@@ -4,7 +4,7 @@
 
 import isUndefined from '../is/undefined';
 
-export default function u8aSorted(u8as: Uint8Array[]): Uint8Array[] {
+export default function u8aSorted (u8as: Uint8Array[]): Uint8Array[] {
   return u8as.sort((a, b): number => {
     let i = 0;
 

@@ -21,13 +21,13 @@ type Proposals = Vec<ITuple<[PropIndex, Hash, AccountId]>>;
 type Result = [Proposals, (DeriveProposalImage | undefined)[], Depositors[]];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function isNewDepositors(depositors: ITuple<[Vec<AccountId>, Balance]> | ITuple<[Balance, Vec<AccountId>]>): depositors is ITuple<[Vec<AccountId>, Balance]> {
+function isNewDepositors (depositors: ITuple<[Vec<AccountId>, Balance]> | ITuple<[Balance, Vec<AccountId>]>): depositors is ITuple<[Vec<AccountId>, Balance]> {
   // Detect balance...
   // eslint-disable-next-line @typescript-eslint/unbound-method
   return isFunction((depositors[1] as Balance).mul);
 }
 
-function parse([proposals, images, optDepositors]: Result): DeriveProposal[] {
+function parse ([proposals, images, optDepositors]: Result): DeriveProposal[] {
   return proposals
     .filter(([, , proposer], index): boolean =>
       !!(optDepositors[index]?.isSome) && !proposer.isEmpty
@@ -49,7 +49,7 @@ function parse([proposals, images, optDepositors]: Result): DeriveProposal[] {
     });
 }
 
-export function proposals(api: ApiInterfaceRx): () => Observable<DeriveProposal[]> {
+export function proposals (api: ApiInterfaceRx): () => Observable<DeriveProposal[]> {
   return memo((): Observable<DeriveProposal[]> =>
     api.query.democracy?.publicProps && api.query.democracy?.preimages
       ? api.query.democracy.publicProps<Proposals>().pipe(

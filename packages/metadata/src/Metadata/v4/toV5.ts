@@ -18,7 +18,7 @@ const hasherMap: Map<string, string> = new Map([
 ]);
 
 /** @internal */
-function toStorageHasher(registry: Registry, text: Text): StorageHasherV5 {
+function toStorageHasher (registry: Registry, text: Text): StorageHasherV5 {
   const mapped = hasherMap.get(text.toString());
 
   assert(mapped, `Invalid Storage hasher: ${text.toString()}`);
@@ -27,7 +27,7 @@ function toStorageHasher(registry: Registry, text: Text): StorageHasherV5 {
 }
 
 /** @internal */
-function toV5StorageFunction(registry: Registry, storageFn: StorageFunctionMetadataV4): StorageFunctionMetadataV5 {
+function toV5StorageFunction (registry: Registry, storageFn: StorageFunctionMetadataV4): StorageFunctionMetadataV5 {
   const { documentation, fallback, modifier, name, type } = storageFn;
   const [newType, index] = type.isPlain
     ? [type.asPlain, 0]
@@ -51,7 +51,7 @@ function toV5StorageFunction(registry: Registry, storageFn: StorageFunctionMetad
 }
 
 /** @internal */
-export default function toV5(registry: Registry, { modules }: MetadataV4): MetadataV5 {
+export default function toV5 (registry: Registry, { modules }: MetadataV4): MetadataV5 {
   return registry.createType('MetadataV5', {
     modules: modules.map(({ calls, events, name, prefix, storage }): ModuleMetadataV5 =>
       registry.createType('ModuleMetadataV5', {

@@ -6,7 +6,7 @@ import { JsonRpcRequest, JsonRpcResponse, JsonRpcResponseBaseError } from '../ty
 
 import { assert, isUndefined, isNumber, isString } from '@chainx-v2/util';
 
-function formatErrorData(data?: string | number): string {
+function formatErrorData (data?: string | number): string {
   if (isUndefined(data)) {
     return '';
   }
@@ -24,7 +24,7 @@ function formatErrorData(data?: string | number): string {
 export default class RpcCoder {
   #id = 0;
 
-  public decodeResponse(response: JsonRpcResponse): unknown {
+  public decodeResponse (response: JsonRpcResponse): unknown {
     assert(response, 'Empty response object received');
     assert(response.jsonrpc === '2.0', 'Invalid jsonrpc field in decoded object');
 
@@ -45,13 +45,13 @@ export default class RpcCoder {
     return response.result;
   }
 
-  public encodeJson(method: string, params: any | any[]): string {
+  public encodeJson (method: string, params: any | any[]): string {
     return JSON.stringify(
       this.encodeObject(method, params)
     );
   }
 
-  public encodeObject(method: string, params: unknown[]): JsonRpcRequest {
+  public encodeObject (method: string, params: unknown[]): JsonRpcRequest {
     return {
       id: ++this.#id,
       jsonrpc: '2.0',
@@ -60,11 +60,11 @@ export default class RpcCoder {
     };
   }
 
-  public getId(): number {
+  public getId (): number {
     return this.#id;
   }
 
-  private _checkError(error?: JsonRpcResponseBaseError): void {
+  private _checkError (error?: JsonRpcResponseBaseError): void {
     if (error) {
       const { code, data, message } = error;
 

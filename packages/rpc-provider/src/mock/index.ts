@@ -84,29 +84,29 @@ export default class Mock implements ProviderInterface {
 
   private subscriptionMap: Record<number, string> = {};
 
-  constructor(registry: Registry) {
+  constructor (registry: Registry) {
     this.registry = registry;
 
     this.init();
   }
 
-  public get hasSubscriptions(): boolean {
+  public get hasSubscriptions (): boolean {
     return true;
   }
 
-  public clone(): Mock {
+  public clone (): Mock {
     throw new Error('Unimplemented');
   }
 
-  public disconnect(): void {
+  public disconnect (): void {
     // noop
   }
 
-  public isConnected(): boolean {
+  public isConnected (): boolean {
     return true;
   }
 
-  public on(type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
+  public on (type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void {
     this.emitter.on(type, sub);
 
     return (): void => {
@@ -115,7 +115,7 @@ export default class Mock implements ProviderInterface {
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async send(method: string, params: any[]): Promise<unknown> {
+  public async send (method: string, params: any[]): Promise<unknown> {
     if (!this.requests[method]) {
       throw new Error(`provider.send: Invalid method '${method}'`);
     }
@@ -124,7 +124,7 @@ export default class Mock implements ProviderInterface {
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async subscribe(type: string, method: string, ...params: unknown[]): Promise<number> {
+  public async subscribe (type: string, method: string, ...params: unknown[]): Promise<number> {
     l.debug((): any => ['subscribe', method, params]);
 
     if (this.subscriptions[method]) {
@@ -145,7 +145,7 @@ export default class Mock implements ProviderInterface {
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async unsubscribe(type: string, method: string, id: number): Promise<boolean> {
+  public async unsubscribe (type: string, method: string, id: number): Promise<boolean> {
     const sub = this.subscriptionMap[id];
 
     l.debug((): any => ['unsubscribe', id, sub]);
@@ -160,7 +160,7 @@ export default class Mock implements ProviderInterface {
     return true;
   }
 
-  private init(): void {
+  private init (): void {
     const emitEvents: ProviderInterfaceEmitted[] = ['connected', 'disconnected'];
     let emitIndex = 0;
     let newHead = this.makeBlockHeader();
@@ -197,7 +197,7 @@ export default class Mock implements ProviderInterface {
     }, INTERVAL);
   }
 
-  private makeBlockHeader(): Header {
+  private makeBlockHeader (): Header {
     const blockNumber = this.prevNumber.addn(1);
     const header = this.registry.createType('Header', {
       digest: {
@@ -216,11 +216,11 @@ export default class Mock implements ProviderInterface {
     return header;
   }
 
-  private setStateBn(key: Uint8Array, value: BN | number): void {
+  private setStateBn (key: Uint8Array, value: BN | number): void {
     this.db[u8aToHex(key)] = bnToU8a(value, 64, true);
   }
 
-  private updateSubs(method: string, value: Codec): void {
+  private updateSubs (method: string, value: Codec): void {
     this.subscriptions[method].lastValue = value;
 
     Object

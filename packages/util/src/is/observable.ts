@@ -24,6 +24,6 @@ interface Observable {
  * console.log('isObservable', isObservable(...));
  * ```
  */
-export default function isObservable(value: unknown): value is Observable {
+export default function isObservable (value: unknown): value is Observable {
   return isObject(value) && isFunction((value as Observable).next);
 }

@@ -26,7 +26,7 @@ export interface BlueprintCreate<ApiType extends ApiTypes> {
 class BlueprintCreateResult<ApiType extends ApiTypes> extends SubmittableResult {
   public readonly contract?: Contract<ApiType>;
 
-  constructor(result: ISubmittableResult, contract?: Contract<ApiType>) {
+  constructor (result: ISubmittableResult, contract?: Contract<ApiType>) {
     super(result);
 
     this.contract = contract;
@@ -37,13 +37,13 @@ class BlueprintCreateResult<ApiType extends ApiTypes> extends SubmittableResult 
 export default class Blueprint<ApiType extends ApiTypes> extends BaseWithTx<ApiType> {
   public readonly codeHash: Hash;
 
-  constructor(api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, codeHash: string | Hash) {
+  constructor (api: ApiObject<ApiType>, abi: ContractABIPre | Abi, decorateMethod: DecorateMethod<ApiType>, codeHash: string | Hash) {
     super(api, abi, decorateMethod);
 
     this.codeHash = this.registry.createType('Hash', codeHash);
   }
 
-  public deployContract(constructorIndex = 0, endowment: number | BN, maxGas: number | BN, ...params: any[]): BlueprintCreate<ApiType> {
+  public deployContract (constructorIndex = 0, endowment: number | BN, maxGas: number | BN, ...params: any[]): BlueprintCreate<ApiType> {
     assert(!!this.abi.constructors[constructorIndex], `Specified constructor index ${constructorIndex} does not exist`);
 
     return {

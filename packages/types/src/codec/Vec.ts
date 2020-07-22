@@ -22,7 +22,7 @@ const MAX_LENGTH = 32768;
 export default class Vec<T extends Codec> extends AbstractArray<T> {
   private _Type: Constructor<T>;
 
-  constructor(registry: Registry, Type: Constructor<T> | keyof InterfaceTypes, value: Vec<Codec> | Uint8Array | string | unknown[] = []) {
+  constructor (registry: Registry, Type: Constructor<T> | keyof InterfaceTypes, value: Vec<Codec> | Uint8Array | string | unknown[] = []) {
     const Clazz = typeToConstructor<T>(registry, Type);
 
     super(registry, ...Vec.decodeVec(registry, Clazz, value));
@@ -31,7 +31,7 @@ export default class Vec<T extends Codec> extends AbstractArray<T> {
   }
 
   /** @internal */
-  public static decodeVec<T extends Codec>(registry: Registry, Type: Constructor<T>, value: Vec<Codec> | Uint8Array | string | unknown[]): T[] {
+  public static decodeVec<T extends Codec> (registry: Registry, Type: Constructor<T>, value: Vec<Codec> | Uint8Array | string | unknown[]): T[] {
     if (Array.isArray(value)) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return (value as unknown[]).map((entry: unknown, index: number): T => {
@@ -55,9 +55,9 @@ export default class Vec<T extends Codec> extends AbstractArray<T> {
     return decodeU8a(registry, u8a.subarray(offset), new Array(length.toNumber()).fill(Type)) as T[];
   }
 
-  public static with<O extends Codec>(Type: Constructor<O> | keyof InterfaceTypes): Constructor<Vec<O>> {
+  public static with<O extends Codec> (Type: Constructor<O> | keyof InterfaceTypes): Constructor<Vec<O>> {
     return class extends Vec<O> {
-      constructor(registry: Registry, value?: any[]) {
+      constructor (registry: Registry, value?: any[]) {
         super(registry, Type, value);
       }
     };
@@ -66,14 +66,14 @@ export default class Vec<T extends Codec> extends AbstractArray<T> {
   /**
    * @description The type for the items
    */
-  public get Type(): string {
+  public get Type (): string {
     return this._Type.name;
   }
 
   /**
    * @description Finds the index of the value in the array
    */
-  public indexOf(_other?: unknown): number {
+  public indexOf (_other?: unknown): number {
     // convert type first, this removes overhead from the eq
     const other = _other instanceof this._Type
       ? _other
@@ -91,7 +91,7 @@ export default class Vec<T extends Codec> extends AbstractArray<T> {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType(): string {
+  public toRawType (): string {
     return `Vec<${new this._Type(this.registry).toRawType()}>`;
   }
 }

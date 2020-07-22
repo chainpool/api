@@ -18,6 +18,6 @@ import isInstanceOf from './instanceOf';
  * console.log('isError', isError(new Error('message'))); // => true
  * ```
  */
-export default function isError(value: unknown): value is Error {
+export default function isError (value: unknown): value is Error {
   return isInstanceOf(value, Error);
 }

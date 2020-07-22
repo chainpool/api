@@ -19,7 +19,8 @@ try {
           // eslint-disable-next-line sort-keys
           '^@chainx-v2/types(.*)': './packages/types/src\\1',
           '^@chainx-v2/util(.*)': './packages/util/src\\1',
-          '^@chainx-v2/crypto(.*)': './packages/util-crypto/src\\1',
+          // eslint-disable-next-line sort-keys
+          '^@chainx-v2/crypto(.*)': './packages/crypto/src\\1',
           // eslint-disable-next-line sort-keys
           '^@chainx-v2/keyring(.*)': './packages/util-crypto/src\\1'
 

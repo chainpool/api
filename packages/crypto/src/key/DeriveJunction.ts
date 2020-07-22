@@ -21,7 +21,7 @@ export default class DeriveJunction {
 
   #isHard = false;
 
-  public static from(value: string): DeriveJunction {
+  public static from (value: string): DeriveJunction {
     const result = new DeriveJunction();
     const [code, isHard] = value.startsWith('/')
       ? [value.substr(1), true]
@@ -38,29 +38,29 @@ export default class DeriveJunction {
       : result;
   }
 
-  public get chainCode(): Uint8Array {
+  public get chainCode (): Uint8Array {
     return this.#chainCode;
   }
 
-  public get isHard(): boolean {
+  public get isHard (): boolean {
     return this.#isHard;
   }
 
-  public get isSoft(): boolean {
+  public get isSoft (): boolean {
     return !this.#isHard;
   }
 
-  public hard(value: number | string | BigInt | BN | Uint8Array): DeriveJunction {
+  public hard (value: number | string | BigInt | BN | Uint8Array): DeriveJunction {
     return this.soft(value).harden();
   }
 
-  public harden(): DeriveJunction {
+  public harden (): DeriveJunction {
     this.#isHard = true;
 
     return this;
   }
 
-  public soft(value: number | string | BigInt | BN | Uint8Array): DeriveJunction {
+  public soft (value: number | string | BigInt | BN | Uint8Array): DeriveJunction {
     if (isNumber(value) || isBn(value) || isBigInt(value)) {
       return this.soft(bnToHex(value, BN_OPTIONS));
     } else if (isString(value)) {
@@ -79,7 +79,7 @@ export default class DeriveJunction {
     return this;
   }
 
-  public soften(): DeriveJunction {
+  public soften (): DeriveJunction {
     this.#isHard = false;
 
     return this;

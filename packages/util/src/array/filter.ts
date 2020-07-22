@@ -21,7 +21,7 @@ import isUndefined from '../is/undefined';
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function arrayFilter<T = any>(array: T[], allowNulls = true): T[] {
+export default function arrayFilter<T = any> (array: T[], allowNulls = true): T[] {
   return array.filter((value) =>
     !isUndefined(value) && (allowNulls || !isNull(value))
   );

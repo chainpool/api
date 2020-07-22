@@ -22,7 +22,7 @@ import { isReady, ed25519Sign } from '@polkadot/wasm-crypto';
  * naclSign([...], [...]); // => [...]
  * ```
  */
-export default function naclSign(message: Uint8Array | string, { publicKey, secretKey }: Partial<Keypair>): Uint8Array {
+export default function naclSign (message: Uint8Array | string, { publicKey, secretKey }: Partial<Keypair>): Uint8Array {
   assert(secretKey, 'Expected a valid secretKey');
 
   const messageU8a = u8aToU8a(message);

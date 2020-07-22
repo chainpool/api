@@ -126,7 +126,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
    * });
    * ```
    */
-  constructor(options: ApiOptions, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
+  constructor (options: ApiOptions, type: ApiTypes, decorateMethod: DecorateMethod<ApiType>) {
     super();
     options.rpc = {
       ...chainxRpc,
@@ -151,25 +151,25 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
   /**
    * @description Creates an instance of a type as registered
    */
-  public createType<K extends keyof InterfaceTypes>(type: K, ...params: unknown[]): InterfaceTypes[K] {
+  public createType<K extends keyof InterfaceTypes> (type: K, ...params: unknown[]): InterfaceTypes[K] {
     return this.registry.createType(type, ...params);
   }
 
   /**
    * @description Register additional user-defined of chain-specific types in the type registry
    */
-  public registerTypes(types?: RegistryTypes): void {
+  public registerTypes (types?: RegistryTypes): void {
     types && this.registry.register(types);
   }
 
   /**
    * @returns `true` if the API operates with subscriptions
    */
-  get hasSubscriptions(): boolean {
+  get hasSubscriptions (): boolean {
     return this._rpcCore.provider.hasSubscriptions;
   }
 
-  public injectMetadata(metadata: Metadata, fromEmpty?: boolean): void {
+  public injectMetadata (metadata: Metadata, fromEmpty?: boolean): void {
     const decoratedMeta = new DecoratedMeta(this.registry, metadata);
 
     if (fromEmpty || !this._extrinsics) {
@@ -189,7 +189,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     augmentObject('', decoratedMeta.consts, this._rx.consts, fromEmpty);
   }
 
-  private _decorateFunctionMeta(input: MetaDecoration, output: MetaDecoration): MetaDecoration {
+  private _decorateFunctionMeta (input: MetaDecoration, output: MetaDecoration): MetaDecoration {
     output.meta = input.meta;
     output.method = input.method;
     output.section = input.section;
@@ -206,7 +206,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
   // manner to cater for both old and new:
   //   - when the number of entries are 0, only remove the ones with isOptional (account & contracts)
   //   - when non-zero, remove anything that is not in the array (we don't do this)
-  protected async _filterRpc(): Promise<void> {
+  protected async _filterRpc (): Promise<void> {
     let methods: string[];
 
     try {
@@ -220,7 +220,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     this._filterRpcMethods(methods);
   }
 
-  protected _filterRpcMethods(exposed: string[]): void {
+  protected _filterRpcMethods (exposed: string[]): void {
     const hasResults = exposed.length !== 0;
     const allKnown = [...this._rpcCore.mapping.entries()];
     const allKeys = allKnown.reduce((allKeys: string[], [, { alias, method, pubsub, section }]): string[] => {
@@ -258,7 +258,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
       });
   }
 
-  protected _decorateRpc<ApiType extends ApiTypes>(rpc: RpcCore, decorateMethod: DecorateMethod<ApiType>): DecoratedRpc<ApiType, RpcInterface> {
+  protected _decorateRpc<ApiType extends ApiTypes> (rpc: RpcCore, decorateMethod: DecorateMethod<ApiType>): DecoratedRpc<ApiType, RpcInterface> {
     return rpc.sections.reduce((out, _sectionName): DecoratedRpc<ApiType, RpcInterface> => {
       const sectionName = _sectionName as keyof DecoratedRpc<ApiType, RpcInterface>;
 
@@ -278,7 +278,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     }, {} as DecoratedRpc<ApiType, RpcInterface>);
   }
 
-  protected _decorateMulti<ApiType extends ApiTypes>(decorateMethod: DecorateMethod<ApiType>): QueryableStorageMulti<ApiType> {
+  protected _decorateMulti<ApiType extends ApiTypes> (decorateMethod: DecorateMethod<ApiType>): QueryableStorageMulti<ApiType> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return decorateMethod((calls: QueryableStorageMultiArg<ApiType>[]): Observable<Codec[]> =>
       this._rpcCore.state.subscribeStorage(
@@ -290,7 +290,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
             : [arg.creator] as any)));
   }
 
-  protected _decorateExtrinsics<ApiType extends ApiTypes>(extrinsics: ModulesWithCalls, decorateMethod: DecorateMethod<ApiType>): SubmittableExtrinsics<ApiType> {
+  protected _decorateExtrinsics<ApiType extends ApiTypes> (extrinsics: ModulesWithCalls, decorateMethod: DecorateMethod<ApiType>): SubmittableExtrinsics<ApiType> {
     const creator = createSubmittable(this._type, this._rx, decorateMethod);
 
     return Object.entries(extrinsics).reduce((out, [name, section]): SubmittableExtrinsics<ApiType> => {
@@ -304,7 +304,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     }, creator as SubmittableExtrinsics<ApiType>);
   }
 
-  private _decorateExtrinsicEntry<ApiType extends ApiTypes>(method: CallFunction, creator: (value: Call | Uint8Array | string) => SubmittableExtrinsic<ApiType>): SubmittableExtrinsicFunction<ApiType> {
+  private _decorateExtrinsicEntry<ApiType extends ApiTypes> (method: CallFunction, creator: (value: Call | Uint8Array | string) => SubmittableExtrinsic<ApiType>): SubmittableExtrinsicFunction<ApiType> {
     const decorated = (...params: Arg[]): SubmittableExtrinsic<ApiType> =>
       creator(method(...params));
 
@@ -312,7 +312,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     return this._decorateFunctionMeta(method as any, decorated as any) as unknown as SubmittableExtrinsicFunction<ApiType>;
   }
 
-  protected _decorateStorage<ApiType extends ApiTypes>(storage: Storage, decorateMethod: DecorateMethod<ApiType>): QueryableStorage<ApiType> {
+  protected _decorateStorage<ApiType extends ApiTypes> (storage: Storage, decorateMethod: DecorateMethod<ApiType>): QueryableStorage<ApiType> {
     return Object.entries(storage).reduce((out, [name, section]): QueryableStorage<ApiType> => {
       out[name] = Object.entries(section).reduce((out, [name, method]): QueryableModuleStorage<ApiType> => {
         out[name] = this._decorateStorageEntry(method, decorateMethod);
@@ -324,7 +324,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     }, {} as QueryableStorage<ApiType>);
   }
 
-  private _decorateStorageEntry<ApiType extends ApiTypes>(creator: StorageEntry, decorateMethod: DecorateMethod<ApiType>): QueryableStorageEntry<ApiType> {
+  private _decorateStorageEntry<ApiType extends ApiTypes> (creator: StorageEntry, decorateMethod: DecorateMethod<ApiType>): QueryableStorageEntry<ApiType> {
     // get the storage arguments, with DoubleMap as an array entry, otherwise spread
     const getArgs = (...args: unknown[]): unknown[] => extractStorageArgs(creator, args);
 
@@ -390,7 +390,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
 
   // Decorate the base storage call. In the case or rxjs or promise-without-callback (await)
   // we make a subscription, alternatively we push this through a single-shot query
-  private _decorateStorageCall<ApiType extends ApiTypes>(creator: StorageEntry, decorateMethod: DecorateMethod<ApiType>): ReturnType<DecorateMethod<ApiType>> {
+  private _decorateStorageCall<ApiType extends ApiTypes> (creator: StorageEntry, decorateMethod: DecorateMethod<ApiType>): ReturnType<DecorateMethod<ApiType>> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return decorateMethod((...args: unknown[]): Observable<Codec> => {
       return this.hasSubscriptions
@@ -404,7 +404,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     });
   }
 
-  private _decorateStorageRange<ApiType extends ApiTypes>(decorated: QueryableStorageEntry<ApiType>, args: [Arg?, Arg?], range: [Hash, Hash?]): Observable<[Hash, Codec][]> {
+  private _decorateStorageRange<ApiType extends ApiTypes> (decorated: QueryableStorageEntry<ApiType>, args: [Arg?, Arg?], range: [Hash, Hash?]): Observable<[Hash, Codec][]> {
     const outputType = unwrapStorageType(decorated.creator.meta.type, decorated.creator.meta.modifier.isOptional);
 
     return this._rpcCore.state
@@ -419,7 +419,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
 
   // This is deprecated/removed on substrate - we still have some live chains, eg. Edgeware needing it, so it
   // has not been dropped yet. Slated for removal in API 2.0
-  private _decorateStorageLinked<ApiType extends ApiTypes>(creator: StorageEntry, decorateMethod: DecorateMethod<ApiType>): ReturnType<DecorateMethod<ApiType>> {
+  private _decorateStorageLinked<ApiType extends ApiTypes> (creator: StorageEntry, decorateMethod: DecorateMethod<ApiType>): ReturnType<DecorateMethod<ApiType>> {
     const result = new Map<Codec, ITuple<[Codec, Linkage<Codec>]> | null>();
     let subject: BehaviorSubject<LinkageResult>;
     let head: Codec | null = null;
@@ -496,7 +496,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     );
   }
 
-  private _retrieveMapKeys({ iterKey, meta }: StorageEntry, arg?: Arg): Observable<StorageKey[]> {
+  private _retrieveMapKeys ({ iterKey, meta }: StorageEntry, arg?: Arg): Observable<StorageKey[]> {
     assert(iterKey && (meta.type.isMap || meta.type.isDoubleMap), 'keys can only be retrieved on maps, linked maps and double maps');
 
     const headKey = iterKey(arg).toHex();
@@ -518,7 +518,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     );
   }
 
-  private _retrieveMapKeysPaged({ iterKey, meta }: StorageEntry, opts: PaginationOptions): Observable<StorageKey[]> {
+  private _retrieveMapKeysPaged ({ iterKey, meta }: StorageEntry, opts: PaginationOptions): Observable<StorageKey[]> {
     assert(iterKey && (meta.type.isMap || meta.type.isDoubleMap), 'keys can only be retrieved on maps, linked maps and double maps');
 
     const headKey = iterKey(opts.arg).toHex();
@@ -528,7 +528,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     );
   }
 
-  private _retrieveMapEntries(entry: StorageEntry, arg?: Arg): Observable<[StorageKey, Codec][]> {
+  private _retrieveMapEntries (entry: StorageEntry, arg?: Arg): Observable<[StorageKey, Codec][]> {
     return this._retrieveMapKeys(entry, arg).pipe(
       switchMap((keys) =>
         combineLatest<[StorageKey[], ...Codec[][]]>([
@@ -550,7 +550,7 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     );
   }
 
-  private _retrieveMapEntriesPaged(entry: StorageEntry, opts: PaginationOptions): Observable<[StorageKey, Codec][]> {
+  private _retrieveMapEntriesPaged (entry: StorageEntry, opts: PaginationOptions): Observable<[StorageKey, Codec][]> {
     return this._retrieveMapKeysPaged(entry, opts).pipe(
       switchMap((keys) =>
         combineLatest<[StorageKey[], ...Codec[][]]>([
@@ -566,14 +566,14 @@ export default abstract class Decorate<ApiType extends ApiTypes> extends Events 
     );
   }
 
-  protected _decorateDeriveRx(decorateMethod: DecorateMethod<ApiType>): DeriveAllSections<'rxjs', ExactDerive> {
+  protected _decorateDeriveRx (decorateMethod: DecorateMethod<ApiType>): DeriveAllSections<'rxjs', ExactDerive> {
     // Pull in derive from api-derive
     const derive = decorateDerive(this._rx, this._options.derives);
 
     return decorateSections<'rxjs', ExactDerive>(derive, decorateMethod);
   }
 
-  protected _decorateDerive(decorateMethod: DecorateMethod<ApiType>): DeriveAllSections<ApiType, ExactDerive> {
+  protected _decorateDerive (decorateMethod: DecorateMethod<ApiType>): DeriveAllSections<ApiType, ExactDerive> {
     return decorateSections<ApiType, ExactDerive>(this._rx.derive, decorateMethod);
   }
 

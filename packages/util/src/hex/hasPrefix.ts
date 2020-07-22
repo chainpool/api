@@ -18,6 +18,6 @@ import isHex from '../is/hex';
  * console.log('has prefix', hexHasPrefix('0x1234')); // => true
  * ```
  */
-export default function hexHasPrefix(value?: string | null): boolean {
+export default function hexHasPrefix (value?: string | null): boolean {
   return !!(value && isHex(value, -1, true) && value.substr(0, 2) === '0x');
 }

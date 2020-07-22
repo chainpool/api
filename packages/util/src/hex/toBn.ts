@@ -8,7 +8,7 @@ import isBoolean from '../is/boolean';
 import hexStripPrefix from './stripPrefix';
 import { ToBnOptions } from '../types';
 
-function reverse(value: string): string {
+function reverse (value: string): string {
   return (value.match(new RegExp('.{1,2}', 'g')) || [])
     .reverse()
     .join('');
@@ -32,7 +32,7 @@ function reverse(value: string): string {
  * hexToBn('0x123480001f'); // => BN(0x123480001f)
  * ```
  */
-export default function hexToBn(value?: string | number | null, options: ToBnOptions | boolean = { isLe: false, isNegative: false }): BN {
+export default function hexToBn (value?: string | number | null, options: ToBnOptions | boolean = { isLe: false, isNegative: false }): BN {
   if (!value) {
     return new BN(0);
   }

@@ -7,7 +7,7 @@ import { isHex, hexToU8a, bufferToU8a, stringToU8a } from '@chainx-v2/util';
  * @description
  * @param value:string, stringEncoding?:string
 */
-export default function u8aFrom(value: string, stringEncoding?: string): Uint8Array {
+export default function u8aFrom (value: string, stringEncoding?: string): Uint8Array {
   if (!value) {
     return new Uint8Array(0);
   }

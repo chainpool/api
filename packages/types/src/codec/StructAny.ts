@@ -13,7 +13,7 @@ import Raw from './Raw';
 import { compareMap } from './utils';
 
 /** @internal */
-function decodeJson(value?: Record<string, unknown> | null): [string, any][] {
+function decodeJson (value?: Record<string, unknown> | null): [string, any][] {
   return Object.entries(value || {});
 }
 
@@ -28,7 +28,7 @@ function decodeJson(value?: Record<string, unknown> | null): [string, any][] {
 export default class StructAny extends Map<string, any> implements Codec {
   public readonly registry: Registry;
 
-  constructor(registry: Registry, value?: Record<string, unknown> | null) {
+  constructor (registry: Registry, value?: Record<string, unknown> | null) {
     const decoded = decodeJson(value);
 
     super(decoded);
@@ -53,49 +53,49 @@ export default class StructAny extends Map<string, any> implements Codec {
   /**
    * @description Always 0, never encodes as a Uint8Array
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     return 0;
   }
 
   /**
    * @description returns a hash of the contents
    */
-  public get hash(): H256 {
+  public get hash (): H256 {
     return new Raw(this.registry, blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description Checks if the value is an empty value
    */
-  public get isEmpty(): boolean {
+  public get isEmpty (): boolean {
     return [...this.keys()].length === 0;
   }
 
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq(other?: unknown): boolean {
+  public eq (other?: unknown): boolean {
     return compareMap(this, other);
   }
 
   /**
    * @description Unimplemented, will throw
    */
-  public toHex(): string {
+  public toHex (): string {
     throw new Error('Unimplemented');
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman(): AnyJson {
+  public toHuman (): AnyJson {
     return this.toJSON();
   }
 
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON(): AnyJson {
+  public toJSON (): AnyJson {
     return [...this.entries()].reduce((json: Record<string, AnyJson>, [key, value]): Record<string, AnyJson> => {
       json[key] = value as AnyJson;
 
@@ -106,14 +106,14 @@ export default class StructAny extends Map<string, any> implements Codec {
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType(): string {
+  public toRawType (): string {
     return 'Json';
   }
 
   /**
    * @description Returns the string representation of the value
    */
-  public toString(): string {
+  public toString (): string {
     return JSON.stringify(this.toJSON());
   }
 
@@ -121,7 +121,7 @@ export default class StructAny extends Map<string, any> implements Codec {
    * @description Unimplemented, will throw
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     throw new Error('Unimplemented');
   }
 }

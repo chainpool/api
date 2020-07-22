@@ -10,7 +10,7 @@ import extrinsics from '../';
 import createUnchecked from './createUnchecked';
 
 /** @internal */
-export default function fromMetadata(registry: Registry, metadata: RegistryMetadata): ModulesWithCalls {
+export default function fromMetadata (registry: Registry, metadata: RegistryMetadata): ModulesWithCalls {
   return metadata.asLatest.modules
     .filter(({ calls }): boolean => calls.isSome)
     .reduce((result, { calls, name }: RegistryMetadataModule, sectionIndex): ModulesWithCalls => {

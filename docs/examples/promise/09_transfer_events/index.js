@@ -16,7 +16,7 @@ const { randomAsU8a } = require('@chainx-v2/crypto');
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 const AMOUNT = 10000;
 
-async function main() {
+async function main () {
   // Create the API and wait until ready
   const api = await ApiPromise.create();
 

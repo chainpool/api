@@ -12,7 +12,7 @@ import createFunction from './createFunction';
 import getStorage from './storage';
 
 /** @internal */
-export default function fromMetadata(registry: Registry, metadata: Metadata): Storage {
+export default function fromMetadata (registry: Registry, metadata: Metadata): Storage {
   return metadata.asLatest.modules.reduce((result, moduleMetadata): Storage => {
     if (moduleMetadata.storage.isNone) {
       return result;

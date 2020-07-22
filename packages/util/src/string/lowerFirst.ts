@@ -16,7 +16,7 @@
  * stringLowerFirst('ABC'); // => 'aBC'
  * ```
  */
-export default function stringLowerFirst(value?: string | null): string {
+export default function stringLowerFirst (value?: string | null): string {
   return value
     ? value.charAt(0).toLowerCase() + value.slice(1)
     : '';

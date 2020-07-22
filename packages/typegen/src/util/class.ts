@@ -8,6 +8,6 @@ import UInt from '@chainx-v2/types/codec/UInt';
 import { isChildClass } from '@chainx-v2/util';
 
 /** @internal */
-export function isCompactEncodable(Child: Constructor<any>): boolean {
+export function isCompactEncodable (Child: Constructor<any>): boolean {
   return isChildClass(UInt, Child);
 }

@@ -17,6 +17,6 @@
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export default function isString(value: unknown): value is string | String {
+export default function isString (value: unknown): value is string | String {
   return typeof value === 'string' || value instanceof String;
 }

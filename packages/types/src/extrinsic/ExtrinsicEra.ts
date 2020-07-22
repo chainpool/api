@@ -28,7 +28,7 @@ interface ImmortalEnumDef {
   ImmortalEra: string;
 }
 
-function getTrailingZeros(period: number): number {
+function getTrailingZeros (period: number): number {
   const binary = period.toString(2);
   let index = 0;
 
@@ -46,7 +46,7 @@ function getTrailingZeros(period: number): number {
  */
 export class ImmortalEra extends Raw {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  constructor(registry: Registry, value?: AnyU8a) {
+  constructor (registry: Registry, value?: AnyU8a) {
     // For immortals, we always provide the known value (i.e. treated as a
     // constant no matter how it is constructed - it is a fixed structure)
     super(registry, IMMORTAL_ERA);
@@ -59,7 +59,7 @@ export class ImmortalEra extends Raw {
  * The MortalEra for an extrinsic, indicating period and phase
  */
 export class MortalEra extends Tuple {
-  constructor(registry: Registry, value?: MortalMethod | Uint8Array | number[] | string) {
+  constructor (registry: Registry, value?: MortalMethod | Uint8Array | number[] | string) {
     super(registry, {
       period: U64,
       phase: U64
@@ -67,7 +67,7 @@ export class MortalEra extends Tuple {
   }
 
   /** @internal */
-  private static _decodeMortalEra(registry: Registry, value?: MortalMethod | Uint8Array | number[] | string): MortalEraValue {
+  private static _decodeMortalEra (registry: Registry, value?: MortalMethod | Uint8Array | number[] | string): MortalEraValue {
     if (isHex(value)) {
       return MortalEra._decodeMortalU8a(registry, hexToU8a(value));
     } else if (Array.isArray(value)) {
@@ -84,7 +84,7 @@ export class MortalEra extends Tuple {
   }
 
   /** @internal */
-  private static _decodeMortalObject(registry: Registry, value: MortalMethod): MortalEraValue {
+  private static _decodeMortalObject (registry: Registry, value: MortalMethod): MortalEraValue {
     const { current, period } = value;
     let calPeriod = Math.pow(2, Math.ceil(Math.log2(period)));
 
@@ -98,7 +98,7 @@ export class MortalEra extends Tuple {
   }
 
   /** @internal */
-  private static _decodeMortalU8a(registry: Registry, value: Uint8Array): MortalEraValue {
+  private static _decodeMortalU8a (registry: Registry, value: Uint8Array): MortalEraValue {
     if (value.length === 0) {
       return [new U64(registry), new U64(registry)];
     }
@@ -118,28 +118,28 @@ export class MortalEra extends Tuple {
   /**
    * @description Encoded length for mortals occupy 2 bytes, different from the actual Tuple since it is encoded. This is a shortcut fro `toU8a().length`
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     return 2;
   }
 
   /**
    * @description The period of this Mortal wraps as a [[U64]]
    */
-  public get period(): U64 {
+  public get period (): U64 {
     return this[0] as U64;
   }
 
   /**
    * @description The phase of this Mortal wraps as a [[U64]]
    */
-  public get phase(): U64 {
+  public get phase (): U64 {
     return this[1] as U64;
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman(): any {
+  public toHuman (): any {
     return {
       period: formatNumber(this.period),
       phase: formatNumber(this.phase)
@@ -149,7 +149,7 @@ export class MortalEra extends Tuple {
   /**
    * @description Returns a JSON representation of the actual value
    */
-  public toJSON(): any {
+  public toJSON (): any {
     return this.toHex();
   }
 
@@ -164,7 +164,7 @@ export class MortalEra extends Tuple {
    *     `period` is.
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     const period = this.period.toNumber();
     const phase = this.phase.toNumber();
     const quantizeFactor = Math.max(period >> 12, 1);
@@ -179,7 +179,7 @@ export class MortalEra extends Tuple {
   /**
    * @description Get the block number of the start of the era whose properties this object describes that `current` belongs to.
    */
-  public birth(current: BN | number): number {
+  public birth (current: BN | number): number {
     // FIXME No toNumber() here
     return Math.floor(
       (
@@ -191,7 +191,7 @@ export class MortalEra extends Tuple {
   /**
    * @description Get the block number of the first block at which the era has ended.
    */
-  public death(current: BN | number): number {
+  public death (current: BN | number): number {
     // FIXME No toNumber() here
     return this.birth(current) + this.period.toNumber();
   }
@@ -203,7 +203,7 @@ export class MortalEra extends Tuple {
  * The era for an extrinsic, indicating either a mortal or immortal extrinsic
  */
 export default class ExtrinsicEra extends Enum implements IExtrinsicEra {
-  constructor(registry: Registry, value?: unknown) {
+  constructor (registry: Registry, value?: unknown) {
     super(registry, {
       ImmortalEra,
       MortalEra
@@ -212,7 +212,7 @@ export default class ExtrinsicEra extends Enum implements IExtrinsicEra {
 
   /** @internal */
   // eslint-disable-next-line @typescript-eslint/ban-types
-  private static _decodeExtrinsicEra(value: IExtrinsicEra | MortalMethod | MortalEnumDef | ImmortalEnumDef | Uint8Array | string = new Uint8Array()): Uint8Array | Object | undefined {
+  private static _decodeExtrinsicEra (value: IExtrinsicEra | MortalMethod | MortalEnumDef | ImmortalEnumDef | Uint8Array | string = new Uint8Array()): Uint8Array | Object | undefined {
     if (value instanceof ExtrinsicEra) {
       return ExtrinsicEra._decodeExtrinsicEra(value.toU8a());
     } else if (isHex(value)) {
@@ -236,7 +236,7 @@ export default class ExtrinsicEra extends Enum implements IExtrinsicEra {
   /**
    * @description Override the encoded length method
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     return this.isImmortalEra
       ? this.asImmortalEra.encodedLength
       : this.asMortalEra.encodedLength;
@@ -245,7 +245,7 @@ export default class ExtrinsicEra extends Enum implements IExtrinsicEra {
   /**
    * @description Returns the item as a [[ImmortalEra]]
    */
-  public get asImmortalEra(): ImmortalEra {
+  public get asImmortalEra (): ImmortalEra {
     assert(this.isImmortalEra, `Cannot convert '${this.type}' via asImmortalEra`);
 
     return this.value as ImmortalEra;
@@ -254,7 +254,7 @@ export default class ExtrinsicEra extends Enum implements IExtrinsicEra {
   /**
    * @description Returns the item as a [[MortalEra]]
    */
-  public get asMortalEra(): MortalEra {
+  public get asMortalEra (): MortalEra {
     assert(this.isMortalEra, `Cannot convert '${this.type}' via asMortalEra`);
 
     return this.value as MortalEra;
@@ -263,14 +263,14 @@ export default class ExtrinsicEra extends Enum implements IExtrinsicEra {
   /**
    * @description `true` if Immortal
    */
-  public get isImmortalEra(): boolean {
+  public get isImmortalEra (): boolean {
     return this.index === 0;
   }
 
   /**
    * @description `true` if Mortal
    */
-  public get isMortalEra(): boolean {
+  public get isMortalEra (): boolean {
     return this.index > 0;
   }
 
@@ -278,7 +278,7 @@ export default class ExtrinsicEra extends Enum implements IExtrinsicEra {
    * @description Encodes the value as a Uint8Array as per the parity-codec specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     return this.isMortalEra
       ? this.asMortalEra.toU8a(isBare)
       : this.asImmortalEra.toU8a(isBare);

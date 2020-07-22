@@ -10,7 +10,7 @@ import Compact from '../codec/Compact';
 import Raw from '../codec/Raw';
 
 /** @internal */
-function decodeBytesU8a(value: Uint8Array): Uint8Array {
+function decodeBytesU8a (value: Uint8Array): Uint8Array {
   if (!value.length) {
     return new Uint8Array();
   }
@@ -25,7 +25,7 @@ function decodeBytesU8a(value: Uint8Array): Uint8Array {
 }
 
 /** @internal */
-function decodeBytes(value?: AnyU8a): Uint8Array | undefined {
+function decodeBytes (value?: AnyU8a): Uint8Array | undefined {
   if (Array.isArray(value) || isString(value)) {
     return u8aToU8a(value);
   } else if (!(value instanceof Raw) && isU8a(value)) {
@@ -45,21 +45,21 @@ function decodeBytes(value?: AnyU8a): Uint8Array | undefined {
  * as what is found in [[Text]] and [[Vec]])
  */
 export default class Bytes extends Raw {
-  constructor(registry: Registry, value?: AnyU8a) {
+  constructor (registry: Registry, value?: AnyU8a) {
     super(registry, decodeBytes(value));
   }
 
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     return this.length + Compact.encodeU8a(this.length).length;
   }
 
   /**
    * @description Returns the base runtime type name for this instance
    */
-  public toRawType(): string {
+  public toRawType (): string {
     return 'Bytes';
   }
 
@@ -67,7 +67,7 @@ export default class Bytes extends Raw {
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     return isBare
       ? super.toU8a(isBare)
       : Compact.addLengthPrefix(this);

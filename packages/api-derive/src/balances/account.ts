@@ -15,7 +15,7 @@ import { memo } from '../util';
 
 type Result = [Balance, Balance, Balance, Balance, Index];
 
-function calcBalances(api: ApiInterfaceRx, [accountId, [freeBalance, reservedBalance, frozenFee, frozenMisc, accountNonce]]: [AccountId, Result]): DeriveBalancesAccount {
+function calcBalances (api: ApiInterfaceRx, [accountId, [freeBalance, reservedBalance, frozenFee, frozenMisc, accountNonce]]: [AccountId, Result]): DeriveBalancesAccount {
   return {
     accountId,
     accountNonce,
@@ -28,7 +28,7 @@ function calcBalances(api: ApiInterfaceRx, [accountId, [freeBalance, reservedBal
 }
 
 // old
-function queryBalancesFree(api: ApiInterfaceRx, accountId: AccountId): Observable<Result> {
+function queryBalancesFree (api: ApiInterfaceRx, accountId: AccountId): Observable<Result> {
   return api.queryMulti<[Balance, Balance, Index]>([
     [api.query.balances.freeBalance, accountId],
     [api.query.balances.reservedBalance, accountId],
@@ -40,7 +40,7 @@ function queryBalancesFree(api: ApiInterfaceRx, accountId: AccountId): Observabl
   );
 }
 
-function queryBalancesAccount(api: ApiInterfaceRx, accountId: AccountId): Observable<Result> {
+function queryBalancesAccount (api: ApiInterfaceRx, accountId: AccountId): Observable<Result> {
   return api.queryMulti<[AccountData, Index]>([
     [api.query.balances.account, accountId],
     [api.query.system.accountNonce, accountId]
@@ -51,7 +51,7 @@ function queryBalancesAccount(api: ApiInterfaceRx, accountId: AccountId): Observ
   );
 }
 
-function queryCurrent(api: ApiInterfaceRx, accountId: AccountId): Observable<Result> {
+function queryCurrent (api: ApiInterfaceRx, accountId: AccountId): Observable<Result> {
   // AccountInfo is current, support old, eg. Edgeware
   return api.query.system.account<AccountInfo | ITuple<[Index, AccountData]>>(accountId).pipe(
     map((infoOrTuple): Result => {
@@ -80,7 +80,7 @@ function queryCurrent(api: ApiInterfaceRx, accountId: AccountId): Observable<Res
  * });
  * ```
  */
-export function account(api: ApiInterfaceRx): (address: AccountIndex | AccountId | Address | string) => Observable<DeriveBalancesAccount> {
+export function account (api: ApiInterfaceRx): (address: AccountIndex | AccountId | Address | string) => Observable<DeriveBalancesAccount> {
   return memo((address: AccountIndex | AccountId | Address | string): Observable<DeriveBalancesAccount> =>
     api.derive.accounts.info(address).pipe(
       switchMap(({ accountId }): Observable<[AccountId, Result]> =>

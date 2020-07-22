@@ -10,6 +10,6 @@ import { u8aToBuffer, u8aToU8a } from '@chainx-v2/util';
  * @description
  * From the provided input, create the base64 and return the result as a string.
  */
-export default function base58Encode(value: Uint8Array | string | Buffer | number[]): string {
+export default function base58Encode (value: Uint8Array | string | Buffer | number[]): string {
   return u8aToBuffer(u8aToU8a(value)).toString('base64');
 }

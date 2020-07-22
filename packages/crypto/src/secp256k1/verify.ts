@@ -13,7 +13,7 @@ const ec = new EC('secp256k1');
  * @name secp256k1Verify
  * @description Verifies the signature of `message`, using the supplied pair
  */
-export default function secp256k1Verify(message: Uint8Array | string, signature: Uint8Array | string, address: Uint8Array | string): boolean {
+export default function secp256k1Verify (message: Uint8Array | string, signature: Uint8Array | string, address: Uint8Array | string): boolean {
   const signatureU8a = u8aToU8a(signature);
   const sig = {
     r: signatureU8a.slice(0, 32),

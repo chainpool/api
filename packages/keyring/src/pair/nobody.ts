@@ -23,7 +23,7 @@ const json: KeyringPair$Json = {
   meta
 };
 
-export default function everybody(): KeyringPair {
+export default function everybody (): KeyringPair {
   const pair: KeyringPair = {
     address,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

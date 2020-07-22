@@ -15,7 +15,7 @@ import { isUndefined } from '@chainx-v2/util';
 import { memo } from '../util';
 
 // groups the supplied chunks by era, i.e. { [era]: BN(total of values) }
-function groupByEra(list: UnlockChunk[]): Record<string, BN> {
+function groupByEra (list: UnlockChunk[]): Record<string, BN> {
   return list.reduce((map: Record<string, BN>, { era, value }): Record<string, BN> => {
     const key = era.toString();
 
@@ -27,7 +27,7 @@ function groupByEra(list: UnlockChunk[]): Record<string, BN> {
   }, {});
 }
 
-function calculateUnlocking(api: ApiInterfaceRx, stakingLedger: StakingLedger | undefined, sessionInfo: DeriveSessionInfo): DeriveUnlocking[] | undefined {
+function calculateUnlocking (api: ApiInterfaceRx, stakingLedger: StakingLedger | undefined, sessionInfo: DeriveSessionInfo): DeriveUnlocking[] | undefined {
   if (isUndefined(stakingLedger)) {
     return undefined;
   }
@@ -52,7 +52,7 @@ function calculateUnlocking(api: ApiInterfaceRx, stakingLedger: StakingLedger | 
     : undefined;
 }
 
-function redeemableSum(api: ApiInterfaceRx, stakingLedger: StakingLedger | undefined, sessionInfo: DeriveSessionInfo): Balance {
+function redeemableSum (api: ApiInterfaceRx, stakingLedger: StakingLedger | undefined, sessionInfo: DeriveSessionInfo): Balance {
   if (isUndefined(stakingLedger)) {
     return api.registry.createType('Balance');
   }
@@ -64,7 +64,7 @@ function redeemableSum(api: ApiInterfaceRx, stakingLedger: StakingLedger | undef
   }, new BN(0)));
 }
 
-function parseResult(api: ApiInterfaceRx, sessionInfo: DeriveSessionInfo, query: DeriveStakingQuery): DeriveStakingAccount {
+function parseResult (api: ApiInterfaceRx, sessionInfo: DeriveSessionInfo, query: DeriveStakingQuery): DeriveStakingAccount {
   return {
     ...query,
     redeemable: redeemableSum(api, query.stakingLedger, sessionInfo),
@@ -75,7 +75,7 @@ function parseResult(api: ApiInterfaceRx, sessionInfo: DeriveSessionInfo, query:
 /**
  * @description From a list of stashes, fill in all the relevant staking details
  */
-export function accounts(api: ApiInterfaceRx): (accountIds: (Uint8Array | string)[]) => Observable<DeriveStakingAccount[]> {
+export function accounts (api: ApiInterfaceRx): (accountIds: (Uint8Array | string)[]) => Observable<DeriveStakingAccount[]> {
   return memo((accountIds: (Uint8Array | string)[]): Observable<DeriveStakingAccount[]> =>
     api.derive.session.info().pipe(
       switchMap((sessionInfo) =>
@@ -90,7 +90,7 @@ export function accounts(api: ApiInterfaceRx): (accountIds: (Uint8Array | string
 /**
  * @description From a stash, retrieve the controllerId and fill in all the relevant staking details
  */
-export function account(api: ApiInterfaceRx): (accountId: Uint8Array | string) => Observable<DeriveStakingAccount> {
+export function account (api: ApiInterfaceRx): (accountId: Uint8Array | string) => Observable<DeriveStakingAccount> {
   return memo((accountId: Uint8Array | string): Observable<DeriveStakingAccount> =>
     api.derive.staking.accounts([accountId]).pipe(
       map(([first]) => first)

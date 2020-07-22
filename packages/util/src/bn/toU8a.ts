@@ -29,7 +29,7 @@ interface Options extends ToBnOptions {
  */
 function bnToU8a<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, options?: Options): Uint8Array;
 function bnToU8a<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, bitLength?: number, isLe?: boolean): Uint8Array;
-function bnToU8a<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | number | null, arg1: number | Options = { bitLength: -1, isLe: true, isNegative: false }, arg2?: boolean): Uint8Array {
+function bnToU8a<ExtToBn extends ToBn> (value?: ExtToBn | BN | BigInt | number | null, arg1: number | Options = { bitLength: -1, isLe: true, isNegative: false }, arg2?: boolean): Uint8Array {
   const _options: Options = {
     bitLength: -1,
     isLe: true,

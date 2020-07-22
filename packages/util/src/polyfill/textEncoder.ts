@@ -11,12 +11,12 @@ if (typeof TextEncoder === 'undefined') {
     (global as any).TextEncoder = class {
       #encoder: TextEncoder;
 
-      constructor() {
+      constructor () {
         this.#encoder = new UTE();
       }
 
       // For a Jest 26.0.1 environment, Buffer !== Uint8Array
-      encode(value: string): Uint8Array {
+      encode (value: string): Uint8Array {
         const encoded = this.#encoder.encode(value);
 
         return Uint8Array.from(encoded);

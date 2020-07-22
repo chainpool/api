@@ -17,6 +17,6 @@
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export default function isInstanceOf(value: unknown, clazz: Function): boolean {
+export default function isInstanceOf (value: unknown, clazz: Function): boolean {
   return value instanceof clazz;
 }

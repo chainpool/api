@@ -19,6 +19,6 @@ type FnType = Function;
  * isFunction(() => false); // => true
  * ```
  */
-export default function isFunction(value: unknown): value is FnType {
+export default function isFunction (value: unknown): value is FnType {
   return typeof value === 'function';
 }

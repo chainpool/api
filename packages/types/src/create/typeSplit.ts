@@ -4,12 +4,12 @@
 
 import { assert } from '@chainx-v2/util';
 
-function isNotNested(...counters: number[]): boolean {
+function isNotNested (...counters: number[]): boolean {
   return !counters.some((counter): boolean => counter !== 0);
 }
 
 // safely split a string on ', ' while taking care of any nested occurences
-export function typeSplit(type: string): string[] {
+export function typeSplit (type: string): string[] {
   let [cDepth, fDepth, sDepth, tDepth, start] = [0, 0, 0, 0, 0];
   const result = [];
 

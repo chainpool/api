@@ -18,7 +18,7 @@ import hexToBn from './toBn';
  * hexToNumber('0x1234'); // => 0x1234
  * ```
  */
-export default function hexToNumber(value?: string | null): number {
+export default function hexToNumber (value?: string | null): number {
   return value
     ? hexToBn(value).toNumber()
     : NaN;

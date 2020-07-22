@@ -15,7 +15,7 @@ export interface ExtractResult {
 /**
  * @description Extract derivation junctions from the supplied path
  */
-export default function keyExtractPath(derivePath: string): ExtractResult {
+export default function keyExtractPath (derivePath: string): ExtractResult {
   const parts = derivePath.match(RE_JUNCTION);
   const path: DeriveJunction[] = [];
   let constructed = '';

@@ -27,7 +27,7 @@ import hexToBn from '../hex/toBn';
  * bnToBn(new BN(0x1234)); // => BN(0x1234)
  * ```
  */
-export default function bnToBn<ExtToBn extends ToBn>(value?: ExtToBn | BN | BigInt | string | number | null): BN {
+export default function bnToBn<ExtToBn extends ToBn> (value?: ExtToBn | BN | BigInt | string | number | null): BN {
   if (!value) {
     return new BN(0);
   } else if (isHex(value)) {

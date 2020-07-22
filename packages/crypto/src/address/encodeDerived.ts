@@ -16,6 +16,6 @@ import keyDerived from './keyDerived';
  * @description
  * Creates a Substrate derived address based on the input address/publicKey and the index supplied.
  */
-export default function encodeDerivedAddress(who: Uint8Array | string, index: BigInt | BN | number, ss58Format?: Prefix): string {
+export default function encodeDerivedAddress (who: Uint8Array | string, index: BigInt | BN | number, ss58Format?: Prefix): string {
   return encode(keyDerived(decode(who), index), ss58Format);
 }

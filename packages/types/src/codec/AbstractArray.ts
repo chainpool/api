@@ -22,7 +22,7 @@ import { compareArray } from './utils';
 export default abstract class AbstractArray<T extends Codec> extends Array<T> implements Codec {
   public readonly registry: Registry;
 
-  protected constructor(registry: Registry, ...values: T[]) {
+  protected constructor (registry: Registry, ...values: T[]) {
     super(...values);
 
     this.registry = registry;
@@ -31,7 +31,7 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
   /**
    * @description The length of the value when encoded as a Uint8Array
    */
-  public get encodedLength(): number {
+  public get encodedLength (): number {
     return this.reduce((total, raw): number => {
       return total + raw.encodedLength;
     }, Compact.encodeU8a(this.length).length);
@@ -40,21 +40,21 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
   /**
    * @description returns a hash of the contents
    */
-  public get hash(): H256 {
+  public get hash (): H256 {
     return new Raw(this.registry, blake2AsU8a(this.toU8a(), 256));
   }
 
   /**
    * @description Checks if the value is an empty value
    */
-  public get isEmpty(): boolean {
+  public get isEmpty (): boolean {
     return this.length === 0;
   }
 
   /**
    * @description The length of the value
    */
-  public get length(): number {
+  public get length (): number {
     // only included here since we ignore inherited docs
     return super.length;
   }
@@ -62,28 +62,28 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
   /**
    * @description Compares the value of the input to see if there is a match
    */
-  public eq(other?: unknown): boolean {
+  public eq (other?: unknown): boolean {
     return compareArray(this, other);
   }
 
   /**
    * @description Converts the Object to an standard JavaScript Array
    */
-  public toArray(): T[] {
+  public toArray (): T[] {
     return Array.from(this);
   }
 
   /**
    * @description Returns a hex string representation of the value
    */
-  public toHex(): string {
+  public toHex (): string {
     return u8aToHex(this.toU8a());
   }
 
   /**
    * @description Converts the Object to to a human-friendly JSON, with additional fields, expansion and formatting of information
    */
-  public toHuman(isExtended?: boolean): AnyJson {
+  public toHuman (isExtended?: boolean): AnyJson {
     return this.map((entry): AnyJson =>
       entry.toHuman(isExtended)
     );
@@ -92,7 +92,7 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
   /**
    * @description Converts the Object to JSON, typically used for RPC transfers
    */
-  public toJSON(): AnyJson {
+  public toJSON (): AnyJson {
     return this.map((entry): AnyJson =>
       entry.toJSON()
     );
@@ -106,7 +106,7 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
   /**
    * @description Returns the string representation of the value
    */
-  public toString(): string {
+  public toString (): string {
     // Overwrite the default toString representation of Array.
     const data = this.map((entry): string =>
       entry.toString()
@@ -119,7 +119,7 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
    * @description Encodes the value as a Uint8Array as per the SCALE specifications
    * @param isBare true when the value has none of the type-specific prefixes (internal)
    */
-  public toU8a(isBare?: boolean): Uint8Array {
+  public toU8a (isBare?: boolean): Uint8Array {
     const encoded = this.map((entry): Uint8Array =>
       entry.toU8a(isBare)
     );
@@ -141,7 +141,7 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
    * @param callbackfn The filter function
    * @param thisArg The `this` object to apply the result to
    */
-  public filter(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: unknown): T[] {
+  public filter (callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: unknown): T[] {
     return this.toArray().filter(callbackfn, thisArg);
   }
 
@@ -150,14 +150,14 @@ export default abstract class AbstractArray<T extends Codec> extends Array<T> im
    * @param callbackfn The mapping function
    * @param thisArg The `this` onject to apply the result to
    */
-  public map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: unknown): U[] {
+  public map<U> (callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: unknown): U[] {
     return this.toArray().map(callbackfn, thisArg);
   }
 
   /**
    * @description Checks if the array includes a specific value
    */
-  public includes(check: unknown): boolean {
+  public includes (check: unknown): boolean {
     return this.some((value: T) => value.eq(check));
   }
 }

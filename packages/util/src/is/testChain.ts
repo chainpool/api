@@ -4,7 +4,7 @@
 
 const re = new RegExp('(Development|Local Testnet)$');
 
-export default function isTestChain(chain?: string | null): boolean {
+export default function isTestChain (chain?: string | null): boolean {
   if (!chain) {
     return false;
   }
