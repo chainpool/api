@@ -2,17 +2,21 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ApiPromise, WsProvider } from '@chainx-v2/api';
+import { ApiPromise, ChainX } from '@chainx-v2/api';
+import * as process from 'process';
 
-function createApi (): Promise<ApiPromise> {
+async function createApi (): Promise<ApiPromise> {
   jest.setTimeout(30000);
   process.env.NODE_ENV = 'test';
 
-  const provider = new WsProvider('ws://47.114.131.193:9000');
   // const provider = new WsProvider('wss://westend-rpc.polkadot.io/');
   // const provider = new WsProvider('ws://127.0.0.1:9944/');
+  const chainx = new ChainX('ws://47.114.131.193:9000');
 
-  return new ApiPromise({ provider }).isReady;
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  await chainx.ready();
+
+  return chainx.getApi();
 }
 
 describe('misc quick tests', (): void => {

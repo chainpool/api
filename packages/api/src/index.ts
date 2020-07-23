@@ -13,4 +13,5 @@ export { WsProvider } from '@chainx-v2/rpc-provider';
 
 export { default as ApiPromise } from './promise';
 export { default as ApiRx } from './rx';
+export { default as ChainX } from './ChainX';
 export * from './submittable';

@@ -21,7 +21,7 @@ module.exports = Object.assign({}, config, {
     // eslint-disable-next-line sort-keys
     '@chainx-v2/util(.*)$': '<rootDir>/packages/util/src/$1',
     // eslint-disable-next-line sort-keys
-    '@chainx-v2/crypto(.*)$': '<rootDir>/packages/crypto/src/$2'
+    '@chainx-v2/crypto(.*)$': '<rootDir>/packages/crypto/src/$1'
   },
   modulePathIgnorePatterns: [
     '<rootDir>/packages/api/build',
