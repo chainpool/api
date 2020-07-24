@@ -12,7 +12,7 @@ async function main () {
   const provider = new WsProvider('ws://47.114.131.193:9000');
   const account1 = Account.generate();
 
-  console.log(`generate account is: ${account1}`);
+  console.log(`generate account is: ${account1.address()}`);
 
   // Create the API and wait until ready
   const api = await ApiPromise.create({ provider });

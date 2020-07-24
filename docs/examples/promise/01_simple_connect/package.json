@@ -10,7 +10,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@chainx-v2/api": "0.0.3-beta",
+    "@chainx-v2/api": "0.0.4",
     "@chainx-v2/keyring": "^0.0.3-beta.24"
   },
   "devDependencies": {
