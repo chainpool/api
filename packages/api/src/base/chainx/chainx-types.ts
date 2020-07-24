@@ -314,6 +314,13 @@ export default {
     last_chilled: 'Option<BlockNumber>',
     registered_at: 'BlockNumber'
   },
-  WeightType: 'u128'
+  WeightType: 'u128',
+  // eslint-disable-next-line sort-keys
+  Side: {
+    _enum: [
+      'Buy',
+      'Sell'
+    ]
+  }
 
 };
