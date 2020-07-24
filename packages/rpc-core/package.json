@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/rpc-core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
   "main": "index.js",
   "license": "Apache-2.0",

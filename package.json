@@ -35,5 +35,5 @@
     "@vuepress/plugin-search": "^1.5.2",
     "copyfiles": "^2.3.0"
   },
-  "version": "0.0.5"
+  "version": "0.0.6"
 }
