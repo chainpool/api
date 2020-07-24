@@ -314,6 +314,6 @@ export default {
     last_chilled: 'Option<BlockNumber>',
     registered_at: 'BlockNumber'
   },
-  WeightType: 'u128',
+  WeightType: 'u128'
 
 };

@@ -1383,11 +1383,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chainx-v2/account@workspace:packages/account":
+"@chainx-v2/account@0.0.3-beta.26, @chainx-v2/account@workspace:packages/account":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/account@workspace:packages/account"
   dependencies:
-    "@chainx-v2/keyring": 0.0.3-beta.24
+    "@chainx-v2/keyring": 0.0.3-beta.26
     "@types/node": ^14.0.23
     bip32: ^1.0.2
     bs58: ^4.0.1
@@ -1400,54 +1400,55 @@ __metadata:
   resolution: "@chainx-v2/api-contract@workspace:packages/api-contract"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api": 0.0.3-beta.24
-    "@chainx-v2/rpc-core": 0.0.3-beta.24
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/api": 0.0.3-beta.26
+    "@chainx-v2/rpc-core": 0.0.3-beta.26
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     bn.js: ^5.1.2
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/api-derive@0.0.3-beta.24, @chainx-v2/api-derive@workspace:packages/api-derive":
+"@chainx-v2/api-derive@0.0.3-beta.26, @chainx-v2/api-derive@workspace:packages/api-derive":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/api-derive@workspace:packages/api-derive"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api": 0.0.3-beta.24
-    "@chainx-v2/crypto": 0.0.3-beta.24
-    "@chainx-v2/keyring": 0.0.3-beta.24
-    "@chainx-v2/rpc-core": 0.0.3-beta.24
-    "@chainx-v2/rpc-provider": 0.0.3-beta.24
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/api": 0.0.3-beta.26
+    "@chainx-v2/crypto": 0.0.3-beta.26
+    "@chainx-v2/keyring": 0.0.3-beta.26
+    "@chainx-v2/rpc-core": 0.0.3-beta.26
+    "@chainx-v2/rpc-provider": 0.0.3-beta.26
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     bn.js: ^5.1.2
     memoizee: ^0.4.14
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/api@0.0.3-beta.24, @chainx-v2/api@workspace:packages/api":
+"@chainx-v2/api@0.0.3-beta.26, @chainx-v2/api@workspace:packages/api":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/api@workspace:packages/api"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api-derive": 0.0.3-beta.24
-    "@chainx-v2/crypto": 0.0.3-beta.24
+    "@chainx-v2/account": 0.0.3-beta.26
+    "@chainx-v2/api-derive": 0.0.3-beta.26
+    "@chainx-v2/crypto": 0.0.3-beta.26
     "@chainx-v2/keyring": ^0.0.3-beta.22
-    "@chainx-v2/metadata": 0.0.3-beta.24
-    "@chainx-v2/rpc-core": 0.0.3-beta.24
-    "@chainx-v2/rpc-provider": 0.0.3-beta.24
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/types-known": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/metadata": 0.0.3-beta.26
+    "@chainx-v2/rpc-core": 0.0.3-beta.26
+    "@chainx-v2/rpc-provider": 0.0.3-beta.26
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/types-known": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     bn.js: ^5.1.2
     eventemitter3: ^4.0.4
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/crypto@0.0.3-beta.24, @chainx-v2/crypto@workspace:packages/crypto":
+"@chainx-v2/crypto@0.0.3-beta.26, @chainx-v2/crypto@workspace:packages/crypto":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/crypto@workspace:packages/crypto"
   dependencies:
@@ -1471,55 +1472,55 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/keyring@0.0.3-beta.24, @chainx-v2/keyring@^0.0.3-beta.22, @chainx-v2/keyring@workspace:packages/keyring":
+"@chainx-v2/keyring@0.0.3-beta.26, @chainx-v2/keyring@^0.0.3-beta.22, @chainx-v2/keyring@workspace:packages/keyring":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/keyring@workspace:packages/keyring"
   dependencies:
     "@babel/runtime": ^7.10.5
-    "@chainx-v2/crypto": 0.0.3-beta.24
+    "@chainx-v2/crypto": 0.0.3-beta.26
     "@chainx-v2/util": 0.0.3-beta.16
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/metadata@0.0.3-beta.24, @chainx-v2/metadata@workspace:packages/metadata":
+"@chainx-v2/metadata@0.0.3-beta.26, @chainx-v2/metadata@workspace:packages/metadata":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/metadata@workspace:packages/metadata"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/crypto": 0.0.3-beta.24
-    "@chainx-v2/keyring": 0.0.3-beta.24
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/types-known": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/crypto": 0.0.3-beta.26
+    "@chainx-v2/keyring": 0.0.3-beta.26
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/types-known": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     bn.js: ^5.1.2
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/rpc-core@0.0.3-beta.24, @chainx-v2/rpc-core@workspace:packages/rpc-core":
+"@chainx-v2/rpc-core@0.0.3-beta.26, @chainx-v2/rpc-core@workspace:packages/rpc-core":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/rpc-core@workspace:packages/rpc-core"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/keyring": 0.0.3-beta.24
-    "@chainx-v2/metadata": 0.0.3-beta.24
-    "@chainx-v2/rpc-provider": 0.0.3-beta.24
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/keyring": 0.0.3-beta.26
+    "@chainx-v2/metadata": 0.0.3-beta.26
+    "@chainx-v2/rpc-provider": 0.0.3-beta.26
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     memoizee: ^0.4.14
     rxjs: ^6.5.5
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/rpc-provider@0.0.3-beta.24, @chainx-v2/rpc-provider@workspace:packages/rpc-provider":
+"@chainx-v2/rpc-provider@0.0.3-beta.26, @chainx-v2/rpc-provider@workspace:packages/rpc-provider":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/rpc-provider@workspace:packages/rpc-provider"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/crypto": 0.0.3-beta.24
-    "@chainx-v2/keyring": 0.0.3-beta.24
-    "@chainx-v2/metadata": 0.0.3-beta.24
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/crypto": 0.0.3-beta.26
+    "@chainx-v2/keyring": 0.0.3-beta.26
+    "@chainx-v2/metadata": 0.0.3-beta.26
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     bn.js: ^5.1.2
     eventemitter3: ^4.0.4
     isomorphic-fetch: ^2.2.1
@@ -1536,11 +1537,11 @@ __metadata:
     "@babel/core": ^7.10.3
     "@babel/register": ^7.10.3
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/api": 0.0.3-beta.24
-    "@chainx-v2/metadata": 0.0.3-beta.24
-    "@chainx-v2/rpc-provider": 0.0.3-beta.24
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/api": 0.0.3-beta.26
+    "@chainx-v2/metadata": 0.0.3-beta.26
+    "@chainx-v2/rpc-provider": 0.0.3-beta.26
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     "@types/websocket": ^1.0.0
     "@types/yargs": ^15.0.5
     handlebars: ^4.7.6
@@ -1555,27 +1556,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/types-known@0.0.3-beta.24, @chainx-v2/types-known@workspace:packages/types-known":
+"@chainx-v2/types-known@0.0.3-beta.26, @chainx-v2/types-known@workspace:packages/types-known":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/types-known@workspace:packages/types-known"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/types": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/types": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     "@types/bn.js": ^4.11.6
     bn.js: ^5.1.2
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/types@0.0.3-beta.24, @chainx-v2/types@workspace:packages/types":
+"@chainx-v2/types@0.0.3-beta.26, @chainx-v2/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.3
-    "@chainx-v2/crypto": 0.0.3-beta.24
-    "@chainx-v2/keyring": 0.0.3-beta.24
-    "@chainx-v2/metadata": 0.0.3-beta.24
-    "@chainx-v2/util": 0.0.3-beta.24
+    "@chainx-v2/crypto": 0.0.3-beta.26
+    "@chainx-v2/keyring": 0.0.3-beta.26
+    "@chainx-v2/metadata": 0.0.3-beta.26
+    "@chainx-v2/util": 0.0.3-beta.26
     "@types/bn.js": ^4.11.6
     "@types/memoizee": ^0.4.4
     bn.js: ^5.1.2
@@ -1584,7 +1585,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainx-v2/util@0.0.3-beta.24, @chainx-v2/util@workspace:packages/util":
+"@chainx-v2/util@0.0.3-beta.26, @chainx-v2/util@workspace:packages/util":
   version: 0.0.0-use.local
   resolution: "@chainx-v2/util@workspace:packages/util"
   dependencies:
