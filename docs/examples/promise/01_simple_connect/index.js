@@ -3,19 +3,23 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 
 // Required imports
-const { ApiPromise, WsProvider } = require('@chainx-v2/api');
+const { ChainX } = require('@chainx-v2/api');
 const { Account } = require('@chainx-v2/account');
 const { decodeAddress, encodeAddress, setSS58Format } = require('@chainx-v2/keyring');
 
 async function main () {
   // Initialise the provider to connect to the local node
-  const provider = new WsProvider('ws://47.114.131.193:9000');
+  const chainx = new ChainX('ws://47.114.131.193:9000');
   const account1 = Account.generate();
 
   console.log(`generate account is: ${account1.address()}`);
 
   // Create the API and wait until ready
-  const api = await ApiPromise.create({ provider });
+  await chainx.ready();
+  const api = chainx.getApi();
+
+  const assets = await api.rpc.xassets.getAssets();
+  console.log("balance:" + assets);
 
   // Retrieve the chain & node information information via rpc calls
   const [chain, nodeName, nodeVersion] = await Promise.all([
