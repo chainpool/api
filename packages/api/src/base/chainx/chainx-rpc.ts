@@ -30,7 +30,34 @@ export default {
       ],
       type: 'BTreeMap<AssetId, TotalAssetInfoForRpc>'
     }
-
+  },
+  xstaking: {
+    getValidatorByAccount: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'who',
+          type: 'AccountId'
+        },
+        {
+          isOptional: true,
+          name: 'at',
+          type: 'Hash'
+        }
+      ],
+      type: 'ValidatorInfo<AccountId, RpcBalance, BlockNumber>'
+    },
+    getValidators: {
+      description: 'Some description',
+      params: [
+        {
+          isOptional: true,
+          name: 'at',
+          type: 'Hash'
+        }
+      ],
+      type: 'Vec<ValidatorInfo<AccountId, RpcBalance, BlockNumber>>'
+    }
   },
   // eslint-disable-next-line sort-keys
   chainx: {
