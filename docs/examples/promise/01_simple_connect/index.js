@@ -19,7 +19,8 @@ async function main () {
   const api = chainx.getApi();
 
   const assets = await api.rpc.xassets.getAssets();
-  console.log("balance:" + assets);
+
+  console.log('balance:' + assets);
 
   // Retrieve the chain & node information information via rpc calls
   const [chain, nodeName, nodeVersion] = await Promise.all([
