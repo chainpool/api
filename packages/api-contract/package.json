@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/api-contract",
-  "version": "0.0.4-beta.4",
+  "version": "0.0.4",
   "description": "Interfaces for interacting with contracts and contract ABIs",
   "main": "index.js",
   "license": "Apache-2.0",
