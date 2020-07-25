@@ -289,13 +289,13 @@ export default {
   OrderInfo: 'Order',
   // eslint-disable-next-line sort-keys
   AssetInfoForRpc: {
-    token: 'String',
-    tokenName: 'String',
+    token: 'Text',
+    tokenName: 'Text',
     // eslint-disable-next-line sort-keys
     chain: 'Chain',
     precision: 'Precision',
     // eslint-disable-next-line sort-keys
-    desc: 'String'
+    desc: 'Text'
   },
   Handicap: {
     highestBid: 'Price',
@@ -318,7 +318,7 @@ export default {
   TotalAssetInfoForRpc: {
     info: 'AssetInfoForRpc',
     // eslint-disable-next-line sort-keys
-    balance: 'BTreeMap<AssetType, String>',
+    balance: 'BTreeMap<AssetType, Text>',
     isOnline: 'bool',
     restrictions: 'AssetRestrictions'
   },
