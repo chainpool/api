@@ -22,7 +22,7 @@ async function createApi (): Promise<ApiPromise> {
 describe('misc quick tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
     const api = await createApi();
-    const firstHead = await api.rpc.chain.getHeader();
+    const firstHead = await api.rpc.xstaking.getValidators();
 
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     console.log('head is' + firstHead);
