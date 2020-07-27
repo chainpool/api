@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/metadata",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Helpers to extract information from runtime metadata",
   "main": "index.js",
   "license": "Apache-2.0",
