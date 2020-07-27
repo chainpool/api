@@ -256,7 +256,9 @@ export default {
       'DestroyFree'
     ]
   },
-  AssetRestrictions: 'u32',
+  AssetRestrictions: {
+    'mask': 'u32'
+  },
   BTCAddress: {
     kind: 'Type',
     network: 'Network',
