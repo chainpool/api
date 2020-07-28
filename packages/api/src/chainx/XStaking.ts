@@ -50,4 +50,4 @@ class XStaking {
   }
 }
 
-export default GateWayCommon;
+export default XStaking;
