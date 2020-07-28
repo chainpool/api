@@ -31,6 +31,157 @@ export default {
       type: 'BTreeMap<AssetId, TotalAssetInfoForRpc>'
     }
   },
+  xgatewaycommon: {
+    withdrawalLimit: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'asset_id',
+          type: 'AssetId'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'WithdrawalLimit<RpcBalance>'
+    },
+    // eslint-disable-next-line sort-keys
+    verifyWithdrawal: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'asset_id',
+          type: 'AssetId'
+        },
+        {
+          name: 'value',
+          type: 'u64'
+        },
+        {
+          name: 'addr',
+          type: 'String'
+        },
+        {
+          name: 'memo',
+          type: 'String'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: '()'
+    },
+    // eslint-disable-next-line sort-keys
+    trusteeMultisigs: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'at',
+          type: 'Option<BlockHash>)'
+        }
+      ],
+      type: 'BTreeMap<Chain, AccountId>'
+    },
+    // eslint-disable-next-line sort-keys
+    bitcoinTrusteeProperties: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'who',
+          type: 'AccountId'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BtcTrusteeIntentionProps'
+    },
+    bitcoinTrusteeSessionInfo: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BtcTrusteeSessionInfo<AccountId>'
+    },
+    // eslint-disable-next-line sort-keys
+    bitcoinGenerateTrusteeSessionInfo: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'candidates',
+          type: 'Vec<AccountId>'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BtcTrusteeSessionInfo<AccountId>'
+    }
+  },
+  xgatewayrecords: {
+    withdrawalList: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BTreeMap<u32, WithdrawalRecord<AccountId, BlockNumber>>'
+    },
+    withdrawalListByChain: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'chain',
+          type: 'Chain'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BTreeMap<u32, WithdrawalRecord<AccountId, BlockNumber>>'
+    },
+    // eslint-disable-next-line sort-keys
+    pendingWithdrawalList: {
+      description: 'Some description',
+      params: [
+        {
+          name: 'chain',
+          type: 'Chain'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BTreeMap<u32, WithdrawalRecord<AccountId, BlockNumber>>'
+    }
+  },
   xstaking: {
     getValidatorByAccount: {
       description: 'Some description',
