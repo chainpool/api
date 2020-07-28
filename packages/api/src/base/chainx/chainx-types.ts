@@ -359,61 +359,79 @@ export default {
     ]
   },
   Unbonded: {
-    lockedUntil: "BlockNumber",
-    value: "Balance"
+    lockedUntil: 'BlockNumber',
+    value: 'Balance'
   },
   WithdrawalState: {
     _enum: [
-      "Applying",
-      "Processing",
-      "NormalFinish",
-      "RootFinish",
-      "NormalCancel",
-      "RootCancel"
+      'Applying',
+      'Processing',
+      'NormalFinish',
+      'RootFinish',
+      'NormalCancel',
+      'RootCancel'
     ]
   },
+  // eslint-disable-next-line sort-keys
   WithdrawalRecord: {
-    assetId: "AssetId",
-    applicant: "AccountId",
-    balance: "Balance",
-    addr: "AddrStr",
-    ext: "Memo",
-    height: "BlockNumber"
+    assetId: 'AssetId',
+    // eslint-disable-next-line sort-keys
+    applicant: 'AccountId',
+    balance: 'Balance',
+    // eslint-disable-next-line sort-keys
+    addr: 'AddrStr',
+    ext: 'Memo',
+    height: 'BlockNumber'
   },
+  // eslint-disable-next-line sort-keys
   WithdrawalLimit: {
-    minimalWithdrawal: "Balance",
-    fee: "Balance"
+    minimalWithdrawal: 'Balance',
+    // eslint-disable-next-line sort-keys
+    fee: 'Balance'
   },
+  // eslint-disable-next-line sort-keys
   TrusteeInfoConfig: {
-    minTrusteeCount: "u32",
-    maxTrusteeCount: "u32"
+    minTrusteeCount: 'u32',
+    // eslint-disable-next-line sort-keys
+    maxTrusteeCount: 'u32'
   },
+  // eslint-disable-next-line sort-keys
   GenericTrusteeIntentionProps: {
-    about: "Text",
-    hotEntity: "Vec<u8>",
-    coldEntity: "Vec<u8>"
+    about: 'Text',
+    hotEntity: 'Vec<u8>',
+    // eslint-disable-next-line sort-keys
+    coldEntity: 'Vec<u8>'
   },
   GenericTrusteeSessionInfo: {
-    trusteeList: "Vec<AccountId>",
-    threshold: "u16",
-    hotAddress: "Vec<u8>",
-    coldAddress: "Vec<u8>"
+    trusteeList: 'Vec<AccountId>',
+    // eslint-disable-next-line sort-keys
+    threshold: 'u16',
+    // eslint-disable-next-line sort-keys
+    hotAddress: 'Vec<u8>',
+    // eslint-disable-next-line sort-keys
+    coldAddress: 'Vec<u8>'
   },
-  BtcTrusteeType: "Vec<u8>",
+  // eslint-disable-next-line sort-keys
+  BtcTrusteeType: 'Vec<u8>',
+  // eslint-disable-next-line sort-keys
   BtcTrusteeAddrInfo: {
-    addr: "BtcAddress",
-    redeemScript: "Vec<u8>"
+    addr: 'BtcAddress',
+    redeemScript: 'Vec<u8>'
   },
   BtcTrusteeIntentionProps: {
-    about: "Text",
-    hotEntity: "BtcTrusteeType",
-    coldEntity: "BtcTrusteeType"
+    about: 'Text',
+    hotEntity: 'BtcTrusteeType',
+    // eslint-disable-next-line sort-keys
+    coldEntity: 'BtcTrusteeType'
   },
   BtcTrusteeSessionInfo: {
-    trusteeList: "Vec<AccountId>",
-    threshold: "u16",
-    hotAddress: "BtcTrusteeAddrInfo",
-    coldAddress: "BtcTrusteeAddrInfo"
+    trusteeList: 'Vec<AccountId>',
+    // eslint-disable-next-line sort-keys
+    threshold: 'u16',
+    // eslint-disable-next-line sort-keys
+    hotAddress: 'BtcTrusteeAddrInfo',
+    // eslint-disable-next-line sort-keys
+    coldAddress: 'BtcTrusteeAddrInfo'
   },
 
   BtcTxType: {

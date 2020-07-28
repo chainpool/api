@@ -20,6 +20,7 @@ async function createApi (): Promise<ApiPromise> {
   return chainx.getApi();
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 async function generateAccount () : void {
   const account1 = Account.generate();
 
