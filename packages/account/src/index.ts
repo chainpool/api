@@ -14,11 +14,10 @@ import u8aFrom from './u8aFrom';
 import decodePkcs8 from '@chainx-v2/keyring/pair/decode';
 import encodePkcs8 from '@chainx-v2/keyring/pair/encode';
 
-const NET_PREFIX = {
-  testnet: 42,
-  // eslint-disable-next-line sort-keys
-  mainnet: 44
-};
+enum NET_PREFIX {
+  testnet = 42,
+  mainnet = 44
+}
 
 /**
  * interface KeyPair contains publickey and secretKey.
@@ -52,7 +51,7 @@ class Account {
      * @return void
      *
     */
-  public static setNet (net: number): void {
+  public static setNet (net: NET_PREFIX): void {
     if (!net) {
       throw new Error('expect pass in the network type, testnet or mainnet');
     }

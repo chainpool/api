@@ -22,6 +22,7 @@ async function createApi (): Promise<ApiPromise> {
 describe('misc quick tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
     const api = await createApi();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const firstHead = await api.rpc.xstaking.getValidators();
 
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
