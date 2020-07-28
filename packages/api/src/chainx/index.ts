@@ -11,6 +11,8 @@ class ChainX {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   private _api: Promise<ApiPromise>;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   private _stake:Slake;
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -19,8 +21,6 @@ class ChainX {
   // @ts-ignore
   private _gatewaycommon:GateWayCommon;
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  private _account:Account;
 
   // eslint-disable-next-line no-empty-pattern
   constructor (wsUrlOrProvider = 'ws://127.0.0.1:8087') {
