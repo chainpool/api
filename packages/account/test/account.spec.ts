@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { Account, NET_PREFIX } from '@chainx-v2/account';
-import {ApiPromise, ChainX, WsProvider} from '@chainx-v2/api';
+import { ApiPromise, ChainX } from '@chainx-v2/api';
 import process from 'process';
 
 async function createApi (): Promise<ApiPromise> {
@@ -73,14 +73,16 @@ describe('account module tests', (): void => {
 
     console.log('alice address:' + aliceAddress);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     const data = await api.rpc.xassets.getAssetsByAccount('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
 
     // Create a extrinsic, transferring 12345 units to Bob
 
-    const transfer = await api.tx.balances.transfer('5FA9nQDVg267DEd8m1ZypXLBnvN7SFxYwV7ndqSYGiN9TTpu', 200000000);
+    // const transfer = await api.tx.balances.transfer('5FA9nQDVg267DEd8m1ZypXLBnvN7SFxYwV7ndqSYGiN9TTpu', 200000000);
 
     // Sign and send the transaction using our account
-    const hash = await transfer.signAndSend('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // const hash = await transfer.signAndSend('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
 
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     console.log(`${aliceAddress} has a balance of ${data}`);
