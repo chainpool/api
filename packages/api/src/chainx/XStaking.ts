@@ -32,7 +32,6 @@ class XStaking {
   /**
    * Get the staking dividends info given the staker AccountId.
    * @params name: AccountId
-   *
    * */
   getDividendByAccount (...args: any[]) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
@@ -42,7 +41,6 @@ class XStaking {
   /**
    * Get the nomination details given the staker AccountId.
    * @params name: AccountId  name: Hash
-   *
    * */
   getNominationByAccount (...args: any[]) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call

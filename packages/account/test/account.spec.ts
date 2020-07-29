@@ -72,6 +72,8 @@ describe('account module tests', (): void => {
     const aliceAccount = Account.fromPrivateKey('0xabf8e5bdbe30c65656c0a3cbd181ff8a56294a69dfedd27982aace4a76909115');
     const aliceAddress = aliceAccount.address();
 
+
+    console.log(`generate account : ${api.account.generate()}`);
     console.log('alice address:' + aliceAddress);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
