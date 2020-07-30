@@ -3,10 +3,11 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { Account, NET_PREFIX } from '@chainx-v2/account';
-import { ApiPromise, ChainX } from '@chainx-v2/api';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ChainX } from '@chainx-v2/api';
 import process from 'process';
 
-async function createApi (): ChainX {
+async function createApi (): Promise<ChainX> {
   jest.setTimeout(30000);
   process.env.NODE_ENV = 'test';
 
@@ -73,7 +74,9 @@ describe('account module tests', (): void => {
     const aliceAccount = Account.fromPrivateKey('0xabf8e5bdbe30c65656c0a3cbd181ff8a56294a69dfedd27982aace4a76909115');
     const aliceAddress = aliceAccount.address();
 
-
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call,@typescript-eslint/restrict-template-expressions
     console.log(`generate account : ${chainx.account.generate()}`);
     console.log('alice address:' + aliceAddress);
 
