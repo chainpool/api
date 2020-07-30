@@ -5,6 +5,7 @@ import ApiPromise from '../promise';
 import Slake from './XStaking';
 import Asset from './Asset';
 import GateWayCommon from './GateWayCommon';
+import { Account } from '@chainx-v2/account';
 
 class ChainX {
   private _provider: WsProvider;
@@ -47,22 +48,22 @@ class ChainX {
     this._gatewaycommon = new GateWayCommon(this);
   }
 
-  get account (): Account {
+  public get account (): Account {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return Account;
   }
 
-  get asset (): Asset {
+  public get asset (): Asset {
     return this._asset;
   }
 
-  get gatewaycommon (): GateWayCommon {
+  public get gatewaycommon (): GateWayCommon {
     return this._gatewaycommon;
   }
 
-  get slake (): Slake {
+  public get slake (): Slake {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this._stake;
   }

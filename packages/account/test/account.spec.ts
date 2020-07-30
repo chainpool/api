@@ -6,7 +6,7 @@ import { Account, NET_PREFIX } from '@chainx-v2/account';
 import { ApiPromise, ChainX } from '@chainx-v2/api';
 import process from 'process';
 
-async function createApi (): Promise<ApiPromise> {
+async function createApi (): ChainX {
   jest.setTimeout(30000);
   process.env.NODE_ENV = 'test';
 
@@ -17,7 +17,7 @@ async function createApi (): Promise<ApiPromise> {
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   await chainx.ready();
 
-  return chainx.getApi();
+  return chainx;
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
@@ -67,13 +67,14 @@ async function generateAccount () : void {
 
 describe('account module tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
-    const api = await createApi();
+    const chainx = await createApi();
+    const api = chainx.getApi();
 
     const aliceAccount = Account.fromPrivateKey('0xabf8e5bdbe30c65656c0a3cbd181ff8a56294a69dfedd27982aace4a76909115');
     const aliceAddress = aliceAccount.address();
 
 
-    console.log(`generate account : ${api.account.generate()}`);
+    console.log(`generate account : ${chainx.account.generate()}`);
     console.log('alice address:' + aliceAddress);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
