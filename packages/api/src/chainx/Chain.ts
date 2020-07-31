@@ -9,15 +9,15 @@ class Asset {
     this._api = chainx.api;
   }
 
-  systemPeers () : Promise<any>{
+  systemPeers () : Promise<any> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     return new Promise<any>((resolve) => {
       // eslint-disable-next-line no-void
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
-        const peers = await this._api.rpc.xassets.getAssets(...args);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
+        const peers = await api.rpc.xassets.getAssets(...args);
 
         resolve(peers);
       });
@@ -31,7 +31,7 @@ class Asset {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
-        const health = await this._api.rpc.system.health();
+        const health = await api.rpc.system.health();
 
         resolve(health);
       });

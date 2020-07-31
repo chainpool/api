@@ -79,7 +79,7 @@ describe('account module tests', (): void => {
     console.log(`generate account : ${chainx.account.generate()}`);
     console.log('alice address:' + aliceAddress);
 
-
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     const data = await chainx.asset.getAssetsByAccount('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
 
     // Create a extrinsic, transferring 12345 units to Bob

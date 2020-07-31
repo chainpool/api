@@ -19,8 +19,8 @@ class GateWayCommon {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
-        const withdrawLimits = await this._api.rpc.xgatewaycommon.withdrawalLimit(...args);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
+        const withdrawLimits = await api.rpc.xgatewaycommon.withdrawalLimit(...args);
 
         resolve(withdrawLimits);
       });
@@ -34,8 +34,8 @@ class GateWayCommon {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
-        const veryfy = await this._api.rpc.xgatewaycommon.verifyWithdrawal(...args);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
+        const veryfy = await api.rpc.xgatewaycommon.verifyWithdrawal(...args);
 
         resolve(veryfy);
       });
@@ -49,7 +49,7 @@ class GateWayCommon {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
         const trusteeMultisigs = await api.rpc.xgatewaycommon.trusteeMultisigs(...args);
 
         resolve(trusteeMultisigs);

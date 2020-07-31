@@ -31,8 +31,8 @@ class Asset {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
-        const assets = await this._api.rpc.xassets.getAssets(...args);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
+        const assets = await api.rpc.xassets.getAssets(...args);
 
         resolve(assets);
       });

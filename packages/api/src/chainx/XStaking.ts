@@ -21,7 +21,7 @@ class XStaking {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
         const getValidators = await api.rpc.xstaking.getValidators(...args);
 
         resolve(getValidators);
@@ -41,7 +41,7 @@ class XStaking {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
         const getValidatorByAccount = await api.rpc.xstaking.getValidatorByAccount(...args);
 
         resolve(getValidatorByAccount);
@@ -60,7 +60,7 @@ class XStaking {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
         const getDividendByAccount = await api.rpc.xstaking.getDividendByAccount(...args);
 
         resolve(getDividendByAccount);
@@ -79,7 +79,7 @@ class XStaking {
       void this._api.then(async (api) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
         const getNominationByAccount = await api.rpc.xstaking.getNominationByAccount(...args);
 
         resolve(getNominationByAccount);
