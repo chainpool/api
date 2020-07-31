@@ -13,34 +13,92 @@ class GateWayCommon {
   /**
    * query withdraw limit
    * */
-  withdrawalLimit (...args: any[]) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
-    return this._api.rpc.xgatewaycommon.withdrawalLimit(...args);
+  async withdrawalLimit (...args: any[]):Promise<any> {
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const withdrawLimits = await this._api.rpc.xgatewaycommon.withdrawalLimit(...args);
+
+        resolve(withdrawLimits);
+      });
+    });
   }
 
-  verifyWithdrawal (...args: any[]) {
+  verifyWithdrawal (...args: any[]) : Promise<any> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
-    return this._api.rpc.xgatewaycommon.verifyWithdrawal(...args);
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const veryfy = await this._api.rpc.xgatewaycommon.verifyWithdrawal(...args);
+
+        resolve(veryfy);
+      });
+    });
   }
 
-  trusteeMultisigs (...args: any[]) {
+  trusteeMultisigs (...args: any[]):Promise<any> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
-    return this._api.rpc.xgatewaycommon.trusteeMultisigs(...args);
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const trusteeMultisigs = await api.rpc.xgatewaycommon.trusteeMultisigs(...args);
+
+        resolve(trusteeMultisigs);
+      });
+    });
   }
 
-  bitcoinTrusteeProperties (...args: any[]) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
-    return this._api.rpc.xgatewaycommon.bitcoinTrusteeProperties(...args);
+  bitcoinTrusteeProperties (...args: any[]):Promise<any> {
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const trusteeProperties = await api.rpc.bitcoinTrusteeProperties(...args);
+
+        resolve(trusteeProperties);
+      });
+    });
   }
 
-  bitcoinTrusteeSessionInfo (...args: any[]) {
+  bitcoinTrusteeSessionInfo (...args: any[]): Promise<any> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
-    return this._api.rpc.xgatewaycommon.bitcoinTrusteeSessionInfo(...args);
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const bitcoinTrusteeSessionInfo = await api.rpc.bitcoinTrusteeSessionInfo(...args);
+
+        resolve(bitcoinTrusteeSessionInfo);
+      });
+    });
   }
 
-  bitcoinGenerateTrusteeSessionInfo (...args: any[]) {
+  bitcoinGenerateTrusteeSessionInfo (...args: any[]):Promise<any> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call
-    return this._api.rpc.xgatewaycommon.bitcoinGenerateTrusteeSessionInfo(...args);
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const bitcoinGenerateTrusteeSessionInfo = await api.rpc.bitcoinGenerateTrusteeSessionInfo(...args);
+
+        resolve(bitcoinGenerateTrusteeSessionInfo);
+      });
+    });
   }
 }
 

@@ -9,27 +9,33 @@ class Asset {
     this._api = chainx.api;
   }
 
-  systemPeers () {
+  systemPeers () : Promise<any>{
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    return this._api.rpc.system.peers();
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const peers = await this._api.rpc.xassets.getAssets(...args);
+
+        resolve(peers);
+      });
+    });
   }
 
-  systemHealth () {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-assignment
-    const health = this._api.rpc.system.health();
+  systemHealth (): Promise<any> {
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const health = await this._api.rpc.system.health();
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return health;
-  }
-
-  getAssetsByAccount (...args: any[]) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    return this._api.rpc.xassets.getAssetsByAccount(...args);
-  }
-
-  getAssets (...args: any[]) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    return this._api.rpc.xassets.getAssets(...args);
+        resolve(health);
+      });
+    });
   }
 }
 
