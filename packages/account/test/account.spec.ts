@@ -69,7 +69,7 @@ async function generateAccount () : void {
 describe('account module tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
     const chainx = await createApi();
-    const api = chainx.getApi();
+    const api = chainx.api;
 
     const aliceAccount = Account.fromPrivateKey('0xabf8e5bdbe30c65656c0a3cbd181ff8a56294a69dfedd27982aace4a76909115');
     const aliceAddress = aliceAccount.address();
@@ -86,7 +86,6 @@ describe('account module tests', (): void => {
     // Create a extrinsic, transferring 12345 units to Bob
 
     // const transfer = await api.tx.balances.transfer('5FA9nQDVg267DEd8m1ZypXLBnvN7SFxYwV7ndqSYGiN9TTpu', 200000000);
-
     // Sign and send the transaction using our account
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     // const hash = await transfer.signAndSend('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');

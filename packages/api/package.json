@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/api",
-  "version": "0.0.8",
+  "version": "0.0.9.beta",
   "description": "Promise and RxJS wrappers around the Polkadot JS RPC",
   "main": "index.js",
   "license": "Apache-2.0",

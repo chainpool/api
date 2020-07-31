@@ -7,7 +7,7 @@ class GateWayCommon {
   private _api: Promise<ApiPromise>;
 
   constructor (chainx: ChainX) {
-    this._api = chainx.getApi();
+    this._api = chainx.api;
   }
 
   /**

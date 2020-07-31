@@ -19,7 +19,8 @@ async function createApi (): Promise<ApiPromise> {
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   await chainx.ready();
 
-  return chainx.getApi();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return chainx.api;
 }
 
 describe('misc quick tests', (): void => {

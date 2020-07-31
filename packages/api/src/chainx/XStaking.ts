@@ -6,7 +6,7 @@ import ApiPromise from '@chainx-v2/api/promise';
 class XStaking {
   private _api: Promise<ApiPromise>;
   constructor (chainx: ChainX) {
-    this._api = chainx.getApi();
+    this._api = chainx.api;
   }
 
   /**

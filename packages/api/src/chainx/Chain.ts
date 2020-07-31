@@ -9,6 +9,19 @@ class Asset {
     this._api = chainx.api;
   }
 
+  systemPeers () {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+    return this._api.rpc.system.peers();
+  }
+
+  systemHealth () {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-assignment
+    const health = this._api.rpc.system.health();
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return health;
+  }
+
   getAssetsByAccount (...args: any[]) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     return this._api.rpc.xassets.getAssetsByAccount(...args);
