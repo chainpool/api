@@ -208,7 +208,41 @@ export default {
         }
       ],
       type: 'Vec<ValidatorInfo<AccountId, RpcBalance, BlockNumber>>'
+    },
+    // eslint-disable-next-line sort-keys
+    getDividendByAccount: {
+      description: 'Get the staking dividends info given the staker AccountId.',
+      params: [
+        {
+          name: 'who',
+          type: 'AccountId'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BTreeMap<AccountId, RpcBalance>'
+    },
+    getNominationByAccount: {
+      description: 'Get the nomination details given the staker AccountId.',
+      params: [
+        {
+          name: 'who',
+          type: 'AccountId'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'BTreeMap<AccountId, RpcNominatorLedger<RpcBalance, BlockNumber>>'
     }
+
   },
   // eslint-disable-next-line sort-keys
   chainx: {

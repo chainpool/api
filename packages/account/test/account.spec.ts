@@ -4,22 +4,8 @@
 
 import { Account, NET_PREFIX } from '@chainx-v2/account';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ChainX } from '@chainx-v2/api';
+import { ChainX, ApiPromise } from '@chainx-v2/api';
 import process from 'process';
-
-async function createApi (): Promise<ChainX> {
-  jest.setTimeout(30000);
-  process.env.NODE_ENV = 'test';
-
-  // const provider = new WsProvider('wss://westend-rpc.polkadot.io/');
-  // const provider = new WsProvider('ws://127.0.0.1:9944/');
-  const chainx = new ChainX('ws://47.114.131.193:9000');
-
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  await chainx.ready();
-
-  return chainx;
-}
 
 // eslint-disable-next-line @typescript-eslint/require-await
 function generateAccount () : void {
@@ -66,6 +52,20 @@ function generateAccount () : void {
   console.log('address:', account3.address()); // 地址
 }
 
+async function createApi (): Promise<ApiPromise> {
+  jest.setTimeout(30000);
+  process.env.NODE_ENV = 'test';
+
+  // const provider = new WsProvider('wss://westend-rpc.polkadot.io/');
+  // const provider = new WsProvider('ws://127.0.0.1:9944/');
+  const chainx = new ChainX('ws://47.114.131.193:9000');
+
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  await chainx.ready();
+
+  return chainx.api;
+}
+
 describe('account module tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
     const chainx = await createApi();
@@ -80,7 +80,7 @@ describe('account module tests', (): void => {
     console.log('alice address:' + aliceAddress);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    const data = await chainx.asset.getAssetsByAccount('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
+    // const data = await chainx.rpc.xassets.getAssetsByAccount('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
 
     // Create a extrinsic, transferring 12345 units to Bob
 
@@ -90,7 +90,7 @@ describe('account module tests', (): void => {
     // const hash = await transfer.signAndSend('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
 
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    console.log(`${aliceAddress} has a balance of ${data}`);
+    // console.log(`${aliceAddress} has a balance of ${data}`);
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     console.log(`You may leave this example running and start example 06 or transfer any value to ${aliceAddress}`);
 

@@ -4,6 +4,8 @@ import ChainX from './index';
 import ApiPromise from '@chainx-v2/api/promise';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 class Asset {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   private _api: Promise<ApiPromise>;
   constructor (chainx: ChainX) {
     this._api = chainx.api;

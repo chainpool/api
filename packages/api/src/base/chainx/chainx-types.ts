@@ -10,14 +10,10 @@ export default {
   AssetType: {
     _enum: [
       'Free',
-      'ReservedStaking',
-      'ReservedStakingRevocation',
+      'Locked',
       'ReservedWithdrawal',
       'ReservedDexSpot',
-      'ReservedDexFuture',
-      'ReservedCurrency',
-      'ReservedXRC20',
-      'LockedFee'
+      'ReservedXRC20'
     ]
   },
   XRC20Selector: {
@@ -259,12 +255,13 @@ export default {
   AssetRestrictions: {
     mask: 'u32'
   },
-  BTCAddress: {
-    kind: 'Type',
-    network: 'Network',
+  BtcAddress: {
+    // kind: 'BtcAddrType',
+    // network: 'BtcNetwork',
     // eslint-disable-next-line sort-keys
     hash: 'AddressHash'
   },
+  // eslint-disable-next-line sort-keys
   BTCHeader: {
     version: 'u32',
     // eslint-disable-next-line sort-keys
