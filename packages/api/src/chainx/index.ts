@@ -68,8 +68,12 @@ class ChainX {
     return this._stake;
   }
 
-  public getApi (): Promise<ApiPromise> {
+  public get api (): Promise<ApiPromise> {
     return this._api;
+  }
+
+  public get provider (): WsProvider {
+    return this._provider;
   }
 }
 

@@ -6,17 +6,37 @@ import ApiPromise from '@chainx-v2/api/promise';
 class Asset {
   private _api: Promise<ApiPromise>;
   constructor (chainx: ChainX) {
-    this._api = chainx.getApi();
+    this._api = chainx.api;
   }
 
-  getAssetsByAccount (...args: any[]) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    return this._api.rpc.xassets.getAssetsByAccount(...args);
+  getAssetsByAccount (...args: any[]):Promise<any> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+        const assetsbyaccount = await api.rpc.getAssetsByAccount(...args);
+
+        resolve(assetsbyaccount);
+      });
+    });
   }
 
-  getAssets (...args: any[]) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    return this._api.rpc.xassets.getAssets(...args);
+  async getAssets (...args: any[]) :Promise<any> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
+    return new Promise<any>((resolve) => {
+      // eslint-disable-next-line no-void
+      void this._api.then(async (api) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
+        const assets = await api.rpc.xassets.getAssets(...args);
+
+        resolve(assets);
+      });
+    });
   }
 }
 

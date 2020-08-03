@@ -481,6 +481,7 @@ export default {
   MiningPower: 'u128',
   // eslint-disable-next-line sort-keys
   AddressHash: 'H160',
+  // eslint-disable-next-line sort-keys
   Address: 'AccountId',
   ValidatorInfo: {
     account: 'AccountId',

@@ -22,7 +22,7 @@ async function createApi (): Promise<ChainX> {
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
-async function generateAccount () : void {
+function generateAccount () : void {
   const account1 = Account.generate();
 
   const publicKey1 = account1.publicKey(); // 公钥
@@ -69,7 +69,6 @@ async function generateAccount () : void {
 describe('account module tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
     const chainx = await createApi();
-    const api = chainx.getApi();
 
     const aliceAccount = Account.fromPrivateKey('0xabf8e5bdbe30c65656c0a3cbd181ff8a56294a69dfedd27982aace4a76909115');
     const aliceAddress = aliceAccount.address();
@@ -81,12 +80,11 @@ describe('account module tests', (): void => {
     console.log('alice address:' + aliceAddress);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    const data = await api.rpc.xassets.getAssetsByAccount('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
+    const data = await chainx.asset.getAssetsByAccount('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
 
     // Create a extrinsic, transferring 12345 units to Bob
 
     // const transfer = await api.tx.balances.transfer('5FA9nQDVg267DEd8m1ZypXLBnvN7SFxYwV7ndqSYGiN9TTpu', 200000000);
-
     // Sign and send the transaction using our account
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     // const hash = await transfer.signAndSend('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');

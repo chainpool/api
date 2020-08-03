@@ -1,0 +1,3994 @@
+{
+  "magicNumber": 1635018093,
+  "metadata": {
+    "V11": {
+      "modules": [
+        {
+          "name": "System",
+          "storage": {
+            "prefix": "System",
+            "items": [
+              {
+                "name": "Account",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Blake2_128Concat",
+                    "key": "AccountId",
+                    "value": "AccountInfo",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000000000",
+                "documentation": [
+                  " The full account information for a particular account ID."
+                ]
+              },
+              {
+                "name": "ExtrinsicCount",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Total extrinsics count for the current block."
+                ]
+              },
+              {
+                "name": "BlockWeight",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "ExtrinsicsWeight"
+                },
+                "fallback": "0x00000000000000000000000000000000",
+                "documentation": [
+                  " The current weight for the block."
+                ]
+              },
+              {
+                "name": "AllExtrinsicsLen",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Total length (in bytes) for all extrinsics put together, for the current block."
+                ]
+              },
+              {
+                "name": "BlockHash",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "BlockNumber",
+                    "value": "Hash",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " Map of block numbers to block hashes."
+                ]
+              },
+              {
+                "name": "ExtrinsicData",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "u32",
+                    "value": "Bytes",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Extrinsics data for the current block (maps an extrinsic's index to its data)."
+                ]
+              },
+              {
+                "name": "Number",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " The current block number being processed. Set by `execute_block`."
+                ]
+              },
+              {
+                "name": "ParentHash",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Hash"
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " Hash of the previous block."
+                ]
+              },
+              {
+                "name": "ExtrinsicsRoot",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Hash"
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " Extrinsics root of the current block, also part of the block header."
+                ]
+              },
+              {
+                "name": "Digest",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "DigestOf"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Digest of the current block, also part of the block header."
+                ]
+              },
+              {
+                "name": "Events",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<EventRecord>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Events deposited for the current block."
+                ]
+              },
+              {
+                "name": "EventCount",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "EventIndex"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " The number of events in the `Events<T>` list."
+                ]
+              },
+              {
+                "name": "EventTopics",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Blake2_128Concat",
+                    "key": "Hash",
+                    "value": "Vec<(BlockNumber,EventIndex)>",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Mapping between a topic (represented by T::Hash) and a vector of indexes",
+                  " of events in the `<Events<T>>` list.",
+                  "",
+                  " All topic vectors have deterministic storage locations depending on the topic. This",
+                  " allows light-clients to leverage the changes trie storage tracking mechanism and",
+                  " in case of changes fetch the list of events of interest.",
+                  "",
+                  " The value has the type `(T::BlockNumber, EventIndex)` because if we used only just",
+                  " the `EventIndex` then in case if the topic has the same contents on the next block",
+                  " no notification will be triggered thus the event might be lost."
+                ]
+              },
+              {
+                "name": "LastRuntimeUpgrade",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "LastRuntimeUpgradeInfo"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Stores the `spec_version` and `spec_name` of when the last runtime upgrade happened."
+                ]
+              },
+              {
+                "name": "ExecutionPhase",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "Phase"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The execution phase of the block."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "fill_block",
+              "args": [
+                {
+                  "name": "_ratio",
+                  "type": "Perbill"
+                }
+              ],
+              "documentation": [
+                " A dispatch that will fill the block weight up to the given ratio."
+              ]
+            },
+            {
+              "name": "remark",
+              "args": [
+                {
+                  "name": "_remark",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Make some on-chain remark.",
+                "",
+                " # <weight>",
+                " - `O(1)`",
+                " - Base Weight: 0.665 µs, independent of remark length.",
+                " - No DB operations.",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "set_heap_pages",
+              "args": [
+                {
+                  "name": "pages",
+                  "type": "u64"
+                }
+              ],
+              "documentation": [
+                " Set the number of pages in the WebAssembly environment's heap.",
+                "",
+                " # <weight>",
+                " - `O(1)`",
+                " - 1 storage write.",
+                " - Base Weight: 1.405 µs",
+                " - 1 write to HEAP_PAGES",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "set_code",
+              "args": [
+                {
+                  "name": "code",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Set the new runtime code.",
+                "",
+                " # <weight>",
+                " - `O(C + S)` where `C` length of `code` and `S` complexity of `can_set_code`",
+                " - 1 storage write (codec `O(C)`).",
+                " - 1 call to `can_set_code`: `O(S)` (calls `sp_io::misc::runtime_version` which is expensive).",
+                " - 1 event.",
+                " The weight of this function is dependent on the runtime, but generally this is very expensive.",
+                " We will treat this as a full block.",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "set_code_without_checks",
+              "args": [
+                {
+                  "name": "code",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Set the new runtime code without doing any checks of the given `code`.",
+                "",
+                " # <weight>",
+                " - `O(C)` where `C` length of `code`",
+                " - 1 storage write (codec `O(C)`).",
+                " - 1 event.",
+                " The weight of this function is dependent on the runtime. We will treat this as a full block.",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "set_changes_trie_config",
+              "args": [
+                {
+                  "name": "changes_trie_config",
+                  "type": "Option<ChangesTrieConfiguration>"
+                }
+              ],
+              "documentation": [
+                " Set the new changes trie configuration.",
+                "",
+                " # <weight>",
+                " - `O(1)`",
+                " - 1 storage write or delete (codec `O(1)`).",
+                " - 1 call to `deposit_log`: Uses `append` API, so O(1)",
+                " - Base Weight: 7.218 µs",
+                " - DB Weight:",
+                "     - Writes: Changes Trie, System Digest",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "set_storage",
+              "args": [
+                {
+                  "name": "items",
+                  "type": "Vec<KeyValue>"
+                }
+              ],
+              "documentation": [
+                " Set some items of storage.",
+                "",
+                " # <weight>",
+                " - `O(I)` where `I` length of `items`",
+                " - `I` storage writes (`O(1)`).",
+                " - Base Weight: 0.568 * i µs",
+                " - Writes: Number of items",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "kill_storage",
+              "args": [
+                {
+                  "name": "keys",
+                  "type": "Vec<Key>"
+                }
+              ],
+              "documentation": [
+                " Kill some items from storage.",
+                "",
+                " # <weight>",
+                " - `O(IK)` where `I` length of `keys` and `K` length of one key",
+                " - `I` storage deletions.",
+                " - Base Weight: .378 * i µs",
+                " - Writes: Number of items",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "kill_prefix",
+              "args": [
+                {
+                  "name": "prefix",
+                  "type": "Key"
+                },
+                {
+                  "name": "_subkeys",
+                  "type": "u32"
+                }
+              ],
+              "documentation": [
+                " Kill all storage items with a key that starts with the given prefix.",
+                "",
+                " **NOTE:** We rely on the Root origin to provide us the number of subkeys under",
+                " the prefix we are removing to accurately calculate the weight of this function.",
+                "",
+                " # <weight>",
+                " - `O(P)` where `P` amount of keys with prefix `prefix`",
+                " - `P` storage deletions.",
+                " - Base Weight: 0.834 * P µs",
+                " - Writes: Number of subkeys + 1",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "suicide",
+              "args": [],
+              "documentation": [
+                " Kill the sending account, assuming there are no references outstanding and the composite",
+                " data is equal to its default value.",
+                "",
+                " # <weight>",
+                " - `O(1)`",
+                " - 1 storage read and deletion.",
+                " --------------------",
+                " Base Weight: 8.626 µs",
+                " No DB Read or Write operations because caller is already in overlay",
+                " # </weight>"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "ExtrinsicSuccess",
+              "args": [
+                "DispatchInfo"
+              ],
+              "documentation": [
+                " An extrinsic completed successfully."
+              ]
+            },
+            {
+              "name": "ExtrinsicFailed",
+              "args": [
+                "DispatchError",
+                "DispatchInfo"
+              ],
+              "documentation": [
+                " An extrinsic failed."
+              ]
+            },
+            {
+              "name": "CodeUpdated",
+              "args": [],
+              "documentation": [
+                " `:code` was updated."
+              ]
+            },
+            {
+              "name": "NewAccount",
+              "args": [
+                "AccountId"
+              ],
+              "documentation": [
+                " A new account was created."
+              ]
+            },
+            {
+              "name": "KilledAccount",
+              "args": [
+                "AccountId"
+              ],
+              "documentation": [
+                " An account was reaped."
+              ]
+            }
+          ],
+          "constants": [
+            {
+              "name": "BlockHashCount",
+              "type": "BlockNumber",
+              "value": "0x60090000",
+              "documentation": [
+                " The maximum number of blocks to allow in mortal eras."
+              ]
+            },
+            {
+              "name": "MaximumBlockWeight",
+              "type": "Weight",
+              "value": "0x00204aa9d1010000",
+              "documentation": [
+                " The maximum weight of a block."
+              ]
+            },
+            {
+              "name": "DbWeight",
+              "type": "RuntimeDbWeight",
+              "value": "0x40787d010000000000e1f50500000000",
+              "documentation": [
+                " The weight of runtime database operations the runtime can invoke."
+              ]
+            },
+            {
+              "name": "BlockExecutionWeight",
+              "type": "Weight",
+              "value": "0x00f2052a01000000",
+              "documentation": [
+                " The base weight of executing a block, independent of the transactions in the block."
+              ]
+            },
+            {
+              "name": "ExtrinsicBaseWeight",
+              "type": "Weight",
+              "value": "0x4059730700000000",
+              "documentation": [
+                " The base weight of an Extrinsic in the block, independent of the of extrinsic being executed."
+              ]
+            },
+            {
+              "name": "MaximumBlockLength",
+              "type": "u32",
+              "value": "0x00005000",
+              "documentation": [
+                " The maximum length of a block (in bytes)."
+              ]
+            }
+          ],
+          "errors": [
+            {
+              "name": "InvalidSpecName",
+              "documentation": [
+                " The name of specification does not match between the current runtime",
+                " and the new runtime."
+              ]
+            },
+            {
+              "name": "SpecVersionNeedsToIncrease",
+              "documentation": [
+                " The specification version is not allowed to decrease between the current runtime",
+                " and the new runtime."
+              ]
+            },
+            {
+              "name": "FailedToExtractRuntimeVersion",
+              "documentation": [
+                " Failed to extract the runtime version from the new runtime.",
+                "",
+                " Either calling `Core_version` or decoding `RuntimeVersion` failed."
+              ]
+            },
+            {
+              "name": "NonDefaultComposite",
+              "documentation": [
+                " Suicide called when the account has non-default composite data."
+              ]
+            },
+            {
+              "name": "NonZeroRefCount",
+              "documentation": [
+                " There is a non-zero reference count preventing the account from being purged."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RandomnessCollectiveFlip",
+          "storage": {
+            "prefix": "RandomnessCollectiveFlip",
+            "items": [
+              {
+                "name": "RandomMaterial",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<Hash>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Series of block headers from the last 81 blocks that acts as random seed material. This",
+                  " is arranged as a ring buffer with `block_number % 81` being the index into the `Vec` of",
+                  " the oldest hash."
+                ]
+              }
+            ]
+          },
+          "calls": [],
+          "events": null,
+          "constants": [],
+          "errors": []
+        },
+        {
+          "name": "Timestamp",
+          "storage": {
+            "prefix": "Timestamp",
+            "items": [
+              {
+                "name": "Now",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Moment"
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " Current time for the current block."
+                ]
+              },
+              {
+                "name": "DidUpdate",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "bool"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Did the timestamp get updated in this block?"
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "set",
+              "args": [
+                {
+                  "name": "now",
+                  "type": "Compact<Moment>"
+                }
+              ],
+              "documentation": [
+                " Set the current time.",
+                "",
+                " This call should be invoked exactly once per block. It will panic at the finalization",
+                " phase, if this call hasn't been invoked by that time.",
+                "",
+                " The timestamp should be greater than the previous one by the amount specified by",
+                " `MinimumPeriod`.",
+                "",
+                " The dispatch origin for this call must be `Inherent`.",
+                "",
+                " # <weight>",
+                " - `O(T)` where `T` complexity of `on_timestamp_set`",
+                " - 1 storage read and 1 storage mutation (codec `O(1)`). (because of `DidUpdate::take` in `on_finalize`)",
+                " - 1 event handler `on_timestamp_set` `O(T)`.",
+                " - Benchmark: 7.678 (min squares analysis)",
+                "   - NOTE: This benchmark was done for a runtime with insignificant `on_timestamp_set` handlers.",
+                "     New benchmarking is needed when adding new handlers.",
+                " # </weight>"
+              ]
+            }
+          ],
+          "events": null,
+          "constants": [
+            {
+              "name": "MinimumPeriod",
+              "type": "Moment",
+              "value": "0xb80b000000000000",
+              "documentation": [
+                " The minimum period between blocks. Beware that this is different to the *expected* period",
+                " that the block production apparatus provides. Your chosen consensus system will generally",
+                " work with this to determine a sensible block time. e.g. For Aura, it will be double this",
+                " period on default settings."
+              ]
+            }
+          ],
+          "errors": []
+        },
+        {
+          "name": "Aura",
+          "storage": null,
+          "calls": null,
+          "events": null,
+          "constants": [],
+          "errors": []
+        },
+        {
+          "name": "Grandpa",
+          "storage": {
+            "prefix": "GrandpaFinality",
+            "items": [
+              {
+                "name": "State",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "StoredState"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " State of the current authority set."
+                ]
+              },
+              {
+                "name": "PendingChange",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "StoredPendingChange"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Pending change: (signaled at, scheduled change)."
+                ]
+              },
+              {
+                "name": "NextForced",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " next block number where we can force a change."
+                ]
+              },
+              {
+                "name": "Stalled",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "(BlockNumber,BlockNumber)"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " `true` if we are currently stalled."
+                ]
+              },
+              {
+                "name": "CurrentSetId",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "SetId"
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " The number of changes (both in terms of keys and underlying economic responsibilities)",
+                  " in the \"set\" of Grandpa validators from genesis."
+                ]
+              },
+              {
+                "name": "SetIdSession",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "SetId",
+                    "value": "SessionIndex",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " A mapping from grandpa set ID to the index of the *most recent* session for which its",
+                  " members were responsible.",
+                  "",
+                  " TWOX-NOTE: `SetId` is not under user control."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "report_equivocation",
+              "args": [
+                {
+                  "name": "equivocation_proof",
+                  "type": "GrandpaEquivocationProof"
+                },
+                {
+                  "name": "key_owner_proof",
+                  "type": "KeyOwnerProof"
+                }
+              ],
+              "documentation": [
+                " Report voter equivocation/misbehavior. This method will verify the",
+                " equivocation proof and validate the given key ownership proof",
+                " against the extracted offender. If both are valid, the offence",
+                " will be reported.",
+                "",
+                " Since the weight of the extrinsic is 0, in order to avoid DoS by",
+                " submission of invalid equivocation reports, a mandatory pre-validation of",
+                " the extrinsic is implemented in a `SignedExtension`."
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "NewAuthorities",
+              "args": [
+                "AuthorityList"
+              ],
+              "documentation": [
+                " New authority set has been applied."
+              ]
+            },
+            {
+              "name": "Paused",
+              "args": [],
+              "documentation": [
+                " Current authority set has been paused."
+              ]
+            },
+            {
+              "name": "Resumed",
+              "args": [],
+              "documentation": [
+                " Current authority set has been resumed."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": [
+            {
+              "name": "PauseFailed",
+              "documentation": [
+                " Attempt to signal GRANDPA pause when the authority set isn't live",
+                " (either paused or already pending pause)."
+              ]
+            },
+            {
+              "name": "ResumeFailed",
+              "documentation": [
+                " Attempt to signal GRANDPA resume when the authority set isn't paused",
+                " (either live or already pending resume)."
+              ]
+            },
+            {
+              "name": "ChangePending",
+              "documentation": [
+                " Attempt to signal GRANDPA change with one already pending."
+              ]
+            },
+            {
+              "name": "TooSoon",
+              "documentation": [
+                " Cannot signal forced change so soon after last."
+              ]
+            },
+            {
+              "name": "InvalidKeyOwnershipProof",
+              "documentation": [
+                " A key ownership proof provided as part of an equivocation report is invalid."
+              ]
+            },
+            {
+              "name": "DuplicateOffenceReport",
+              "documentation": [
+                " A given equivocation report is valid but already previously reported."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Utility",
+          "storage": null,
+          "calls": [
+            {
+              "name": "batch",
+              "args": [
+                {
+                  "name": "calls",
+                  "type": "Vec<Call>"
+                }
+              ],
+              "documentation": [
+                " Send a batch of dispatch calls.",
+                "",
+                " May be called from any origin.",
+                "",
+                " - `calls`: The calls to be dispatched from the same origin.",
+                "",
+                " If origin is root then call are dispatch without checking origin filter. (This includes",
+                " bypassing `frame_system::Trait::BaseCallFilter`).",
+                "",
+                " # <weight>",
+                " - Base weight: 14.39 + .987 * c µs",
+                " - Plus the sum of the weights of the `calls`.",
+                " - Plus one additional event. (repeat read/write)",
+                " # </weight>",
+                "",
+                " This will return `Ok` in all circumstances. To determine the success of the batch, an",
+                " event is deposited. If a call failed and the batch was interrupted, then the",
+                " `BatchInterrupted` event is deposited, along with the number of successful calls made",
+                " and the error of the failed call. If all were successful, then the `BatchCompleted`",
+                " event is deposited."
+              ]
+            },
+            {
+              "name": "as_sub",
+              "args": [
+                {
+                  "name": "index",
+                  "type": "u16"
+                },
+                {
+                  "name": "call",
+                  "type": "Call"
+                }
+              ],
+              "documentation": [
+                " Send a call through an indexed pseudonym of the sender.",
+                "",
+                " NOTE: If you need to ensure that any account-based filtering is honored (i.e. because",
+                " you expect `proxy` to have been used prior in the call stack and you want it to apply to",
+                " any sub-accounts), then use `as_limited_sub` instead.",
+                "",
+                " The dispatch origin for this call must be _Signed_.",
+                "",
+                " # <weight>",
+                " - Base weight: 2.861 µs",
+                " - Plus the weight of the `call`",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "as_limited_sub",
+              "args": [
+                {
+                  "name": "index",
+                  "type": "u16"
+                },
+                {
+                  "name": "call",
+                  "type": "Call"
+                }
+              ],
+              "documentation": [
+                " Send a call through an indexed pseudonym of the sender.",
+                "",
+                " Filter from origin are passed along. The call will be dispatched with an origin which",
+                " use the same filter as the origin of this call.",
+                "",
+                " NOTE: If you need to ensure that any account-based filtering is not honored (i.e.",
+                " because you expect `proxy` to have been used prior in the call stack and you do not want",
+                " the call restrictions to apply to any sub-accounts), then use `as_sub` instead.",
+                "",
+                " The dispatch origin for this call must be _Signed_.",
+                "",
+                " # <weight>",
+                " - Base weight: 2.861 µs",
+                " - Plus the weight of the `call`",
+                " # </weight>"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "BatchInterrupted",
+              "args": [
+                "u32",
+                "DispatchError"
+              ],
+              "documentation": [
+                " Batch of dispatches did not complete fully. Index of first failing dispatch given, as",
+                " well as the error."
+              ]
+            },
+            {
+              "name": "BatchCompleted",
+              "args": [],
+              "documentation": [
+                " Batch of dispatches completed fully with no error."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": []
+        },
+        {
+          "name": "Session",
+          "storage": {
+            "prefix": "Session",
+            "items": [
+              {
+                "name": "Validators",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<ValidatorId>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The current set of validators."
+                ]
+              },
+              {
+                "name": "CurrentIndex",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "SessionIndex"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " Current index of the session."
+                ]
+              },
+              {
+                "name": "QueuedChanged",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "bool"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " True if the underlying economic identities or weighting behind the validators",
+                  " has changed in the queued validator set."
+                ]
+              },
+              {
+                "name": "QueuedKeys",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<(ValidatorId,Keys)>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The queued keys for the next session. When the next session begins, these keys",
+                  " will be used to determine the validator's session keys."
+                ]
+              },
+              {
+                "name": "DisabledValidators",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<u32>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Indices of disabled validators.",
+                  "",
+                  " The set is cleared when `on_session_ending` returns a new set of identities."
+                ]
+              },
+              {
+                "name": "NextKeys",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "ValidatorId",
+                    "value": "Keys",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The next session keys for a validator."
+                ]
+              },
+              {
+                "name": "KeyOwner",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "(KeyTypeId,Bytes)",
+                    "value": "ValidatorId",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The owner of a key. The key is the `KeyTypeId` + the encoded key."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "set_keys",
+              "args": [
+                {
+                  "name": "keys",
+                  "type": "Keys"
+                },
+                {
+                  "name": "proof",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Sets the session key(s) of the function caller to `keys`.",
+                " Allows an account to set its session key prior to becoming a validator.",
+                " This doesn't take effect until the next session.",
+                "",
+                " The dispatch origin of this function must be signed.",
+                "",
+                " # <weight>",
+                " - Complexity: `O(1)`",
+                "   Actual cost depends on the number of length of `T::Keys::key_ids()` which is fixed.",
+                " - DbReads: `origin account`, `T::ValidatorIdOf`, `NextKeys`",
+                " - DbWrites: `origin account`, `NextKeys`",
+                " - DbReads per key id: `KeyOwner`",
+                " - DbWrites per key id: `KeyOwner`",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "purge_keys",
+              "args": [],
+              "documentation": [
+                " Removes any session key(s) of the function caller.",
+                " This doesn't take effect until the next session.",
+                "",
+                " The dispatch origin of this function must be signed.",
+                "",
+                " # <weight>",
+                " - Complexity: `O(1)` in number of key types.",
+                "   Actual cost depends on the number of length of `T::Keys::key_ids()` which is fixed.",
+                " - DbReads: `T::ValidatorIdOf`, `NextKeys`, `origin account`",
+                " - DbWrites: `NextKeys`, `origin account`",
+                " - DbWrites per key id: `KeyOwnder`",
+                " # </weight>"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "NewSession",
+              "args": [
+                "SessionIndex"
+              ],
+              "documentation": [
+                " New session has happened. Note that the argument is the session index, not the block",
+                " number as the type might suggest."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": [
+            {
+              "name": "InvalidProof",
+              "documentation": [
+                " Invalid ownership proof."
+              ]
+            },
+            {
+              "name": "NoAssociatedValidatorId",
+              "documentation": [
+                " No associated validator ID for account."
+              ]
+            },
+            {
+              "name": "DuplicatedKey",
+              "documentation": [
+                " Registered duplicate key."
+              ]
+            },
+            {
+              "name": "NoKeys",
+              "documentation": [
+                " No keys are associated with this account."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ImOnline",
+          "storage": {
+            "prefix": "ImOnline",
+            "items": [
+              {
+                "name": "HeartbeatAfter",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " The block number after which it's ok to send heartbeats in current session.",
+                  "",
+                  " At the beginning of each session we set this to a value that should",
+                  " fall roughly in the middle of the session duration.",
+                  " The idea is to first wait for the validators to produce a block",
+                  " in the current session, so that the heartbeat later on will not be necessary."
+                ]
+              },
+              {
+                "name": "Keys",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<AuthorityId>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The current set of keys that may issue a heartbeat."
+                ]
+              },
+              {
+                "name": "ReceivedHeartbeats",
+                "modifier": "Optional",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Twox64Concat",
+                    "key1": "SessionIndex",
+                    "key2": "AuthIndex",
+                    "value": "Bytes",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " For each session index, we keep a mapping of `AuthIndex` to",
+                  " `offchain::OpaqueNetworkState`."
+                ]
+              },
+              {
+                "name": "AuthoredBlocks",
+                "modifier": "Default",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Twox64Concat",
+                    "key1": "SessionIndex",
+                    "key2": "ValidatorId",
+                    "value": "u32",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " For each session index, we keep a mapping of `T::ValidatorId` to the",
+                  " number of blocks authored by the given authority."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "heartbeat",
+              "args": [
+                {
+                  "name": "heartbeat",
+                  "type": "Heartbeat"
+                },
+                {
+                  "name": "_signature",
+                  "type": "Signature"
+                }
+              ],
+              "documentation": [
+                " # <weight>",
+                " - Complexity: `O(K + E)` where K is length of `Keys` and E is length of",
+                "   `Heartbeat.network_state.external_address`",
+                "",
+                "   - `O(K)`: decoding of length `K`",
+                "   - `O(E)`: decoding/encoding of length `E`",
+                " - DbReads: pallet_session `Validators`, pallet_session `CurrentIndex`, `Keys`,",
+                "   `ReceivedHeartbeats`",
+                " - DbWrites: `ReceivedHeartbeats`",
+                " # </weight>"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "HeartbeatReceived",
+              "args": [
+                "AuthorityId"
+              ],
+              "documentation": [
+                " A new heartbeat was received from `AuthorityId`"
+              ]
+            },
+            {
+              "name": "AllGood",
+              "args": [],
+              "documentation": [
+                " At the end of the session, no offence was committed."
+              ]
+            },
+            {
+              "name": "SomeOffline",
+              "args": [
+                "Vec<IdentificationTuple>"
+              ],
+              "documentation": [
+                " At the end of the session, at least one validator was found to be offline."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": [
+            {
+              "name": "InvalidKey",
+              "documentation": [
+                " Non existent public key."
+              ]
+            },
+            {
+              "name": "DuplicatedHeartbeat",
+              "documentation": [
+                " Duplicated heartbeat."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Offences",
+          "storage": {
+            "prefix": "Offences",
+            "items": [
+              {
+                "name": "Reports",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "ReportIdOf",
+                    "value": "OffenceDetails",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The primary structure that holds all offence records keyed by report identifiers."
+                ]
+              },
+              {
+                "name": "DeferredOffences",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<DeferredOffenceOf>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Deferred reports that have been rejected by the offence handler and need to be submitted",
+                  " at a later time."
+                ]
+              },
+              {
+                "name": "ConcurrentReportsIndex",
+                "modifier": "Default",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Twox64Concat",
+                    "key1": "Kind",
+                    "key2": "OpaqueTimeSlot",
+                    "value": "Vec<ReportIdOf>",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " A vector of reports of the same kind that happened at the same time slot."
+                ]
+              },
+              {
+                "name": "ReportsByKindIndex",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "Kind",
+                    "value": "Bytes",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Enumerates all reports of a kind along with the time they happened.",
+                  "",
+                  " All reports are sorted by the time of offence.",
+                  "",
+                  " Note that the actual type of this mapping is `Vec<u8>`, this is because values of",
+                  " different types are not supported at the moment so we are doing the manual serialization."
+                ]
+              }
+            ]
+          },
+          "calls": [],
+          "events": [
+            {
+              "name": "Offence",
+              "args": [
+                "Kind",
+                "OpaqueTimeSlot",
+                "bool"
+              ],
+              "documentation": [
+                " There is an offence reported of the given `kind` happened at the `session_index` and",
+                " (kind-specific) time slot. This event is not deposited for duplicate slashes. last",
+                " element indicates of the offence was applied (true) or queued (false)."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": []
+        },
+        {
+          "name": "Sudo",
+          "storage": {
+            "prefix": "Sudo",
+            "items": [
+              {
+                "name": "Key",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "AccountId"
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " The `AccountId` of the sudo key."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "sudo",
+              "args": [
+                {
+                  "name": "call",
+                  "type": "Call"
+                }
+              ],
+              "documentation": [
+                " Authenticates the sudo key and dispatches a function call with `Root` origin.",
+                "",
+                " The dispatch origin for this call must be _Signed_.",
+                "",
+                " # <weight>",
+                " - O(1).",
+                " - Limited storage reads.",
+                " - One DB write (event).",
+                " - Weight of derivative `call` execution + 10,000.",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "sudo_unchecked_weight",
+              "args": [
+                {
+                  "name": "call",
+                  "type": "Call"
+                },
+                {
+                  "name": "_weight",
+                  "type": "Weight"
+                }
+              ],
+              "documentation": [
+                " Authenticates the sudo key and dispatches a function call with `Root` origin.",
+                " This function does not check the weight of the call, and instead allows the",
+                " Sudo user to specify the weight of the call.",
+                "",
+                " The dispatch origin for this call must be _Signed_.",
+                "",
+                " # <weight>",
+                " - O(1).",
+                " - The weight of this call is defined by the caller.",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "set_key",
+              "args": [
+                {
+                  "name": "new",
+                  "type": "LookupSource"
+                }
+              ],
+              "documentation": [
+                " Authenticates the current sudo key and sets the given AccountId (`new`) as the new sudo key.",
+                "",
+                " The dispatch origin for this call must be _Signed_.",
+                "",
+                " # <weight>",
+                " - O(1).",
+                " - Limited storage reads.",
+                " - One DB change.",
+                " # </weight>"
+              ]
+            },
+            {
+              "name": "sudo_as",
+              "args": [
+                {
+                  "name": "who",
+                  "type": "LookupSource"
+                },
+                {
+                  "name": "call",
+                  "type": "Call"
+                }
+              ],
+              "documentation": [
+                " Authenticates the sudo key and dispatches a function call with `Signed` origin from",
+                " a given account.",
+                "",
+                " The dispatch origin for this call must be _Signed_.",
+                "",
+                " # <weight>",
+                " - O(1).",
+                " - Limited storage reads.",
+                " - One DB write (event).",
+                " - Weight of derivative `call` execution + 10,000.",
+                " # </weight>"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "Sudid",
+              "args": [
+                "DispatchResult"
+              ],
+              "documentation": [
+                " A sudo just took place."
+              ]
+            },
+            {
+              "name": "KeyChanged",
+              "args": [
+                "AccountId"
+              ],
+              "documentation": [
+                " The sudoer just switched identity; the old key is supplied."
+              ]
+            },
+            {
+              "name": "SudoAsDone",
+              "args": [
+                "bool"
+              ],
+              "documentation": [
+                " A sudo just took place."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": [
+            {
+              "name": "RequireSudo",
+              "documentation": [
+                " Sender must be the Sudo account"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "XSystem",
+          "storage": {
+            "prefix": "XSystem",
+            "items": [
+              {
+                "name": "NetworkProps",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "NetworkType"
+                },
+                "fallback": "0x01",
+                "documentation": []
+              },
+              {
+                "name": "Paused",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "Bytes",
+                    "value": "BTreeMap<Bytes,()>",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": []
+              },
+              {
+                "name": "BlockedAccounts",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Blake2_128Concat",
+                    "key": "AccountId",
+                    "value": "()",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": []
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "modify_paused",
+              "args": [
+                {
+                  "name": "pallet",
+                  "type": "Bytes"
+                },
+                {
+                  "name": "call",
+                  "type": "Option<Bytes>"
+                },
+                {
+                  "name": "paused",
+                  "type": "bool"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "modify_blocked_list",
+              "args": [
+                {
+                  "name": "who",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "block",
+                  "type": "bool"
+                }
+              ],
+              "documentation": []
+            }
+          ],
+          "events": [
+            {
+              "name": "BlockAccount",
+              "args": [
+                "AccountId"
+              ],
+              "documentation": []
+            },
+            {
+              "name": "RevokeBlockedAccounts",
+              "args": [
+                "AccountId"
+              ],
+              "documentation": []
+            }
+          ],
+          "constants": [],
+          "errors": []
+        },
+        {
+          "name": "XAssets",
+          "storage": {
+            "prefix": "XAssets",
+            "items": [
+              {
+                "name": "AssetIdsOf",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "Chain",
+                    "value": "Vec<AssetId>",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Asset id list for Chain, different Chain has different id list"
+                ]
+              },
+              {
+                "name": "AssetInfoOf",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "AssetInfo",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " asset info for every asset, key is asset id"
+                ]
+              },
+              {
+                "name": "AssetOnline",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "()",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": []
+              },
+              {
+                "name": "AssetRegisteredBlock",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "BlockNumber",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00000000",
+                "documentation": []
+              },
+              {
+                "name": "AssetRestrictionsOf",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "AssetRestrictions",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " asset extend limit properties, set asset \"can do\", example, `CanTransfer`, `CanDestroyWithdrawal`",
+                  " notice if not set AssetRestriction, default is true for this limit",
+                  " if want let limit make sense, must set false for the limit"
+                ]
+              },
+              {
+                "name": "AssetBalance",
+                "modifier": "Default",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Blake2_128Concat",
+                    "key1": "AccountId",
+                    "key2": "AssetId",
+                    "value": "BTreeMap<AssetType,Balance>",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " asset balance for user&asset_id, use btree_map to accept different asset type"
+                ]
+              },
+              {
+                "name": "TotalAssetBalance",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "BTreeMap<AssetType,Balance>",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " asset balance for an asset_id, use btree_map to accept different asset type"
+                ]
+              },
+              {
+                "name": "MemoLen",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " memo len"
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "register_asset",
+              "args": [
+                {
+                  "name": "asset_id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "asset",
+                  "type": "AssetInfo"
+                },
+                {
+                  "name": "restrictions",
+                  "type": "AssetRestrictions"
+                },
+                {
+                  "name": "is_online",
+                  "type": "bool"
+                },
+                {
+                  "name": "has_mining_rights",
+                  "type": "bool"
+                }
+              ],
+              "documentation": [
+                " register_asset to module, should allow by root"
+              ]
+            },
+            {
+              "name": "revoke_asset",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                }
+              ],
+              "documentation": [
+                " revoke asset, mark this asset is invalid"
+              ]
+            },
+            {
+              "name": "set_balance",
+              "args": [
+                {
+                  "name": "who",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "balances",
+                  "type": "BTreeMap<AssetType,Balance>"
+                }
+              ],
+              "documentation": [
+                " set free token for an account"
+              ]
+            },
+            {
+              "name": "transfer",
+              "args": [
+                {
+                  "name": "dest",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "value",
+                  "type": "Compact<Balance>"
+                },
+                {
+                  "name": "memo",
+                  "type": "Memo"
+                }
+              ],
+              "documentation": [
+                " transfer between account"
+              ]
+            },
+            {
+              "name": "force_transfer",
+              "args": [
+                {
+                  "name": "transactor",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "dest",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "value",
+                  "type": "Compact<Balance>"
+                },
+                {
+                  "name": "memo",
+                  "type": "Memo"
+                }
+              ],
+              "documentation": [
+                " for transfer by root"
+              ]
+            },
+            {
+              "name": "modify_asset_info",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "token",
+                  "type": "Option<Token>"
+                },
+                {
+                  "name": "token_name",
+                  "type": "Option<Token>"
+                },
+                {
+                  "name": "desc",
+                  "type": "Option<Desc>"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "modify_asset_limit",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "restriction",
+                  "type": "AssetRestriction"
+                },
+                {
+                  "name": "can_do",
+                  "type": "bool"
+                }
+              ],
+              "documentation": []
+            }
+          ],
+          "events": [
+            {
+              "name": "Register",
+              "args": [
+                "AssetId",
+                "bool"
+              ],
+              "documentation": []
+            },
+            {
+              "name": "Revoke",
+              "args": [
+                "AssetId"
+              ],
+              "documentation": []
+            },
+            {
+              "name": "Move",
+              "args": [
+                "AssetId",
+                "AccountId",
+                "AssetType",
+                "AccountId",
+                "AssetType",
+                "Balance"
+              ],
+              "documentation": []
+            },
+            {
+              "name": "Issue",
+              "args": [
+                "AssetId",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": []
+            },
+            {
+              "name": "Destory",
+              "args": [
+                "AssetId",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": []
+            },
+            {
+              "name": "Set",
+              "args": [
+                "AssetId",
+                "AccountId",
+                "AssetType",
+                "Balance"
+              ],
+              "documentation": []
+            },
+            {
+              "name": "Change",
+              "args": [
+                "AssetId",
+                "AccountId",
+                "AssetType",
+                "SignedBalance"
+              ],
+              "documentation": [
+                " change token balance, SignedBalance mark Positive or Negative"
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": []
+        },
+        {
+          "name": "XBridgeBitcoin",
+          "storage": {
+            "prefix": "XBridgeBitcoin",
+            "items": [
+              {
+                "name": "BestIndex",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "H256"
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " get bestheader"
+                ]
+              },
+              {
+                "name": "BlockHashFor",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "u32",
+                    "value": "Vec<H256>",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " block hash list for a height"
+                ]
+              },
+              {
+                "name": "BTCHeaderFor",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Identity",
+                    "key": "H256",
+                    "value": "BTCHeaderInfo",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " all valid blockheader (include orphan blockheader)"
+                ]
+              },
+              {
+                "name": "TxFor",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Identity",
+                    "key": "H256",
+                    "value": "BTCTxInfo",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " tx info for txhash"
+                ]
+              },
+              {
+                "name": "TxMarkFor",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Identity",
+                    "key": "H256",
+                    "value": "()",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " mark tx has been handled, in case re-handle this tx",
+                  " do not need to remove after this tx is removed from ChainX"
+                ]
+              },
+              {
+                "name": "InputAddrFor",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Identity",
+                    "key": "H256",
+                    "value": "BTCAddress",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " tx first input addr for this tx"
+                ]
+              },
+              {
+                "name": "GenesisInfo",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "(BTCHeader,u32)"
+                },
+                "fallback": "0x4101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " get GenesisInfo (header, height)"
+                ]
+              },
+              {
+                "name": "ParamsInfo",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BTCParams"
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " get ParamsInfo from genesis_config"
+                ]
+              },
+              {
+                "name": "NetworkId",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BTCNetwork"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  "  NetworkId for testnet or mainnet"
+                ]
+              },
+              {
+                "name": "ReservedBlock",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " reserved count for block"
+                ]
+              },
+              {
+                "name": "ConfirmationNumber",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " get ConfirmationNumber from genesis_config"
+                ]
+              },
+              {
+                "name": "BTCWithdrawalFee",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u64"
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " get BTCWithdrawalFee from genesis_config"
+                ]
+              },
+              {
+                "name": "BTCMinDeposit",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u64"
+                },
+                "fallback": "0xa086010000000000",
+                "documentation": [
+                  " min deposit value limit, default is 10w sotashi(0.001 BTC)"
+                ]
+              },
+              {
+                "name": "MaxWithdrawalCount",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " max withdraw account count in bitcoin withdrawal transaction"
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "push_header",
+              "args": [
+                {
+                  "name": "header",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " if use `BTCHeader` struct would export in metadata, cause complex in front-end"
+              ]
+            },
+            {
+              "name": "push_transaction",
+              "args": [
+                {
+                  "name": "tx",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " if use `RelayTx` struct would export in metadata, cause complex in front-end"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "InsertHeader",
+              "args": [
+                "u32",
+                "H256",
+                "u32",
+                "H256",
+                "H256",
+                "u32",
+                "u32",
+                "u32",
+                "H256"
+              ],
+              "documentation": [
+                " version, block hash, block height, prev block hash, merkle root, timestamp, nonce, wait confirmed block height, wait confirmed block hash"
+              ]
+            },
+            {
+              "name": "DepositPending",
+              "args": [
+                "AccountId",
+                "Chain",
+                "AssetId",
+                "Balance",
+                "AddrStr"
+              ],
+              "documentation": [
+                " who, Chain, AssetId, balance,  Chain Addr"
+              ]
+            },
+            {
+              "name": "CreateWithdrawalProposal",
+              "args": [
+                "AccountId",
+                "Vec<u32>"
+              ],
+              "documentation": [
+                " create withdraw tx, who proposal, withdrawal list id"
+              ]
+            },
+            {
+              "name": "SignWithdrawalProposal",
+              "args": [
+                "AccountId",
+                "bool"
+              ],
+              "documentation": [
+                " Sign withdraw tx"
+              ]
+            },
+            {
+              "name": "WithdrawalFatalErr",
+              "args": [
+                "Bytes",
+                "Bytes"
+              ],
+              "documentation": [
+                " WithdrawalFatalErr, tx hash, Proposal hash,"
+              ]
+            },
+            {
+              "name": "DropWithdrawalProposal",
+              "args": [
+                "u32",
+                "u32",
+                "Vec<u32>"
+              ],
+              "documentation": [
+                " reject_count, sum_count, withdrawal id list"
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": []
+        },
+        {
+          "name": "XContracts",
+          "storage": {
+            "prefix": "XContracts",
+            "items": [
+              {
+                "name": "CurrentSchedule",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Schedule"
+                },
+                "fallback": "0x0000000020a107000000000020a107000000000020a107000000000020a107000000000020a107000000000020a107000000000020a1070000000000e0f7050400000000e024370500000000e0f705040000000020a107000000000020a107000000000080f0fa020000000000e1f50500000000040000000000010010000000004000000020000000",
+                "documentation": [
+                  " Current cost schedule for contracts."
+                ]
+              },
+              {
+                "name": "PristineCode",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Identity",
+                    "key": "CodeHash",
+                    "value": "Bytes",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " A mapping from an original code hash to the original code, untouched by instrumentation."
+                ]
+              },
+              {
+                "name": "CodeStorage",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Identity",
+                    "key": "CodeHash",
+                    "value": "PrefabWasmModule",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " A mapping between an original code hash and instrumented wasm code, ready for execution."
+                ]
+              },
+              {
+                "name": "AccountCounter",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u64"
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " The subtrie counter."
+                ]
+              },
+              {
+                "name": "ContractInfoOf",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AccountId",
+                    "value": "ContractInfo",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The code associated with a given account.",
+                  "",
+                  " TWOX-NOTE: SAFE since `AccountId` is a secure hash."
+                ]
+              },
+              {
+                "name": "AssetIdOfAddr",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AccountId",
+                    "value": "AssetId",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The AssetId name of a token contract instance address.",
+                  " notice the address could be xrc20, XRC777, or other type contract"
+                ]
+              },
+              {
+                "name": "XRC20InfoOfAssetId",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "(AccountId,BTreeMap<XRC20Selector,Selector>)",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The XRC20 contract of an asset."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "update_schedule",
+              "args": [
+                {
+                  "name": "schedule",
+                  "type": "Schedule"
+                }
+              ],
+              "documentation": [
+                " Updates the schedule for metering contracts.",
+                "",
+                " The schedule must have a greater version than the stored schedule."
+              ]
+            },
+            {
+              "name": "put_code",
+              "args": [
+                {
+                  "name": "code",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Stores the given binary Wasm code into the chain's storage and returns its `codehash`.",
+                " You can instantiate contracts only with stored code."
+              ]
+            },
+            {
+              "name": "call",
+              "args": [
+                {
+                  "name": "dest",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "value",
+                  "type": "Compact<BalanceOf>"
+                },
+                {
+                  "name": "gas_limit",
+                  "type": "Compact<Gas>"
+                },
+                {
+                  "name": "data",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Makes a call to an account, optionally transferring some balance.",
+                "",
+                " * If the account is a smart-contract account, the associated code will be",
+                " executed and any value will be transferred.",
+                " * If the account is a regular account, any value will be transferred.",
+                " * If no account exists and the call value is not less than `existential_deposit`,",
+                " a regular account will be created and any value will be transferred."
+              ]
+            },
+            {
+              "name": "instantiate",
+              "args": [
+                {
+                  "name": "endowment",
+                  "type": "Compact<BalanceOf>"
+                },
+                {
+                  "name": "gas_limit",
+                  "type": "Compact<Gas>"
+                },
+                {
+                  "name": "code_hash",
+                  "type": "CodeHash"
+                },
+                {
+                  "name": "data",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Instantiates a new contract from the `codehash` generated by `put_code`, optionally transferring some balance.",
+                "",
+                " Instantiation is executed as follows:",
+                "",
+                " - The destination address is computed based on the sender and hash of the code.",
+                " - The smart-contract account is created at the computed address.",
+                " - The `ctor_code` is executed in the context of the newly-created account. Buffer returned",
+                "   after the execution is saved as the `code` of the account. That code will be invoked",
+                "   upon any call received by this account.",
+                " - The contract is initialized."
+              ]
+            },
+            {
+              "name": "set_println",
+              "args": [
+                {
+                  "name": "state",
+                  "type": "bool"
+                }
+              ],
+              "documentation": [
+                " Enable of Off println for contract. Just for debug."
+              ]
+            },
+            {
+              "name": "convert_to_xrc20",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "value",
+                  "type": "Compact<Balance>"
+                }
+              ],
+              "documentation": [
+                " Convert asset balance to xrc20 asset. This function would call xrc20 `issue` interface.",
+                " The gas cast would deduct the caller."
+              ]
+            },
+            {
+              "name": "convert_to_asset",
+              "args": [
+                {
+                  "name": "to",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "value",
+                  "type": "Compact<Balance>"
+                }
+              ],
+              "documentation": [
+                " Convert xrc20 asset to asset balance. This function could not be called from an extrinsic,",
+                " just could be called inside the xrc20, XRC777 and etc contract instance."
+              ]
+            },
+            {
+              "name": "set_token_xrc20",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "xrc20_addr",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "selectors",
+                  "type": "BTreeMap<XRC20Selector,Selector>"
+                }
+              ],
+              "documentation": [
+                " Set the xrc20 addr and selectors for an asset."
+              ]
+            },
+            {
+              "name": "set_xrc20_selector",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "selectors",
+                  "type": "BTreeMap<XRC20Selector,Selector>"
+                }
+              ],
+              "documentation": [
+                " Set the xrc20 selectors for an asset."
+              ]
+            },
+            {
+              "name": "remove_token_xrc20",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                }
+              ],
+              "documentation": [
+                " Remove xrc20 relationship for an asset."
+              ]
+            },
+            {
+              "name": "force_issue_xrc20",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "Compact<AssetId>"
+                },
+                {
+                  "name": "issues",
+                  "type": "Vec<(AccountId,Balance)>"
+                },
+                {
+                  "name": "gas_limit",
+                  "type": "Gas"
+                }
+              ],
+              "documentation": [
+                " Force issue xrc20 token."
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "Transfer",
+              "args": [
+                "AccountId",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                " Transfer happened `from` to `to` with given `value` as part of a `call` or `instantiate`."
+              ]
+            },
+            {
+              "name": "Instantiated",
+              "args": [
+                "AccountId",
+                "AccountId"
+              ],
+              "documentation": [
+                " Contract deployed by address at the specified address."
+              ]
+            },
+            {
+              "name": "CodeStored",
+              "args": [
+                "Hash"
+              ],
+              "documentation": [
+                " Code with the specified hash has been stored."
+              ]
+            },
+            {
+              "name": "ScheduleUpdated",
+              "args": [
+                "u32"
+              ],
+              "documentation": [
+                " Triggered when the current schedule is updated."
+              ]
+            },
+            {
+              "name": "Dispatched",
+              "args": [
+                "AccountId",
+                "bool"
+              ],
+              "documentation": [
+                " A call was dispatched from the given account. The bool signals whether it was",
+                " successful execution or not."
+              ]
+            },
+            {
+              "name": "ContractExecution",
+              "args": [
+                "AccountId",
+                "Bytes"
+              ],
+              "documentation": [
+                " An event deposited upon execution of a contract from the account."
+              ]
+            }
+          ],
+          "constants": [
+            {
+              "name": "StorageSizeOffset",
+              "type": "u32",
+              "value": "0x08000000",
+              "documentation": [
+                " A size offset for an contract. A just created account with untouched storage will have that",
+                " much of storage from the perspective of the state rent.",
+                "",
+                " This is a simple way to ensure that contracts with empty storage eventually get deleted",
+                " by making them pay rent. This creates an incentive to remove them early in order to save",
+                " rent."
+              ]
+            },
+            {
+              "name": "MaxDepth",
+              "type": "u32",
+              "value": "0x20000000",
+              "documentation": [
+                " The maximum nesting level of a call/instantiate stack. A reasonable default",
+                " value is 100."
+              ]
+            },
+            {
+              "name": "MaxValueSize",
+              "type": "u32",
+              "value": "0x00400000",
+              "documentation": [
+                " The maximum size of a storage value in bytes. A reasonable default is 16 KiB."
+              ]
+            }
+          ],
+          "errors": [
+            {
+              "name": "InvalidScheduleVersion",
+              "documentation": [
+                " A new schedule must have a greater version than the current one."
+              ]
+            },
+            {
+              "name": "InvalidSourceContract",
+              "documentation": [
+                " Cannot restore from nonexisting contract."
+              ]
+            },
+            {
+              "name": "InvalidDestinationContract",
+              "documentation": [
+                " Cannot restore to nonexisting or alive contract."
+              ]
+            },
+            {
+              "name": "InvalidContractOrigin",
+              "documentation": [
+                " An origin TrieId written in the current block."
+              ]
+            },
+            {
+              "name": "InvaliedXRC20Selector",
+              "documentation": [
+                " not allow selector 'Issue' or `Destroy` in call_xrc20"
+              ]
+            },
+            {
+              "name": "NoXRC20Instance",
+              "documentation": [
+                " no xrc20 instance for this asset"
+              ]
+            },
+            {
+              "name": "NoAssetForXRC20",
+              "documentation": [
+                " no asset for this xrc20 address"
+              ]
+            },
+            {
+              "name": "NoIssueSelector",
+              "documentation": [
+                " no issue selector in xrc20 info for this token"
+              ]
+            },
+            {
+              "name": "CallContractFailed",
+              "documentation": [
+                " fail to call the contract, please check params and xrc20"
+              ]
+            },
+            {
+              "name": "DecodeErr",
+              "documentation": [
+                " fail decode wasm result"
+              ]
+            },
+            {
+              "name": "XRC20IssueFailed",
+              "documentation": [
+                " fail to issue token in xrc20 contract"
+              ]
+            },
+            {
+              "name": "ReservedXRC20NotEnough",
+              "documentation": [
+                " not enough balance for this xrc20 instance to refund asset"
+              ]
+            },
+            {
+              "name": "SourceAssetNotEnough",
+              "documentation": [
+                " not enough balance for this asset to convert to xrc20 token"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "XStaking",
+          "storage": {
+            "prefix": "XStaking",
+            "items": [
+              {
+                "name": "ValidatorCount",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " The ideal number of staking participants."
+                ]
+              },
+              {
+                "name": "MinimumValidatorCount",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x04000000",
+                "documentation": [
+                  " Minimum number of staking participants before emergency conditions are imposed."
+                ]
+              },
+              {
+                "name": "MaximumValidatorCount",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x64000000",
+                "documentation": [
+                  " Maximum number of staking participants before emergency conditions are imposed."
+                ]
+              },
+              {
+                "name": "ValidatorCandidateRequirement",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BondRequirement"
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " Minimum value (self_bonded, total_bonded) to be a candidate of validator election."
+                ]
+              },
+              {
+                "name": "BlocksPerSession",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x32000000",
+                "documentation": [
+                  " The length of a session in blocks."
+                ]
+              },
+              {
+                "name": "SessionsPerEra",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x0c000000",
+                "documentation": [
+                  " The length of a staking era in sessions."
+                ]
+              },
+              {
+                "name": "BondingDuration",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0xc0a80000",
+                "documentation": [
+                  " The length of the bonding duration in blocks."
+                ]
+              },
+              {
+                "name": "ValidatorBondingDuration",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x80970600",
+                "documentation": [
+                  " The length of the bonding duration in blocks for validator."
+                ]
+              },
+              {
+                "name": "MaximumUnbondedChunkSize",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x0a000000",
+                "documentation": [
+                  " Maximum number of on-going unbonded chunk."
+                ]
+              },
+              {
+                "name": "VestingAccount",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "AccountId"
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " The beneficiary account of vesting schedule."
+                ]
+              },
+              {
+                "name": "UpperBoundFactorOfAcceptableVotes",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x0a000000",
+                "documentation": [
+                  " Maximum value of total_bonded/self_bonded."
+                ]
+              },
+              {
+                "name": "GlobalDistributionRatio",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "GlobalDistribution"
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " (Treasury, Staking)"
+                ]
+              },
+              {
+                "name": "MiningDistributionRatio",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "MiningDistribution"
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " (Staker, Asset Miners)"
+                ]
+              },
+              {
+                "name": "Validators",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AccountId",
+                    "value": "ValidatorProfile",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x000000000000",
+                "documentation": [
+                  " The map from (wannabe) validator key to the profile of that validator."
+                ]
+              },
+              {
+                "name": "Nominators",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AccountId",
+                    "value": "NominatorProfile",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000",
+                "documentation": [
+                  " The map from nominator key to the set of keys of all validators to nominate."
+                ]
+              },
+              {
+                "name": "ValidatorLedgers",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AccountId",
+                    "value": "ValidatorLedger",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x000000000000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " The map from validator key to the vote weight ledger of that validator."
+                ]
+              },
+              {
+                "name": "Nominations",
+                "modifier": "Default",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Twox64Concat",
+                    "key1": "AccountId",
+                    "key2": "AccountId",
+                    "value": "NominatorLedger",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x000000000000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " The map from nominator to the vote weight ledger of all nominees."
+                ]
+              },
+              {
+                "name": "ForceEra",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Forcing"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Mode of era forcing."
+                ]
+              },
+              {
+                "name": "CurrentEra",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "EraIndex"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The current era index.",
+                  "",
+                  " This is the latest planned era, depending on how the Session pallet queues the validator",
+                  " set, it might be active or not."
+                ]
+              },
+              {
+                "name": "ActiveEra",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "ActiveEraInfo"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The active era information, it holds index and start.",
+                  "",
+                  " The active era is the era currently rewarded.",
+                  " Validator set of this era must be equal to `SessionInterface::validators`."
+                ]
+              },
+              {
+                "name": "ErasStartSessionIndex",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "EraIndex",
+                    "value": "SessionIndex",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The session index at which the era start for the last `HISTORY_DEPTH` eras."
+                ]
+              },
+              {
+                "name": "IsCurrentSessionFinal",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "bool"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " True if the current **planned** session is final. Note that this does not take era",
+                  " forcing into account."
+                ]
+              },
+              {
+                "name": "OffendersInSession",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<AccountId>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Offenders reported in current session."
+                ]
+              },
+              {
+                "name": "MinimumPenalty",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Balance"
+                },
+                "fallback": "0x00000000000000000000000000000000",
+                "documentation": [
+                  " Minimum penalty for each slash."
+                ]
+              },
+              {
+                "name": "OffenceSeverity",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "u32"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " The higher the severity, the more slash for the offences."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "bond",
+              "args": [
+                {
+                  "name": "target",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "value",
+                  "type": "Balance"
+                },
+                {
+                  "name": "memo",
+                  "type": "Memo"
+                }
+              ],
+              "documentation": [
+                " Nominates the `target` with `value` of the origin account's balance locked."
+              ]
+            },
+            {
+              "name": "rebond",
+              "args": [
+                {
+                  "name": "from",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "to",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "value",
+                  "type": "Balance"
+                },
+                {
+                  "name": "memo",
+                  "type": "Memo"
+                }
+              ],
+              "documentation": [
+                " Switchs the nomination of `value` from one validator to another."
+              ]
+            },
+            {
+              "name": "unbond",
+              "args": [
+                {
+                  "name": "target",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "value",
+                  "type": "Balance"
+                },
+                {
+                  "name": "memo",
+                  "type": "Memo"
+                }
+              ],
+              "documentation": [
+                " Unnominates balance `value` from validator `target`."
+              ]
+            },
+            {
+              "name": "withdraw_unbonded",
+              "args": [
+                {
+                  "name": "unbonded_index",
+                  "type": "UnbondedIndex"
+                }
+              ],
+              "documentation": [
+                " Frees the unbonded balances that are due."
+              ]
+            },
+            {
+              "name": "claim",
+              "args": [
+                {
+                  "name": "target",
+                  "type": "AccountId"
+                }
+              ],
+              "documentation": [
+                " Claims the staking reward given the `target` validator."
+              ]
+            },
+            {
+              "name": "validate",
+              "args": [],
+              "documentation": [
+                " Declare the desire to validate for the origin account."
+              ]
+            },
+            {
+              "name": "chill",
+              "args": [],
+              "documentation": [
+                " Declare no desire to validate for the origin account."
+              ]
+            },
+            {
+              "name": "register",
+              "args": [],
+              "documentation": [
+                " TODO: figure out whether this should be kept."
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "Reward",
+              "args": [
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                " The staker has been rewarded by this amount. `AccountId` is the stash account."
+              ]
+            },
+            {
+              "name": "Slash",
+              "args": [
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                " One validator (and its nominators) has been slashed by the given amount."
+              ]
+            },
+            {
+              "name": "Bond",
+              "args": [
+                "AccountId",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                " Nominator has bonded to the validator this amount."
+              ]
+            },
+            {
+              "name": "Unbond",
+              "args": [
+                "AccountId",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                " An account has unbonded this amount."
+              ]
+            },
+            {
+              "name": "Claim",
+              "args": [
+                "AccountId",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                ""
+              ]
+            },
+            {
+              "name": "WithdrawUnbonded",
+              "args": [
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                " An account has called `withdraw_unbonded` and removed unbonding chunks worth `Balance`",
+                " from the unlocking queue."
+              ]
+            },
+            {
+              "name": "ForceChilled",
+              "args": [
+                "SessionIndex",
+                "Vec<AccountId>"
+              ],
+              "documentation": [
+                " Offenders are forcibly to be chilled due to insufficient reward pot balance."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": [
+            {
+              "name": "ZeroBalance",
+              "documentation": [
+                " Zero amount"
+              ]
+            },
+            {
+              "name": "ZeroVoteWeight",
+              "documentation": [
+                ""
+              ]
+            },
+            {
+              "name": "InvalidValidator",
+              "documentation": [
+                " Invalid validator target."
+              ]
+            },
+            {
+              "name": "InsufficientActiveValidators",
+              "documentation": [
+                " Can not force validator to be chilled."
+              ]
+            },
+            {
+              "name": "InsufficientBalance",
+              "documentation": [
+                " Free balance can not cover this bond operation."
+              ]
+            },
+            {
+              "name": "InsufficientValue",
+              "documentation": [
+                " Can not bond with value less than minimum balance."
+              ]
+            },
+            {
+              "name": "InvalidRebondValue",
+              "documentation": [
+                " Invalid rebondable value."
+              ]
+            },
+            {
+              "name": "InvalidUnbondValue",
+              "documentation": [
+                ""
+              ]
+            },
+            {
+              "name": "NoMoreUnbondChunks",
+              "documentation": [
+                " Can not schedule more unbond chunks."
+              ]
+            },
+            {
+              "name": "NoMoreAcceptableVotes",
+              "documentation": [
+                " Validators can not accept more votes from other voters."
+              ]
+            },
+            {
+              "name": "RebondSelfBondedNotAllowed",
+              "documentation": [
+                " Can not rebond the validator self-bonded.",
+                "",
+                " Due to the validator and regular nominator have different bonding duration."
+              ]
+            },
+            {
+              "name": "NonexistentNomination",
+              "documentation": [
+                " Nominator did not nominate that validator before."
+              ]
+            },
+            {
+              "name": "RegisteredAlready",
+              "documentation": [
+                ""
+              ]
+            },
+            {
+              "name": "EmptyUnbondedChunk",
+              "documentation": [
+                ""
+              ]
+            },
+            {
+              "name": "InvalidUnbondedIndex",
+              "documentation": [
+                ""
+              ]
+            },
+            {
+              "name": "UnbondRequestNotYetDue",
+              "documentation": [
+                ""
+              ]
+            },
+            {
+              "name": "NoMoreRebond",
+              "documentation": [
+                " Can not rebond due to the restriction of rebond frequency limit."
+              ]
+            },
+            {
+              "name": "CallNotAllowed",
+              "documentation": [
+                " The call is not allowed at the given time due to the restriction of election period."
+              ]
+            },
+            {
+              "name": "AssetError",
+              "documentation": [
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "name": "XMiningAsset",
+          "storage": {
+            "prefix": "XStaking",
+            "items": [
+              {
+                "name": "DepositReward",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Balance"
+                },
+                "fallback": "0xa0860100000000000000000000000000",
+                "documentation": [
+                  ""
+                ]
+              },
+              {
+                "name": "ClaimRestrictionOf",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "ClaimRestriction",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  ""
+                ]
+              },
+              {
+                "name": "MiningPrevilegedAssets",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<AssetId>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " External Assets that have the mining rights."
+                ]
+              },
+              {
+                "name": "AssetLedgers",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "AssetLedger",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000000000000000000000000000000000000000",
+                "documentation": [
+                  " Mining weight information of the asset."
+                ]
+              },
+              {
+                "name": "MinerLedgers",
+                "modifier": "Default",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Twox64Concat",
+                    "key1": "AccountId",
+                    "key2": "AssetId",
+                    "value": "MinerLedger",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x000000000000000000000000000000000000000000",
+                "documentation": [
+                  " The map from nominator to the vote weight ledger of all nominees."
+                ]
+              },
+              {
+                "name": "XTypeAssetPowerMap",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AssetId",
+                    "value": "FixedAssetPower",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " Mining power map of X-type assets."
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "claim",
+              "args": [
+                {
+                  "name": "target",
+                  "type": "AssetId"
+                }
+              ],
+              "documentation": [
+                " Claims the staking reward given the `target` validator."
+              ]
+            },
+            {
+              "name": "set_claim_staking_requirement",
+              "args": [
+                {
+                  "name": "asset_id",
+                  "type": "AssetId"
+                },
+                {
+                  "name": "new",
+                  "type": "StakingRequirement"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "set_claim_frequency_limit",
+              "args": [
+                {
+                  "name": "asset_id",
+                  "type": "AssetId"
+                },
+                {
+                  "name": "new",
+                  "type": "BlockNumber"
+                }
+              ],
+              "documentation": []
+            }
+          ],
+          "events": [
+            {
+              "name": "Claim",
+              "args": [
+                "AccountId",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                ""
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": [
+            {
+              "name": "UnprevilegedAsset",
+              "documentation": [
+                " The asset does not have the mining rights."
+              ]
+            },
+            {
+              "name": "InsufficientStaking",
+              "documentation": [
+                " Claimer does not have enough Staking locked balance."
+              ]
+            },
+            {
+              "name": "UnexpiredFrequencyLimit",
+              "documentation": [
+                " Claimer just did a claim recently, the next frequency limit is not expired."
+              ]
+            },
+            {
+              "name": "AssetError",
+              "documentation": [
+                " Asset error."
+              ]
+            },
+            {
+              "name": "ZeroMiningWeight",
+              "documentation": [
+                " Zero mining weight."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "XTransactionPayment",
+          "storage": {
+            "prefix": "TransactionPayment",
+            "items": [
+              {
+                "name": "NextFeeMultiplier",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Multiplier"
+                },
+                "fallback": "0x000064a7b3b6e00d0000000000000000",
+                "documentation": []
+              }
+            ]
+          },
+          "calls": null,
+          "events": null,
+          "constants": [
+            {
+              "name": "TransactionByteFee",
+              "type": "BalanceOf",
+              "value": "0x01000000000000000000000000000000",
+              "documentation": [
+                " The fee to be paid for making a transaction; the per-byte portion."
+              ]
+            },
+            {
+              "name": "WeightToFee",
+              "type": "Vec<WeightToFeeCoefficient>",
+              "value": "0x0401000000000000000000000000000000000000000001",
+              "documentation": [
+                " The polynomial that is applied in order to derive fee from weight."
+              ]
+            }
+          ],
+          "errors": []
+        },
+        {
+          "name": "XSpot",
+          "storage": {
+            "prefix": "XSpot",
+            "items": [
+              {
+                "name": "TradingPairCount",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "TradingPairId"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " How many trading pairs so far."
+                ]
+              },
+              {
+                "name": "TradingPairOf",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "TradingPairId",
+                    "value": "TradingPairProfile",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The map from trading pair id to its static profile."
+                ]
+              },
+              {
+                "name": "TradingPairInfoOf",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "TradingPairId",
+                    "value": "TradingPairInfo",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " (latest price, average price, last last update height) of trading pair"
+                ]
+              },
+              {
+                "name": "TradingHistoryIndexOf",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "TradingPairId",
+                    "value": "TradingHistoryIndex",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " Total transactions has been made for a trading pair."
+                ]
+              },
+              {
+                "name": "OrderCountOf",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AccountId",
+                    "value": "OrderId",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000000000000000",
+                "documentation": [
+                  " Total orders made by an account."
+                ]
+              },
+              {
+                "name": "OrderInfoOf",
+                "modifier": "Optional",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Twox64Concat",
+                    "key1": "AccountId",
+                    "key2": "OrderId",
+                    "value": "OrderInfo",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Details of an user order given the account ID and order ID."
+                ]
+              },
+              {
+                "name": "QuotationsOf",
+                "modifier": "Default",
+                "type": {
+                  "DoubleMap": {
+                    "hasher": "Twox64Concat",
+                    "key1": "TradingPairId",
+                    "key2": "Price",
+                    "value": "Vec<(AccountId,OrderId)>",
+                    "key2Hasher": "Twox64Concat"
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " All the accounts and the order number given the trading pair ID and price."
+                ]
+              },
+              {
+                "name": "HandicapOf",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "TradingPairId",
+                    "value": "HandicapInfo",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "documentation": [
+                  " TradingPairId => (highest_bid, lowest_offer)"
+                ]
+              },
+              {
+                "name": "PriceFluctuationOf",
+                "modifier": "Default",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "TradingPairId",
+                    "value": "PriceFluctuation",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x64000000",
+                "documentation": [
+                  " The map of trading pair ID to the price fluctuation. Use with caution!"
+                ]
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "put_order",
+              "args": [
+                {
+                  "name": "pair_id",
+                  "type": "TradingPairId"
+                },
+                {
+                  "name": "order_type",
+                  "type": "OrderType"
+                },
+                {
+                  "name": "side",
+                  "type": "Side"
+                },
+                {
+                  "name": "amount",
+                  "type": "Balance"
+                },
+                {
+                  "name": "price",
+                  "type": "Price"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "cancel_order",
+              "args": [
+                {
+                  "name": "pair_id",
+                  "type": "TradingPairId"
+                },
+                {
+                  "name": "order_id",
+                  "type": "OrderId"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "set_cancel_order",
+              "args": [
+                {
+                  "name": "who",
+                  "type": "AccountId"
+                },
+                {
+                  "name": "pair_id",
+                  "type": "TradingPairId"
+                },
+                {
+                  "name": "order_id",
+                  "type": "OrderId"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "set_handicap",
+              "args": [
+                {
+                  "name": "pair_id",
+                  "type": "TradingPairId"
+                },
+                {
+                  "name": "highest_bid",
+                  "type": "Price"
+                },
+                {
+                  "name": "lowest_offer",
+                  "type": "Price"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "set_price_fluctuation",
+              "args": [
+                {
+                  "name": "pair_id",
+                  "type": "TradingPairId"
+                },
+                {
+                  "name": "new",
+                  "type": "PriceFluctuation"
+                }
+              ],
+              "documentation": []
+            }
+          ],
+          "events": [
+            {
+              "name": "PutOrder",
+              "args": [
+                "Order"
+              ],
+              "documentation": [
+                " A new order is created."
+              ]
+            },
+            {
+              "name": "UpdateOrder",
+              "args": [
+                "Order"
+              ],
+              "documentation": [
+                " There is an update to the order due to it's canceled or get executed."
+              ]
+            },
+            {
+              "name": "OrderExecuted",
+              "args": [
+                "OrderExecutedInfo"
+              ],
+              "documentation": [
+                " The order gets executed."
+              ]
+            },
+            {
+              "name": "TradingPairUpdated",
+              "args": [
+                "TradingPairProfile"
+              ],
+              "documentation": [
+                " Trading pair profile has been updated."
+              ]
+            },
+            {
+              "name": "PriceFluctuationUpdated",
+              "args": [
+                "TradingPairId",
+                "PriceFluctuation"
+              ],
+              "documentation": [
+                " Price fluctuation of trading pair has been updated."
+              ]
+            }
+          ],
+          "constants": [],
+          "errors": [
+            {
+              "name": "InvalidPrice",
+              "documentation": [
+                " Price can not be zero, and must be an integer multiple of the tick precision."
+              ]
+            },
+            {
+              "name": "TooHighBidPrice",
+              "documentation": [
+                " The bid price can not higher than the PriceVolatility of current lowest_offer."
+              ]
+            },
+            {
+              "name": "TooLowAskPrice",
+              "documentation": [
+                " The ask price can not lower than the PriceVolatility of current highest_bid."
+              ]
+            },
+            {
+              "name": "VolumeTooSmall",
+              "documentation": [
+                " Failed to convert_base_to_quote since amount*price too small."
+              ]
+            },
+            {
+              "name": "ZeroAmount",
+              "documentation": [
+                " Amount can not be zero."
+              ]
+            },
+            {
+              "name": "InsufficientBalance",
+              "documentation": [
+                " Can not put order if transactor's free token too low."
+              ]
+            },
+            {
+              "name": "InvalidOrderType",
+              "documentation": [
+                " Invalid validator target."
+              ]
+            },
+            {
+              "name": "InvalidOrderPair",
+              "documentation": [
+                " The order pair doesn't exist."
+              ]
+            },
+            {
+              "name": "TradingPairOffline",
+              "documentation": [
+                " Can not force validator to be chilled."
+              ]
+            },
+            {
+              "name": "NonexistentTradingPair",
+              "documentation": [
+                " The trading pair does not exist."
+              ]
+            },
+            {
+              "name": "InvalidTickPrecision",
+              "documentation": [
+                " tick_precision can not less than the one of pair."
+              ]
+            },
+            {
+              "name": "InvalidPriceVolatility",
+              "documentation": [
+                " Price volatility must be less 100."
+              ]
+            },
+            {
+              "name": "TradingPairAlreadyExists",
+              "documentation": [
+                " The trading pair already exists."
+              ]
+            },
+            {
+              "name": "TooManyBacklogOrders",
+              "documentation": [
+                " Too many orders for the same price."
+              ]
+            },
+            {
+              "name": "InvalidTradingPairAsset",
+              "documentation": [
+                " Can not retrieve the asset info given the trading pair."
+              ]
+            },
+            {
+              "name": "CancelOrderNotAllowed",
+              "documentation": [
+                " Only the orders with ZeroFill or PartialFill can be canceled."
+              ]
+            },
+            {
+              "name": "InvalidOrderId",
+              "documentation": [
+                " Can not find the order given the order index."
+              ]
+            },
+            {
+              "name": "AssetError",
+              "documentation": [
+                " Error from assets module."
+              ]
+            }
+          ]
+        }
+      ],
+      "extrinsic": {
+        "version": 4,
+        "signedExtensions": [
+          "CheckSpecVersion",
+          "CheckTxVersion",
+          "CheckGenesis",
+          "CheckEra",
+          "CheckNonce",
+          "CheckWeight",
+          "ChargeTransactionPayment",
+          "BaseFilter"
+        ]
+      }
+    }
+  }
+}

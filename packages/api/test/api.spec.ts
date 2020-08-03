@@ -8,7 +8,7 @@ import WsProvider from '@chainx-v2/rpc-provider/ws';
 import testKeyring, { PAIRS } from '@chainx-v2/keyring/testing';
 import { encodeAddress } from '@chainx-v2/crypto';
 
-async function createApi (): Promise<ApiPromise> {
+async function createApi (): Promise<ChainX> {
   jest.setTimeout(30000);
   process.env.NODE_ENV = 'test';
 
@@ -19,24 +19,26 @@ async function createApi (): Promise<ApiPromise> {
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   await chainx.ready();
 
-  return chainx.getApi();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return chainx;
 }
 
 describe('misc quick tests', (): void => {
   it('retrieves balances correctly', async (): Promise<void> => {
-    const api = await createApi();
+    const chainx = await createApi();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    const firstHead = await api.rpc.xstaking.getValidators();
+    const firstHead = await chainx.slake.getValidators();
 
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     console.log('head is' + firstHead);
 
-    console.log(JSON.stringify(
-      await api.query.system.account('FPzukZw2mphWsXDqdkNzLaxnanjZEWH9i2vqwobTdtde5me')
-    ));
-    console.log(JSON.stringify(
-      await api.query.system.account('HUewJvzVuEeyaxH2vx9XiyAPKrpu1Zj5r5Pi9VrGiBVty7q')
-    ));
+    // console.log(JSON.stringify(
+    //  await chainx.api.query.system.account('FPzukZw2mphWsXDqdkNzLaxnanjZEWH9i2vqwobTdtde5me')
+    // ));
+    // console.log(JSON.stringify(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+    // await chainx.api.query.system.account('HUewJvzVuEeyaxH2vx9XiyAPKrpu1Zj5r5Pi9VrGiBVty7q')
+    // ));
   });
 });
 
