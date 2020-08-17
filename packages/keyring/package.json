@@ -1,6 +1,6 @@
 {
   "name": "@chainx-v2/keyring",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Keyring management",
   "main": "index.js",
   "license": "Apache-2.0",

@@ -268,6 +268,7 @@ export default {
   AssetInfoForRpc: {
     token: 'String',
     tokenName: 'String',
+    // eslint-disable-next-line sort-keys
     chain: 'Chain',
     decimals: 'Decimals',
     desc: 'String'
