@@ -43,6 +43,18 @@ export default {
     ]
   },
   // eslint-disable-next-line sort-keys
+  AssetRestriction: {
+    _enum: [
+      'Move',
+      'Transfer',
+      'Deposit',
+      'Withdraw',
+      'DestroyWithdrawal',
+      'DestroyFree'
+    ]
+  },
+  AssetRestrictions: 'u32',
+  // eslint-disable-next-line sort-keys
   Memo: 'Text',
   // eslint-disable-next-line sort-keys
   AssetInfo: {
@@ -224,17 +236,7 @@ export default {
   ReferralId: 'Text',
   // eslint-disable-next-line sort-keys
   AssetId: 'u32',
-  AssetRestriction: {
-    _enum: [
-      'Move',
-      'Transfer',
-      'Deposit',
-      'Withdraw',
-      'DestroyWithdrawal',
-      'DestroyFree'
-    ]
-  },
-  AssetRestrictions: 'u32',
+
   BtcHeader: {
     version: 'u32',
     // eslint-disable-next-line sort-keys
@@ -291,12 +293,13 @@ export default {
     // eslint-disable-next-line sort-keys
     createdAt: 'BlockNumber'
   },
+
   TotalAssetInfoForRpc: {
     info: 'AssetInfoForRpc',
     // eslint-disable-next-line sort-keys
     balance: 'BTreeMap<AssetType, String>',
-    isOnline: 'bool'
-    // restrictions: 'AssetRestrictions'
+    isOnline: 'bool',
+    restrictions: 'AssetRestrictions'
   },
   Unbonded: {
     lockedUntil: 'BlockNumber',

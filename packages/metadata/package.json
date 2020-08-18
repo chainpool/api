@@ -1,18 +1,18 @@
 {
   "name": "@chainx-v2/metadata",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Helpers to extract information from runtime metadata",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
-    "@chainx-v2/crypto": "0.0.3-beta.26",
-    "@chainx-v2/types": "0.0.3-beta.26",
-    "@chainx-v2/types-known": "0.0.3-beta.26",
-    "@chainx-v2/util": "0.0.3-beta.26",
+    "@chainx-v2/crypto": "^0.0.13",
+    "@chainx-v2/types": "^0.0.13",
+    "@chainx-v2/types-known": "^0.0.13",
+    "@chainx-v2/util": "^0.0.13",
     "bn.js": "^5.1.2"
   },
   "devDependencies": {
-    "@chainx-v2/keyring": "0.0.3-beta.26"
+    "@chainx-v2/keyring": "^0.0.13"
   }
 }

@@ -1,35 +1,45 @@
-/* eslint-disable header/header */
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/unbound-method */
+// eslint-disable-next-line header/header
+const { ApiPromise, WsProvider } = require('@chainx-v2/api');
+const { PAIRS } = require('@chainx-v2/keyring/testing');
+const testKeyring = require('@chainx-v2/keyring/testing').default;
+const { encodeAddress } = require('@chainx-v2/keyring');
 
-// Required imports
-const { ChainX } = require('@chainx-v2/api');
-const { Account } = require('@chainx-v2/account');
-const { decodeAddress, encodeAddress, setSS58Format } = require('@chainx-v2/keyring');
+const url = 'ws://47.114.131.193:9000';
+const wsProvider = new WsProvider(url);
 
-async function main () {
-  // Initialise the provider to connect to the local node
-  const chainx = new ChainX('ws://47.114.131.193:9000');
-  const account1 = Account.generate();
+const keyring = testKeyring();
+const alice = keyring.pairs[0];
 
-  console.log(`generate account is: ${account1.address()}`);
+// eslint-disable-next-line no-void
+void (async () => {
+  const api = await ApiPromise.create({ provider: wsProvider });
+  const aliceAddr = encodeAddress(PAIRS[0].publicKey, 42);
 
-  // Create the API and wait until ready
-  await chainx.ready();
-  const api = chainx.getApi();
+  const systemProperties = await api.rpc.system.properties();
 
-  const assets = await api.rpc.xassets.getAssets();
+  console.log(aliceAddr);
+  const balance = await api.query.system.account(PAIRS[0].publicKey);
 
-  console.log('balance:' + assets);
+  console.log('balance', balance.data.free.toString());
 
-  // Retrieve the chain & node information information via rpc calls
-  const [chain, nodeName, nodeVersion] = await Promise.all([
-    api.rpc.system.chain(),
-    api.rpc.system.name(),
-    api.rpc.system.version()
-  ]);
+  let id = 0;
+  const unsub = await api.tx.balances
+    .transfer('5Gsz44HKdTXnwiLH47GmZKr2hw5qmaBe2nMKK1sJSKmYRYxh',
+      10 * Math.pow(10, 8))
+    .signAndSend(alice, ({ events = [], status }) => {
+      console.log(`Current status is ${status}`);
+      id++;
 
-  console.log(`You are connected to chain ${chain} using ${nodeName} v${nodeVersion}`);
-}
+      if (status.isInBlock) {
+        console.log(`Transaction included at blockHash ${status.asInBlock}`);
+      } else if (status.isFinalized) {
+        console.log(`Transaction finalized at blockHash ${status.asFinalized}`);
+        unsub();
+      }
 
-main().catch(console.error).finally(() => process.exit());
+      // Loop through Vec<EventRecord> to display all events
+      events.forEach(({ event: { data, method, section }, phase }) => {
+        console.log(`\t' ${phase}: ${section}.${method}:: ${data}`);
+      });
+    });
+})();
