@@ -6,7 +6,8 @@ import ApiPromise from './Api';
 import WsProvider from "@chainx-v2/rpc-provider/ws";
 import {encodeAddress} from '@chainx-v2/keyring';
 import testKeyring, {PAIRS} from '@chainx-v2/keyring/testing';
-// import {ISubmittableResult} from "@chainx-v2/types/types";
+import {ISubmittableResult} from "@chainx-v2/types/types";
+const { GenericExtrinsicV4 } = require('@chainx-v2/types');
 
 console.log(encodeAddress)
 console.log(ApiPromise);
@@ -27,25 +28,30 @@ describe('ApiPromise', (): void => {
 
   // @ts-ignore
   async function transferFromAliceToBob() {
-    const bobAddr = encodeAddress(PAIRS[1].publicKey)
-    let extrinsic = await api.tx.xAssets.transfer(bobAddr, 0, 1000, 'alice to bob')
-    extrinsic = extrinsic.sign(alice)
+    let extrinsic = await api.tx.balances.transfer('5Gsz44HKdTXnwiLH47GmZKr2hw5qmaBe2nMKK1sJSKmYRYxh',
+      1000 * Math.pow(10, 8))
+    let id = 0
+    await new Promise(async resolve => {
+      const unsub =  await extrinsic.signAndSend(alice, (result: ISubmittableResult) => {
+        console.log(`Current status is ${result.status}`);
+        id++
 
-    console.log(extrinsic)
+        if (result.status.isInBlock) {
+          console.log(`Transaction included at blockHash ${result.status.asInBlock}`);
+        } else if (result.status.isFinalized) {
+          console.log(`Transaction finalized at blockHash ${result.status.asFinalized}`);
+          unsub();
+        }
+
+        if (id > 2) {
+          resolve()
+        }
+      })
+    })
   }
 
-  // @ts-ignore
-  async function aliceStake(validators) {
-    let extrinsic = await api.tx.xStaking.bond(validators[0].account, 1000, 'stake')
-    const result = await extrinsic.signAndSend(alice)
-    console.log(result)
-  }
-
-  it('should ', async function () {
-    api = await ApiPromise.create({provider});
-    console.log(api);
-
-    // @ts-ignore
+// @ts-ignore
+  async function query() {
     const assets = await api.rpc.xassets.getAssets();
     console.log(assets.toJSON());
 
@@ -58,9 +64,41 @@ describe('ApiPromise', (): void => {
 
     const balance = await api.query.xAssets.assetBalance(aliceAddr, 0)
     console.log(balance)
+  }
 
-    // await transferFromAliceToBob()
-    await aliceStake(validators.toJSON())
+  // @ts-ignore
+  async function testEx() {
+    let extrinsic = await api.tx.balances.transfer('5Gsz44HKdTXnwiLH47GmZKr2hw5qmaBe2nMKK1sJSKmYRYxh',
+      1000 * Math.pow(10, 8))
+
+    const hex = extrinsic.toHex()
+
+    try {
+      // const newEx = new GenericExtrinsicV4(api.registry, hexToU8a(hex))
+      const newEx = new GenericExtrinsicV4(api.registry, extrinsic)
+      console.log(newEx)
+    } catch (e) {
+      console.log(e)
+    }
+
+    console.log(hex)
+  }
+
+  // @ts-ignore
+  async function aliceStake(validators) {
+    let extrinsic = await api.tx.xStaking.bond(validators[0].account, 1000, 'stake')
+    const result = await extrinsic.signAndSend(alice)
+    console.log(result)
+  }
+
+  it('should ', async function () {
+    api = await ApiPromise.create({provider});
+
+    // await testEx()
+    await query();
+    // await transferFromAliceToBob();
+
+    // await aliceStake(validators.toJSON())
 
     expect(1).toEqual(1)
   });
