@@ -53,7 +53,9 @@ export default {
       'DestroyFree'
     ]
   },
-  AssetRestrictions: 'u32',
+  AssetRestrictions: {
+    mask: 'u32'
+  },
   // eslint-disable-next-line sort-keys
   Memo: 'Text',
   // eslint-disable-next-line sort-keys
