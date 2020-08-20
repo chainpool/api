@@ -202,7 +202,7 @@ export class TypeRegistry implements Registry {
       if (definition) {
         BaseType = createClass(this, definition);
       } else if (withUnknown) {
-        console.warn(`Unable to resolve type ${name}, it will fail on construction`);
+        // console.warn(`Unable to resolve type ${name}, it will fail on construction`);
 
         this.#unknownTypes.set(name, true);
         BaseType = DoNotConstruct.with(name);
