@@ -17,7 +17,7 @@ import { RegistrarInfo, Registration } from '@chainx-v2/types/interfaces/identit
 import { AuthIndex } from '@chainx-v2/types/interfaces/imOnline';
 import { DeferredOffenceOf, Kind, OffenceDetails, OpaqueTimeSlot, ReportIdOf } from '@chainx-v2/types/interfaces/offences';
 import { ActiveRecovery, RecoveryConfig } from '@chainx-v2/types/interfaces/recovery';
-import { AccountId, AccountIndex, Balance, BalanceOf, BlockNumber, ExtrinsicsWeight, Hash, KeyTypeId, Moment, Perbill, ProxyType, Releases, ValidatorId,OpaqueCall } from '@chainx-v2/types/interfaces/runtime';
+import { AccountId, AccountIndex, Balance, BalanceOf, BlockNumber, ExtrinsicsWeight, Hash, KeyTypeId, Moment, Perbill, ProxyType, Releases, ValidatorId } from '@chainx-v2/types/interfaces/runtime';
 import { Scheduled, TaskAddress } from '@chainx-v2/types/interfaces/scheduler';
 import { Keys, SessionIndex } from '@chainx-v2/types/interfaces/session';
 import { Bid, BidKind, SocietyVote, StrikeCount, VouchingStatus } from '@chainx-v2/types/interfaces/society';
@@ -80,7 +80,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * How late the current block is compared to its parent.
-     *
+     * 
      * This entry is populated as part of block execution and is cleaned up
      * on block finalization. Querying this storage entry outside of block
      * execution context should always yield zero.
@@ -99,9 +99,9 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * The epoch randomness for the *current* epoch.
-     *
+     * 
      * # Security
-     *
+     * 
      * This MUST NOT be used for gambling, as it can be influenced by a
      * malicious validator in the short term. It MAY be used in many
      * cryptographic protocols, however, so long as one remembers that this
@@ -113,11 +113,11 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Randomness under construction.
-     *
+     * 
      * We make a tradeoff between storage accesses and list length.
      * We store the under-construction randomness in segments of up to
      * `UNDER_CONSTRUCTION_SEGMENT_LENGTH`.
-     *
+     * 
      * Once a segment reaches this length, we begin the next one.
      * We reset all segments and return to `0` at the beginning of every
      * epoch.
@@ -134,7 +134,7 @@ export interface AugmentedQueries<ApiType> {
   [index: string]: QueryableStorageEntry<ApiType>;
     /**
      * The balance of an account.
-     *
+     * 
      * NOTE: This is only used in the case that this module is used to store balances.
      **/
     account: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<AccountData>> &
@@ -147,7 +147,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Storage version of the pallet.
-     *
+     * 
      * This is set to v2.0.0 for new networks.
      **/
     storageVersion: AugmentedQuery<ApiType, ()=> Observable<Releases>> &
@@ -172,7 +172,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * The code associated with a given account.
-     *
+     * 
      * TWOX-NOTE: SAFE since `AccountId` is a secure hash.
      **/
     contractInfoOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<Option<ContractInfo>>> &
@@ -237,7 +237,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Those who have locked a deposit.
-     *
+     * 
      * TWOX-NOTE: Safe, as increasing integer keys are safe.
      **/
     depositOf: AugmentedQuery<ApiType, (arg: PropIndex | AnyNumber | Uint8Array)=> Observable<Option<ITuple<[Vec<AccountId>, BalanceOf]>>>> &
@@ -251,7 +251,7 @@ export interface AugmentedQueries<ApiType> {
     /**
      * Accounts for which there are locks in action which may be removed at some point in the
      * future. The value is the block number at which the lock expires and may be removed.
-     *
+     * 
      * TWOX-NOTE: OK ― `AccountId` is a secure hash.
      **/
     locks: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<Option<BlockNumber>>> &
@@ -293,14 +293,14 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Information concerning any given referendum.
-     *
+     * 
      * TWOX-NOTE: SAFE as indexes are not under an attacker’s control.
      **/
     referendumInfoOf: AugmentedQuery<ApiType, (arg: ReferendumIndex | AnyNumber | Uint8Array)=> Observable<Option<ReferendumInfo>>> &
         QueryableStorageEntry<ApiType>;
     /**
      * Storage version of the pallet.
-     *
+     * 
      * New networks start with last version.
      **/
     storageVersion: AugmentedQuery<ApiType, ()=> Observable<Option<Releases>>> &
@@ -308,7 +308,7 @@ export interface AugmentedQueries<ApiType> {
     /**
      * All votes for a particular voter. We store the balance for the number of votes that we
      * have recorded. The second item is the total amount of delegations, that will be added.
-     *
+     * 
      * TWOX-NOTE: SAFE as `AccountId`s are crypto hashes anyway.
      **/
     votingOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<Voting>> &
@@ -339,7 +339,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Votes and locked stake of a particular voter.
-     *
+     * 
      * TWOX-NOTE: SAFE as `AccountId` is a crypto hash
      **/
     voting: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<ITuple<[BalanceOf, Vec<AccountId>]>>> &
@@ -366,7 +366,7 @@ export interface AugmentedQueries<ApiType> {
     /**
      * A mapping from grandpa set ID to the index of the *most recent* session for which its
      * members were responsible.
-     *
+     * 
      * TWOX-NOTE: `SetId` is not under user control.
      **/
     setIdSession: AugmentedQuery<ApiType, (arg: SetId | AnyNumber | Uint8Array)=> Observable<Option<SessionIndex>>> &
@@ -386,7 +386,7 @@ export interface AugmentedQueries<ApiType> {
   [index: string]: QueryableStorageEntry<ApiType>;
     /**
      * Information that is pertinent to identify the entity behind an account.
-     *
+     * 
      * TWOX-NOTE: OK ― `AccountId` is a secure hash.
      **/
     identityOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<Option<Registration>>> &
@@ -394,16 +394,16 @@ export interface AugmentedQueries<ApiType> {
     /**
      * The set of registrars. Not expected to get very big as can only be added through a
      * special origin (likely a council motion).
-     *
+     * 
      * The index into this can be cast to `RegistrarIndex` to get a valid value.
      **/
     registrars: AugmentedQuery<ApiType, ()=> Observable<Vec<Option<RegistrarInfo>>>> &
         QueryableStorageEntry<ApiType>;
     /**
      * Alternative "sub" identities of this account.
-     *
+     * 
      * The first item is the deposit, the second is a vector of the accounts.
-     *
+     * 
      * TWOX-NOTE: OK ― `AccountId` is a secure hash.
      **/
     subsOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<ITuple<[BalanceOf, Vec<AccountId>]>>> &
@@ -425,7 +425,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * The block number after which it's ok to send heartbeats in current session.
-     *
+     * 
      * At the beginning of each session we set this to a value that should
      * fall roughly in the middle of the session duration.
      * The idea is to first wait for the validators to produce a block
@@ -454,13 +454,15 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
           };
   multisig: {
-    [index: string]: QueryableStorageEntry<ApiType>;
-    calls: AugmentedQuery<ApiType, (arg: U8aFixed | string | Uint8Array) => Observable<Option<ITuple<[OpaqueCall, AccountId, BalanceOf]>>>> & QueryableStorageEntry<ApiType>;
+  [index: string]: QueryableStorageEntry<ApiType>;
+    calls: AugmentedQuery<ApiType, (arg: U8aFixed | string | Uint8Array)=> Observable<Option<ITuple<[Bytes, AccountId, BalanceOf]>>>> &
+        QueryableStorageEntry<ApiType>;
     /**
      * The set of open multisig operations.
      **/
-    multisigs: AugmentedQueryDoubleMap<ApiType, (key1: AccountId | string | Uint8Array, key2: U8aFixed | string | Uint8Array) => Observable<Option<Multisig>>> & QueryableStorageEntry<ApiType>;
-  };
+    multisigs: AugmentedQueryDoubleMap<ApiType, (key1: AccountId | string | Uint8Array, key2: U8aFixed | string | Uint8Array)=> Observable<Option<Multisig>>> &
+        QueryableStorageEntry<ApiType>;
+          };
   offences: {
   [index: string]: QueryableStorageEntry<ApiType>;
     /**
@@ -481,9 +483,9 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Enumerates all reports of a kind along with the time they happened.
-     *
+     * 
      * All reports are sorted by the time of offence.
-     *
+     * 
      * Note that the actual type of this mapping is `Vec<u8>`, this is because values of
      * different types are not supported at the moment so we are doing the manual serialization.
      **/
@@ -513,7 +515,7 @@ export interface AugmentedQueries<ApiType> {
   [index: string]: QueryableStorageEntry<ApiType>;
     /**
      * Active recovery attempts.
-     *
+     * 
      * First account is the account to be recovered, and the second account
      * is the user trying to recover the account.
      **/
@@ -521,7 +523,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * The list of allowed proxy accounts.
-     *
+     * 
      * Map from the user who can access it to the recovered account.
      **/
     proxy: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array)=> Observable<Option<AccountId>>> &
@@ -554,7 +556,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Indices of disabled validators.
-     *
+     * 
      * The set is cleared when `on_session_ending` returns a new set of identities.
      **/
     disabledValidators: AugmentedQuery<ApiType, ()=> Observable<Vec<u32>>> &
@@ -675,7 +677,7 @@ export interface AugmentedQueries<ApiType> {
   [index: string]: QueryableStorageEntry<ApiType>;
     /**
      * The active era information, it holds index and start.
-     *
+     * 
      * The active era is the era currently rewarded.
      * Validator set of this era must be equal to `SessionInterface::validators`.
      **/
@@ -688,7 +690,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * A mapping from still-bonded eras to the first session index of that era.
-     *
+     * 
      * Must contains information for eras for the range:
      * `[active_era - bounding_duration; active_era]`
      **/
@@ -702,7 +704,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * The current era index.
-     *
+     * 
      * This is the latest planned era, depending on how the Session pallet queues the validator
      * set, it might be active or not.
      **/
@@ -727,9 +729,9 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Exposure of validator at era.
-     *
+     * 
      * This is keyed first by the era index to allow bulk deletion and then the stash account.
-     *
+     * 
      * Is it removed after `HISTORY_DEPTH` eras.
      * If stakers hasn't been set or has been removed then empty exposure is returned.
      **/
@@ -737,14 +739,14 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Clipped Exposure of validator at era.
-     *
+     * 
      * This is similar to [`ErasStakers`] but number of nominators exposed is reduced to the
      * `T::MaxNominatorRewardedPerValidator` biggest stakers.
      * (Note: the field `total` and `own` of the exposure remains unchanged).
      * This is used to limit the i/o cost for the nominator payout.
-     *
+     * 
      * This is keyed fist by the era index to allow bulk deletion and then the stash account.
-     *
+     * 
      * Is it removed after `HISTORY_DEPTH` eras.
      * If stakers hasn't been set or has been removed then empty exposure is returned.
      **/
@@ -763,16 +765,16 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Similar to `ErasStakers`, this holds the preferences of validators.
-     *
+     * 
      * This is keyed first by the era index to allow bulk deletion and then the stash account.
-     *
+     * 
      * Is it removed after `HISTORY_DEPTH` eras.
      **/
     erasValidatorPrefs: AugmentedQueryDoubleMap<ApiType, (key1: EraIndex | AnyNumber | Uint8Array, key2: AccountId | string | Uint8Array)=> Observable<ValidatorPrefs>> &
         QueryableStorageEntry<ApiType>;
     /**
      * The total validator era payout for the last `HISTORY_DEPTH` eras.
-     *
+     * 
      * Eras that haven't finished yet or has been removed doesn't have reward.
      **/
     erasValidatorReward: AugmentedQuery<ApiType, (arg: EraIndex | AnyNumber | Uint8Array)=> Observable<Option<BalanceOf>>> &
@@ -784,9 +786,9 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * Number of eras to keep in history.
-     *
+     * 
      * Information is kept for eras in `[current_era - history_depth; current_era]`.
-     *
+     * 
      * Must be more than the number of eras delayed by session otherwise. I.e. active era must
      * always be in history. I.e. `active_era > current_era - history_depth` must be
      * guaranteed.
@@ -850,7 +852,7 @@ export interface AugmentedQueries<ApiType> {
         QueryableStorageEntry<ApiType>;
     /**
      * The percentage of the slash that is distributed to reporters.
-     *
+     * 
      * The rest of the slashed value is handled by the `Slash`.
      **/
     slashRewardFraction: AugmentedQuery<ApiType, ()=> Observable<Perbill>> &
@@ -876,7 +878,7 @@ export interface AugmentedQueries<ApiType> {
     /**
      * True if network has been upgraded to this version.
      * Storage version of the pallet.
-     *
+     * 
      * This is set to v3.0.0 for new networks.
      **/
     storageVersion: AugmentedQuery<ApiType, ()=> Observable<Releases>> &
@@ -951,11 +953,11 @@ export interface AugmentedQueries<ApiType> {
     /**
      * Mapping between a topic (represented by T::Hash) and a vector of indexes
      * of events in the `<Events<T>>` list.
-     *
+     * 
      * All topic vectors have deterministic storage locations depending on the topic. This
      * allows light-clients to leverage the changes trie storage tracking mechanism and
      * in case of changes fetch the list of events of interest.
-     *
+     * 
      * The value has the type `(T::BlockNumber, EventIndex)` because if we used only just
      * the `EventIndex` then in case if the topic has the same contents on the next block
      * no notification will be triggered thus the event might be lost.

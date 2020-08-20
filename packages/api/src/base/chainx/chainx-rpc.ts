@@ -84,6 +84,7 @@ export default {
         {
           name: 'at',
           type: 'Hash',
+          // eslint-disable-next-line sort-keys
           isOptional: true
         }
       ],
