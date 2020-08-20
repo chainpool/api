@@ -7,7 +7,10 @@ import WsProvider from "@chainx-v2/rpc-provider/ws";
 import {encodeAddress} from '@chainx-v2/keyring';
 import testKeyring, {PAIRS} from '@chainx-v2/keyring/testing';
 import {ISubmittableResult} from "@chainx-v2/types/types";
-const { GenericExtrinsicV4 } = require('@chainx-v2/types');
+
+const {GenericExtrinsicV4} = require('@chainx-v2/types');
+import {u8aToHex} from '@chainx-v2/util'
+import {createType} from "@chainx-v2/types";
 
 console.log(encodeAddress)
 console.log(ApiPromise);
@@ -32,7 +35,7 @@ describe('ApiPromise', (): void => {
       1000 * Math.pow(10, 8))
     let id = 0
     await new Promise(async resolve => {
-      const unsub =  await extrinsic.signAndSend(alice, (result: ISubmittableResult) => {
+      const unsub = await extrinsic.signAndSend(alice, (result: ISubmittableResult) => {
         console.log(`Current status is ${result.status}`);
         id++
 
@@ -91,11 +94,29 @@ describe('ApiPromise', (): void => {
     console.log(result)
   }
 
+  // @ts-ignore
+  async function transferTxHash() {
+    let extrinsic = await api.tx.balances.transfer('5Gsz44HKdTXnwiLH47GmZKr2hw5qmaBe2nMKK1sJSKmYRYxh',
+      1000 * Math.pow(10, 8))
+
+    const signedBlock = await api.rpc.chain.getBlock();
+    const blockHash = signedBlock.block.header.hash;
+    const {nonce} = await api.query.system.account(alice.address);
+
+    const expectHash = extrinsic.sign(alice, {blockHash, nonce})
+    console.log('expectHash', expectHash)
+
+    const hash = await extrinsic.signAndSend(alice, {blockHash, nonce})
+    console.log('hash:', u8aToHex(hash))
+  }
+
   it('should ', async function () {
+    // @ts-ignore
     api = await ApiPromise.create({provider});
 
+    await transferTxHash()
     // await testEx()
-    await query();
+    // await query();
     // await transferFromAliceToBob();
 
     // await aliceStake(validators.toJSON())
