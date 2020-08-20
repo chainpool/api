@@ -1,21 +1,21 @@
 {
   "name": "@chainx-v2/api-derive",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Common functions used across Polkadot, derived from RPC calls and storage queries.",
   "main": "index.js",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
-    "@chainx-v2/api": "^0.0.17",
-    "@chainx-v2/crypto": "^0.0.17",
-    "@chainx-v2/rpc-core": "^0.0.17",
-    "@chainx-v2/rpc-provider": "^0.0.17",
-    "@chainx-v2/types": "^0.0.17",
-    "@chainx-v2/util": "^0.0.17",
+    "@chainx-v2/api": "^0.0.18",
+    "@chainx-v2/crypto": "^0.0.18",
+    "@chainx-v2/rpc-core": "^0.0.18",
+    "@chainx-v2/rpc-provider": "^0.0.18",
+    "@chainx-v2/types": "^0.0.18",
+    "@chainx-v2/util": "^0.0.18",
     "bn.js": "^5.1.2",
     "memoizee": "^0.4.14",
     "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "@chainx-v2/keyring": "^0.0.17"
+    "@chainx-v2/keyring": "^0.0.18"
   }
 }
