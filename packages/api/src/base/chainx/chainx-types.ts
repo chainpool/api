@@ -28,6 +28,18 @@ export default {
       'Polkadot'
     ]
   },
+  MiningAssetInfo: {
+    assetId: 'AssetId',
+    miningPower: 'FixedAssetPower',
+    rewardPot: 'AccountId',
+    rewardPotBalance: 'RpcBalance',
+    // eslint-disable-next-line sort-keys
+    ledgerInfo: 'RpcAssetLedger'
+  },
+  RpcAssetLedger: {
+    lastTotalMiningWeight: 'RpcWeightType',
+    lastTotalMiningWeightUpdate: 'BlockNumber'
+  },
   // eslint-disable-next-line sort-keys
   BtcTxVerifier: {
     _enum: [
