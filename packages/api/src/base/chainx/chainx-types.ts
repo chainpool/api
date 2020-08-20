@@ -1,5 +1,15 @@
 // eslint-disable-next-line sort-keys,header/header
 export default {
+  Amount: 'i128',
+  AmountOf: 'Amount',
+  ChainAddress: 'Vec<u8>',
+  LockedType: {
+    _enum: [
+      'Bonded',
+      'BondedWithdrawal'
+    ]
+  },
+  // eslint-disable-next-line sort-keys
   AssetType: {
     _enum: [
       'Usable',
@@ -16,6 +26,13 @@ export default {
       'Bitcoin',
       'Ethereum',
       'Polkadot'
+    ]
+  },
+  // eslint-disable-next-line sort-keys
+  BtcTxVerifier: {
+    _enum: [
+      'Recover',
+      'RuntimeInterface'
     ]
   },
   XRC20Selector: {
@@ -264,7 +281,6 @@ export default {
   },
   OrderInfo: 'Order',
   // eslint-disable-next-line sort-keys
-  Amount: 'i128',
   CurrencyIdOf: 'AssetId',
   // eslint-disable-next-line sort-keys
   CurrencyId: 'AssetId',
