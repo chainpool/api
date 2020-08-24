@@ -10,7 +10,6 @@ import {ISubmittableResult} from "@chainx-v2/types/types";
 
 const {GenericExtrinsicV4} = require('@chainx-v2/types');
 import {u8aToHex} from '@chainx-v2/util'
-import {createType} from "@chainx-v2/types";
 
 console.log(encodeAddress)
 console.log(ApiPromise);
@@ -55,17 +54,18 @@ describe('ApiPromise', (): void => {
 
 // @ts-ignore
   async function query() {
-    const assets = await api.rpc.xassets.getAssets();
-    console.log(assets.toJSON());
-
-    // @ts-ignore
-    const validators = await api.rpc.xstaking.getValidators()
-    console.log(validators.toJSON())
+    // const assets = await api.rpc.xassets.getAssets();
+    // console.log(assets.toJSON());
+    //
+    // // @ts-ignore
+    // const validators = await api.rpc.xstaking.getValidators()
+    // console.log(validators.toJSON())
 
     const aliceAddr = encodeAddress(PAIRS[0].publicKey)
     console.log(aliceAddr)
 
-    const balance = await api.query.xAssets.assetBalance(aliceAddr, 0)
+    // const balance = await api.query.xAssets.assetBalance(aliceAddr, 0)
+    const balance = await api.query.system.account(aliceAddr)
     console.log(balance)
   }
 
