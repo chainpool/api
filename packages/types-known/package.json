@@ -1,12 +1,12 @@
 {
   "name": "@chainx-v2/types-known",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
   "main": "index.js",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
-    "@chainx-v2/types": "^0.0.20",
-    "@chainx-v2/util": "^0.0.20",
+    "@chainx-v2/types": "^0.0.21",
+    "@chainx-v2/util": "^0.0.21",
     "bn.js": "^5.1.2"
   },
   "devDependencies": {

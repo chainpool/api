@@ -365,6 +365,22 @@ export default {
         }
       ],
       type: 'BTreeMap<AccountId, RpcNominatorLedger<RpcBalance, BlockNumber>>'
+    },
+    getNominatorByAccount: {
+      description: 'Get individual nominator information given the nominator AccountId.',
+      params: [
+        {
+          name: 'who',
+          type: 'AccountId'
+        },
+        {
+          name: 'at',
+          type: 'Hash',
+          // eslint-disable-next-line sort-keys
+          isOptional: true
+        }
+      ],
+      type: 'NominatorInfo<RpcBalance, BlockNumber>'
     }
 
   },

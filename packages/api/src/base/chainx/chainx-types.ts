@@ -291,6 +291,17 @@ export default {
       'Testnet'
     ]
   },
+  RpcUnbonded: {
+    value: 'RpcBalance',
+    // eslint-disable-next-line sort-keys
+    lockedUntil: 'BlockNumber'
+  },
+
+  // eslint-disable-next-line sort-keys
+  NominatorInfo: {
+    lastRebond: 'Option<BlockNumber>',
+    unbondedChunks: 'RpcUnbonded'
+  },
   OrderInfo: 'Order',
   // eslint-disable-next-line sort-keys
   CurrencyIdOf: 'AssetId',
