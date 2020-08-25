@@ -300,7 +300,7 @@ export default {
   // eslint-disable-next-line sort-keys
   NominatorInfo: {
     lastRebond: 'Option<BlockNumber>',
-    unbondedChunks: 'RpcUnbonded'
+    unbondedChunks: 'Vec<RpcUnbonded>'
   },
   OrderInfo: 'Order',
   // eslint-disable-next-line sort-keys

@@ -11,7 +11,7 @@ const keyring = testKeyring();
 const alice = keyring.pairs[0];
 
 // eslint-disable-next-line no-void
-void (async () => {
+async function excuteTransfer () {
   const api = await ApiPromise.create({ provider: wsProvider });
   const aliceAddr = encodeAddress(PAIRS[0].publicKey, 42);
 
@@ -41,5 +41,17 @@ void (async () => {
       events.forEach(({ event: { data, method, section }, phase }) => {
         console.log(`\t' ${phase}: ${section}.${method}:: ${data}`);
       });
+      process.exit();
     });
-})();
+
+  process.exit();
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/require-await
+async function main () {
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
+  await excuteTransfer();
+}
+
+main().catch(console.error);
