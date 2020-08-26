@@ -3,6 +3,7 @@ const { ApiPromise, WsProvider } = require('@chainx-v2/api');
 const { PAIRS } = require('@chainx-v2/keyring/testing');
 const testKeyring = require('@chainx-v2/keyring/testing').default;
 const { encodeAddress } = require('@chainx-v2/keyring');
+const { Account } = require('@chainx-v2/account');
 
 const url = 'ws://47.114.131.193:9000';
 const wsProvider = new WsProvider(url);
@@ -23,9 +24,12 @@ async function excuteTransfer () {
   console.log('balance', balance.data.free.toString());
 
   let id = 0;
+  const fromAddress = Account.generate().address();
+
+  console.log(fromAddress);
   const unsub = await api.tx.balances
-    .transfer('5Gsz44HKdTXnwiLH47GmZKr2hw5qmaBe2nMKK1sJSKmYRYxh',
-      10 * Math.pow(10, 8))
+    .transfer(fromAddress,
+      1000000 * Math.pow(10, 8))
     .signAndSend(alice, ({ events = [], status }) => {
       console.log(`Current status is ${status}`);
       id++;

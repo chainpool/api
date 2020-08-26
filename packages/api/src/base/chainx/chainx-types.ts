@@ -296,6 +296,26 @@ export default {
     // eslint-disable-next-line sort-keys
     lockedUntil: 'BlockNumber'
   },
+  // eslint-disable-next-line sort-keys
+  FullPairInfo: {
+    profile: 'TradingPairProfile',
+    // eslint-disable-next-line sort-keys
+    handicap: 'RpcHandicap',
+    pairInfo: 'RpcTradingPairInfo',
+    // eslint-disable-next-line sort-keys
+    maxValidBid: 'RpcPrice',
+    minValidAsk: 'RpcPrice'
+  },
+  RpcTradingPairInfo: {
+    latestPrice: 'RpcPrice',
+    // eslint-disable-next-line sort-keys
+    lastUpdated: 'BlockNumber'
+  },
+  // eslint-disable-next-line sort-keys
+  RpcHandicap: {
+    highestBid: 'RpcPrice',
+    lowestAsk: 'RpcPrice'
+  },
 
   // eslint-disable-next-line sort-keys
   NominatorInfo: {
