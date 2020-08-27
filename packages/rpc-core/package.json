@@ -1,15 +1,15 @@
 {
   "name": "@chainx-v2/rpc-core",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
-    "@chainx-v2/metadata": "^0.0.23",
-    "@chainx-v2/rpc-provider": "^0.0.23",
-    "@chainx-v2/types": "^0.0.23",
-    "@chainx-v2/util": "^0.0.23",
+    "@chainx-v2/metadata": "^0.0.24",
+    "@chainx-v2/rpc-provider": "^0.0.24",
+    "@chainx-v2/types": "^0.0.24",
+    "@chainx-v2/util": "^0.0.24",
     "memoizee": "^0.4.14",
     "rxjs": "^6.5.5"
   },

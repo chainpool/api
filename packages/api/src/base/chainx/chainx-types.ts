@@ -176,10 +176,11 @@ export default {
     frequencyLimit: 'BlockNumber'
   },
   RpcNominatorLedger: {
-    nomination: 'Balance',
+    nomination: 'RpcBalance',
     // eslint-disable-next-line sort-keys
     lastVoteWeight: 'RpcWeightType',
-    lastVoteWeightUpdate: 'BlockNumber'
+    lastVoteWeightUpdate: 'BlockNumber',
+    unbondedChunks: 'Vec<RpcUnbonded>'
   },
   // eslint-disable-next-line sort-keys
   BondRequirement: {
@@ -197,7 +198,9 @@ export default {
     nomination: 'Balance',
     // eslint-disable-next-line sort-keys
     lastVoteWeight: 'WeightType',
-    lastVoteWeightUpdate: 'BlockNumber'
+    lastVoteWeightUpdate: 'BlockNumber',
+    unbondedChunks: 'Vec<Unbonded>'
+
   },
   ValidatorProfile: {
     registeredAt: 'BlockNumber',
@@ -206,11 +209,7 @@ export default {
     lastChilled: 'Option<BlockNumber>',
     referralId: 'ReferralId'
   },
-  // eslint-disable-next-line sort-keys
-  NominatorProfile: {
-    lastRebond: 'Option<BlockNumber>',
-    unbondedChunks: 'Vec<Unbonded>'
-  },
+
   // eslint-disable-next-line sort-keys
   GlobalDistribution: {
     treasury: 'u32',
@@ -292,20 +291,12 @@ export default {
     ]
   },
   RpcUnbonded: {
-    value: 'RpcBalance',
+    value: 'Balance',
     // eslint-disable-next-line sort-keys
     lockedUntil: 'BlockNumber'
   },
+
   // eslint-disable-next-line sort-keys
-  FullPairInfo: {
-    profile: 'TradingPairProfile',
-    // eslint-disable-next-line sort-keys
-    handicap: 'RpcHandicap',
-    pairInfo: 'RpcTradingPairInfo',
-    // eslint-disable-next-line sort-keys
-    maxValidBid: 'RpcPrice',
-    minValidAsk: 'RpcPrice'
-  },
   RpcTradingPairInfo: {
     latestPrice: 'RpcPrice',
     // eslint-disable-next-line sort-keys
@@ -319,8 +310,7 @@ export default {
 
   // eslint-disable-next-line sort-keys
   NominatorInfo: {
-    lastRebond: 'Option<BlockNumber>',
-    unbondedChunks: 'Vec<RpcUnbonded>'
+    lastRebond: 'Option<BlockNumber>'
   },
   OrderInfo: 'Order',
   // eslint-disable-next-line sort-keys
@@ -516,6 +506,21 @@ export default {
     // eslint-disable-next-line sort-keys
     rewardPotAccount: 'AccountId',
     rewardPotBalance: 'RpcBalance'
+  },
+  // eslint-disable-next-line sort-keys
+  FullPairInfo: {
+    baseCurrency: 'AssetId',
+    highestBid: 'RpcPrice',
+    id: 'TradingPairId',
+    latestPrice: 'RpcPrice',
+    latestPriceUpdatedAt: 'BlockNumber',
+    lowestAsk: 'RpcPrice',
+    maxValidBid: 'RpcPrice',
+    minValidAsk: 'RpcPrice',
+    pipDecimals: 'u32',
+    quoteCurrency: 'AssetId',
+    tickDecimals: 'u32',
+    tradable: 'bool'
   },
   // eslint-disable-next-line sort-keys
   String: 'Text',
