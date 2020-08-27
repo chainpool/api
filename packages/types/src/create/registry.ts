@@ -11,7 +11,7 @@ import extrinsicsFromMeta from '@chainx-v2/metadata/Decorated/extrinsics/fromMet
 import { assert, formatBalance, isFunction, isString, isU8a, isUndefined, stringCamelCase, u8aToHex } from '@chainx-v2/util';
 
 import Raw from '../codec/Raw';
-import { defaultExtensions, expandExtensionTypes, findUnknownExtensions } from '../extrinsic/signedExtensions';
+import { defaultExtensions, expandExtensionTypes } from '../extrinsic/signedExtensions';
 import { EventData } from '../generic/Event';
 import DoNotConstruct from '../primitive/DoNotConstruct';
 import { createClass, getTypeClass } from './createClass';
@@ -202,7 +202,7 @@ export class TypeRegistry implements Registry {
       if (definition) {
         BaseType = createClass(this, definition);
       } else if (withUnknown) {
-        console.warn(`Unable to resolve type ${name}, it will fail on construction`);
+        // console.warn(`Unable to resolve type ${name}, it will fail on construction`);
 
         this.#unknownTypes.set(name, true);
         BaseType = DoNotConstruct.with(name);
@@ -332,11 +332,5 @@ export class TypeRegistry implements Registry {
   // sets the available signed extensions
   setSignedExtensions (signedExtensions: string[] = defaultExtensions): void {
     this.#signedExtensions = signedExtensions;
-
-    const unknown = findUnknownExtensions(this.#signedExtensions);
-
-    if (unknown.length) {
-      console.warn(`Unknown signed extensions ${unknown.join(', ')} found, treating them as no-effect`);
-    }
   }
 }

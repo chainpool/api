@@ -1,5 +1,15 @@
 // eslint-disable-next-line sort-keys,header/header
 export default {
+  Amount: 'i128',
+  AmountOf: 'Amount',
+  ChainAddress: 'Vec<u8>',
+  LockedType: {
+    _enum: [
+      'Bonded',
+      'BondedWithdrawal'
+    ]
+  },
+  // eslint-disable-next-line sort-keys
   AssetType: {
     _enum: [
       'Usable',
@@ -16,6 +26,25 @@ export default {
       'Bitcoin',
       'Ethereum',
       'Polkadot'
+    ]
+  },
+  MiningAssetInfo: {
+    assetId: 'AssetId',
+    miningPower: 'FixedAssetPower',
+    rewardPot: 'AccountId',
+    rewardPotBalance: 'RpcBalance',
+    // eslint-disable-next-line sort-keys
+    ledgerInfo: 'RpcAssetLedger'
+  },
+  RpcAssetLedger: {
+    lastTotalMiningWeight: 'RpcWeightType',
+    lastTotalMiningWeightUpdate: 'BlockNumber'
+  },
+  // eslint-disable-next-line sort-keys
+  BtcTxVerifier: {
+    _enum: [
+      'Recover',
+      'RuntimeInterface'
     ]
   },
   XRC20Selector: {
@@ -41,6 +70,20 @@ export default {
       'Buy',
       'Sell'
     ]
+  },
+  // eslint-disable-next-line sort-keys
+  AssetRestriction: {
+    _enum: [
+      'Move',
+      'Transfer',
+      'Deposit',
+      'Withdraw',
+      'DestroyWithdrawal',
+      'DestroyFree'
+    ]
+  },
+  AssetRestrictions: {
+    mask: 'u32'
   },
   // eslint-disable-next-line sort-keys
   Memo: 'Text',
@@ -224,17 +267,7 @@ export default {
   ReferralId: 'Text',
   // eslint-disable-next-line sort-keys
   AssetId: 'u32',
-  AssetRestriction: {
-    _enum: [
-      'Move',
-      'Transfer',
-      'Deposit',
-      'Withdraw',
-      'DestroyWithdrawal',
-      'DestroyFree'
-    ]
-  },
-  AssetRestrictions: 'u32',
+
   BtcHeader: {
     version: 'u32',
     // eslint-disable-next-line sort-keys
@@ -258,9 +291,39 @@ export default {
       'Testnet'
     ]
   },
+  RpcUnbonded: {
+    value: 'RpcBalance',
+    // eslint-disable-next-line sort-keys
+    lockedUntil: 'BlockNumber'
+  },
+  // eslint-disable-next-line sort-keys
+  FullPairInfo: {
+    profile: 'TradingPairProfile',
+    // eslint-disable-next-line sort-keys
+    handicap: 'RpcHandicap',
+    pairInfo: 'RpcTradingPairInfo',
+    // eslint-disable-next-line sort-keys
+    maxValidBid: 'RpcPrice',
+    minValidAsk: 'RpcPrice'
+  },
+  RpcTradingPairInfo: {
+    latestPrice: 'RpcPrice',
+    // eslint-disable-next-line sort-keys
+    lastUpdated: 'BlockNumber'
+  },
+  // eslint-disable-next-line sort-keys
+  RpcHandicap: {
+    highestBid: 'RpcPrice',
+    lowestAsk: 'RpcPrice'
+  },
+
+  // eslint-disable-next-line sort-keys
+  NominatorInfo: {
+    lastRebond: 'Option<BlockNumber>',
+    unbondedChunks: 'Vec<RpcUnbonded>'
+  },
   OrderInfo: 'Order',
   // eslint-disable-next-line sort-keys
-  Amount: 'i128',
   CurrencyIdOf: 'AssetId',
   // eslint-disable-next-line sort-keys
   CurrencyId: 'AssetId',
@@ -291,12 +354,13 @@ export default {
     // eslint-disable-next-line sort-keys
     createdAt: 'BlockNumber'
   },
+
   TotalAssetInfoForRpc: {
     info: 'AssetInfoForRpc',
     // eslint-disable-next-line sort-keys
     balance: 'BTreeMap<AssetType, String>',
-    isOnline: 'bool'
-    // restrictions: 'AssetRestrictions'
+    isOnline: 'bool',
+    restrictions: 'AssetRestrictions'
   },
   Unbonded: {
     lockedUntil: 'BlockNumber',
