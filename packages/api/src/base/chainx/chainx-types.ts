@@ -284,6 +284,40 @@ export default {
       'Testnet'
     ]
   },
+  RpcMinerLedger: {
+    lastMiningWeight: 'RpcWeightType',
+    lastMiningWeightUpdate: 'BlockNumber',
+    // eslint-disable-next-line sort-keys
+    lastClaim: 'Option<BlockNumber>'
+  },
+  // eslint-disable-next-line sort-keys
+  Depth: {
+    asks: 'Vec<(RpcPrice, RpcBalance)>',
+    bids: 'Vec<(RpcPrice, RpcBalance)>'
+  },
+  RpcOrder: {
+    orderId: 'OrderId',
+    side: 'Side',
+    // eslint-disable-next-line sort-keys
+    price: 'RpcPrice',
+    // eslint-disable-next-line sort-keys
+    amount: 'RpcBalance',
+    pairId: 'TradingPairId',
+    submitter: 'AccountId',
+    // eslint-disable-next-line sort-keys
+    orderType: 'OrderType',
+    // eslint-disable-next-line sort-keys
+    createdAt: 'BlockNumber',
+    status: 'OrderStatus',
+    // eslint-disable-next-line sort-keys
+    remaining: 'RpcBalance',
+    // eslint-disable-next-line sort-keys
+    executedIndices: 'Vec<TradingHistoryIndex>',
+    // eslint-disable-next-line sort-keys
+    alreadyFilled: 'RpcBalance',
+    lastUpdateAt: 'BlockNumber'
+  },
+  // eslint-disable-next-line sort-keys
   NetworkType: {
     _enum: [
       'Mainnet',
