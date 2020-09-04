@@ -380,7 +380,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'NominatorInfo<RpcBalance, BlockNumber>'
+      type: 'NominatorInfo<BlockNumber>'
     }
 
   },

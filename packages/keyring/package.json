@@ -1,12 +1,12 @@
 {
   "name": "@chainx-v2/keyring",
-  "version": "0.0.23",
+  "version": "0.0.26",
   "description": "Keyring management",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.10.5",
-    "@chainx-v2/crypto": "^0.0.23",
-    "@chainx-v2/util": "^0.0.23"
+    "@chainx-v2/crypto": "^0.0.26",
+    "@chainx-v2/util": "^0.0.26"
   }
 }

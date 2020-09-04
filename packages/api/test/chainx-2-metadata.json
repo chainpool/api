@@ -900,9 +900,6 @@
                 " - `O(T)` where `T` complexity of `on_timestamp_set`",
                 " - 1 storage read and 1 storage mutation (codec `O(1)`). (because of `DidUpdate::take` in `on_finalize`)",
                 " - 1 event handler `on_timestamp_set` `O(T)`.",
-                " - Benchmark: 7.678 (min squares analysis)",
-                "   - NOTE: This benchmark was done for a runtime with insignificant `on_timestamp_set` handlers.",
-                "     New benchmarking is needed when adding new handlers.",
                 " # </weight>"
               ]
             }
@@ -2077,6 +2074,28 @@
                 " if the block author is defined it will be defined as the equivocation",
                 " reporter."
               ]
+            },
+            {
+              "name": "note_stalled",
+              "args": [
+                {
+                  "name": "delay",
+                  "type": "BlockNumber"
+                },
+                {
+                  "name": "best_finalized_block_number",
+                  "type": "BlockNumber"
+                }
+              ],
+              "documentation": [
+                " Note that the current authority set of the GRANDPA finality gadget has",
+                " stalled. This will trigger a forced authority set change at the beginning",
+                " of the next session, to be enacted `delay` blocks after that. The delay",
+                " should be high enough to safely assume that the block signalling the",
+                " forced change will not be re-orged (e.g. 1000 blocks). The GRANDPA voters",
+                " will start the new authority set using the given finalized block as base.",
+                " Only callable by root."
+              ]
             }
           ],
           "events": [
@@ -2291,6 +2310,14 @@
               ]
             }
           ]
+        },
+        {
+          "name": "AuthorityDiscovery",
+          "storage": null,
+          "calls": [],
+          "events": null,
+          "constants": [],
+          "errors": []
         },
         {
           "name": "Democracy",
@@ -2535,8 +2562,6 @@
                 " - Complexity: `O(1)`",
                 " - Db reads: `PublicPropCount`, `PublicProps`",
                 " - Db writes: `PublicPropCount`, `PublicProps`, `DepositOf`",
-                " -------------------",
-                " Base Weight: 42.58 + .127 * P µs with `P` the number of proposals `PublicProps`",
                 " # </weight>"
               ]
             },
@@ -2566,8 +2591,6 @@
                 " - Complexity: `O(S)` where S is the number of seconds a proposal already has.",
                 " - Db reads: `DepositOf`",
                 " - Db writes: `DepositOf`",
-                " ---------",
-                " - Base Weight: 22.28 + .229 * S µs",
                 " # </weight>"
               ]
             },
@@ -2597,10 +2620,6 @@
                 "   weight is charged as if maximum votes.",
                 " - Db reads: `ReferendumInfoOf`, `VotingOf`, `balances locks`",
                 " - Db writes: `ReferendumInfoOf`, `VotingOf`, `balances locks`",
-                " --------------------",
-                " - Base Weight:",
-                "     - Vote New: 49.24 + .333 * R µs",
-                "     - Vote Existing: 49.94 + .343 * R µs",
                 " # </weight>"
               ]
             },
@@ -2624,8 +2643,6 @@
                 " - Complexity: `O(1)`.",
                 " - Db reads: `ReferendumInfoOf`, `Cancellations`",
                 " - Db writes: `ReferendumInfoOf`, `Cancellations`",
-                " -------------",
-                " - Base Weight: 34.25 µs",
                 " # </weight>"
               ]
             },
@@ -2650,7 +2667,6 @@
                 "   Decoding vec of length V. Charged as maximum",
                 " - Db reads: `NextExternal`, `Blacklist`",
                 " - Db writes: `NextExternal`",
-                " - Base Weight: 13.8 + .106 * V µs",
                 " # </weight>"
               ]
             },
@@ -2676,7 +2692,6 @@
                 " # <weight>",
                 " - Complexity: `O(1)`",
                 " - Db write: `NextExternal`",
-                " - Base Weight: 3.065 µs",
                 " # </weight>"
               ]
             },
@@ -2702,7 +2717,6 @@
                 " # <weight>",
                 " - Complexity: `O(1)`",
                 " - Db write: `NextExternal`",
-                " - Base Weight: 3.087 µs",
                 " # </weight>"
               ]
             },
@@ -2767,7 +2781,6 @@
                 "   Performs a binary search on `existing_vetoers` which should not be very large.",
                 " - Db reads: `NextExternal`, `Blacklist`",
                 " - Db writes: `NextExternal`, `Blacklist`",
-                " - Base Weight: 29.87 + .188 * V µs",
                 " # </weight>"
               ]
             },
@@ -2789,7 +2802,6 @@
                 " # <weight>",
                 " - Complexity: `O(1)`.",
                 " - Db writes: `ReferendumInfoOf`",
-                " - Base Weight: 21.57 µs",
                 " # </weight>"
               ]
             },
@@ -2812,7 +2824,6 @@
                 " - `O(D)` where `D` is the items in the dispatch queue. Weighted as `D = 10`.",
                 " - Db reads: `scheduler lookup`, scheduler agenda`",
                 " - Db writes: `scheduler lookup`, scheduler agenda`",
-                " - Base Weight: 36.78 + 3.277 * D µs",
                 " # </weight>"
               ]
             },
@@ -2854,11 +2865,10 @@
                 " # <weight>",
                 " - Complexity: `O(R)` where R is the number of referendums the voter delegating to has",
                 "   voted on. Weight is charged as if maximum votes.",
-                " - Db reads: 2*`VotingOf`, `balances locks`",
-                " - Db writes: 2*`VotingOf`, `balances locks`",
+                " - Db reads: 3*`VotingOf`, `origin account locks`",
+                " - Db writes: 3*`VotingOf`, `origin account locks`",
                 " - Db reads per votes: `ReferendumInfoOf`",
                 " - Db writes per votes: `ReferendumInfoOf`",
-                " - Base Weight: 65.78 + 8.229 * R µs",
                 " # </weight>"
               ]
             },
@@ -2883,7 +2893,6 @@
                 " - Db writes: 2*`VotingOf`",
                 " - Db reads per votes: `ReferendumInfoOf`",
                 " - Db writes per votes: `ReferendumInfoOf`",
-                " - Base Weight: 33.29 + 8.104 * R µs",
                 " # </weight>"
               ]
             },
@@ -2898,7 +2907,6 @@
                 " # <weight>",
                 " - `O(1)`.",
                 " - Db writes: `PublicProps`",
-                " - Base Weight: 2.505 µs",
                 " # </weight>"
               ]
             },
@@ -2921,7 +2929,9 @@
                 " Emits `PreimageNoted`.",
                 "",
                 " # <weight>",
-                " see `weight_for::note_preimage`",
+                " - Complexity: `O(E)` with E size of `encoded_proposal` (protected by a required deposit).",
+                " - Db reads: `Preimages`",
+                " - Db writes: `Preimages`",
                 " # </weight>"
               ]
             },
@@ -2947,7 +2957,9 @@
               ],
               "documentation": [
                 " Register the preimage for an upcoming proposal. This requires the proposal to be",
-                " in the dispatch queue. No deposit is needed.",
+                " in the dispatch queue. No deposit is needed. When this call is successful, i.e.",
+                " the preimage has not been uploaded before and matches some imminent proposal,",
+                " no fee is paid.",
                 "",
                 " The dispatch origin of this call must be _Signed_.",
                 "",
@@ -2956,7 +2968,9 @@
                 " Emits `PreimageNoted`.",
                 "",
                 " # <weight>",
-                " see `weight_for::note_preimage`",
+                " - Complexity: `O(E)` with E size of `encoded_proposal` (protected by a required deposit).",
+                " - Db reads: `Preimages`",
+                " - Db writes: `Preimages`",
                 " # </weight>"
               ]
             },
@@ -3001,9 +3015,8 @@
                 "",
                 " # <weight>",
                 " - Complexity: `O(D)` where D is length of proposal.",
-                " - Db reads: `Preimages`",
-                " - Db writes: `Preimages`",
-                " - Base Weight: 39.31 + .003 * b µs",
+                " - Db reads: `Preimages`, provider account data",
+                " - Db writes: `Preimages` provider account data",
                 " # </weight>"
               ]
             },
@@ -3026,9 +3039,6 @@
                 " - Complexity `O(R)` with R number of vote of target.",
                 " - Db reads: `VotingOf`, `balances locks`, `target account`",
                 " - Db writes: `VotingOf`, `balances locks`, `target account`",
-                " - Base Weight:",
-                "     - Unlock Remove: 42.96 + .048 * R",
-                "     - Unlock Set: 37.63 + .327 * R",
                 " # </weight>"
               ]
             },
@@ -3071,7 +3081,6 @@
                 "   Weight is calculated for the maximum number of vote.",
                 " - Db reads: `ReferendumInfoOf`, `VotingOf`",
                 " - Db writes: `ReferendumInfoOf`, `VotingOf`",
-                " - Base Weight: 21.03 + .359 * R",
                 " # </weight>"
               ]
             },
@@ -3106,7 +3115,6 @@
                 "   Weight is calculated for the maximum number of vote.",
                 " - Db reads: `ReferendumInfoOf`, `VotingOf`",
                 " - Db writes: `ReferendumInfoOf`, `VotingOf`",
-                " - Base Weight: 19.15 + .372 * R",
                 " # </weight>"
               ]
             },
@@ -3252,7 +3260,7 @@
                 "Balance"
               ],
               "documentation": [
-                " A proposal preimage was removed and used (the deposit was returned). ",
+                " A proposal preimage was removed and used (the deposit was returned).",
                 " [proposal_hash, provider, deposit]"
               ]
             },
@@ -3285,7 +3293,7 @@
                 "AccountId"
               ],
               "documentation": [
-                " A registered preimage was removed and the deposit collected by the reaper. ",
+                " A registered preimage was removed and the deposit collected by the reaper.",
                 " [proposal_hash, provider, deposit, reaper]"
               ]
             },
@@ -8021,12 +8029,7 @@
                 "",
                 " NOTE: Prior to version *12, this was called `as_limited_sub`.",
                 "",
-                " The dispatch origin for this call must be _Signed_.",
-                "",
-                " # <weight>",
-                " - Base weight: 2.861 µs",
-                " - Plus the weight of the `call`",
-                " # </weight>"
+                " The dispatch origin for this call must be _Signed_."
               ]
             }
           ],
@@ -9609,22 +9612,6 @@
                 ]
               },
               {
-                "name": "Nominators",
-                "modifier": "Default",
-                "type": {
-                  "Map": {
-                    "hasher": "Twox64Concat",
-                    "key": "AccountId",
-                    "value": "NominatorProfile",
-                    "linked": false
-                  }
-                },
-                "fallback": "0x0000",
-                "documentation": [
-                  " The map from nominator key to the set of keys of all validators to nominate."
-                ]
-              },
-              {
                 "name": "ValidatorLedgers",
                 "modifier": "Default",
                 "type": {
@@ -9652,9 +9639,25 @@
                     "key2Hasher": "Twox64Concat"
                   }
                 },
-                "fallback": "0x000000000000000000000000000000000000000000000000000000000000000000000000",
+                "fallback": "0x00000000000000000000000000000000000000000000000000000000000000000000000000",
                 "documentation": [
                   " The map from nominator to the vote weight ledger of all nominees."
+                ]
+              },
+              {
+                "name": "LastRebondOf",
+                "modifier": "Optional",
+                "type": {
+                  "Map": {
+                    "hasher": "Twox64Concat",
+                    "key": "AccountId",
+                    "value": "BlockNumber",
+                    "linked": false
+                  }
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " The map from nominator to the block number of last `rebond` operation."
                 ]
               },
               {
@@ -9843,6 +9846,10 @@
             {
               "name": "unlock_unbonded_withdrawal",
               "args": [
+                {
+                  "name": "target",
+                  "type": "LookupSource"
+                },
                 {
                   "name": "unbonded_index",
                   "type": "Compact<UnbondedIndex>"
@@ -10845,12 +10852,12 @@
                 ]
               },
               {
-                "name": "ConfirmedHeader",
-                "modifier": "Default",
+                "name": "ConfirmedIndex",
+                "modifier": "Optional",
                 "type": {
                   "Plain": "BtcHeaderIndex"
                 },
-                "fallback": "0x000000000000000000000000000000000000000000000000000000000000000000000000",
+                "fallback": "0x00",
                 "documentation": [
                   " confirmed header info"
                 ]
@@ -11277,6 +11284,12 @@
               ]
             },
             {
+              "name": "AncientFork",
+              "documentation": [
+                " Fork is too long to proceed"
+              ]
+            },
+            {
               "name": "InvalidPrevTx",
               "documentation": [
                 " Previous tx id not equal input point hash"
@@ -11349,39 +11362,45 @@
               ]
             },
             {
+              "name": "ProcessTxFailed",
+              "documentation": [
+                " process tx failed"
+              ]
+            },
+            {
               "name": "MismatchedTx",
               "documentation": [
-                ""
+                " withdraw tx not match expected tx"
               ]
             },
             {
               "name": "InvalidAddress",
               "documentation": [
-                ""
+                " invalid bitcoin address"
               ]
             },
             {
               "name": "VerifySignFailed",
               "documentation": [
-                ""
+                " verify tx signature failed"
               ]
             },
             {
               "name": "InvalidSignCount",
               "documentation": [
-                ""
+                " invalid sign count in trustee withdrawal tx proposal"
               ]
             },
             {
               "name": "InvalidPublicKey",
               "documentation": [
-                ""
+                " invalid bitcoin public key"
               ]
             },
             {
               "name": "ConstructBadSign",
               "documentation": [
-                ""
+                " construct bad signature"
               ]
             },
             {
@@ -11399,67 +11418,61 @@
             {
               "name": "NotTrustee",
               "documentation": [
-                ""
+                " not set trustee yet"
               ]
             },
             {
               "name": "DuplicatedKeys",
               "documentation": [
-                ""
+                " duplicated pubkey for trustees"
               ]
             },
             {
               "name": "GenerateMultisigFailed",
               "documentation": [
-                ""
+                " can't generate multisig address"
               ]
             },
             {
-              "name": "InvalidTrusteeCounts",
+              "name": "InvalidTrusteeCount",
               "documentation": [
-                ""
+                " invalid trustee count"
               ]
             },
             {
               "name": "WroungWithdrawalCount",
               "documentation": [
-                ""
-              ]
-            },
-            {
-              "name": "InvalidSigCount",
-              "documentation": [
-                ""
+                " unexpected withdraw records count"
               ]
             },
             {
               "name": "RejectSig",
               "documentation": [
-                ""
+                " reject sig for current proposal"
               ]
             },
             {
               "name": "NoProposal",
               "documentation": [
-                ""
+                " no proposal for current withdrawal"
               ]
             },
             {
               "name": "InvalidProposal",
               "documentation": [
-                ""
+                " invalid proposal"
               ]
             },
             {
               "name": "NotFinishProposal",
               "documentation": [
-                ""
+                " last proposal not finished yet"
               ]
             },
             {
               "name": "NoWithdrawalRecord",
               "documentation": [
-                ""
+                " no withdrawal record for this id"
               ]
             }
           ]
