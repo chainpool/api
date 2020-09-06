@@ -1341,26 +1341,6 @@
                 " - DB Weight: 1 Read and 1 Write to dest (sender is in overlay already)",
                 " #</weight>"
               ]
-            },
-            {
-              "name": "transfer_with_memo",
-              "args": [
-                {
-                  "name": "dest",
-                  "type": "LookupSource"
-                },
-                {
-                  "name": "value",
-                  "type": "Compact<Balance>"
-                },
-                {
-                  "name": "memo",
-                  "type": "Memo"
-                }
-              ],
-              "documentation": [
-                " Same as the [`transfer`] call, but with a memo parameter"
-              ]
             }
           ],
           "events": [
@@ -1945,6 +1925,115 @@
               "name": "NoKeys",
               "documentation": [
                 " No keys are associated with this account."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "FinalityTracker",
+          "storage": {
+            "prefix": "FinalityTracker",
+            "items": [
+              {
+                "name": "RecentHints",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<BlockNumber>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Recent hints."
+                ]
+              },
+              {
+                "name": "OrderedHints",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "Vec<BlockNumber>"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Ordered recent hints."
+                ]
+              },
+              {
+                "name": "Median",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x00000000",
+                "documentation": [
+                  " The median."
+                ]
+              },
+              {
+                "name": "Update",
+                "modifier": "Optional",
+                "type": {
+                  "Plain": "BlockNumber"
+                },
+                "fallback": "0x00",
+                "documentation": [
+                  " Final hint to apply in the block. `None` means \"same as parent\"."
+                ]
+              },
+              {
+                "name": "Initialized",
+                "modifier": "Default",
+                "type": {
+                  "Plain": "bool"
+                },
+                "fallback": "0x00",
+                "documentation": []
+              }
+            ]
+          },
+          "calls": [
+            {
+              "name": "final_hint",
+              "args": [
+                {
+                  "name": "hint",
+                  "type": "Compact<BlockNumber>"
+                }
+              ],
+              "documentation": [
+                " Hint that the author of this block thinks the best finalized",
+                " block is the given number."
+              ]
+            }
+          ],
+          "events": null,
+          "constants": [
+            {
+              "name": "WindowSize",
+              "type": "BlockNumber",
+              "value": "0x65000000",
+              "documentation": [
+                " The number of recent samples to keep from this chain. Default is 101."
+              ]
+            },
+            {
+              "name": "ReportLatency",
+              "type": "BlockNumber",
+              "value": "0xe8030000",
+              "documentation": [
+                " The delay after which point things become suspicious. Default is 1000."
+              ]
+            }
+          ],
+          "errors": [
+            {
+              "name": "AlreadyUpdated",
+              "documentation": [
+                " Final hint must be updated only once in the block"
+              ]
+            },
+            {
+              "name": "BadHint",
+              "documentation": [
+                " Finalized height above block number"
               ]
             }
           ]
@@ -8884,6 +8973,19 @@
                 "AccountId"
               ],
               "documentation": []
+            },
+            {
+              "name": "TransactionFeePaid",
+              "args": [
+                "AccountId",
+                "Balance",
+                "AccountId",
+                "Balance"
+              ],
+              "documentation": [
+                " Transaction fee is paid to the block author and its reward pot in 10:90.",
+                " [author, author_fee, reward_pot, reward_pot_fee]"
+              ]
             }
           ],
           "constants": [],
@@ -9085,27 +9187,21 @@
           "constants": [],
           "errors": [
             {
-              "name": "InvalidAssetLen",
+              "name": "InvalidAssetLength",
               "documentation": [
                 " Token length is zero or too long"
               ]
             },
             {
-              "name": "InvalidAssetNameLen",
+              "name": "InvalidAssetNameLength",
               "documentation": [
                 " Token name length is zero or too long"
               ]
             },
             {
-              "name": "InvalidDescLen",
+              "name": "InvalidDescLength",
               "documentation": [
                 " Desc length is zero or too long"
-              ]
-            },
-            {
-              "name": "InvalidMemoLen",
-              "documentation": [
-                " Memo length is zero or too long"
               ]
             },
             {
@@ -9219,17 +9315,6 @@
                 "documentation": [
                   " asset balance for an asset_id, use btree_map to accept different asset type"
                 ]
-              },
-              {
-                "name": "MemoLen",
-                "modifier": "Default",
-                "type": {
-                  "Plain": "u32"
-                },
-                "fallback": "0x00000000",
-                "documentation": [
-                  " memo len"
-                ]
               }
             ]
           },
@@ -9248,10 +9333,6 @@
                 {
                   "name": "value",
                   "type": "Compact<BalanceOf>"
-                },
-                {
-                  "name": "memo",
-                  "type": "Memo"
                 }
               ],
               "documentation": [
@@ -9276,10 +9357,6 @@
                 {
                   "name": "value",
                   "type": "Compact<BalanceOf>"
-                },
-                {
-                  "name": "memo",
-                  "type": "Memo"
                 }
               ],
               "documentation": [
@@ -9478,17 +9555,6 @@
                 "fallback": "0x0000000000000000000000000000000000000000000000000000000000000000",
                 "documentation": [
                   " Minimum value (self_bonded, total_bonded) to be a candidate of validator election."
-                ]
-              },
-              {
-                "name": "BlocksPerSession",
-                "modifier": "Default",
-                "type": {
-                  "Plain": "BlockNumber"
-                },
-                "fallback": "0x32000000",
-                "documentation": [
-                  " The length of a session in blocks."
                 ]
               },
               {
@@ -9789,10 +9855,6 @@
                 {
                   "name": "value",
                   "type": "Compact<BalanceOf>"
-                },
-                {
-                  "name": "memo",
-                  "type": "Memo"
                 }
               ],
               "documentation": [
@@ -9813,10 +9875,6 @@
                 {
                   "name": "value",
                   "type": "Compact<BalanceOf>"
-                },
-                {
-                  "name": "memo",
-                  "type": "Memo"
                 }
               ],
               "documentation": [
@@ -9833,10 +9891,6 @@
                 {
                   "name": "value",
                   "type": "Compact<BalanceOf>"
-                },
-                {
-                  "name": "memo",
-                  "type": "Memo"
                 }
               ],
               "documentation": [
@@ -9908,7 +9962,7 @@
               "documentation": []
             },
             {
-              "name": "set_minimal_validator_count",
+              "name": "set_minimum_validator_count",
               "args": [
                 {
                   "name": "new",
@@ -9946,7 +10000,7 @@
                 "Balance"
               ],
               "documentation": [
-                " The staker has been rewarded by this amount. `AccountId` is the stash account. [validator, reward_amount]"
+                " Issue new balance to this account. [account, reward_amount]"
               ]
             },
             {
@@ -9956,7 +10010,7 @@
                 "Balance"
               ],
               "documentation": [
-                " One validator (and its nominators) has been slashed by the given amount. [validator, slashed_amount]"
+                " One validator (and its reward pot) has been slashed by the given amount. [validator, slashed_amount]"
               ]
             },
             {
@@ -9989,7 +10043,7 @@
                 "Balance"
               ],
               "documentation": [
-                " Claim the staking reward. [nominator, validator, dividend]"
+                " Claim the staking dividend. [nominator, validator, dividend]"
               ]
             },
             {
@@ -9999,8 +10053,7 @@
                 "Balance"
               ],
               "documentation": [
-                " An account has called `withdraw_unbonded` and removed unbonding chunks worth `Balance`",
-                " from the unlocking queue. [nominator, amount]"
+                " The nominator has withdrawn the locked balance due to the unbond operation. [nominator, amount]"
               ]
             },
             {
@@ -10268,7 +10321,7 @@
               "documentation": []
             },
             {
-              "name": "set_x_asset_power",
+              "name": "set_asset_power",
               "args": [
                 {
                   "name": "asset_id",
@@ -10410,6 +10463,14 @@
                 {
                   "name": "balance",
                   "type": "Compact<BalanceOf>"
+                },
+                {
+                  "name": "addr",
+                  "type": "AddrStr"
+                },
+                {
+                  "name": "memo",
+                  "type": "Memo"
                 }
               ],
               "documentation": []
@@ -10422,7 +10483,7 @@
                   "type": "Compact<u32>"
                 },
                 {
-                  "name": "state",
+                  "name": "expected_state",
                   "type": "WithdrawalState"
                 }
               ],
@@ -10659,6 +10720,16 @@
                 {
                   "name": "ext",
                   "type": "Memo"
+                }
+              ],
+              "documentation": []
+            },
+            {
+              "name": "revoke_withdraw",
+              "args": [
+                {
+                  "name": "id",
+                  "type": "u32"
                 }
               ],
               "documentation": []
@@ -11097,7 +11168,11 @@
                   "type": "Bytes"
                 }
               ],
-              "documentation": []
+              "documentation": [
+                " Trustee create a proposal for a withdrawal list. `tx` is the proposal withdrawal transaction.",
+                " The `tx` would have a sign for current creator or do not have sign. if creator do not sign",
+                " for this transaction, he could do `sign_withdraw_tx` later."
+              ]
             },
             {
               "name": "sign_withdraw_tx",
@@ -11107,7 +11182,11 @@
                   "type": "Option<Bytes>"
                 }
               ],
-              "documentation": []
+              "documentation": [
+                " Trustees sign a withdrawal proposal. If `tx` is None, means this trustee vote to reject",
+                " this proposal. If `tx` is Some(), the inner part must be a valid transaction with this",
+                " trustee signature."
+              ]
             },
             {
               "name": "set_best_index",
@@ -11145,12 +11224,36 @@
                   "type": "Option<AccountId>"
                 }
               ],
-              "documentation": []
+              "documentation": [
+                " Allow root or trustees could remove pending deposits for an address and decide whether",
+                " deposit to an account id. if pass `None` to `who`, would just remove pendings, if pass",
+                " Some, would deposit to this account id."
+              ]
             },
             {
               "name": "remove_proposal",
               "args": [],
-              "documentation": []
+              "documentation": [
+                " Dangerous! remove current withdrawal proposal directly. Please check business logic before",
+                " do this operation."
+              ]
+            },
+            {
+              "name": "force_replace_proposal_tx",
+              "args": [
+                {
+                  "name": "tx",
+                  "type": "Bytes"
+                }
+              ],
+              "documentation": [
+                " Dangerous! force replace current withdrawal proposal transaction. Please check business",
+                " logic before do this operation. Must make sure current proposal transaction is invalid",
+                " (e.g. when created a proposal, the inputs are not in double spend state, but after other",
+                " trustees finish signing, the inputs are in double spend due other case. Thus could create",
+                " a new valid transaction which outputs same to current proposal to replace current proposal",
+                " transaction.)"
+              ]
             },
             {
               "name": "set_btc_withdrawal_fee",
@@ -11160,7 +11263,9 @@
                   "type": "Compact<u64>"
                 }
               ],
-              "documentation": []
+              "documentation": [
+                " Set bitcoin withdrawal fee"
+              ]
             },
             {
               "name": "set_btc_deposit_limit",
@@ -11170,7 +11275,9 @@
                   "type": "Compact<u64>"
                 }
               ],
-              "documentation": []
+              "documentation": [
+                " Set bitcoin deposit limit"
+              ]
             }
           ],
           "events": [
@@ -11781,7 +11888,7 @@
           ],
           "events": [
             {
-              "name": "PutOrder",
+              "name": "NewOrder",
               "args": [
                 "Order"
               ],
@@ -11790,12 +11897,21 @@
               ]
             },
             {
-              "name": "UpdateOrder",
+              "name": "MakerOrderUpdated",
               "args": [
                 "Order"
               ],
               "documentation": [
-                " There is an update to the order due to it's canceled or get executed."
+                " There is an update to the order due to it gets executed."
+              ]
+            },
+            {
+              "name": "TakerOrderUpdated",
+              "args": [
+                "Order"
+              ],
+              "documentation": [
+                " There is an update to the order due to it gets executed."
               ]
             },
             {
@@ -11804,11 +11920,20 @@
                 "OrderExecutedInfo"
               ],
               "documentation": [
-                " The order gets executed."
+                " Overall information about the maker and taker orders when there is an order execution."
               ]
             },
             {
-              "name": "AddTradingPair",
+              "name": "CanceledOrderUpdated",
+              "args": [
+                "Order"
+              ],
+              "documentation": [
+                " There is an update to the order due to it gets canceled."
+              ]
+            },
+            {
+              "name": "TradingPairAdded",
               "args": [
                 "TradingPairProfile"
               ],
