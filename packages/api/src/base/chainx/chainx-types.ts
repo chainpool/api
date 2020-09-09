@@ -315,7 +315,16 @@ export default {
     executedIndices: 'Vec<TradingHistoryIndex>',
     // eslint-disable-next-line sort-keys
     alreadyFilled: 'RpcBalance',
+    reservedBalance: 'RpcBalance',
+    // eslint-disable-next-line sort-keys
     lastUpdateAt: 'BlockNumber'
+  },
+  // eslint-disable-next-line sort-keys
+  Page: {
+    pageIndex: 'u32',
+    pageSize: 'u32',
+    // eslint-disable-next-line sort-keys
+    data: 'Vec<RpcOrder>'
   },
   // eslint-disable-next-line sort-keys
   NetworkType: {
